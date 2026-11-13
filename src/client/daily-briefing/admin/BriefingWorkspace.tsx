@@ -11,6 +11,7 @@ import { ErrorNotice } from "@/components/ErrorNotice";
 import { usePrintingPluginActive } from "@/printing/pluginStatus";
 import { notifyPrintIntentEnqueued } from "@/printing/queueWakeup";
 import type { WeekdayCode } from "@/components/WeekdayPicker";
+import { BriefingA4Print } from "./BriefingA4Print";
 import { BriefingImage } from "./BriefingImage";
 import { weekdayOfDate } from "./briefingBlocks";
 import type {
@@ -357,6 +358,14 @@ export function BriefingWorkspace({
           >
             {printing ? t("dailyBriefing.admin.printing") : t("dailyBriefing.admin.print")}
           </Button>
+          {activeDate && (
+            <BriefingA4Print
+              memberId={memberId}
+              date={activeDate}
+              disabled={!generated}
+              onError={setActionError}
+            />
+          )}
         </div>
         {!printingActive && (
           <p

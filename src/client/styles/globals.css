@@ -278,3 +278,45 @@
     animation: completion-celebration-fade 3.6s ease-out forwards;
   }
 }
+
+/* A4 print of a briefing slip (BriefingA4Print.tsx). The sheet exists only on paper: hidden on
+ * screen, and in print it is the only thing left of the page. Each column's slice of the slip
+ * arrives as custom properties. */
+.briefing-a4-sheet {
+  display: none;
+}
+@media print {
+  /* No page margin: the browser then has nowhere to print its own header and footer (date,
+   * title, URL). The margin is each page's padding instead. */
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+  body:has(> .briefing-a4-sheet) > :not(.briefing-a4-sheet) {
+    display: none !important;
+  }
+  .briefing-a4-sheet {
+    display: block;
+  }
+  .briefing-a4-page {
+    display: flex;
+    align-items: flex-start;
+    gap: 5mm;
+    padding: 10mm;
+    break-after: page;
+  }
+  .briefing-a4-page:last-child {
+    break-after: auto;
+  }
+  .briefing-a4-column {
+    width: var(--a4-column-width);
+    height: var(--a4-segment-height);
+    overflow: hidden;
+  }
+  .briefing-a4-column img {
+    display: block;
+    width: var(--a4-column-width);
+    max-width: none;
+    margin-top: calc(-1 * var(--a4-segment-top));
+  }
+}

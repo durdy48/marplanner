@@ -593,8 +593,9 @@ describe("DailyBriefingManagement — kiosk density across reachable states (SC-
         // Phase 3 — the Briefings tab, counted once its history and read have settled.
         fireEvent.click(screen.getByTestId("daily-briefing-tab-preview"));
         await screen.findByTestId("daily-briefing-history-empty");
-        // 3 tabs + 2 member pills + the workspace's date, Generate, Open image and Print.
-        expect(countInteractiveControls(document.body)).toBe(9);
+        // 3 tabs + 2 member pills + the workspace's date, Generate, Open image, Print and
+        // Print on A4.
+        expect(countInteractiveControls(document.body)).toBe(10);
         expect(() => assertKioskDensityCompliant(document.body)).not.toThrow();
       } finally {
         uninject();

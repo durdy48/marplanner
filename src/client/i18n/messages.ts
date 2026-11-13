@@ -509,6 +509,9 @@ export const messages = {
     "dailyBriefing.admin.printError": "Failed to send the briefing to the printer.",
     "dailyBriefing.admin.printQueued": "Sent to the printer queue.",
     "dailyBriefing.admin.printAlreadyQueued": "Already waiting in the printer queue.",
+    "dailyBriefing.admin.printA4": "Print on A4",
+    "dailyBriefing.admin.printA4Preparing": "Preparing…",
+    "dailyBriefing.admin.printA4Error": "Failed to prepare the A4 sheet.",
     "dailyBriefing.admin.pausedNotice":
       "{name}'s briefing is paused on {date} — switch the day back on in {blocks} to generate or regenerate it.",
     "dailyBriefing.admin.noBriefingForDate": "No briefing for {date}.",
@@ -2178,6 +2181,9 @@ export const messages = {
     "dailyBriefing.admin.printError": "No se pudo enviar el resumen a la impresora.",
     "dailyBriefing.admin.printQueued": "Enviado a la cola de impresión.",
     "dailyBriefing.admin.printAlreadyQueued": "Ya está esperando en la cola de impresión.",
+    "dailyBriefing.admin.printA4": "Imprimir en A4",
+    "dailyBriefing.admin.printA4Preparing": "Preparando…",
+    "dailyBriefing.admin.printA4Error": "No se pudo preparar la hoja A4.",
     "dailyBriefing.admin.pausedNotice":
       "El resumen de {name} está en pausa el {date}: vuelve a activar el día en {blocks} para generarlo o regenerarlo.",
     "dailyBriefing.admin.noBriefingForDate": "No hay resumen para el {date}.",

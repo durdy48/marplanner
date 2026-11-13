@@ -6052,6 +6052,27 @@
             "layoutPhonics puts a dot under single letters and a dash under digraphs, spanning their cells",
             "layoutPhonics prints tricky words without marks",
             "phonics through the real render bridge renders without failed or unrendered blocks"
+          ],
+          "tests/client/daily-briefing-a4-layout.test.ts": [
+            "classifyRows marks the middle of the gap above a header band, and empty rows inside a block",
+            "classifyRows does not start a block at a band that continues a header (no empty row above it)",
+            "classifyRows treats transparent pixels as paper",
+            "layoutSlip keeps a slip that fits in one column whole",
+            "layoutSlip ends each column at the last block gap that fits",
+            "layoutSlip cuts a block taller than a column at its last empty row, else mid-content",
+            "layoutSlip starts a new page after the last column of a page",
+            "A4 scale fits the 576-dot slip three columns to a page"
+          ],
+          "tests/client/daily-briefing-a4-print.test.tsx": [
+            "BriefingA4Print lays the stored slip out in columns and opens the print dialog",
+            "BriefingA4Print removes the sheet and frees the image once the dialog closes",
+            "BriefingA4Print says a briefing without a stored image cannot be printed",
+            "BriefingA4Print reports any other failure to load the image",
+            "BriefingA4Print is disabled until the briefing exists"
+          ],
+          "tests/client/daily-briefing-slip-pixels.test.ts": [
+            "readSlipPixels draws the PNG on a canvas of its own size and returns its RGBA rows",
+            "readSlipPixels fails, releasing the bitmap, when the browser gives no 2D context"
           ]
         }
       },
@@ -11532,6 +11553,51 @@
           "statements": 100,
           "functions": 100,
           "branches": 87.5
+        }
+      },
+      "src/client/daily-briefing/admin/BriefingA4Print.tsx": {
+        "layer": "client",
+        "minimumTotals": {
+          "lines": 33,
+          "statements": 39,
+          "functions": 11,
+          "branches": 21
+        },
+        "minimumRates": {
+          "lines": 96.96,
+          "statements": 92.3,
+          "functions": 90.9,
+          "branches": 85.71
+        }
+      },
+      "src/client/daily-briefing/admin/a4Layout.ts": {
+        "layer": "client",
+        "minimumTotals": {
+          "lines": 43,
+          "statements": 50,
+          "functions": 4,
+          "branches": 22
+        },
+        "minimumRates": {
+          "lines": 100,
+          "statements": 100,
+          "functions": 100,
+          "branches": 100
+        }
+      },
+      "src/client/daily-briefing/admin/slipPixels.ts": {
+        "layer": "client",
+        "minimumTotals": {
+          "lines": 11,
+          "statements": 12,
+          "functions": 1,
+          "branches": 2
+        },
+        "minimumRates": {
+          "lines": 100,
+          "statements": 100,
+          "functions": 100,
+          "branches": 100
         }
       }
     }

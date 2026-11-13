@@ -42,6 +42,12 @@ regenerates any date, opens its image, and sends it to the printer queue on dema
 weekday produces no briefing and no automatic print; a manual regenerate on that day reports that
 the member is paused instead of generating.
 
+**Print on A4** prints the same stored image on an ordinary printer through the browser's print
+dialog: the slip is laid out in three columns on an A4 page, cut between blocks, with further
+pages when it does not fit. It needs a stored image, so the briefing must have been generated
+while Printing was active. It does not use the printer queue: nothing is recorded as printed,
+and the automatic print after the morning chores still goes only to the Printing transport.
+
 ### Edge Cases
 
 - A single block failing does not abort the run: surviving blocks render and the status
@@ -104,6 +110,7 @@ the member is paused instead of generating.
 - **FR-026**: Given a history read for a member, then it MUST return the household business date and at most 30 of the member's briefings, newest date first, without writing. Contract: none (admin parity).
 - **FR-027**: Given a manual print of a stored briefing, then Daily Briefing MUST enqueue it through Printing's producer seam under the record key `daily-briefing:<memberId>:manual:<date>` with the household today as target date and the dated output reference, MUST reuse a job still waiting, MUST supersede and re-enqueue a record already printed, MUST NOT change the automatic print's dedup or the briefing's derived printed-status, and MUST refuse with 404 (no briefing), 409 `plugin_inactive`, 409 `printable_raster_missing` or 400 (inactive member, bad date). Contract: none (admin parity).
 - **FR-028**: Given a preview read while a generation for that member/date is in flight and no PNG is stored, then it MUST answer `202 {status: "rendering"}`; a stored PNG is served even during a regeneration. Contract: none (admin parity).
+- **FR-029**: Given Print on A4 for a stored briefing, then the client MUST lay the stored preview PNG out on A4 pages of three columns without re-rendering any block, MUST end a column in the empty gap above a block header when one fits (else at an empty row, else mid-content), MUST open the browser's print dialog with only that sheet printable, MUST NOT enqueue a print job or change the derived printed-status, and MUST report a missing stored image (409) instead of printing. Contract: none (admin parity).
 
 ### Key Entities
 

@@ -65,6 +65,10 @@ import { generateDrawingPrompt } from "../../src/server/modules/daily-briefing/b
 import { generateRiddle } from "../../src/server/modules/daily-briefing/blocks/riddle";
 import { generateDadJoke } from "../../src/server/modules/daily-briefing/blocks/dad-joke";
 import { spanishQuoteOfDay } from "../../src/server/modules/daily-briefing/blocks/quoteOfDay";
+import {
+  generateWordSearch,
+  wordSearchDailyLanguage,
+} from "../../src/server/modules/daily-briefing/blocks/word-search";
 import { ALL_BLOCK_TYPES } from "../../src/server/modules/daily-briefing/corpora/index";
 import { getLabels } from "../../src/server/modules/daily-briefing/render/labels";
 import { useIsolatedDb } from "../helpers/db";
@@ -534,13 +538,25 @@ describe("daily-briefing full generation", () => {
           data: generate({ date: DATE_FRI, memberId: "m1", params: { language } }),
         });
       }
-      for (const type of ["wordOfDay", "trivia", "wordSearch"]) {
+      for (const type of ["wordOfDay", "trivia"]) {
         expect(briefing.payload.blocks.find((b) => b.type === type)).toMatchObject({
           status: "ok",
           language: "en",
           params: { language: "en" },
         });
       }
+      // FR-037: a Spanish household's word search takes the date's language.
+      const wordSearchLanguage = language === "es" ? wordSearchDailyLanguage(DATE_FRI) : "en";
+      expect(briefing.payload.blocks.find((b) => b.type === "wordSearch")).toMatchObject({
+        status: "ok",
+        language: wordSearchLanguage,
+        params: { language: wordSearchLanguage },
+        data: generateWordSearch({
+          date: DATE_FRI,
+          memberId: "m1",
+          params: { language: wordSearchLanguage },
+        }),
+      });
     }
   );
 

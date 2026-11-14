@@ -76,7 +76,7 @@ import { generateNumberFact } from "./blocks/number-fact";
 import { generateTrivia } from "./blocks/trivia";
 import { generateRiddle } from "./blocks/riddle";
 import { generateWouldYouRather } from "./blocks/would-you-rather";
-import { generateWordSearch } from "./blocks/word-search";
+import { generateWordSearch, wordSearchDailyLanguage } from "./blocks/word-search";
 import { generateDrawingPrompt } from "./blocks/drawing-prompt";
 import { getLabels } from "./render/labels";
 import type { PluginContentSourceId, PluginId } from "../../../shared/plugins";
@@ -796,7 +796,11 @@ function gatherLocalBlocks(
     if (isCorpusBackedBlockType(instance.type) && params?.language === undefined) {
       params = {
         ...params,
-        language: resolveCorpusLanguage(instance.type, params as CorpusBlockParams, language),
+        // FR-037: a Spanish household's word search switches language by date.
+        language:
+          instance.type === "wordSearch" && language === "es"
+            ? wordSearchDailyLanguage(date)
+            : resolveCorpusLanguage(instance.type, params as CorpusBlockParams, language),
       };
     }
 

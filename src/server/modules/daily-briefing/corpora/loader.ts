@@ -47,6 +47,7 @@ import drawingPromptsEsJson from "./drawing-prompts.es.json";
 import wouldYouRathersEnJson from "./would-you-rathers.json";
 import wouldYouRathersEsJson from "./would-you-rathers.es.json";
 import wordSearchCorpusJson from "./word-search-corpus.json";
+import wordSearchEsJson from "./word-search.es.json";
 import phonicsWordsJson from "./phonics-words.json";
 
 // ── EN-only corpora ──────────────────────────────────────────────────────────
@@ -88,8 +89,16 @@ export const riddlesCorpus: Record<CorpusLanguage, RiddleEntry[]> = {
 };
 
 // ── Word search (v1 `word-search-corpus.ts` port — same `pools`-only accessor) ──────────────────
-const wordSearchRaw = wordSearchCorpusJson as WordSearchCorpusShape;
+/** The Spanish list is curated by theme, not drawn from a frequency list: lowercase words with
+ * their accents, pooled by length (easy 3-5 letters, medium 6-7, hard 8-10; FR-037). */
+const wordSearchRaw: Record<CorpusLanguage, WordSearchCorpusShape> = {
+  en: wordSearchCorpusJson as WordSearchCorpusShape,
+  es: wordSearchEsJson as WordSearchCorpusShape,
+};
 
-export function getWordSearchPool(difficulty: WordSearchDifficulty): string[] {
-  return wordSearchRaw.pools[difficulty] ?? [];
+export function getWordSearchPool(
+  difficulty: WordSearchDifficulty,
+  language: CorpusLanguage = "en"
+): string[] {
+  return wordSearchRaw[language].pools[difficulty] ?? [];
 }

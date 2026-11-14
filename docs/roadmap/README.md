@@ -7,7 +7,7 @@ records what was observed, what is known about the cause, and the options seen s
 | #   | Item                                                                      | Kind    | Status                             |
 | --- | ------------------------------------------------------------------------- | ------- | ---------------------------------- |
 | 1   | [Weather and streak print twice by default](#1-weather-and-streak-twice)  | Bug/UX  | Open                               |
-| 2   | [English content on a Spanish household's slip](#2-english-content)       | Feature | In progress: 4 of 7 blocks done    |
+| 2   | [English content on a Spanish household's slip](#2-english-content)       | Feature | In progress: 5 of 7 blocks done    |
 | 3   | [Emoji typed in a reminder prints as an empty box](#3-emoji-in-reminders) | Bug     | Open                               |
 | 4   | [Print the briefing on an ordinary A4 printer](#4-a4-printing)            | Feature | Manual print done; unattended open |
 | 5   | [Household chores beyond children's routines](#5-household-chores)        | Feature | Open                               |
@@ -160,6 +160,19 @@ and duplicates.
 
 A briefing generated before the change keeps its English quote; **Regenerate** replaces it.
 The block stays external: it has no per-block language, it follows the household language.
+
+**Done: `wordSearch`.** `corpora/word-search.es.json` holds a curated themed list (animals,
+food, sport, school, nature, geography, home, body, clothes, transport, music, jobs, calendar,
+adventure): 217 easy words of 3 to 5 letters, 225 medium of 6 to 7 and 160 hard of 8 to 10,
+matching the grid profiles (FR-037). The grid holds "CAMION" with `Ñ` as its own letter and
+fills empty cells from an alphabet with `Ñ`; the word list prints "CAMIÓN". Checked on a real
+render.
+
+Changed from the decision above at the household's request: with no language set on the
+block, a Spanish household gets Spanish or English by date, picked by a hash of the date
+rather than strict alternation, so the same for every member that day and stable on
+**Regenerate**. Setting the block's language to Spanish or English in Admin → Daily briefing
+→ Blocks pins it. The English path is unchanged byte for byte (its pinned tests still pass).
 
 ## 3. Emoji in reminders
 

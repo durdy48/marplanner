@@ -210,12 +210,12 @@ describe("DailyBriefingManagement — admin settings-layer extensions", () => {
       screen.queryByTestId("daily-briefing-admin-block-language-message")
     ).not.toBeInTheDocument();
 
-    // "wordSearch" is corpus-backed but ships English-only — only "en" is offered, never "es".
-    const wordSearchLanguage = screen.getByTestId("daily-briefing-admin-block-language-wordSearch");
-    const wordSearchOptions = Array.from(wordSearchLanguage.querySelectorAll("option")).map(
+    // "trivia" is corpus-backed but ships English-only — only "en" is offered, never "es".
+    const triviaLanguage = screen.getByTestId("daily-briefing-admin-block-language-trivia");
+    const triviaOptions = Array.from(triviaLanguage.querySelectorAll("option")).map(
       (option) => option.value
     );
-    expect(wordSearchOptions).toEqual(["", "en"]);
+    expect(triviaOptions).toEqual(["", "en"]);
 
     // "animalFact" ships both — the availability map's full list is offered.
     const animalFactLanguage = screen.getByTestId("daily-briefing-admin-block-language-animalFact");

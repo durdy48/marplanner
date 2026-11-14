@@ -88,6 +88,31 @@ describe("daily-briefing corpora", () => {
       expect(getWordSearchPool("medium").length).toBeGreaterThan(0);
       expect(getWordSearchPool("hard").length).toBeGreaterThan(0);
     });
+
+    /** FR-037: enough candidates for each grid (words x candidate multiplier), one length band
+     * per pool, lowercase Spanish letters only, and no two words that read the same once the
+     * grid drops the accents. */
+    it("Spanish word-search pools: sized for their grid, one length band each, no repeats", () => {
+      const bands = { easy: [3, 5, 40], medium: [6, 7, 48], hard: [8, 10, 70] } as const;
+      const all: string[] = [];
+      for (const [difficulty, [min, max, minimumCount]] of Object.entries(bands)) {
+        const pool = getWordSearchPool(difficulty as keyof typeof bands, "es");
+        expect(pool.length, difficulty).toBeGreaterThanOrEqual(minimumCount);
+        for (const word of pool) {
+          expect(word).toMatch(/^[a-zñáéíóúü]+$/);
+          expect(word.length, word).toBeGreaterThanOrEqual(min);
+          expect(word.length, word).toBeLessThanOrEqual(max);
+        }
+        all.push(...pool);
+      }
+      const gridForms = all.map((word) =>
+        word
+          .normalize("NFD")
+          .replace(/[\u0301\u0308]/g, "")
+          .normalize("NFC")
+      );
+      expect(new Set(gridForms).size).toBe(all.length);
+    });
   });
 
   describe("deterministic seeded selection (research D7)", () => {
@@ -407,7 +432,7 @@ describe("daily-briefing corpora", () => {
       riddle: { en: true, es: true },
       phonics: { en: true, es: false },
       wouldYouRather: { en: true, es: true },
-      wordSearch: { en: true, es: false },
+      wordSearch: { en: true, es: true },
       drawingPrompt: { en: true, es: true },
     };
 

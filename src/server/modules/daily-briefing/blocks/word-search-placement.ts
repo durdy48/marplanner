@@ -15,6 +15,8 @@ export interface WordSearchPlacementOptions {
   maxWords: number;
   /** Probability (0..1) that a successfully-chosen direction is placed in reverse. */
   backwardsProbability: number;
+  /** Letters for the empty cells; the English alphabet when omitted (Spanish adds Ñ). */
+  alphabet?: string;
 }
 
 export interface WordSearchPuzzle {
@@ -34,7 +36,7 @@ const DIRECTIONS: Record<string, readonly [number, number]> = {
   SW: [1, -1],
 };
 
-const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+export const ENGLISH_ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const MAX_ATTEMPTS_PER_WORD = 50;
 
 function fits(
@@ -78,6 +80,7 @@ function place(
  */
 export function buildWordSearchPuzzle(options: WordSearchPlacementOptions): WordSearchPuzzle {
   const { rows, cols, dictionary, maxWords, backwardsProbability } = options;
+  const alphabet = options.alphabet ?? ENGLISH_ALPHABET;
   const allowedDirectionKeys = Object.keys(DIRECTIONS).filter(
     (key) => !options.disabledDirections.includes(key)
   );
@@ -118,7 +121,7 @@ export function buildWordSearchPuzzle(options: WordSearchPlacementOptions): Word
   for (let r = 0; r < rows; r += 1) {
     for (let c = 0; c < cols; c += 1) {
       if (grid[r][c] === null) {
-        grid[r][c] = ALPHABET[Math.floor(Math.random() * ALPHABET.length)];
+        grid[r][c] = alphabet[Math.floor(Math.random() * alphabet.length)];
       }
     }
   }

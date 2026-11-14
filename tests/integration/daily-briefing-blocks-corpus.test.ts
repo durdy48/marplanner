@@ -18,7 +18,11 @@ import {
 import { generateTrivia } from "../../src/server/modules/daily-briefing/blocks/trivia";
 import { generateRiddle } from "../../src/server/modules/daily-briefing/blocks/riddle";
 import { generateWouldYouRather } from "../../src/server/modules/daily-briefing/blocks/would-you-rather";
-import { generateWordSearch } from "../../src/server/modules/daily-briefing/blocks/word-search";
+import {
+  generateWordSearch,
+  spanishGridForm,
+  wordSearchDailyLanguage,
+} from "../../src/server/modules/daily-briefing/blocks/word-search";
 import { generateDrawingPrompt } from "../../src/server/modules/daily-briefing/blocks/drawing-prompt";
 import { adaptBlockData } from "../../src/server/modules/daily-briefing/render/adapter";
 
@@ -292,10 +296,6 @@ describe("daily-briefing corpus block generators", () => {
         () => generateWordOfDay({ date: DATE, memberId: "m1", params: { language: "es" } }),
       ],
       ["trivia", () => generateTrivia({ date: DATE, memberId: "m1", params: { language: "es" } })],
-      [
-        "wordSearch",
-        () => generateWordSearch({ date: DATE, memberId: "m1", params: { language: "es" } }),
-      ],
     ] as const)(
       "%s: an illegal es request throws CorpusBlockParamError, never falls back",
       (_type, run) => {
@@ -514,6 +514,71 @@ describe("daily-briefing corpus block generators", () => {
       expect(result.difficulty).toBe("easy");
       expect(result.rows).toBe(8);
       expect(result.cols).toBe(8);
+    });
+  });
+
+  /** FR-037: the grid holds each word without accents and with Ñ as a letter; the list prints it
+   * with its accents. */
+  describe("Spanish word search (FR-037)", () => {
+    const DIRECTIONS = [
+      [0, 1],
+      [1, 0],
+      [1, 1],
+      [-1, 1],
+      [0, -1],
+      [-1, 0],
+      [-1, -1],
+      [1, -1],
+    ] as const;
+    const inGrid = (grid: string[][], word: string) =>
+      grid.some((row, r) =>
+        row.some((_cell, c) =>
+          DIRECTIONS.some(([dr, dc]) =>
+            [...word].every((letter, i) => grid[r + dr * i]?.[c + dc * i] === letter)
+          )
+        )
+      );
+
+    it("drops the accents for the grid and keeps Ñ", () => {
+      expect(spanishGridForm("camión")).toBe("CAMION");
+      expect(spanishGridForm("niño")).toBe("NIÑO");
+      expect(spanishGridForm("cigüeña")).toBe("CIGUEÑA");
+    });
+
+    it.each(["easy", "medium", "hard"] as const)(
+      "%s: every listed word is in the grid, printed with its accents, on a Spanish alphabet",
+      (difficulty) => {
+        const result = generateWordSearch({
+          date: DATE,
+          memberId: "member-A",
+          params: { language: "es", difficulty },
+        });
+        expect(result.words.length).toBeGreaterThan(0);
+        for (const word of result.words) {
+          expect(word).toMatch(/^[A-ZÁÉÍÓÚÜÑ]+$/);
+          expect(inGrid(result.grid, spanishGridForm(word)), word).toBe(true);
+        }
+        for (const row of result.grid) {
+          for (const cell of row) expect(cell).toMatch(/^[A-ZÑ]$/);
+        }
+        expect(
+          generateWordSearch({
+            date: DATE,
+            memberId: "member-A",
+            params: { language: "es", difficulty },
+          })
+        ).toEqual(result);
+      }
+    );
+
+    it("picks the daily language from the date: the same all day, both over a season", () => {
+      const days = Array.from({ length: 60 }, (_, i) =>
+        new Date(Date.UTC(2026, 8, 1 + i)).toISOString().slice(0, 10)
+      );
+      const languages = days.map(wordSearchDailyLanguage);
+      expect(languages.map((_, i) => wordSearchDailyLanguage(days[i]))).toEqual(languages);
+      expect(languages.filter((language) => language === "es").length).toBeGreaterThan(15);
+      expect(languages.filter((language) => language === "en").length).toBeGreaterThan(15);
     });
   });
 });

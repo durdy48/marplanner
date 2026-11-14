@@ -5300,7 +5300,6 @@
             "daily-briefing corpus block generators es-variant resolution for the translated corpora (FR-009/INV-06) defaulting (no language param) always resolves the en variant",
             "daily-briefing corpus block generators assert-throw on a language without a corpus (no English-fallback degradation) wordOfDay: an illegal es request throws CorpusBlockParamError, never falls back",
             "daily-briefing corpus block generators assert-throw on a language without a corpus (no English-fallback degradation) trivia: an illegal es request throws CorpusBlockParamError, never falls back",
-            "daily-briefing corpus block generators assert-throw on a language without a corpus (no English-fallback degradation) wordSearch: an illegal es request throws CorpusBlockParamError, never falls back",
             "daily-briefing corpus block generators assert-throw on a language without a corpus (no English-fallback degradation) an unrecognized language also throws for a bilingual block (never silently defaults)",
             "daily-briefing corpus block generators numberFact dayOfYear keying (v1 exact recipe: keyed by dayOfYear, NOT a hash) dayOfYear matches the standard 1-based ordinal for known dates",
             "daily-briefing corpus block generators numberFact dayOfYear keying (v1 exact recipe: keyed by dayOfYear, NOT a hash) two DIFFERENT dates sharing the same day-of-year select the SAME corpus entry",
@@ -5321,7 +5320,12 @@
             "daily-briefing corpus block generators frozen seed-recipe pins (v1-parity, D2 review P2-1/P2-2) drawingPrompt: `${date}|drawingPrompt` selects a pinned entry for 2026-09-08",
             "daily-briefing corpus block generators frozen seed-recipe pins (v1-parity, D2 review P2-1/P2-2) wordOfDay: `${date}|wordOfDay|${level}` (the literal \"wordOfDay\" segment included) selects a pinned entry",
             "daily-briefing corpus block generators frozen seed-recipe pins (v1-parity, D2 review P2-1/P2-2) wordSearch: the selection seed includes memberId — two members get DIFFERENT word lists on the same date",
-            "daily-briefing corpus block generators frozen seed-recipe pins (v1-parity, D2 review P2-1/P2-2) wordSearch: an absent difficulty defaults to the easy profile's exact dimensions"
+            "daily-briefing corpus block generators frozen seed-recipe pins (v1-parity, D2 review P2-1/P2-2) wordSearch: an absent difficulty defaults to the easy profile's exact dimensions",
+            "daily-briefing corpus block generators Spanish word search (FR-037) drops the accents for the grid and keeps Ñ",
+            "daily-briefing corpus block generators Spanish word search (FR-037) easy: every listed word is in the grid, printed with its accents, on a Spanish alphabet",
+            "daily-briefing corpus block generators Spanish word search (FR-037) medium: every listed word is in the grid, printed with its accents, on a Spanish alphabet",
+            "daily-briefing corpus block generators Spanish word search (FR-037) hard: every listed word is in the grid, printed with its accents, on a Spanish alphabet",
+            "daily-briefing corpus block generators Spanish word search (FR-037) picks the daily language from the date: the same all day, both over a season"
           ],
           "tests/integration/daily-briefing-blocks-domain.test.ts": [
             "daily-briefing domain blocks (FR-013) message preserves the injected daily-message's text VERBATIM (emojis included) at generation, adapter-compatible (FR-013, AC-07)",
@@ -5418,6 +5422,7 @@
             "daily-briefing corpora loader shapes and counts (v1 study parity) would-you-rathers: 201 entries (en), 201 entries (es)",
             "daily-briefing corpora loader shapes and counts (v1 study parity) riddles: 122 entries (en), 122 entries (es)",
             "daily-briefing corpora loader shapes and counts (v1 study parity) word-search pools: non-empty for every difficulty",
+            "daily-briefing corpora loader shapes and counts (v1 study parity) Spanish word-search pools: sized for their grid, one length band each, no repeats",
             "daily-briefing corpora deterministic seeded selection (research D7) hashSeed is a pure function: same input -> same output, always",
             "daily-briefing corpora deterministic seeded selection (research D7) hashSeed matches v1's exact SHA-1-derived output for known inputs",
             "daily-briefing corpora deterministic seeded selection (research D7) fisherYates matches v1's exact mulberry32-driven permutation for a known seed",
@@ -5467,7 +5472,7 @@
             "daily-briefing corpora corpus-availability map (FR-008/FR-009) wouldYouRather + en -> available:true",
             "daily-briefing corpora corpus-availability map (FR-008/FR-009) wouldYouRather + es -> available:true",
             "daily-briefing corpora corpus-availability map (FR-008/FR-009) wordSearch + en -> available:true",
-            "daily-briefing corpora corpus-availability map (FR-008/FR-009) wordSearch + es -> available:false",
+            "daily-briefing corpora corpus-availability map (FR-008/FR-009) wordSearch + es -> available:true",
             "daily-briefing corpora corpus-availability map (FR-008/FR-009) drawingPrompt + en -> available:true",
             "daily-briefing corpora corpus-availability map (FR-008/FR-009) drawingPrompt + es -> available:true",
             "daily-briefing corpora corpus-availability map (FR-008/FR-009) a non-corpus block type (e.g. message) never accepts a language override (FR-008)",

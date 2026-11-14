@@ -3,9 +3,9 @@
  * v1's `@blex41/word-search` dependency.
  */
 import { fisherYates, getWordSearchPool, hashSeed, withSeededMathRandom } from "../corpora";
-import type { CorpusBlockType, WordSearchDifficulty } from "../corpora";
+import type { CorpusBlockType, CorpusLanguage, WordSearchDifficulty } from "../corpora";
 import {
-  assertCorpusLanguageAvailable,
+  resolveCorpusLanguage,
   CorpusBlockParamError,
   type CorpusGenerationContext,
 } from "./context";
@@ -72,6 +72,25 @@ export interface WordSearchData {
   words: string[];
 }
 
+const SPANISH_ALPHABET = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+
+/** FR-037: the grid holds a Spanish word without its accents (CAMION), keeping Ñ as a letter of
+ * its own; the word list prints it with them (CAMIÓN). */
+export function spanishGridForm(word: string): string {
+  return word
+    .normalize("NFD")
+    .replace(/[\u0301\u0308]/g, "")
+    .normalize("NFC")
+    .toLocaleUpperCase("es");
+}
+
+/** FR-037: with no language chosen, a Spanish household gets a Spanish or an English word search
+ * by date. A hash rather than alternation, so the pattern is not predictable; the same for every
+ * member that day, and the same again on regeneration. */
+export function wordSearchDailyLanguage(date: string): CorpusLanguage {
+  return hashSeed(`${date}|wordSearch|language`) % 2 === 0 ? "es" : "en";
+}
+
 function filterWordsForProfile(words: readonly string[], profile: WordSearchProfile): string[] {
   return words.filter(
     (word) => word.length >= profile.minLength && word.length <= profile.maxLength
@@ -92,7 +111,7 @@ function filterWordsForProfile(words: readonly string[], profile: WordSearchProf
  * into it) — it does not, and cannot, prove the CALLER is serial, since that is the contract.
  */
 export function generateWordSearch(ctx: CorpusGenerationContext): WordSearchData {
-  assertCorpusLanguageAvailable(TYPE, ctx.params); // EN word list only; throws on an illegal "es"
+  const language = resolveCorpusLanguage(TYPE, ctx.params);
 
   const requested = ctx.params?.difficulty;
   let difficulty: WordSearchDifficulty;
@@ -107,7 +126,7 @@ export function generateWordSearch(ctx: CorpusGenerationContext): WordSearchData
   }
 
   const profile = WORD_SEARCH_PROFILES[difficulty];
-  const pool = filterWordsForProfile(getWordSearchPool(profile.difficulty), profile);
+  const pool = filterWordsForProfile(getWordSearchPool(profile.difficulty, language), profile);
 
   const selectionSeed = hashSeed(`${ctx.date}|${ctx.memberId}|wordSearch|${profile.difficulty}`);
   const candidates = fisherYates(pool, selectionSeed).slice(
@@ -118,14 +137,20 @@ export function generateWordSearch(ctx: CorpusGenerationContext): WordSearchData
   const placementSeed = hashSeed(
     `${ctx.date}|${ctx.memberId}|wordSearch|${profile.difficulty}|placement`
   );
+  const spanish = language === "es";
+  const gridForm = (word: string) => (spanish ? spanishGridForm(word) : word.toUpperCase());
+  const printed = new Map(
+    candidates.map((word) => [gridForm(word), word.toLocaleUpperCase(language)])
+  );
   const puzzle = withSeededMathRandom(placementSeed, () =>
     buildWordSearchPuzzle({
       rows: profile.rows,
       cols: profile.cols,
       disabledDirections: profile.disabledDirections,
-      dictionary: candidates,
+      dictionary: candidates.map(gridForm),
       maxWords: profile.maxWords,
       backwardsProbability: profile.backwardsProbability,
+      ...(spanish ? { alphabet: SPANISH_ALPHABET } : {}),
     })
   );
 
@@ -134,6 +159,6 @@ export function generateWordSearch(ctx: CorpusGenerationContext): WordSearchData
     cols: profile.cols,
     rows: profile.rows,
     grid: puzzle.grid,
-    words: puzzle.words,
+    words: puzzle.words.map((word) => printed.get(word) as string),
   };
 }

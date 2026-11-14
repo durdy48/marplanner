@@ -66,6 +66,7 @@ export const BRIEFING_BLOCKS = [
   { type: "message", scope: "member", kind: "local", defaultEnabled: true },
   { type: "streak", scope: "member", kind: "local", defaultEnabled: true },
   { type: "today", scope: "member", kind: "local", defaultEnabled: true },
+  { type: "choreList", scope: "member", kind: "local", defaultEnabled: true },
   { type: "weather", scope: "shared", kind: "external", defaultEnabled: true },
   { type: "meals", scope: "shared", kind: "local", defaultEnabled: true },
   { type: "birthday", scope: "member", kind: "local", defaultEnabled: true },

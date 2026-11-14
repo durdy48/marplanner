@@ -76,7 +76,7 @@ const TYPE_FIXTURES: Record<BlockRegistryType, unknown> = {
     ownLabel: "Your birthday is in 3 days!",
     family: [{ name: "Mom", daysUntil: 10 }],
   },
-  today: { bullets: ["Soccer practice at 4pm", "Bring water bottle"] },
+  today: { bullets: ["Soccer practice at 4pm", "Bring water bottle"], household: ["Dentist"] },
   reminders: {
     groups: [
       {
@@ -91,6 +91,18 @@ const TYPE_FIXTURES: Record<BlockRegistryType, unknown> = {
     dinner: [{ kind: "recipe", label: "Pasta" }],
   },
   streak: { days: 5, label: "5 day streak!", last7: [true, false, true, true, false, true, true] },
+  choreList: {
+    periods: [
+      {
+        id: "morning",
+        chores: [
+          { name: "Make the bed", completed: true },
+          { name: "Brush teeth", completed: false },
+        ],
+      },
+      { id: "night", chores: [{ name: "Read", completed: false }] },
+    ],
+  },
   streakText: {
     days: 5,
     label: "5 day streak!",

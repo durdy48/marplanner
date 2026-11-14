@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { Chore, ChoreInput } from "../../../shared";
 import { useT } from "@/i18n";
 import { EmojiPicker } from "@/chores/EmojiPicker";
+import { NotoEmoji } from "@/chores/noto-emoji";
 import { ErrorNotice } from "@/components/ErrorNotice";
 import { Button } from "@/components/ui/button";
 import {
@@ -18,6 +19,8 @@ export interface ChoreFormDialogProps {
   open: boolean;
   /** The chore being edited; null adds a new one. */
   chore: Chore | null;
+  /** Chores of other routines, offered when adding: picking one fills in its name and icon. */
+  suggestions?: ChoreInput[];
   saving: boolean;
   error: string | null;
   onClose: () => void;
@@ -27,6 +30,7 @@ export interface ChoreFormDialogProps {
 export function ChoreFormDialog({
   open,
   chore,
+  suggestions = [],
   saving,
   error,
   onClose,
@@ -87,6 +91,30 @@ export function ChoreFormDialog({
             />
           </form>
         </div>
+        {!chore && suggestions.length > 0 && (
+          <div className="flex flex-col gap-1.5" data-testid="chore-form-suggestions">
+            <p className="text-muted-foreground text-control">
+              {t("routines.admin.choreSuggestions")}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {suggestions.map((suggestion) => (
+                <Button
+                  key={`${suggestion.name}\u0000${suggestion.icon ?? ""}`}
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    setName(suggestion.name);
+                    setIcon(suggestion.icon ?? null);
+                  }}
+                >
+                  {suggestion.icon ? <NotoEmoji emoji={suggestion.icon} size={20} /> : null}
+                  {suggestion.name}
+                </Button>
+              ))}
+            </div>
+          </div>
+        )}
         <ErrorNotice message={error} />
         <div className="flex flex-wrap justify-end gap-2">
           <Button type="button" variant="outline" onClick={onClose} disabled={saving}>

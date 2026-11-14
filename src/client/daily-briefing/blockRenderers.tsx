@@ -24,7 +24,8 @@ import { WEATHER_CONDITION_LABEL_KEYS } from "@/home/WeatherPill";
 import { WeatherConditionIcon } from "@/home/WeatherIcon";
 import { SLOT_LABEL_KEYS } from "@/meals/MealsBoard";
 import { NotoEmoji } from "@/chores/noto-emoji";
-import type { BriefingMealItem, ForecastDay } from "../../shared";
+import { DAY_PERIOD_LABEL_KEYS } from "@/lib/day-period-labels";
+import type { BriefingMealItem, ForecastDay, PeriodId } from "../../shared";
 
 /** A single non-empty string, or `fallback` (an id) when the value is missing/blank. */
 export function displayText(value: unknown, fallback: string): string {
@@ -64,6 +65,12 @@ export interface StreakData {
 
 export interface TodayData {
   bullets: string[];
+  /** Events assigned to nobody; absent when there are none. */
+  household?: string[];
+}
+
+export interface ChoreListData {
+  periods: { id: PeriodId; chores: { name: string; completed: boolean }[] }[];
 }
 
 export interface MealsV2Data {
@@ -213,7 +220,42 @@ export function StreakBlock({ data }: { data: StreakData }): React.JSX.Element {
 }
 
 export function TodayBlock({ data }: { data: TodayData }): React.JSX.Element {
-  return <TextList items={data.bullets} />;
+  const { t } = useTranslation();
+  if (!data.household || data.household.length === 0) return <TextList items={data.bullets} />;
+  return (
+    <div className="space-y-3">
+      {data.bullets.length > 0 ? <TextList items={data.bullets} /> : null}
+      <div>
+        <p className="text-sm font-semibold">{t("dailyBriefing.view.todayHousehold")}</p>
+        <TextList items={data.household} />
+      </div>
+    </div>
+  );
+}
+
+/** The day's chores by period, as they stood when the briefing was generated: read-only, the
+ * board is where a chore is ticked. */
+export function ChoreListBlock({ data }: { data: ChoreListData }): React.JSX.Element {
+  const { t } = useTranslation();
+  return (
+    <div className="space-y-3">
+      {data.periods.map((period) => (
+        <div key={period.id}>
+          <p className="text-sm font-semibold">{t(DAY_PERIOD_LABEL_KEYS[period.id])}</p>
+          <ul className="space-y-1 text-base">
+            {period.chores.map((chore, index) => (
+              <li
+                key={`${chore.name}-${index}`}
+                className={chore.completed ? "text-muted-foreground line-through" : undefined}
+              >
+                {chore.name}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 /** The forecast line shared by `weather` and its text-only twin `weatherText`. */

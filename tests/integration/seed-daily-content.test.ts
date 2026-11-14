@@ -132,6 +132,7 @@ describe("daily content demo seed integration", () => {
           { type: "message" },
           { type: "streak" },
           { type: "today" },
+          { type: "choreList" },
           { type: "weather" },
           { type: "meals" },
           { type: "birthday" },

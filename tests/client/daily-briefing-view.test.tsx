@@ -508,6 +508,86 @@ describe("DailyBriefingView — full block registry", () => {
     expect(weatherText.querySelector("svg")).toBeNull();
   });
 
+  it("shows the household's events under their own heading, after the member's", async () => {
+    const blocks: BlockInstance[] = [
+      {
+        type: "today",
+        scope: "member",
+        status: "ok",
+        index: 1,
+        title: "01 TODAY",
+        data: { bullets: ["Science fair"], household: ["Dentist"] },
+      },
+    ];
+    vi.stubGlobal("fetch", mockFetchFor(baseBriefing(blocks)));
+    renderView();
+    await screen.findByTestId("daily-briefing-view-status");
+
+    const today = screen.getByTestId("daily-briefing-block-today");
+    expect(today).toHaveTextContent("Science fair");
+    expect(today).toHaveTextContent("Family");
+    expect(today).toHaveTextContent("Dentist");
+    expect(today.textContent?.indexOf("Science fair")).toBeLessThan(
+      today.textContent?.indexOf("Family") ?? -1
+    );
+  });
+
+  it("shows only the household's events when the member has none", async () => {
+    const blocks: BlockInstance[] = [
+      {
+        type: "today",
+        scope: "member",
+        status: "ok",
+        index: 1,
+        title: "01 TODAY",
+        data: { bullets: [], household: ["Dentist"] },
+      },
+    ];
+    vi.stubGlobal("fetch", mockFetchFor(baseBriefing(blocks)));
+    renderView();
+    await screen.findByTestId("daily-briefing-view-status");
+
+    const today = screen.getByTestId("daily-briefing-block-today");
+    expect(today).toHaveTextContent("Family");
+    expect(today).toHaveTextContent("Dentist");
+    expect(today.querySelectorAll("ul")).toHaveLength(1);
+  });
+
+  it("lists the day's chores under their period, with the done ones struck through", async () => {
+    const blocks: BlockInstance[] = [
+      {
+        type: "choreList",
+        scope: "member",
+        status: "ok",
+        index: 1,
+        title: "01 TODAY'S CHORES",
+        data: {
+          periods: [
+            {
+              id: "morning",
+              chores: [
+                { name: "Make the bed", completed: true },
+                { name: "Brush teeth", completed: false },
+              ],
+            },
+            { id: "night", chores: [{ name: "Read", completed: false }] },
+          ],
+        },
+      },
+    ];
+    vi.stubGlobal("fetch", mockFetchFor(baseBriefing(blocks)));
+    renderView();
+    await screen.findByTestId("daily-briefing-view-status");
+
+    const chores = screen.getByTestId("daily-briefing-block-choreList");
+    expect(chores).toHaveTextContent("Morning");
+    expect(chores).toHaveTextContent("Night");
+    expect(chores).not.toHaveTextContent("Afternoon");
+    expect(within(chores).getByText("Make the bed").className).toContain("line-through");
+    expect(within(chores).getByText("Brush teeth").className).not.toContain("line-through");
+    expect(within(chores).getByText("Read")).toBeVisible();
+  });
+
   it("renders an unrecognized/future block type as a quiet fallback — title only, no crash", async () => {
     const futureBlock = {
       type: "someFutureBlockType",

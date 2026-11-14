@@ -22,8 +22,8 @@ operator configuration; synthetic test success does not establish their availabi
 Every morning each child can get a **personal paper slip** from a cheap Bluetooth
 thermal printer next to the tablet, to take to the breakfast table. No screen needed.
 
-- **Their day:** events, meals, weather, reminders, a message from a parent, birthday
-  countdowns and chore streaks.
+- **Their day:** events, the day's chores to tick off, meals, weather, reminders, a message
+  from a parent, birthday countdowns and chore streaks.
 - **The fun part:** dad joke, word of the day, animal and number facts, on this day,
   trivia, a riddle printed upside down, would you rather, a word search and a drawing
   prompt. More than 20 block types, in English or Spanish (the dad joke, word of the day,

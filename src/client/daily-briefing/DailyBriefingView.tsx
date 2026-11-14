@@ -29,6 +29,7 @@ import type {
 import {
   AnimalFactBlock,
   BirthdayBlock,
+  ChoreListBlock,
   displayText,
   DrawingPromptBlock,
   MealsBlock,
@@ -51,6 +52,7 @@ import {
   WouldYouRatherBlock,
   type AnimalFactData,
   type BirthdayData,
+  type ChoreListData,
   type DrawingPromptData,
   type MealsV2Data,
   type NumberFactData,
@@ -282,6 +284,8 @@ function BlockData({ type, data }: Pick<BlockInstance, "type" | "data">): React.
       return <StreakBlock data={data as StreakData} />;
     case "today":
       return <TodayBlock data={data as TodayData} />;
+    case "choreList":
+      return <ChoreListBlock data={data as ChoreListData} />;
     case "weather":
       return <WeatherBlock data={data as ForecastDay} />;
     case "weatherText":

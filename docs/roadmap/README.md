@@ -10,6 +10,10 @@ records what was observed, what is known about the cause, and the options seen s
 | 2   | [English content on a Spanish household's slip](#2-english-content)       | Feature | Open                               |
 | 3   | [Emoji typed in a reminder prints as an empty box](#3-emoji-in-reminders) | Bug     | Open                               |
 | 4   | [Print the briefing on an ordinary A4 printer](#4-a4-printing)            | Feature | Manual print done; unattended open |
+| 5   | [Household chores beyond children's routines](#5-household-chores)        | Feature | Open                               |
+| 6   | [The day's chores on the printed briefing](#6-chores-on-the-briefing)     | Feature | Done                               |
+| 7   | [Household events on the briefing's agenda](#7-household-events)          | Feature | Done                               |
+| 8   | [Reusing chores across routines](#8-reusing-chores)                       | Feature | Copies done; shared catalogue open |
 
 The observations come from one generated briefing (all blocks enabled, household language
 Spanish, 576-dot paper width, image 576 × 5272 px).
@@ -123,3 +127,97 @@ and the contract's "Bluetooth only" decision has to be reopened in an ADR.
   greyscale, member colours) worth a second renderer?
 - One page per child, or one sheet for the whole household?
 - Does automatic printing matter on A4, or is a manual "print today's" enough?
+
+## 5. Household chores
+
+**Goal.** Share the housework (set the table, wash up, empty the dishwasher, put clean clothes
+away, bring in the washing) among the family, not only run each child's personal routine.
+
+**Today.** A routine holds ordered chores for one day period and is assigned to one child on a
+set of weekdays (`docs/features/routines-chores.md`). That covers "Julia sets the table on
+Mondays", and nothing else:
+
+- **Children only.** An assignment to a member who is not an active child is rejected
+  (FR-001), and the board has columns for children only. Adults cannot be given chores.
+- **No turns.** Alternating a chore between two children means two routines with crossed
+  weekdays, kept in step by hand. An odd number of days, a holiday or a swap breaks the
+  pattern.
+- **Weekdays only.** A chore that happens when it is needed (bring in the washing, take out
+  the bins when full) has no place. The nearest tool is a daily message, which cannot be ticked.
+- **One streak.** The streak asks for every chore of the day, so housework added to a child's
+  board makes the personal-routine streak harder to keep.
+
+**Workaround.** Routines "House A" and "House B" with the chores split between them and
+assigned on crossed weekdays (A to one child Mon/Wed/Fri and to the other Tue/Thu; B the
+opposite), placed in an afternoon or evening period so they do not hold back the morning
+print.
+
+**Options.**
+
+- **Rotation.** A routine assigned to a group of members that takes turns by day or by week,
+  with the board showing whose turn it is. Removes the crossed-weekday bookkeeping.
+- **Chores for adults.** Let a routine be assigned to any active member. Touches the member
+  role model (ADR-001), the board (a column per adult, or a household column) and the
+  children-only rule above; the briefing trigger already tolerates a member without a column.
+- **One-off and as-needed chores.** A chore for one member on one date, or an unassigned
+  "whoever does it" chore that anyone can tick. Needs a dated entry beside the weekday rule.
+- **Streak scope.** Let a routine opt out of the streak, so housework can be tracked without
+  putting the personal streak at risk.
+
+**Open questions.**
+
+- Should adults' chores show on the kiosk, or only in their briefing?
+- Is a turn decided per day, per week, or by who did it last?
+- Does an as-needed chore belong to Routines, or is it a different thing (a shared to-do list)?
+
+## 6. Chores on the briefing
+
+**Observed.** The printed briefing showed the chore streak but not the chores themselves, so a
+household that prints on paper had no list of what each child has to do that day.
+
+**Done.** A `choreList` block ("Today's chores" / "Tareas de hoy") lists the member's chores
+for the date by day period, each with a `[ ]` box to tick on paper. It is on by default, sits
+after the agenda for a household with no stored block order, and is appended at the end for one
+that already has an order (drag it in Admin → Daily briefing → Blocks). A member with no chores
+that day gets no block.
+
+**Limits.** The list is the snapshot of the moment of generation: chores ticked on the tablet
+afterwards do not change the paper, and a regeneration later in the day prints the ones already
+done as `[x]`. Chore emoji are not printed.
+
+## 7. Household events
+
+**Observed.** The agenda block listed only the events assigned to the member. An event that
+names nobody ("Dentist", a relative's birthday) reached no briefing at all, although it is on
+the kiosk calendar for everyone.
+
+**Done.** The `today` block now carries a second list, `household`, with the events assigned to
+nobody, printed under a "Family" / "Familia" heading after the member's own. Events assigned
+only to other members stay out. A member with no event of their own still gets the block when
+the household has one.
+
+**Also done.** An agenda title was cut at 36 characters ("13:30 Prueba intolerancia gluten
+pa…"). It now wraps over as many lines as it needs, aligned under its text, and is only cut at
+120 characters.
+
+**Note.** The previous behaviour was on purpose (the member filter was a tightening over the
+earlier unfiltered read). This keeps the member's list strict and adds the household's beside
+it; it is always on, with no per-block setting. Reminders gated on a calendar event are
+unchanged: they still need an event assigned to the member.
+
+## 8. Reusing chores
+
+**Observed.** A chore belongs to one routine. "Brush teeth" in the morning and in the bedtime
+routine is typed twice, with its icon, and so is every variant of a housework routine.
+
+**Done (copies).** The Add chore dialog offers the chores other routines already have; picking
+one fills in its name and icon. **Duplicate** copies a routine with its chores, in order, into
+a new routine of the same day period, without assignments. Both are done by the admin page with
+the existing API, so there is no schema change.
+
+**Open: a shared catalogue.** Copies do not stay linked: renaming a chore does not rename its
+copies. A catalogue like the recipe one (chores defined once, routines referencing them) needs
+a schema change, because a completion is stored per chore: the same catalogue chore in two
+routines on one day needs a completion per placement, which also reaches the board, the streak
+and the admin page. Best done together with [item 5](#5-household-chores), which already
+reshapes how chores, routines and members relate.

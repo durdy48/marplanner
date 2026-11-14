@@ -4,6 +4,7 @@ import { createRegistry, type Registry } from "pressedslip";
 import type { BlockRegistryType } from "../../../../shared/dailyBriefingBlocks";
 import { animalFactBlock } from "./blocks/animal-fact";
 import { birthdayBlock } from "./blocks/birthday";
+import { choreListBlock } from "./blocks/chore-list";
 import { dadJokeBlock } from "./blocks/dad-joke";
 import { drawingPromptBlock } from "./blocks/drawing-prompt";
 import { phonicsBlock } from "./blocks/phonics";
@@ -31,6 +32,7 @@ export const RENDER_BLOCKS = {
   message: messageBlock,
   streak: streakBlock,
   today: todayBlock,
+  choreList: choreListBlock,
   weather: weatherBlock,
   meals: mealsBlock,
   birthday: birthdayBlock,

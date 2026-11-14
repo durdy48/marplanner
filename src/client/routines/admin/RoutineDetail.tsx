@@ -15,7 +15,7 @@ import {
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import { Pencil, Plus, Trash2, Users } from "lucide-react";
+import { Copy, Pencil, Plus, Trash2, Users } from "lucide-react";
 import type { Assignment, Chore, Member, Routine } from "../../../shared";
 import { useT } from "@/i18n";
 import { Button } from "@/components/ui/button";
@@ -32,6 +32,8 @@ export interface RoutineDetailProps {
   members: Member[];
   busy: boolean;
   onEdit: () => void;
+  /** Copies the routine and its chores into a new, unassigned routine. */
+  onDuplicate: () => void;
   onAssign: () => void;
   onAddChore: () => void;
   onEditChore: (chore: Chore) => void;
@@ -50,6 +52,7 @@ export function RoutineDetail({
   members,
   busy,
   onEdit,
+  onDuplicate,
   onAssign,
   onAddChore,
   onEditChore,
@@ -92,6 +95,16 @@ export function RoutineDetail({
           <Button variant="outline" size="sm" onClick={onEdit} data-testid="routine-edit">
             <Pencil aria-hidden="true" />
             {t("routines.admin.editRoutine")}
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={onDuplicate}
+            disabled={busy}
+            data-testid="routine-duplicate"
+          >
+            <Copy aria-hidden="true" />
+            {t("routines.admin.duplicate")}
           </Button>
           <Button variant="outline" size="sm" onClick={onAssign} data-testid="routine-assign">
             <Users aria-hidden="true" />

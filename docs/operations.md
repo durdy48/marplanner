@@ -199,7 +199,7 @@ None of these outcomes stops the server from starting. The production bundle has
 
 ## Synthetic seed and checks
 
-The public demo configures all 21 Daily Briefing block types, including `onThisDay`
+The public demo configures every Daily Briefing block type, including `onThisDay`
 for its opted-in members, and supplies Calendar highlights for music lessons and
 pharmacy visits. Blocks use their normal data/provider requirements when a briefing
 is later generated; seeding itself creates no generated snapshots or provider cache.

@@ -69,6 +69,20 @@ function reminderEmojiImages(
   return images;
 }
 
+/** A chore's name as the slip can print it. The receipt font has no emoji glyphs, so an emoji
+ * typed into the name would print as an empty box; the stored snapshot keeps the name as written.
+ * A name made only of emoji is left alone rather than printed blank. */
+function printableText(text: string): string {
+  const stripped = text
+    .replace(
+      /\p{Extended_Pictographic}|\p{Emoji_Modifier}|\p{Regional_Indicator}|\u{FE0F}|\u{200D}|\u{20E3}/gu,
+      ""
+    )
+    .replace(/\s+/g, " ")
+    .trim();
+  return stripped.length > 0 ? stripped : text;
+}
+
 /** Dispatch by block.type. Returns the data shape the corresponding pressedslip
  * block schema expects. Throws AdapterError on any envelope-shape violation.
  */
@@ -211,14 +225,18 @@ export function adaptBlockData(blockType: string, raw: unknown): unknown {
       }
       return out;
     }
-    case "today":
-      return {
-        bullets: needArray<string>(blockType, "bullets", data.bullets, "string").map((b, i) => {
+    case "today": {
+      const strings = (field: "bullets" | "household"): string[] =>
+        needArray<string>(blockType, field, data[field], "string").map((b, i) => {
           if (typeof b !== "string")
-            throw new AdapterError(blockType, `bullets[${i}]`, "expected string");
+            throw new AdapterError(blockType, `${field}[${i}]`, "expected string");
           return b;
-        }),
-      };
+        });
+      // Snapshots generated before the household list existed carry `bullets` only.
+      return data.household === undefined
+        ? { bullets: strings("bullets") }
+        : { bullets: strings("bullets"), household: strings("household") };
+    }
     case "message":
       return { text: needString(blockType, "text", data.text) };
     case "reminders": {
@@ -292,6 +310,41 @@ export function adaptBlockData(blockType: string, raw: unknown): unknown {
         );
       }
       return out;
+    }
+    case "choreList": {
+      const periods = needArray<Record<string, unknown>>(
+        blockType,
+        "periods",
+        data.periods,
+        "period"
+      ).map((period, pi) => {
+        const field = `periods[${pi}]`;
+        if (typeof period !== "object" || period === null || Array.isArray(period)) {
+          throw new AdapterError(blockType, field, "expected period object");
+        }
+        return {
+          id: needString(blockType, `${field}.id`, period.id),
+          chores: needArray<Record<string, unknown>>(
+            blockType,
+            `${field}.chores`,
+            period.chores,
+            "chore"
+          ).map((chore, ci) => {
+            const choreField = `${field}.chores[${ci}]`;
+            if (typeof chore !== "object" || chore === null || Array.isArray(chore)) {
+              throw new AdapterError(blockType, choreField, "expected chore object");
+            }
+            if (typeof chore.completed !== "boolean") {
+              throw new AdapterError(blockType, `${choreField}.completed`, "expected boolean");
+            }
+            return {
+              name: printableText(needString(blockType, `${choreField}.name`, chore.name)),
+              completed: chore.completed,
+            };
+          }),
+        };
+      });
+      return { periods };
     }
     case "streak":
     case "streakText": {

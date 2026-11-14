@@ -6,6 +6,7 @@ import { messageBlock as messageRenderDef } from "../../src/server/modules/daily
 import { shotgunBlock } from "../../src/server/modules/daily-briefing/blocks/shotgun";
 import { streakBlock } from "../../src/server/modules/daily-briefing/blocks/streak";
 import { streakTextBlock } from "../../src/server/modules/daily-briefing/blocks/streak-text";
+import { choreListBlock } from "../../src/server/modules/daily-briefing/blocks/chore-list";
 import { todayBlock } from "../../src/server/modules/daily-briefing/blocks/today";
 import { mealsBlock } from "../../src/server/modules/daily-briefing/blocks/meals";
 import { birthdayBlock } from "../../src/server/modules/daily-briefing/blocks/birthday";
@@ -14,7 +15,8 @@ import { writeMemberBlockSettings } from "../../src/server/modules/daily-briefin
 import { useIsolatedDb } from "../helpers/db";
 
 /** docs/features/daily-briefing.md — the DOMAIN block generators (FR-013):
- * shotgun, message, streak, today, meals, birthday, reminders, streakText. Each test seeds real
+ * shotgun, message, streak, choreList, today, meals, birthday, reminders, streakText. Each test
+ * seeds real
  * rows in the isolated SQLite database and calls the generator DIRECTLY (wires the registry
  * later — trap-sweep.md). Every block's output is additionally piped through the
  * render adapter (`adaptBlockData`) to prove render-compatibility (envelope v2
@@ -266,6 +268,116 @@ describe("daily-briefing domain blocks (FR-013)", () => {
     });
   });
 
+  // ── choreList ───────────────────────────────────────────────────────────────
+
+  describe("choreList", () => {
+    const memberId = "chores-member";
+
+    function seedRoutine(
+      id: string,
+      period: string,
+      weekdays: string[],
+      chores: string[]
+    ): string[] {
+      const now = Date.now();
+      const db = getDb();
+      db.prepare(
+        "INSERT INTO routines (id, day_period_id, name, active, created_at, updated_at) VALUES (?, ?, ?, 1, ?, ?)"
+      ).run(id, period, id, now, now);
+      const choreIds = chores.map((name, index) => {
+        const choreId = `${id}-chore-${index}`;
+        db.prepare(
+          "INSERT INTO chores (id, routine_id, name, sort_order, active, created_at, updated_at) VALUES (?, ?, ?, ?, 1, ?, ?)"
+        ).run(choreId, id, name, index, now, now);
+        return choreId;
+      });
+      db.prepare(
+        "INSERT INTO routine_assignments (id, routine_id, member_id, weekdays, active, created_at, updated_at) VALUES (?, ?, ?, ?, 1, ?, ?)"
+      ).run(`${id}-assignment`, id, memberId, JSON.stringify(weekdays), now, now);
+      return choreIds;
+    }
+
+    it("returns null for a member the routines board does not track (a parent)", () => {
+      seedMember(memberId, memberId, "parent");
+      expect(choreListBlock.generate({ memberId, date: DATE })).toBeNull();
+    });
+
+    it("returns null for a child with no chore scheduled that day", () => {
+      seedMember(memberId);
+      seedRoutine("weekend-jobs", "morning", ["sat", "sun"], ["Tidy room"]);
+      expect(choreListBlock.generate({ memberId, date: DATE })).toBeNull();
+    });
+
+    it("lists the date's chores by period in order, without empty periods, adapter-compatible", () => {
+      seedMember(memberId);
+      const [bed] = seedRoutine(
+        "morning-jobs",
+        "morning",
+        ["fri"],
+        ["Make the bed", "Brush teeth"]
+      );
+      seedRoutine("bedtime", "night", ["mon", "fri"], ["Read"]);
+      seedRoutine("weekend-jobs", "afternoon", ["sat"], ["Tidy room"]);
+      getDb()
+        .prepare(
+          "INSERT INTO chore_completions (id, chore_id, member_id, date, completed_at) VALUES ('done-bed', ?, ?, ?, ?)"
+        )
+        .run(bed, memberId, DATE, Date.now());
+
+      const result = choreListBlock.generate({ memberId, date: DATE });
+
+      expect(result).toEqual({
+        periods: [
+          {
+            id: "morning",
+            chores: [
+              { name: "Make the bed", completed: true },
+              { name: "Brush teeth", completed: false },
+            ],
+          },
+          { id: "night", chores: [{ name: "Read", completed: false }] },
+        ],
+      });
+      expect(adaptBlockData("choreList", result)).toEqual(result);
+    });
+
+    it("the adapter drops emoji from a chore's name for the slip, keeping an emoji-only name", () => {
+      const adapted = adaptBlockData("choreList", {
+        periods: [
+          {
+            id: "morning",
+            chores: [
+              { name: "🛏️ Hacer la cama", completed: false },
+              { name: "Dientes 🪥  y cara 👨‍👩‍👧", completed: true },
+              { name: "🎒", completed: false },
+            ],
+          },
+        ],
+      });
+      expect(adapted).toEqual({
+        periods: [
+          {
+            id: "morning",
+            chores: [
+              { name: "Hacer la cama", completed: false },
+              { name: "Dientes y cara", completed: true },
+              { name: "🎒", completed: false },
+            ],
+          },
+        ],
+      });
+    });
+
+    it("the adapter rejects a chore without a completed flag", () => {
+      expect(() =>
+        adaptBlockData("choreList", {
+          periods: [{ id: "morning", chores: [{ name: "Make the bed" }] }],
+        })
+      ).toThrow(/periods\[0\]\.chores\[0\]\.completed/);
+      expect(() => adaptBlockData("choreList", { periods: "morning" })).toThrow(/periods/);
+    });
+  });
+
   // ── today ───────────────────────────────────────────────────────────────────
 
   describe("today", () => {
@@ -303,7 +415,7 @@ describe("daily-briefing domain blocks (FR-013)", () => {
       expect(result).toBeNull();
     });
 
-    it("orders all-day events before timed events, truncates long bullets, adapter-compatible (FR-013)", async () => {
+    it("orders all-day events before timed events, keeps a long title whole, adapter-compatible (FR-013)", async () => {
       seedMember(memberId);
       seedEvent({
         id: "timed-1",
@@ -325,9 +437,10 @@ describe("daily-briefing domain blocks (FR-013)", () => {
       const result = todayBlock.generate({ memberId, date: DATE });
       expect(result).not.toBeNull();
       expect(result?.bullets.length).toBe(2);
-      // All-day first, regardless of any time.
-      expect(result?.bullets[0].length).toBeLessThanOrEqual(36);
-      expect(result?.bullets[0].endsWith("…")).toBe(true);
+      // All-day first, regardless of any time; the title is whole (the render wraps it).
+      expect(result?.bullets[0]).toBe(
+        "A very long all-day event title that exceeds the thirty-six character bullet budget"
+      );
       // Timed event second, prefixed with the household-tz-formatted time.
       expect(result?.bullets[1]).toMatch(/^10:00 Doctor appointment$/);
       expect(() => adaptBlockData("today", result)).not.toThrow();
@@ -339,8 +452,8 @@ describe("daily-briefing domain blocks (FR-013)", () => {
      * sort it correctly, by accident. This test seeds a timed event whose UTC instant
      * (2026-08-20T22:05:00.000Z) is BEFORE that UTC midnight — it is still local
      * 2026-08-21T00:05 in Europe/Madrid (UTC+2 in August), so it correctly belongs to DATE's today
-     * block — and asserts the all-day bullet is `bullets[0]` BY IDENTITY (the exact expected
-     * truncation, not merely "something short ending in an ellipsis"), so only the explicit
+     * block — and asserts the all-day bullet is `bullets[0]` BY IDENTITY (its exact title), so only
+     * the explicit
      * all-day-first RULE — not incidental UTC ordering — can make this pass.
      */
     it("keeps the all-day bullet first even when a timed event's UTC instant precedes the all-day event's UTC-midnight parse (FR-013, P1-2)", async () => {
@@ -363,8 +476,24 @@ describe("daily-briefing domain blocks (FR-013)", () => {
       });
 
       const result = todayBlock.generate({ memberId, date: DATE });
-      expect(result?.bullets[0]).toBe("A very long all-day event title tha…");
+      expect(result?.bullets[0]).toBe(
+        "A very long all-day event title that exceeds the thirty-six character bullet budget"
+      );
       expect(result?.bullets[1]).toMatch(/^00:05 Doctor appointment$/);
+    });
+
+    it("cuts a runaway title at 120 characters with an ellipsis", async () => {
+      seedMember(memberId);
+      seedEvent({
+        id: "runaway",
+        title: "x".repeat(200),
+        allDay: true,
+        startDate: DATE,
+        endDate: "2026-08-22",
+      });
+
+      const result = todayBlock.generate({ memberId, date: DATE });
+      expect(result?.bullets[0]).toBe(`${"x".repeat(119)}…`);
     });
 
     it("caps at 10 events", async () => {
@@ -380,6 +509,55 @@ describe("daily-briefing domain blocks (FR-013)", () => {
       }
       const result = todayBlock.generate({ memberId, date: DATE });
       expect(result?.bullets.length).toBe(10);
+    });
+
+    /** An all-day local event with the given assignees (none = the whole household's). */
+    function seedAllDayEvent(id: string, title: string, assignees: string[]): void {
+      const now = Date.now();
+      const db = getDb();
+      db.prepare(
+        "INSERT INTO calendar_events (id, source, title, all_day, start_date, end_date, created_at, updated_at) VALUES (?, 'local', ?, 1, ?, '2026-08-22', ?, ?)"
+      ).run(id, title, DATE, now, now);
+      for (const assignee of assignees) {
+        db.prepare(
+          "INSERT INTO calendar_assignments (id, event_id, member_id, created_at) VALUES (?, ?, ?, ?)"
+        ).run(`assign-${id}-${assignee}`, id, assignee, now);
+      }
+    }
+
+    it("lists the household's unassigned events apart, and leaves out another member's", () => {
+      seedMember(memberId);
+      seedMember("sibling");
+      seedAllDayEvent("own", "Science fair", [memberId]);
+      seedAllDayEvent("family", "Dentist", []);
+      seedAllDayEvent("other", "Sibling's recital", ["sibling"]);
+      seedAllDayEvent("shared", "Swimming", [memberId, "sibling"]);
+
+      const result = todayBlock.generate({ memberId, date: DATE });
+
+      expect(result?.bullets.sort()).toEqual(["Science fair", "Swimming"]);
+      expect(result?.household).toEqual(["Dentist"]);
+      expect(adaptBlockData("today", result)).toEqual(result);
+    });
+
+    it("a member with no event of their own still gets the household's", () => {
+      seedMember(memberId);
+      seedAllDayEvent("family", "Dentist", []);
+
+      const result = todayBlock.generate({ memberId, date: DATE });
+
+      expect(result).toEqual({ bullets: [], household: ["Dentist"] });
+      expect(() => adaptBlockData("today", result)).not.toThrow();
+    });
+
+    it("carries no household list when every event has an owner, and the adapter checks one that is there", () => {
+      seedMember(memberId);
+      seedAllDayEvent("own", "Science fair", [memberId]);
+
+      expect(todayBlock.generate({ memberId, date: DATE })).toEqual({ bullets: ["Science fair"] });
+      expect(() => adaptBlockData("today", { bullets: [], household: [7] })).toThrow(
+        /household\[0\]/
+      );
     });
 
     /** FR-013/FR-012 household-tz window test: an event at 23:30 LOCAL time in a timezone WEST of

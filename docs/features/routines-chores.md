@@ -17,6 +17,11 @@ A parent creates a "morning" routine, adds ordered chores ("make bed", "brush te
 and assigns it to an active child on weekdays `mon..fri`; the child's daily board for
 those weekdays shows those chores in order under the morning day period.
 
+Chores are not shared between routines, so the admin page helps to reuse them: the Add chore
+dialog offers the chores other routines already have, and **Duplicate** copies a routine with
+its chores into a new, unassigned one. Both make copies: renaming a chore later does not rename
+its copies.
+
 ### User Story 2 — A child completes (and corrects) chores
 
 A child marks a chore done for today; the toggle is accepted only because the chore is
@@ -75,6 +80,8 @@ snapshots.
 - **FR-015**: Given a routine edit that names a `dayPeriodId`, when it is applied, then the id MUST be a non-blank string naming an existing day period or the whole edit MUST be rejected (400) with nothing written; when accepted, the routine moves to that period and the board shows it there immediately. Admins MUST be warned that moving a routine changes the live streak before they confirm (FR-009).
 
 - **FR-016**: Given the admin routine list, when it is read, then active routines MUST be ordered by their day period's start time, then by name (case-insensitive).
+
+- **FR-017**: Given the admin Add chore dialog, when other routines have active chores, then it MUST offer them (name and icon, one per name, without those the routine already has) and picking one MUST only fill in the form; when the selected routine is duplicated, then a new routine of the same day period MUST be created with a copy of its chores in order and no assignments, so the copy changes no board or streak until it is assigned, and a copy cut short by a failed write MUST be reported and shown. Both are client-side compositions of the existing routine and chore writes. Contract: none (admin convenience).
 
 ### Key Entities
 

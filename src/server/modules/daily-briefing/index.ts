@@ -59,6 +59,7 @@ import { messageBlock } from "./blocks/message";
 import { streakBlock } from "./blocks/streak";
 import { streakTextBlock } from "./blocks/streak-text";
 import { todayBlock } from "./blocks/today";
+import { choreListBlock } from "./blocks/chore-list";
 import { mealsBlock } from "./blocks/meals";
 import { birthdayBlock } from "./blocks/birthday";
 import type { BirthdayActiveMember } from "./blocks/birthday";
@@ -683,6 +684,10 @@ function generateLocalBlockData(
       }
       case "today": {
         const data = todayBlock.generate({ memberId, date, txCtx });
+        return data === null ? null : { data };
+      }
+      case "choreList": {
+        const data = choreListBlock.generate({ memberId, date });
         return data === null ? null : { data };
       }
       case "meals": {

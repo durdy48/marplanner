@@ -21,7 +21,7 @@
 // domain block generators (both live under this same plugin subtree).
 // ─────────────────────────────────────────────────────────────────────
 import type { RenderContext } from "pressedslip";
-import type { WeatherConditionKey } from "../../../../shared";
+import type { PeriodId, WeatherConditionKey } from "../../../../shared";
 import type { BlockRegistryType } from "../corpora/index";
 
 export type HouseholdLanguage = "es" | "en";
@@ -65,6 +65,10 @@ export interface DailyBriefingLabels {
      * for that strip to have something to remove). */
     daysStrong: (days: number) => string;
   };
+  /** render/blocks/today.ts's heading over the events assigned to nobody. */
+  today: { household: string };
+  /** render/blocks/chore-list.ts's heading per day period. */
+  choreList: { periods: Record<PeriodId, string> };
   /** `index.ts#titleFor`'s display name per block type (DAILY-BRIEFING-INV-06) — the
    * ordinal template ("NN " prefix) and full-order numbering-with-gaps stay in `index.ts`
    * unchanged; only this label text localizes. */
@@ -109,6 +113,11 @@ const EN: DailyBriefingLabels = {
     startToday: "Start your streak today!",
     daysStrong: (days) => `${days} days strong`,
   },
+  today: { household: "Family" },
+  // Mirror of `src/client/i18n/messages.ts`'s "dayPeriod.*" en keys.
+  choreList: {
+    periods: { morning: "Morning", afternoon: "Afternoon", evening: "Evening", night: "Night" },
+  },
   // fold: identical to the PRE- `titleFor`'s own algorithmic output (a camelCase split,
   // uppercased, with 4 literal overrides) — v1-parity behavior is preserved exactly for "en",
   // only re-homed here as a lookup instead of computed. `quoteOfDay`/`wordOfDay`/`wordSearch`/
@@ -118,6 +127,7 @@ const EN: DailyBriefingLabels = {
     message: "MESSAGE",
     streak: "STREAK",
     today: "TODAY",
+    choreList: "TODAY'S CHORES",
     weather: "WEATHER",
     meals: "MEALS",
     birthday: "BIRTHDAY",
@@ -181,6 +191,11 @@ const ES: DailyBriefingLabels = {
     startToday: "¡Empieza tu racha hoy!",
     daysStrong: (days) => `${days} días de racha`,
   },
+  today: { household: "Familia" },
+  // Mirror of `src/client/i18n/messages.ts`'s "dayPeriod.*" es keys.
+  choreList: {
+    periods: { morning: "Mañana", afternoon: "Mediodía", evening: "Tarde", night: "Noche" },
+  },
   // fold: "weather"/"meals"/"reminders"/"streak" mirror `src/client/i18n/messages.ts`'s es
   // strings ("Meteorología", "Gestión de Comidas" -> "Comidas", "Gestión de Recordatorios" ->
   // "Recordatorios", `chores.board.streakLabel` "Racha:") for household-vocabulary consistency;
@@ -191,6 +206,7 @@ const ES: DailyBriefingLabels = {
     message: "MENSAJE",
     streak: "RACHA",
     today: "HOY",
+    choreList: "TAREAS DE HOY",
     weather: "METEOROLOGÍA",
     meals: "COMIDAS",
     birthday: "CUMPLEAÑOS",

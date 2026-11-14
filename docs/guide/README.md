@@ -121,9 +121,9 @@ tablet. Nothing to read on a screen: they take it to the breakfast table.
 A briefing is built for one member on one date, from more than 20 kinds of
 content block:
 
-- **Household content:** today's events, meals, weather, reminders, the daily message
-  from a parent, birthday countdowns, chore streaks, and the "shotgun" ranking (who gets
-  the front seat).
+- **Household content:** today's events, today's chores by part of the day with a box to
+  tick on paper, meals, weather, reminders, the daily message from a parent, birthday
+  countdowns, chore streaks, and the "shotgun" ranking (who gets the front seat).
 - **Fun content:** dad joke, word of the day, animal fact, number fact, on this day,
   quote of the day, trivia, riddle (printed upside down), would you rather, a word
   search and a drawing prompt with an empty box to fill in.

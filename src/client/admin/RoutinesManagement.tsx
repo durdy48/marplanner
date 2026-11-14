@@ -70,6 +70,7 @@ export function RoutinesManagement() {
   const [formError, setFormError] = useState<string | null>(null);
   const [routineForm, setRoutineForm] = useState<{ routine: Routine | null } | null>(null);
   const [choreForm, setChoreForm] = useState<{ chore: Chore | null } | null>(null);
+  const [choreSuggestions, setChoreSuggestions] = useState<ChoreInput[]>([]);
   const [assignOpen, setAssignOpen] = useState(false);
 
   async function loadBase() {
@@ -202,6 +203,67 @@ export function RoutinesManagement() {
     );
   }
 
+  /** Offers the other routines' chores to the Add chore dialog, without the ones this routine
+   * already has. Best effort: a failed load just leaves the dialog without suggestions. */
+  async function loadChoreSuggestions(routineId: string, own: Chore[]) {
+    setChoreSuggestions([]);
+    try {
+      const others = await Promise.all(
+        routines
+          .filter((routine) => routine.id !== routineId)
+          .map((routine) => getJson<Chore[]>(`/api/routines/${routine.id}/chores`))
+      );
+      const key = (name: string) => name.trim().toLocaleLowerCase();
+      const seen = new Set(own.map((chore) => key(chore.name)));
+      const found: ChoreInput[] = [];
+      for (const chore of others.flat()) {
+        if (!chore.active || seen.has(key(chore.name))) continue;
+        seen.add(key(chore.name));
+        found.push({ name: chore.name, icon: chore.icon });
+      }
+      found.sort((a, b) => a.name.localeCompare(b.name));
+      if (selectedRef.current === routineId) setChoreSuggestions(found);
+    } catch {
+      // No suggestions.
+    }
+  }
+
+  /** Copies the selected routine and its chores, in order, into a new routine of the same period.
+   * Assignments are not copied: the copy touches nobody's board or streak until it is assigned. */
+  function duplicateRoutine() {
+    if (!selected || shownDetail.status !== "ready") return;
+    const chores = shownDetail.chores;
+    const input: RoutineInput = {
+      name: t("routines.admin.duplicateName").replace("{name}", selected.name),
+      dayPeriodId: selected.dayPeriodId,
+    };
+    let copyId: string | null = null;
+    void mutate(
+      async () => {
+        const copy = (await (await send("/api/routines", "POST", input)).json()) as Routine;
+        copyId = copy.id;
+        // One at a time: the server appends each chore after the previous one.
+        for (const chore of chores) {
+          await send(`/api/routines/${copy.id}/chores`, "POST", {
+            name: chore.name,
+            icon: chore.icon,
+          } satisfies ChoreInput);
+        }
+        await refreshRoutines();
+        setSelectedId(copy.id);
+      },
+      () => {
+        setActionError(t("routines.admin.duplicateError"));
+        // A copy cut short still exists: show it so it can be completed or deleted.
+        if (copyId === null) return;
+        const partial = copyId;
+        void refreshRoutines()
+          .then(() => setSelectedId(partial))
+          .catch(() => undefined);
+      }
+    );
+  }
+
   function deleteChore(chore: Chore) {
     void mutate(
       async () => {
@@ -327,9 +389,11 @@ export function RoutinesManagement() {
                   setActionError(null);
                   setAssignOpen(true);
                 }}
+                onDuplicate={duplicateRoutine}
                 onAddChore={() => {
                   setFormError(null);
                   setChoreForm({ chore: null });
+                  void loadChoreSuggestions(selected.id, shownDetail.chores);
                 }}
                 onEditChore={(chore) => {
                   setFormError(null);
@@ -371,6 +435,7 @@ export function RoutinesManagement() {
       <ChoreFormDialog
         open={choreForm !== null}
         chore={choreForm?.chore ?? null}
+        suggestions={choreSuggestions}
         saving={busy}
         error={formError}
         onClose={() => setChoreForm(null)}

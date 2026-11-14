@@ -696,6 +696,112 @@ describe("RoutinesManagement — chores", () => {
   });
 });
 
+describe("RoutinesManagement — reusing chores", () => {
+  const OTHER_ROUTINE_CHORES = [
+    { id: "c7", routineId: "r2", name: "Tidy room", icon: "🎒", sortOrder: 0, active: true },
+    { id: "c8", routineId: "r2", name: "brush TEETH", icon: null, sortOrder: 1, active: true },
+    { id: "c9", routineId: "r2", name: "Old chore", icon: null, sortOrder: 2, active: false },
+    { id: "c10", routineId: "r2", name: "Water plants", icon: null, sortOrder: 3, active: true },
+  ];
+  const choresFor = async (routineId: string) =>
+    routineId === "r1" ? CHORES : OTHER_ROUTINE_CHORES;
+
+  it("offers the other routines' chores when adding, and picking one fills in its name and icon", async () => {
+    const calls = mockBackend({ choresFor });
+    renderPage();
+    await selectRoutine("r1");
+    fireEvent.click(screen.getByTestId("routine-add-chore"));
+    const dialog = await screen.findByTestId("chore-form-dialog");
+
+    const suggestions = await within(dialog).findByTestId("chore-form-suggestions");
+    // Not the one this routine already has (whatever its case), nor an inactive one.
+    expect(
+      within(suggestions)
+        .getAllByRole("button")
+        .map((b) => b.textContent)
+    ).toEqual(["Tidy room", "Water plants"]);
+    // A suggestion without an icon clears the one picked before it.
+    fireEvent.click(within(suggestions).getByRole("button", { name: "Tidy room" }));
+    fireEvent.click(within(suggestions).getByRole("button", { name: "Water plants" }));
+    expect(within(dialog).getByTestId("chore-form-name")).toHaveValue("Water plants");
+    expect(within(dialog).getByRole("button", { name: "Select chore icon" })).toBeVisible();
+    fireEvent.click(within(suggestions).getByRole("button", { name: "Tidy room" }));
+    expect(within(dialog).getByTestId("chore-form-name")).toHaveValue("Tidy room");
+    fireEvent.click(within(dialog).getByTestId("chore-form-submit"));
+
+    await waitFor(() =>
+      expect(callsTo(calls, "POST", "/api/routines/r1/chores")[0]?.body).toEqual({
+        name: "Tidy room",
+        icon: "🎒",
+      })
+    );
+  });
+
+  it("offers nothing when the other routines fail to load", async () => {
+    const calls = mockBackend({ choresFor, fail: (url) => url === "/api/routines/r2/chores" });
+    renderPage();
+    await selectRoutine("r1");
+    fireEvent.click(screen.getByTestId("routine-add-chore"));
+    const dialog = await screen.findByTestId("chore-form-dialog");
+
+    await waitFor(() => expect(callsTo(calls, "GET", "/api/routines/r2/chores")).toHaveLength(1));
+    expect(within(dialog).queryByTestId("chore-form-suggestions")).not.toBeInTheDocument();
+    expect(within(dialog).getByTestId("chore-form-name")).toBeEnabled();
+  });
+
+  it("offers nothing when editing a chore", async () => {
+    const calls = mockBackend({ choresFor });
+    renderPage();
+    await selectRoutine("r1");
+    fireEvent.click(await screen.findByTestId("chore-edit-c1"));
+    const dialog = await screen.findByTestId("chore-form-dialog");
+
+    expect(within(dialog).queryByTestId("chore-form-suggestions")).not.toBeInTheDocument();
+    expect(callsTo(calls, "GET", "/api/routines/r2/chores")).toHaveLength(0);
+  });
+
+  it("duplicates a routine with its chores in order, unassigned, and selects the copy", async () => {
+    const calls = mockBackend({
+      assignments: [{ id: "a1", memberId: "m1", weekdays: ["mon"], active: true }],
+    });
+    renderPage();
+    await selectRoutine("r1");
+    fireEvent.click(screen.getByTestId("routine-duplicate"));
+
+    await waitFor(() =>
+      expect(screen.getByTestId("routine-detail")).toHaveAttribute("data-routine-id", "r-new")
+    );
+    expect(callsTo(calls, "POST", "/api/routines")[0]?.body).toEqual({
+      name: "Morning Routine (copy)",
+      dayPeriodId: "morning",
+    });
+    expect(callsTo(calls, "POST", "/api/routines/r-new/chores").map((call) => call.body)).toEqual([
+      { name: "Brush teeth", icon: "🪥" },
+      { name: "Make bed", icon: null },
+      { name: "Pack bag", icon: "🎒" },
+    ]);
+    expect(calls.some((call) => call.method === "PUT")).toBe(false);
+  });
+
+  it("reports a copy cut short and shows what was copied", async () => {
+    let choresPosted = 0;
+    mockBackend({
+      fail: (url, method) =>
+        method === "POST" && url === "/api/routines/r-new/chores" && (choresPosted += 1) === 2,
+    });
+    renderPage();
+    await selectRoutine("r1");
+    fireEvent.click(screen.getByTestId("routine-duplicate"));
+
+    expect(
+      await screen.findByText("The routine could not be copied in full. Check the copy.")
+    ).toBeVisible();
+    await waitFor(() =>
+      expect(screen.getByTestId("routine-detail")).toHaveAttribute("data-routine-id", "r-new")
+    );
+  });
+});
+
 describe("RoutinesManagement — assignments", () => {
   async function openAssignments() {
     await selectRoutine("r1");

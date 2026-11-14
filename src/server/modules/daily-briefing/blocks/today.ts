@@ -1,7 +1,8 @@
 /** "today" domain block ("The 21 block types", FR-013). PORTED from
  * v1 `apps/api/src/lib/daily-briefing/blocks/today.ts` (today's assigned calendar events as
- * bullet strings, all-day first then by start time, capped at 10, each bullet hard-truncated to
- * 36 chars).
+ * bullet strings, all-day first then by start time, capped at 10; v1 hard-truncated each bullet
+ * to 36 chars, here a title wraps on paper and is only cut at 120). Beyond v1, the household's unassigned events of the day follow in their own
+ * `household` list, so a "Dentist" nobody is named on still reaches the paper.
  * v2 seam: `getEvents` (`src/server/modules/calendar`, host-api-barrel-exported — the SAME
  * function 010's own `gatherBlocks` already calls for its "calendar" block). `getEvents({source:
  * "all", assignedTo: memberId, range: {from: date, to: date}})` already resolves the
@@ -23,10 +24,9 @@ import type { CalendarReadContext } from "../../../host-api";
 
 const TYPE = "today";
 const MAX_EVENTS = 10;
-/** Hard cap on bullet length so the renderer never overflows its usable width (v1 parity
- * comment, verbatim rationale: ~40 chars/line at 22px JetBrains Mono, 36 leaves a safety margin).
- * Mid-word truncation is acceptable; the trailing ellipsis signals overflow. */
-const MAX_BULLET_CHARS = 36;
+/** Cap on bullet length. The render wraps a long title over several lines, so this only keeps a
+ * runaway feed title from filling the slip; the trailing ellipsis signals the cut. */
+const MAX_BULLET_CHARS = 120;
 
 export interface TodayBlockContext {
   memberId: string;
@@ -35,7 +35,11 @@ export interface TodayBlockContext {
 }
 
 export interface TodayBlockData {
+  /** The member's own events. */
   bullets: string[];
+  /** Events assigned to nobody: the whole household's. Absent when there are none (and in
+   * snapshots generated before the block carried them). */
+  household?: string[];
 }
 
 function stripEmojis(s: string): string {
@@ -65,33 +69,37 @@ export const todayBlock = {
   source:
     "src/server/modules/calendar getEvents (host-api-barrel-exported, 010 precedent) + readHouseholdTimezone",
   generate(ctx: TodayBlockContext): TodayBlockData | null {
+    // One unfiltered read, split here: `assignedTo` would leave out the events that belong to
+    // nobody, and another member's events are not this member's business.
     const items = getEvents({
       source: "all",
       txCtx: ctx.txCtx,
-      assignedTo: ctx.memberId,
       range: { from: ctx.date, to: ctx.date },
     });
-    if (items.length === 0) return null;
+    const own = items.filter((item) => item.assignedTo.includes(ctx.memberId));
+    const household = items.filter((item) => item.assignedTo.length === 0);
+    if (own.length === 0 && household.length === 0) return null;
 
     const tz = readHouseholdTimezone();
 
     // All-day events first (regardless of start time), then timed events ascending by start
-    // time. Cap at MAX_EVENTS.
-    const sorted = [...items]
-      .sort((a, b) => {
-        if (a.allDay !== b.allDay) return a.allDay ? -1 : 1;
-        return new Date(a.occurrenceStart).getTime() - new Date(b.occurrenceStart).getTime();
-      })
-      .slice(0, MAX_EVENTS);
+    // time. Each list is capped at MAX_EVENTS.
+    const toBullets = (events: typeof items): string[] =>
+      [...events]
+        .sort((a, b) => {
+          if (a.allDay !== b.allDay) return a.allDay ? -1 : 1;
+          return new Date(a.occurrenceStart).getTime() - new Date(b.occurrenceStart).getTime();
+        })
+        .slice(0, MAX_EVENTS)
+        .map((item) => {
+          const cleanedTitle = stripEmojis(item.decoratedTitle ?? item.title);
+          const raw = item.allDay
+            ? cleanedTitle
+            : `${formatTimeIn(tz, new Date(item.occurrenceStart))} ${cleanedTitle}`;
+          return truncate(raw, MAX_BULLET_CHARS);
+        });
 
-    const bullets = sorted.map((item) => {
-      const cleanedTitle = stripEmojis(item.decoratedTitle ?? item.title);
-      const raw = item.allDay
-        ? cleanedTitle
-        : `${formatTimeIn(tz, new Date(item.occurrenceStart))} ${cleanedTitle}`;
-      return truncate(raw, MAX_BULLET_CHARS);
-    });
-
-    return { bullets };
+    const bullets = toBullets(own);
+    return household.length === 0 ? { bullets } : { bullets, household: toBullets(household) };
   },
 };

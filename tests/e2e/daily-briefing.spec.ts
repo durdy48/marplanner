@@ -175,9 +175,9 @@ test("synchronized imported occurrence appears once in the generated household-d
   }
 });
 
-/** Mirrors `blocks/today.ts`'s exact truncate (36-char cap, trailing "…") so the "today"
+/** Mirrors `blocks/today.ts`'s exact truncate (120-char cap, trailing "…") so the "today"
  * block's bullet content can be pinned exactly rather than merely substring-matched. */
-function truncateBullet(s: string, max = 36): string {
+function truncateBullet(s: string, max = 120): string {
   return s.length <= max ? s : `${s.slice(0, max - 1)}…`;
 }
 
@@ -189,6 +189,7 @@ const EXPECTED_PRESENT_BLOCK_TYPES = [
   "shotgun", // active-member ranking (both seeded members are eligible + active)
   "streak", // both members have a routine/chore/assignment matching today's weekday
   "today", // the seeded calendar event, explicitly assigned to both members below
+  "choreList", // the same routine/chore/assignment "streak" relies on
   "meals", // the seeded one-off dinner entry
   "reminders", // the seeded apply-to-all reminder
   "dadJoke",
@@ -311,10 +312,9 @@ test("admin opt-in -> Generate -> complete ordered catalogue and raster preview 
     });
     expect(calendarResponse.status()).toBe(201);
     const calendarEventId = ((await calendarResponse.json()) as { id: string }).id;
-    // "today" (blocks/today.ts) queries getEvents with `assignedTo: memberId` — stricter
-    // than 010's own unfiltered "all events" read — so the event needs an explicit
-    // assignment to surface in either member's briefing (finding: an UNassigned event is
-    // silently omitted from "today" for every member, a deliberate v2 tightening, not a bug).
+    // "today" (blocks/today.ts) puts a member's own events in `bullets` and the events assigned
+    // to nobody in a separate `household` list, so the event needs an explicit assignment to
+    // surface in the `bullets` this spec reads.
     const assignResponse = await page.request.put(
       `/api/calendar/events/${calendarEventId}/assignments`,
       { data: { memberIds: [firstMember.id, secondMember.id] } }

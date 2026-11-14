@@ -58,8 +58,7 @@ export type BriefingBlockDescriptor = CorpusBlockDescriptor | NonCorpusBlockDesc
 
 /** Every block type, in default registry order (the order missing types are appended in at
  * generation, and the admin matrix's fallback row order).
- *
- * Language notes: `trivia` ships EN-only (no `.es.json` sibling). */
+ */
 export const BRIEFING_BLOCKS = [
   { type: "shotgun", scope: "shared", kind: "local", defaultEnabled: true },
   { type: "message", scope: "member", kind: "local", defaultEnabled: true },
@@ -106,7 +105,7 @@ export const BRIEFING_BLOCKS = [
     scope: "member",
     kind: "corpus",
     defaultEnabled: true,
-    languages: ["en"],
+    languages: ["en", "es"],
     params: { difficulty: true },
   },
   {

@@ -34,9 +34,10 @@ describe("daily-briefing corpora", () => {
       expect(typeof dadJokesCorpus.en[0].text).toBe("string");
     });
 
-    it("trivia: 832 entries", () => {
-      expect(triviaCorpus).toHaveLength(832);
-      expect(triviaCorpus[0]).toMatchObject({
+    it("trivia: 832 entries (en), 832 entries (es)", () => {
+      expect(triviaCorpus.en).toHaveLength(832);
+      expect(triviaCorpus.es).toHaveLength(832);
+      expect(triviaCorpus.en[0]).toMatchObject({
         question: expect.any(String),
         correctAnswer: expect.any(String),
         options: expect.any(Array),
@@ -427,6 +428,81 @@ describe("daily-briefing corpora", () => {
     });
   });
 
+  /** FR-039: each Spanish question keeps its English slot's difficulty, so a date selects the
+   * same slot in either language; the rest are the slip's and the answer key's rules. */
+  describe("Spanish trivia (FR-039)", () => {
+    const es = triviaCorpus.es;
+    const WORD = "[\\x21-\\x7EáéíóúüñÁÉÍÓÚÜÑ¿¡«»]+";
+    const PRINTABLE = new RegExp(`^${WORD}( ${WORD})*$`);
+    const CATEGORIES = [
+      "Animales",
+      "Ciencia y naturaleza",
+      "Cultura general",
+      "Deportes",
+      "Geografía",
+      "Historia",
+      "Matemáticas",
+    ];
+    const key = (text: string) =>
+      text
+        .toLocaleLowerCase("es")
+        .normalize("NFD")
+        .replace(/[\u0301\u0308]/g, "")
+        .normalize("NFC")
+        .replace(/[^\p{L}\p{N} ]/gu, "")
+        .replace(/\s+/g, " ")
+        .trim();
+
+    it("keeps every slot's difficulty and uses a Spanish category", () => {
+      es.forEach((entry, index) => {
+        expect(Object.keys(entry).sort(), `entry ${index}`).toEqual([
+          "category",
+          "correctAnswer",
+          "difficulty",
+          "options",
+          "question",
+        ]);
+        expect(entry.difficulty, `entry ${index}`).toBe(triviaCorpus.en[index].difficulty);
+        expect(CATEGORIES).toContain(entry.category);
+      });
+    });
+
+    it("offers four distinct options in Spanish order, one of them the answer", () => {
+      const collator = new Intl.Collator("es");
+      for (const { question, correctAnswer, options } of es) {
+        expect(options, question).toHaveLength(4);
+        expect(new Set(options).size, question).toBe(4);
+        expect(options, question).toContain(correctAnswer);
+        expect([...options].sort(collator.compare), question).toEqual(options);
+      }
+    });
+
+    it("uses only the reviewed character set, pairs its marks and stays short enough for the slip", () => {
+      for (const { question, options } of es) {
+        expect(question).toMatch(PRINTABLE);
+        expect(question).toMatch(/\?$/);
+        expect(question.length, question).toBeLessThanOrEqual(160);
+        const unpaired = question.replace(/¿[^¿?]*\?/g, "").replace(/¡[^¡!]*!/g, "");
+        expect(unpaired, question).not.toMatch(/[¿?¡!]/);
+        expect(question.split("«").length, question).toBe(question.split("»").length);
+        for (const option of options) {
+          expect(option).toMatch(PRINTABLE);
+          expect(option.length, option).toBeLessThanOrEqual(50);
+        }
+      }
+    });
+
+    it("asks no question twice and leaves no English question untranslated", () => {
+      const keys = es.map((entry) => key(entry.question));
+      expect(new Set(keys).size).toBe(keys.length);
+      const english = new Set(triviaCorpus.en.map((entry) => key(entry.question)));
+      for (const { question } of es) {
+        expect(english.has(key(question)), question).toBe(false);
+        expect(question).not.toMatch(/\b(what|which|who|the)\b/i);
+      }
+    });
+  });
+
   describe("corpus-availability map (FR-008/FR-009)", () => {
     it("jokes ship in English and Spanish (FR-035)", () => {
       expect(corpusLanguagesFor("dadJoke")).toEqual(["en", "es"]);
@@ -436,8 +512,12 @@ describe("daily-briefing corpora", () => {
       expect(corpusLanguagesFor("riddle")).toEqual(["en", "es"]);
     });
 
-    it("trivia is EN-only", () => {
-      expect(isCorpusLanguageAvailable("trivia", "es")).toBe(false);
+    it("phonics is EN-only, by design", () => {
+      expect(isCorpusLanguageAvailable("phonics", "es")).toBe(false);
+    });
+
+    it("trivia ships in English and Spanish (FR-039)", () => {
+      expect(corpusLanguagesFor("trivia")).toEqual(["en", "es"]);
     });
 
     it("the word of the day ships in English and Spanish (FR-038)", () => {
@@ -472,7 +552,7 @@ describe("daily-briefing corpora", () => {
       wordOfDay: { en: true, es: true },
       animalFact: { en: true, es: true },
       numberFact: { en: true, es: true },
-      trivia: { en: true, es: false },
+      trivia: { en: true, es: true },
       riddle: { en: true, es: true },
       phonics: { en: true, es: false },
       wouldYouRather: { en: true, es: true },

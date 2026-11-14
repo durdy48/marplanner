@@ -5,10 +5,14 @@ import {
   drawingPromptsCorpus,
   numberFactsCorpus,
   riddlesCorpus,
+  triviaCorpus,
   vocabularyCorpus,
   wouldYouRathersCorpus,
 } from "../../src/server/modules/daily-briefing/corpora/index";
-import { CorpusBlockParamError } from "../../src/server/modules/daily-briefing/blocks/context";
+import {
+  CorpusBlockParamError,
+  resolveCorpusLanguage,
+} from "../../src/server/modules/daily-briefing/blocks/context";
 import { generateDadJoke } from "../../src/server/modules/daily-briefing/blocks/dad-joke";
 import { generateWordOfDay } from "../../src/server/modules/daily-briefing/blocks/word-of-day";
 import { generateAnimalFact } from "../../src/server/modules/daily-briefing/blocks/animal-fact";
@@ -17,6 +21,7 @@ import {
   generateNumberFact,
 } from "../../src/server/modules/daily-briefing/blocks/number-fact";
 import { generateTrivia } from "../../src/server/modules/daily-briefing/blocks/trivia";
+import { generatePhonics } from "../../src/server/modules/daily-briefing/blocks/phonics";
 import { generateRiddle } from "../../src/server/modules/daily-briefing/blocks/riddle";
 import { generateWouldYouRather } from "../../src/server/modules/daily-briefing/blocks/would-you-rather";
 import {
@@ -300,6 +305,27 @@ describe("daily-briefing corpus block generators", () => {
       });
     });
 
+    it("trivia: es resolves the SAME slot of the difficulty as en, in the es corpus (FR-039)", () => {
+      const en = generateTrivia({ date: DATE, memberId: "m1" });
+      const es = generateTrivia({ date: DATE, memberId: "m1", params: { language: "es" } });
+      const easy = (language: "en" | "es") =>
+        triviaCorpus[language].filter((entry) => entry.difficulty === "easy");
+      const idx = easy("en").findIndex((entry) => entry.question === en.question);
+      expect(idx).toBeGreaterThanOrEqual(0);
+      const entry = easy("es")[idx];
+      expect(es).toEqual({
+        question: entry.question,
+        options: entry.options,
+        category: entry.category,
+        difficulty: "easy",
+      });
+    });
+
+    it("an unset language falls back to English when the household language has no corpus (phonics)", () => {
+      expect(resolveCorpusLanguage("phonics", undefined, "es")).toBe("en");
+      expect(resolveCorpusLanguage("trivia", undefined, "es")).toBe("es");
+    });
+
     it("defaulting (no language param) always resolves the en variant", () => {
       const defaulted = generateAnimalFact({ date: DATE, memberId: "m1" });
       const explicitEn = generateAnimalFact({
@@ -313,7 +339,10 @@ describe("daily-briefing corpus block generators", () => {
 
   describe("assert-throw on a language without a corpus (no English-fallback degradation)", () => {
     it.each([
-      ["trivia", () => generateTrivia({ date: DATE, memberId: "m1", params: { language: "es" } })],
+      [
+        "phonics",
+        () => generatePhonics({ date: DATE, memberId: "m1", params: { language: "es" } }),
+      ],
     ] as const)(
       "%s: an illegal es request throws CorpusBlockParamError, never falls back",
       (_type, run) => {

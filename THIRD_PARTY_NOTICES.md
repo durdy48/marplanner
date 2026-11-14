@@ -66,6 +66,14 @@ reshaped to `{question, correctAnswer, options, difficulty, category}`. This fil
 distributed under the same license; the notice travels with the build as
 `dist/server/CORPORA-NOTICE.txt`.
 
+**`trivia-questions.es.json` (832 questions).** A Spanish version of
+`trivia-questions.json` made for Marplanner, one question per slot with the slot's
+difficulty. Most questions are translations of the Open Trivia Database questions and are
+distributed under the same license (CC BY-SA 4.0); the slots whose question was
+US-centric, unsuitable for children, outdated or doubtful hold questions written for
+Marplanner. Changes: questions, answers and options translated into Spanish, categories
+renamed in Spanish, options sorted in Spanish order.
+
 **`vocabulary-entries.json` (398 entries).** A project word list enriched on
 2026-06-12 (commit fe71295) through the [Free Dictionary API](https://dictionaryapi.dev/),
 which serves definitions from [Wiktionary](https://en.wiktionary.org/) and labels them

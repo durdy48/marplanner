@@ -3,7 +3,7 @@
 import { hashSeed, triviaCorpus } from "../corpora";
 import type { CorpusBlockType } from "../corpora";
 import {
-  assertCorpusLanguageAvailable,
+  resolveCorpusLanguage,
   CorpusBlockParamError,
   type CorpusGenerationContext,
 } from "./context";
@@ -24,9 +24,10 @@ export interface TriviaData {
   difficulty: "easy" | "medium" | "hard";
 }
 
-/** v1 seed: `${date}|trivia|${memberId}` (table) — member-scoped (personal block). */
+/** v1 seed: `${date}|trivia|${memberId}` (table) — member-scoped (personal block).
+ * FR-039: `params.language` selects the `en`/`es` corpus; both keep each slot's difficulty. */
 export function generateTrivia(ctx: CorpusGenerationContext): TriviaData {
-  assertCorpusLanguageAvailable(TYPE, ctx.params); // EN-only; throws on an illegal "es" request
+  const language = resolveCorpusLanguage(TYPE, ctx.params);
 
   const requested = ctx.params?.difficulty;
   let difficulty: "easy" | "medium" | "hard";
@@ -40,7 +41,7 @@ export function generateTrivia(ctx: CorpusGenerationContext): TriviaData {
     );
   }
 
-  const pool = triviaCorpus.filter((entry) => entry.difficulty === difficulty);
+  const pool = triviaCorpus[language].filter((entry) => entry.difficulty === difficulty);
   if (pool.length === 0) {
     throw new CorpusBlockParamError(
       `daily-briefing trivia: no entries for difficulty "${difficulty}"`

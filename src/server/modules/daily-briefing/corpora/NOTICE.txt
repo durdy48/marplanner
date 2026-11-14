@@ -8,6 +8,15 @@ trivia-questions.json
   Changes: HTML entities decoded, duplicate questions removed, answer options sorted,
   reshaped to {question, correctAnswer, options, difficulty, category}.
 
+trivia-questions.es.json
+  Spanish version of trivia-questions.json made for Marplanner, one question per slot
+  with the slot's difficulty. Most questions are translations of the Open Trivia
+  Database questions above and are distributed under the same license (CC BY-SA 4.0);
+  the slots whose question was US-centric, unsuitable for children, outdated or doubtful
+  hold questions written for Marplanner.
+  Changes: questions, answers and options translated into Spanish, categories renamed in
+  Spanish, options sorted in Spanish order.
+
 vocabulary-entries.json
   Definitions, examples and pronunciations from Wiktionary (https://en.wiktionary.org/),
   retrieved 2026-06-12 through the Free Dictionary API (https://dictionaryapi.dev/) for a

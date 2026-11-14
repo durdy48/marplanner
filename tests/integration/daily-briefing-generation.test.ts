@@ -65,6 +65,7 @@ import { generateDrawingPrompt } from "../../src/server/modules/daily-briefing/b
 import { generateRiddle } from "../../src/server/modules/daily-briefing/blocks/riddle";
 import { generateDadJoke } from "../../src/server/modules/daily-briefing/blocks/dad-joke";
 import { generateWordOfDay } from "../../src/server/modules/daily-briefing/blocks/word-of-day";
+import { generateTrivia } from "../../src/server/modules/daily-briefing/blocks/trivia";
 import { spanishQuoteOfDay } from "../../src/server/modules/daily-briefing/blocks/quoteOfDay";
 import {
   generateWordSearch,
@@ -530,6 +531,7 @@ describe("daily-briefing full generation", () => {
         riddle: generateRiddle,
         dadJoke: generateDadJoke,
         wordOfDay: generateWordOfDay,
+        trivia: generateTrivia,
       };
       for (const [type, generate] of Object.entries(generators)) {
         const block = briefing.payload.blocks.find((b) => b.type === type);
@@ -538,13 +540,6 @@ describe("daily-briefing full generation", () => {
           language,
           params: { language },
           data: generate({ date: DATE_FRI, memberId: "m1", params: { language } }),
-        });
-      }
-      for (const type of ["trivia"]) {
-        expect(briefing.payload.blocks.find((b) => b.type === type)).toMatchObject({
-          status: "ok",
-          language: "en",
-          params: { language: "en" },
         });
       }
       // FR-037: a Spanish household's word search takes the date's language.
@@ -599,10 +594,10 @@ describe("daily-briefing full generation", () => {
     seedMember("m1", { optedIn: true });
     // No daily_messages row seeded for m1/DATE_FRI: "message" resolves null (handoff note the
     // null-omit trap) — must be ABSENT from blocks, never a {status:"failed"} record.
-    // "trivia" is EN-only; an illegal "es" request (bypassing settings.ts's write-boundary
+    // "trivia" has no French corpus; an illegal "fr" request (bypassing settings.ts's write-boundary
     // validator, simulating stale/legacy data) makes `generateTrivia` throw
     // `CorpusBlockParamError` — caught and RECORDED as a failed block (never omitted).
-    seedIllegalMemberBlockParams("m1", "trivia", { language: "es" });
+    seedIllegalMemberBlockParams("m1", "trivia", { language: "fr" });
 
     const briefing = await generateBriefing("m1", DATE_FRI);
     const types = briefing.payload.blocks.map((b) => b.type);

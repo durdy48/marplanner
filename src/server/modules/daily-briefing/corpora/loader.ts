@@ -37,6 +37,7 @@ import quotesEsJson from "./quotes.es.json";
 import riddlesEnJson from "./riddles.json";
 import riddlesEsJson from "./riddles.es.json";
 import triviaQuestionsJson from "./trivia-questions.json";
+import triviaQuestionsEsJson from "./trivia-questions.es.json";
 import vocabularyEntriesJson from "./vocabulary-entries.json";
 import vocabularyEntriesEsJson from "./vocabulary-entries.es.json";
 import animalFactsEnJson from "./animal-facts.json";
@@ -52,7 +53,6 @@ import wordSearchEsJson from "./word-search.es.json";
 import phonicsWordsJson from "./phonics-words.json";
 
 // ── EN-only corpora ──────────────────────────────────────────────────────────
-export const triviaCorpus = triviaQuestionsJson as TriviaEntry[];
 export const phonicsCorpus = phonicsWordsJson as PhonicsWordEntry[];
 
 // ── EN + ES corpora (INV-06: language variant = the `.es.json` sibling) ─────────────
@@ -71,6 +71,12 @@ export const drawingPromptsCorpus: Record<CorpusLanguage, TextEntry[]> = {
 export const wouldYouRathersCorpus: Record<CorpusLanguage, WouldYouRatherEntry[]> = {
   en: wouldYouRathersEnJson as WouldYouRatherEntry[],
   es: wouldYouRathersEsJson as WouldYouRatherEntry[],
+};
+/** The Spanish questions translate the English slot or replace it with one of the same
+ * difficulty when it is US-centric, unsuitable for children or outdated (FR-039). */
+export const triviaCorpus: Record<CorpusLanguage, TriviaEntry[]> = {
+  en: triviaQuestionsJson as TriviaEntry[],
+  es: triviaQuestionsEsJson as TriviaEntry[],
 };
 /** The Spanish words are Spanish vocabulary, not translations: a Spanish word with a Spanish
  * definition and example, as many per level as the English corpus (FR-038). */

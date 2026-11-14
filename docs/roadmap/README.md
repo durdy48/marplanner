@@ -7,7 +7,7 @@ records what was observed, what is known about the cause, and the options seen s
 | #   | Item                                                                      | Kind    | Status                             |
 | --- | ------------------------------------------------------------------------- | ------- | ---------------------------------- |
 | 1   | [Weather and streak print twice by default](#1-weather-and-streak-twice)  | Bug/UX  | Open                               |
-| 2   | [English content on a Spanish household's slip](#2-english-content)       | Feature | In progress: 6 of 7 blocks done    |
+| 2   | [English content on a Spanish household's slip](#2-english-content)       | Feature | Done                               |
 | 3   | [Emoji typed in a reminder prints as an empty box](#3-emoji-in-reminders) | Bug     | Open                               |
 | 4   | [Print the briefing on an ordinary A4 printer](#4-a4-printing)            | Feature | Manual print done; unattended open |
 | 5   | [Household chores beyond children's routines](#5-household-chores)        | Feature | Open                               |
@@ -180,6 +180,21 @@ in either language (FR-038). Level 1 is everyday vocabulary for a ten-year-old (
 "huella", "trepar"); level 4 is literary ("inefable", "serendipia", "dilucidar"). Each entry has
 a Spanish word class, an own definition (not copied from a dictionary) and an example; no
 pronunciation is printed. Checked on a real render.
+
+**Done: `trivia`.** `corpora/trivia-questions.es.json` holds one Spanish question per English
+slot with the slot's difficulty, 832 in all, so a date picks the same slot in either language
+(FR-039). 495 are translations; 337 slots hold another question of the same difficulty and
+category because the English one was US-centric (NHL, NFL, US states and presidents),
+unsuitable for children (weapons, disasters, drugs, alcohol), dependent on English words,
+outdated, doubtful (a few were plainly wrong in the source) or repeated. Most new questions
+lean on Spain, Europe and Latin America. An independent review of all 832 found no wrong
+answer; its fixes are in: options that were also defensible, questions that gave away
+their answer, and repeats of the same fact. Categories are in Spanish and options are
+sorted in Spanish order. Checked on a real render. The Spanish file keeps the Open Trivia
+Database's CC BY-SA 4.0 license for the translated questions (NOTICE).
+
+With this, every block of the list above prints in Spanish for a Spanish household, except
+`phonics`, which is English by design.
 
 ## 3. Emoji in reminders
 

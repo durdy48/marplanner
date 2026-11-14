@@ -13,6 +13,10 @@ import { prepareDailyBriefingTheme } from "../../src/server/modules/daily-briefi
 import { riddleBlock } from "../../src/server/modules/daily-briefing/render/blocks/riddle";
 import { wordSearchBlock } from "../../src/server/modules/daily-briefing/render/blocks/word-search";
 import { adaptBlockData } from "../../src/server/modules/daily-briefing/render/adapter";
+import {
+  RASTER_BYTES_PER_ROW,
+  pngToPackedRaster,
+} from "../../src/server/modules/daily-briefing/render/raster";
 import { mealsBlock } from "../../src/server/modules/daily-briefing/render/blocks/meals";
 import { onThisDayBlock } from "../../src/server/modules/daily-briefing/render/blocks/on-this-day";
 import { birthdayBlock } from "../../src/server/modules/daily-briefing/render/blocks/birthday";
@@ -441,6 +445,76 @@ describe("daily-briefing render-defs — per-type render through the real bridge
       } finally {
         renderSpy.mockRestore();
       }
+    });
+  });
+
+  describe("on-this-day lines on paper (FR-033)", () => {
+    it("swaps the characters the receipt font cannot draw and collapses the spacing", () => {
+      expect(
+        adaptBlockData("onThisDay", {
+          events: [
+            "1960: en Luisiana \u2015en el marco del racismo\u2015  la niña afro\u2011estadounidense",
+            "1968: deja a más de 50\u00A0000 personas\n sin hogar",
+          ],
+          births: ["1890: Ha\u02BBapai"],
+        })
+      ).toEqual({
+        // The non-breaking hyphen and the no-break space stay: both print and both glue.
+        events: [
+          "1960: en Luisiana —en el marco del racismo— la niña afro\u2011estadounidense",
+          "1968: deja a más de 50\u00A0000 personas sin hogar",
+        ],
+        births: ["1890: Ha'apai"],
+      });
+    });
+
+    it("gives the bullet, the bold year and the text a column each", () => {
+      const data = {
+        events: [
+          "1969: Moon landing",
+          "332 BC: Alexander the Great is crowned pharaoh of Egypt.",
+          "1152 a. C.: comienza la primera huelga de la historia.",
+          "A line with no leading year",
+        ],
+      };
+      const bullet = prepareDailyBriefingTheme().shell.listItemBullet;
+      expect(
+        collectText(onThisDayBlock.render({ data, ctx: makeCtx("onThisDay", data, "en") }))
+      ).toEqual([
+        "Events",
+        ...[bullet, "1969:", "Moon landing"],
+        ...[bullet, "332 BC:", "Alexander the Great is crowned pharaoh of Egypt."],
+        ...[bullet, "1152 a. C.:", "comienza la primera huelga de la historia."],
+        ...[bullet, "A line with no leading year"],
+      ]);
+    });
+
+    it("wraps a long event inside the block: nothing is drawn in the right margin", async () => {
+      const long =
+        "1960: en Luisiana (Estados Unidos) —en el marco del racismo en Estados Unidos que " +
+        "asoló el país hasta 1967— la niña Ruby Bridges se convierte en el primer alumno " +
+        "afroestadounidense en asistir a una escuela exclusiva para blancos.";
+      const rendered = await renderBriefingBitmap({
+        memberId: MEMBER_ID,
+        memberName: MEMBER_NAME,
+        date: DATE,
+        language: "es",
+        blocks: [{ type: "onThisDay", title: "TAL DÍA COMO HOY", data: { events: [long] } }],
+      });
+      expect(rendered.failedRenderBlocks).toEqual([]);
+      const { bits, height } = pngToPackedRaster(rendered.bitmapPng as Uint8Array);
+
+      // Only the title band reaches the paper's left edge; every other row is content, which
+      // has to stay clear of the last 16 dots.
+      const rowsInkedAtTheEdge: number[] = [];
+      for (let y = 0; y < height; y += 1) {
+        const row = y * RASTER_BYTES_PER_ROW;
+        const isTitleBand = bits[row] !== 0;
+        const rightMargin =
+          bits[row + RASTER_BYTES_PER_ROW - 2] | bits[row + RASTER_BYTES_PER_ROW - 1];
+        if (!isTitleBand && rightMargin !== 0) rowsInkedAtTheEdge.push(y);
+      }
+      expect(rowsInkedAtTheEdge).toEqual([]);
     });
   });
 

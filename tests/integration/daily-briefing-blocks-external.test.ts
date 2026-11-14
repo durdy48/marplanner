@@ -180,6 +180,51 @@ describe("daily-briefing EXTERNAL blocks + shared cache", () => {
       expect(capturedPrefix).toBe("es");
     });
 
+    it("caches each language apart: a Spanish generation neither reuses nor replaces the English row", async () => {
+      // A row cached before FR-032 under the bare key, births and deaths included, is not served.
+      getDb()
+        .prepare(
+          "INSERT INTO daily_briefing_block_cache (date, block_type, payload, created_at) VALUES (?, 'onThisDay', ?, ?)"
+        )
+        .run(DATE, JSON.stringify({ events: ["-332: old"], births: ["1879: old"] }), Date.now());
+      const fetchSpy = vi.fn(
+        async (_date: string, languagePrefix?: string): Promise<OnThisDayData | null> => ({
+          events: [`${languagePrefix}: x`],
+        })
+      );
+      const english = await generateOnThisDayBlock(createDailyBlockCache(DATE), fetchSpy, DATE);
+      const spanish = await generateOnThisDayBlock(
+        createDailyBlockCache(DATE),
+        fetchSpy,
+        DATE,
+        "es"
+      );
+
+      expect(english).toEqual({ events: ["en: x"] });
+      expect(spanish).toEqual({ events: ["es: x"] });
+      expect(fetchSpy).toHaveBeenCalledTimes(2);
+
+      // Each language is now a hit on its own row.
+      expect(await generateOnThisDayBlock(createDailyBlockCache(DATE), fetchSpy, DATE)).toEqual(
+        english
+      );
+      expect(
+        await generateOnThisDayBlock(createDailyBlockCache(DATE), fetchSpy, DATE, "es")
+      ).toEqual(spanish);
+      expect(fetchSpy).toHaveBeenCalledTimes(2);
+
+      const keys = getDb()
+        .prepare(
+          "SELECT block_type FROM daily_briefing_block_cache WHERE date = ? ORDER BY block_type"
+        )
+        .all(DATE);
+      expect(keys).toEqual([
+        { block_type: "onThisDay" },
+        { block_type: "onThisDay:en" },
+        { block_type: "onThisDay:es" },
+      ]);
+    });
+
     it("no negative caching: a failed fetch does not cache; the next generation retries", async () => {
       const cache = createDailyBlockCache(DATE);
       let attempt = 0;
@@ -636,12 +681,28 @@ describe("daily-briefing EXTERNAL blocks + shared cache", () => {
 
         await wikipediaOnThisDaySource("2026-09-08");
         const [defaultUrl, defaultInit] = fetchMock.mock.calls[0];
-        expect(defaultUrl).toBe("https://en.wikipedia.org/api/rest_v1/feed/onthisday/all/09/08");
+        expect(defaultUrl).toBe("https://en.wikipedia.org/api/rest_v1/feed/onthisday/events/09/08");
         expect(defaultInit?.signal).toBeInstanceOf(AbortSignal);
 
         await wikipediaOnThisDaySource("2026-01-05", "es");
         const [customUrl] = fetchMock.mock.calls[1];
-        expect(customUrl).toBe("https://es.wikipedia.org/api/rest_v1/feed/onthisday/all/01/05");
+        expect(customUrl).toBe("https://es.wikipedia.org/api/rest_v1/feed/onthisday/events/01/05");
+      });
+
+      it("a language outside the supported editions reads English, never a caller-chosen host", async () => {
+        const fetchMock = stubFetch({
+          ok: true,
+          status: 200,
+          json: async () => ({ events: [{ year: 1969, text: "Moon landing" }] }),
+        });
+
+        await wikipediaOnThisDaySource("2026-09-08", "fr");
+        await wikipediaOnThisDaySource("2026-09-08", "evil.example/x?");
+
+        expect(fetchMock.mock.calls.map(([url]) => url)).toEqual([
+          "https://en.wikipedia.org/api/rest_v1/feed/onthisday/events/09/08",
+          "https://en.wikipedia.org/api/rest_v1/feed/onthisday/events/09/08",
+        ]);
       });
 
       it("a non-2xx response throws", async () => {
@@ -664,7 +725,9 @@ describe("daily-briefing EXTERNAL blocks + shared cache", () => {
 
         expect(result).toEqual({ events: ["1969: Moon landing"] });
         const [url] = fetchMock.mock.calls[0];
-        expect(url).toBe("https://onthisday-fixture.internal/api/rest_v1/feed/onthisday/all/09/08");
+        expect(url).toBe(
+          "https://onthisday-fixture.internal/api/rest_v1/feed/onthisday/events/09/08"
+        );
       });
 
       it("pickThirds: fewer than 6 items returns all of them; six or more returns the recent/middle/old trio", async () => {
@@ -684,12 +747,21 @@ describe("daily-briefing EXTERNAL blocks + shared cache", () => {
         expect(manyResult?.events).toEqual(["2001: item-1", "2004: item-4", "2007: item-7"]);
       });
 
-      it("empty categories are omitted from the result entirely (all-empty resolves null)", async () => {
+      it("reads events only: births and deaths in a response are ignored, and no events resolves null", async () => {
         stubFetch({
           ok: true,
           status: 200,
-          json: async () => ({ events: [], births: [], deaths: [] }),
+          json: async () => ({
+            events: [{ year: 1969, text: "Moon landing" }],
+            births: [{ year: 1900, text: "x" }],
+            deaths: [{ year: 1950, text: "y" }],
+          }),
         });
+        expect(await wikipediaOnThisDaySource("2026-09-08")).toEqual({
+          events: ["1969: Moon landing"],
+        });
+
+        stubFetch({ ok: true, status: 200, json: async () => ({ events: [] }) });
         expect(await wikipediaOnThisDaySource("2026-09-08")).toBeNull();
 
         stubFetch({
@@ -697,10 +769,68 @@ describe("daily-briefing EXTERNAL blocks + shared cache", () => {
           status: 200,
           json: async () => ({ births: [{ year: 1900, text: "x" }] }),
         });
-        const result = await wikipediaOnThisDaySource("2026-09-08");
-        expect(result).toEqual({ births: ["1900: x"] });
-        expect(result?.events).toBeUndefined();
-        expect(result?.deaths).toBeUndefined();
+        expect(await wikipediaOnThisDaySource("2026-09-08")).toBeNull();
+      });
+
+      it("prefers concise events: longer texts are left out while at least three shorter ones exist", async () => {
+        const long = "x".repeat(201);
+        const edge = "y".repeat(200);
+        const mixed = [
+          { year: 2001, text: long },
+          { year: 2002, text: "short a" },
+          { year: 2003, text: long },
+          { year: 2004, text: edge },
+          { year: 2005, text: "short b" },
+        ];
+        stubFetch({ ok: true, status: 200, json: async () => ({ events: mixed }) });
+        expect((await wikipediaOnThisDaySource("2026-09-08"))?.events).toEqual([
+          "2002: short a",
+          `2004: ${edge}`,
+          "2005: short b",
+        ]);
+
+        // Fewer than three concise events: nothing is left out.
+        const mostlyLong = [
+          { year: 2001, text: long },
+          { year: 2002, text: "short a" },
+          { year: 2003, text: long },
+        ];
+        stubFetch({ ok: true, status: 200, json: async () => ({ events: mostlyLong }) });
+        expect((await wikipediaOnThisDaySource("2026-09-08"))?.events).toEqual([
+          `2001: ${long}`,
+          "2002: short a",
+          `2003: ${long}`,
+        ]);
+
+        // A real feed has dozens of events: the long ones are dropped before the three are picked,
+        // so they are not picked even where they sit on the positions the picker reads.
+        const feed = Array.from({ length: 12 }, (_, i) => ({
+          year: 2000 + i,
+          text: [2, 6, 10].includes(i) ? long : `short ${i}`,
+        }));
+        stubFetch({ ok: true, status: 200, json: async () => ({ events: feed }) });
+        expect((await wikipediaOnThisDaySource("2026-09-08"))?.events).toEqual([
+          "2001: short 1",
+          "2005: short 5",
+          "2009: short 9",
+        ]);
+      });
+
+      it("writes a year before the common era in the edition's language", async () => {
+        const events = [
+          { year: -332, text: "Alexander the Great is crowned pharaoh of Egypt." },
+          { year: 565, text: "Justin II becomes Byzantine emperor." },
+        ];
+        stubFetch({ ok: true, status: 200, json: async () => ({ events }) });
+        expect((await wikipediaOnThisDaySource("2026-11-14"))?.events).toEqual([
+          "332 BC: Alexander the Great is crowned pharaoh of Egypt.",
+          "565: Justin II becomes Byzantine emperor.",
+        ]);
+
+        stubFetch({ ok: true, status: 200, json: async () => ({ events }) });
+        expect((await wikipediaOnThisDaySource("2026-11-14", "es"))?.events?.[0]).toBe(
+          "332 a. C.: Alexander the Great is crowned pharaoh of Egypt."
+        );
       });
     });
   });

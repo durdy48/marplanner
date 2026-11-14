@@ -23,7 +23,7 @@ it does not own delivery.
   exists, otherwise English).
 - **Block** — one content unit; may be member-specific or shared.
 - **Shared daily block cache** — one generated payload per date + shared block
-  type, reused across members.
+  type, reused across members; `onThisDay` keeps one per language as well.
 - **Meals block** — optional `lunch`, `snack` and `dinner` slots, each a canonically ordered list of `{kind: "recipe" | "note", label: string}`. Generation freezes resolved labels verbatim (ADR-045), with no source IDs. Empty slots are omitted; breakfast coverage remains a separate decision. Web and print presentation also accept existing scalar-slot snapshots without rewriting them.
 - **Printable raster** — device-independent 1-bit receipt image the briefing
   renders (ADR-041); stored in Daily Briefing's namespace.

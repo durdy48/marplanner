@@ -1,7 +1,8 @@
 /** Shared daily block cache (* `daily_briefing_block_cache`) — one row per `(date, block_type)` for the three
  * EXTERNAL-source blocks (`weather`, `quoteOfDay`, `onThisDay`, `../blocks/`): FR-019 bounds
  * each source to at most one successful external call per date per household, reused across
- * every member's briefing generated for that date.
+ * every member's briefing generated for that date. `onThisDay` qualifies its `block_type` with
+ * the Wikipedia edition (`onThisDay:es`, `../blocks/onThisDay.ts`), one row per language.
  * `createDailyBlockCache(date)` eager-loads every already-persisted row for `date` into memory
  * (v1's `createSharedCache` shape, kept simpler: no async construction — better-
  * sqlite3 reads are synchronous) so repeated `get` calls inside one generation pass never

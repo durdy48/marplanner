@@ -13,6 +13,9 @@ export interface QuoteOfDayData {
   author: string;
 }
 
+/** `births`/`deaths` stay for the snapshots and injected sources that carry them; the Wikipedia
+ * adapter below fills `events` only (FR-032).
+ */
 export interface OnThisDayData {
   events?: string[];
   births?: string[];
@@ -22,14 +25,23 @@ export interface OnThisDayData {
 /** A resolved `null` is a legitimate "no data" answer; a throw is a failure (see module doc). */
 export type QuoteSource = () => Promise<QuoteOfDayData | null>;
 
-/** `languagePrefix` defaults `"en"` — the Wikipedia locale-prefixed-URL swap point
- * documents for a future per-block language (not wired to any settings surface yet — see
- * `../blocks/onThisDay.ts`'s doc comment).
+/** `languagePrefix` is the Wikipedia edition to read, `"en"` when omitted. Generation passes
+ * `onThisDayEdition(householdLanguage)` — see `../blocks/onThisDay.ts`'s doc comment.
  */
 export type OnThisDaySource = (
   date: string,
   languagePrefix?: string
 ) => Promise<OnThisDayData | null>;
+
+/** The Wikipedia editions this block may read, one per household language. */
+const WIKIPEDIA_EDITIONS: ReadonlySet<string> = new Set(["en", "es"]);
+
+/** Maps a household language to its Wikipedia edition. Anything outside the closed set reads
+ * English, so an arbitrary string never reaches the request's host name.
+ */
+export function onThisDayEdition(language: string): string {
+  return WIKIPEDIA_EDITIONS.has(language) ? language : "en";
+}
 
 /** Strips one matched pair of outer quote characters (ASCII + Unicode curly), v1 exact port. */
 function stripOuterQuotes(value: string): string {
@@ -71,8 +83,6 @@ interface WikipediaOnThisDayItem {
 
 interface WikipediaOnThisDayResponse {
   events?: WikipediaOnThisDayItem[];
-  births?: WikipediaOnThisDayItem[];
-  deaths?: WikipediaOnThisDayItem[];
 }
 
 /** Picks up to 3 items spread across the array's thirds (recent / middle / old) — v1's exact
@@ -88,35 +98,52 @@ function pickThirds<T>(items: readonly T[]): T[] {
   ];
 }
 
-function formatItem(item: WikipediaOnThisDayItem): string {
-  return `${item.year}: ${item.text}`;
+/** The longest event text the slip prefers, about seven lines of the receipt. Wikipedia's
+ * Spanish events run long: one in five is over this and a few reach several hundred characters.
+ */
+const CONCISE_EVENT_CHARS = 200;
+
+/** The events to pick from: the concise ones whenever there are at least three of them. */
+function conciseEvents(
+  items: readonly WikipediaOnThisDayItem[]
+): readonly WikipediaOnThisDayItem[] {
+  const concise = items.filter(
+    (item) => typeof item.text === "string" && item.text.length <= CONCISE_EVENT_CHARS
+  );
+  return concise.length >= 3 ? concise : items;
 }
 
-/** Wikipedia `onthisday/all/{mm}/{dd}` adapter, language-prefixed URL — v1's exact endpoint
- * shape, extended with the `languagePrefix` swap point and `ONTHISDAY_ENDPOINT`-
- * overridable (module doc). An override replaces the whole `https://<lang>.wikipedia.org`
- * origin (a single fixture origin has no per-language subdomains to route to), keeping only the
- * real production path shape.
+/** Wikipedia gives a year before the common era as a negative number. */
+function formatYear(year: number, edition: string): string {
+  if (year >= 0) return String(year);
+  return edition === "es" ? `${-year} a. C.` : `${-year} BC`;
+}
+
+function formatItem(item: WikipediaOnThisDayItem, edition: string): string {
+  return `${formatYear(item.year, edition)}: ${item.text}`;
+}
+
+/** Wikipedia `onthisday/events/{mm}/{dd}` adapter, language-prefixed URL and
+ * `ONTHISDAY_ENDPOINT`-overridable (module doc). It asks for events only (FR-032): the briefing
+ * carries no births or deaths, and the `all` feed is several times larger — the Spanish one can
+ * outlast the timeout. An override replaces the whole `https://<lang>.wikipedia.org` origin (a
+ * single fixture origin has no per-language subdomains to route to), keeping only the real
+ * production path shape.
  */
 export const wikipediaOnThisDaySource: OnThisDaySource = async (date, languagePrefix = "en") => {
+  const edition = onThisDayEdition(languagePrefix);
   const [, mm, dd] = date.split("-");
-  const path = `/api/rest_v1/feed/onthisday/all/${mm}/${dd}`;
+  const path = `/api/rest_v1/feed/onthisday/events/${mm}/${dd}`;
   const overrideBase = getOperatorConfig("dailyBriefing.onThisDayEndpoint");
   const url = overrideBase
     ? new URL(path, overrideBase).toString()
-    : `https://${languagePrefix}.wikipedia.org${path}`;
+    : `https://${edition}.wikipedia.org${path}`;
   const res = await fetch(url, { signal: AbortSignal.timeout(FETCH_TIMEOUT_MS) });
   if (!res.ok) throw new Error(`onthisday ${res.status}`);
   const json = (await res.json()) as WikipediaOnThisDayResponse;
 
-  const events = pickThirds(json.events ?? []).map(formatItem);
-  const births = pickThirds(json.births ?? []).map(formatItem);
-  const deaths = pickThirds(json.deaths ?? []).map(formatItem);
-  if (events.length === 0 && births.length === 0 && deaths.length === 0) return null;
-
-  const data: OnThisDayData = {};
-  if (events.length > 0) data.events = events;
-  if (births.length > 0) data.births = births;
-  if (deaths.length > 0) data.deaths = deaths;
-  return data;
+  const events = pickThirds(conciseEvents(json.events ?? [])).map((item) =>
+    formatItem(item, edition)
+  );
+  return events.length > 0 ? { events } : null;
 };

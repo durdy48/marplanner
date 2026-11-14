@@ -51,8 +51,9 @@ import { readBlockOrder, resolveMemberBlockSettings } from "./settings";
 import type { BlockOrderInstance } from "./settings";
 import { createDailyBlockCache, getOrFetchOnceDaily } from "./external/shared-cache";
 import type { DailyBlockCache } from "./external/shared-cache";
-import { zenQuotesSource, wikipediaOnThisDaySource } from "./external/ports";
+import { zenQuotesSource, wikipediaOnThisDaySource, onThisDayEdition } from "./external/ports";
 import type { QuoteSource, OnThisDaySource } from "./external/ports";
+import { onThisDayCacheKey } from "./blocks/onThisDay";
 import { shotgunBlock } from "./blocks/shotgun";
 import type { ShotgunActiveMember } from "./blocks/shotgun";
 import { messageBlock } from "./blocks/message";
@@ -840,7 +841,8 @@ async function finishBlocks(
   cache: DailyBlockCache,
   date: string,
   now: number,
-  weatherInputs: WeatherBlockInputs | null
+  weatherInputs: WeatherBlockInputs | null,
+  language: string
 ): Promise<BlockInstance[]> {
   const blocks: BlockInstance[] = [];
   for (const { block, outcome: localOutcome, external } of gathered) {
@@ -860,10 +862,12 @@ async function finishBlocks(
             break;
           case "onThisDay": {
             const source = resolveOnThisDaySource();
+            // FR-032: the household language picks the Wikipedia edition and its cache row.
+            const edition = onThisDayEdition(language);
             outcome = await generateExternalBlock(
               cache,
-              "onThisDay",
-              source ? () => source(date) : null
+              onThisDayCacheKey(edition),
+              source ? () => source(date, edition) : null
             );
             break;
           }
@@ -995,7 +999,8 @@ export async function generateBriefing(
       cache,
       date,
       generationClock,
-      inputs.weather
+      inputs.weather,
+      language
     );
 
     // TOCTOU re-validation ( generalized to the now-multi-call gather

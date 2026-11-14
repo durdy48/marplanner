@@ -5372,6 +5372,7 @@
             "daily-briefing EXTERNAL blocks + shared cache onThisDay skip-on-failure: a rejecting source resolves the block to null, never throws",
             "daily-briefing EXTERNAL blocks + shared cache onThisDay one call per source per date across two members (cache hit proven by call count)",
             "daily-briefing EXTERNAL blocks + shared cache onThisDay passes languagePrefix through to the source (default 'en')",
+            "daily-briefing EXTERNAL blocks + shared cache onThisDay caches each language apart: a Spanish generation neither reuses nor replaces the English row",
             "daily-briefing EXTERNAL blocks + shared cache onThisDay no negative caching: a failed fetch does not cache; the next generation retries",
             "daily-briefing EXTERNAL blocks + shared cache captured weather input failures omit without poisoning the external cache",
             "daily-briefing EXTERNAL blocks + shared cache weather (via the 016 weather seam — readWeatherLocation/getForecastPort) skip-on-failure: a forecast-port failure (resolves null) resolves the block to null, never throws",
@@ -5393,10 +5394,13 @@
             "daily-briefing EXTERNAL blocks + shared cache production adapters (zenQuotesSource / wikipediaOnThisDaySource) zenQuotesSource a non-2xx response throws (never resolves silently)",
             "daily-briefing EXTERNAL blocks + shared cache production adapters (zenQuotesSource / wikipediaOnThisDaySource) zenQuotesSource honors an operator-overridden endpoint (QUOTE_ENDPOINT)",
             "daily-briefing EXTERNAL blocks + shared cache production adapters (zenQuotesSource / wikipediaOnThisDaySource) wikipediaOnThisDaySource sends a bounded, language-prefixed, zero-padded mm/dd request (default 'en' and a custom prefix)",
+            "daily-briefing EXTERNAL blocks + shared cache production adapters (zenQuotesSource / wikipediaOnThisDaySource) wikipediaOnThisDaySource a language outside the supported editions reads English, never a caller-chosen host",
             "daily-briefing EXTERNAL blocks + shared cache production adapters (zenQuotesSource / wikipediaOnThisDaySource) wikipediaOnThisDaySource a non-2xx response throws",
             "daily-briefing EXTERNAL blocks + shared cache production adapters (zenQuotesSource / wikipediaOnThisDaySource) wikipediaOnThisDaySource honors an operator-overridden endpoint (ONTHISDAY_ENDPOINT), replacing the language-prefixed origin",
             "daily-briefing EXTERNAL blocks + shared cache production adapters (zenQuotesSource / wikipediaOnThisDaySource) wikipediaOnThisDaySource pickThirds: fewer than 6 items returns all of them; six or more returns the recent/middle/old trio",
-            "daily-briefing EXTERNAL blocks + shared cache production adapters (zenQuotesSource / wikipediaOnThisDaySource) wikipediaOnThisDaySource empty categories are omitted from the result entirely (all-empty resolves null)"
+            "daily-briefing EXTERNAL blocks + shared cache production adapters (zenQuotesSource / wikipediaOnThisDaySource) wikipediaOnThisDaySource reads events only: births and deaths in a response are ignored, and no events resolves null",
+            "daily-briefing EXTERNAL blocks + shared cache production adapters (zenQuotesSource / wikipediaOnThisDaySource) wikipediaOnThisDaySource prefers concise events: longer texts are left out while at least three shorter ones exist",
+            "daily-briefing EXTERNAL blocks + shared cache production adapters (zenQuotesSource / wikipediaOnThisDaySource) wikipediaOnThisDaySource writes a year before the common era in the edition's language"
           ],
           "tests/integration/daily-briefing-catchup-e2e.test.ts": [
             "daily-briefing catch-up — built-bundle process boot DAILY-BRIEFING-AC-10 / BACKGROUND-JOBS-SCHEDULER-AC-03 / -AC-04 / -INV-04 / -INV-03: a scheduler-enabled boot catches up today's briefing for an opted-in member"
@@ -5476,6 +5480,7 @@
             "daily-briefing full generation a legitimately-empty quoteOfDay resolve is OMITTED, never recorded as failed",
             "daily-briefing full generation contains malformed persisted external cache entries as block failures",
             "daily-briefing full generation generates an enabled onThisDay block and contains its external failure",
+            "daily-briefing full generation FR-032: onThisDay reads the household language's Wikipedia edition and caches it apart",
             "daily-briefing full generation wordSearch's two-seed determinism (selection + placement) survives being generated inside the full 21-block loop",
             "daily-briefing full generation SC-004 (bounded budget): a full 21-block generation completes well within the 60s cap under normal (cache-warm, no-network-in-tests) conditions",
             "daily-briefing full generation printable provider serves the generated raster through the REAL 018 pipeline end to end",
@@ -5564,6 +5569,9 @@
             "daily-briefing render-defs — per-type render through the real bridge structural labels — household language (DAILY-BRIEFING-INV-06, Codex #709 P1 fold) weather renders the condition label in household language (RAIN / LLUVIA)",
             "daily-briefing render-defs — per-type render through the real bridge structural labels — household language (DAILY-BRIEFING-INV-06, Codex #709 P1 fold) streak's day-of-week strip renders in household language (W for Wednesday vs X for miércoles)",
             "daily-briefing render-defs — per-type render through the real bridge structural labels — household language (DAILY-BRIEFING-INV-06, Codex #709 P1 fold) an es envelope threads through the real bridge into a label-consuming def's ctx.composition.meta.language",
+            "daily-briefing render-defs — per-type render through the real bridge on-this-day lines on paper (FR-033) swaps the characters the receipt font cannot draw and collapses the spacing",
+            "daily-briefing render-defs — per-type render through the real bridge on-this-day lines on paper (FR-033) gives the bullet, the bold year and the text a column each",
+            "daily-briefing render-defs — per-type render through the real bridge on-this-day lines on paper (FR-033) wraps a long event inside the block: nothing is drawn in the right margin",
             "daily-briefing render-defs — per-type render through the real bridge catalogue completeness registers one render definition per catalogue type, keyed by its own type",
             "daily-briefing render-defs — per-type render through the real bridge DoD: a full generation across all registered types drains unrendered_blocks to [] all 21 types in one envelope render with zero unrendered and zero failed, raster at least as tall as its tallest constituent"
           ],
@@ -9539,7 +9547,7 @@
           "lines": 37,
           "statements": 46,
           "functions": 5,
-          "branches": 39
+          "branches": 36
         },
         "minimumRates": {
           "lines": 100,
@@ -9716,8 +9724,8 @@
       "src/server/modules/daily-briefing/render/blocks/on-this-day.ts": {
         "layer": "server",
         "minimumTotals": {
-          "lines": 14,
-          "statements": 18,
+          "lines": 13,
+          "statements": 16,
           "functions": 4,
           "branches": 8
         },

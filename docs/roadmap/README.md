@@ -7,7 +7,7 @@ records what was observed, what is known about the cause, and the options seen s
 | #   | Item                                                                      | Kind    | Status                             |
 | --- | ------------------------------------------------------------------------- | ------- | ---------------------------------- |
 | 1   | [Weather and streak print twice by default](#1-weather-and-streak-twice)  | Bug/UX  | Open                               |
-| 2   | [English content on a Spanish household's slip](#2-english-content)       | Feature | Open, design decided               |
+| 2   | [English content on a Spanish household's slip](#2-english-content)       | Feature | In progress: `onThisDay` done      |
 | 3   | [Emoji typed in a reminder prints as an empty box](#3-emoji-in-reminders) | Bug     | Open                               |
 | 4   | [Print the briefing on an ordinary A4 printer](#4-a4-printing)            | Feature | Manual print done; unattended open |
 | 5   | [Household chores beyond children's routines](#5-household-chores)        | Feature | Open                               |
@@ -93,6 +93,21 @@ The word search prints its word list with accents ("CAMIÓN") while the grid hol
 Content is written in one pass and corrected as it shows up on paper, so each corpus goes
 through an automated check (facts, answers, duplicates, tone for ages 10 to 13).
 Items [9](#9-saints-day) and [10](#10-english-word) follow in the same run.
+
+**Done: `onThisDay`.** The block reads the Wikipedia edition of the household language and
+carries events only (FR-032, FR-033 in `docs/features/daily-briefing.md`). Found on the way,
+against the live feed and a real render:
+
+- The `all` feed in Spanish took over seven seconds when measured, more than the five-second
+  timeout; the `events` feed answered in a fraction of a second, so the block asks for that one.
+- A long line ran past the paper's edge in either language. Each line is now a row of columns
+  (bullet, bold year, text) and wraps under its own text.
+- Spanish events write their dashes with the horizontal bar, which printed as an empty box:
+  6% of the events sampled had one. It is swapped for an em dash on paper.
+- Spanish events run long (a tenth are over 260 characters, some several hundred), so events
+  over 200 characters are left out while at least three shorter ones exist.
+
+A briefing generated before the change keeps its English lines; **Regenerate** replaces them.
 
 ## 3. Emoji in reminders
 

@@ -27,15 +27,14 @@ export const FIXTURE_QUOTE_TEXT = "Fixtures make the future predictable.";
 export const FIXTURE_QUOTE_AUTHOR = "E2E Fixture";
 
 /** Ground-truthed from `ports.ts`'s `wikipediaOnThisDaySource` parsing: a
- * `WikipediaOnThisDayResponse` (`events`/`births`/`deaths`, each `{year, text}[]`). `onThisDay`
+ * `WikipediaOnThisDayResponse` (`events`, a `{year, text}[]` — the adapter asks the `events`
+ * feed only, FR-032). `onThisDay`
  * ships default-disabled (FR-013) and no e2e spec enables it today, so this payload is never
  * actually exercised by the current suite — it exists so the seam is genuinely wired end to end,
  * not just declared. */
 function onThisDayFixturePayload(): unknown {
   return {
     events: [{ year: 1999, text: "A fixture event took place." }],
-    births: [{ year: 1900, text: "A fixture birth was recorded." }],
-    deaths: [{ year: 1950, text: "A fixture death was recorded." }],
   };
 }
 
@@ -59,7 +58,7 @@ export function startQuoteOnThisDayFixtureServer(): Promise<void> {
         return;
       }
 
-      if (url.pathname.startsWith("/api/rest_v1/feed/onthisday/all/")) {
+      if (url.pathname.startsWith("/api/rest_v1/feed/onthisday/events/")) {
         console.log(`[quote-onthisday-fixture] GET ${url.pathname}`);
         res
           .writeHead(200, { "content-type": "application/json" })

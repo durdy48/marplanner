@@ -83,6 +83,27 @@ function printableText(text: string): string {
   return stripped.length > 0 ? stripped : text;
 }
 
+/** Characters that print as an empty box on the slip, each with the nearest one that does not.
+ * Wikipedia's Spanish text writes its dashes with the horizontal bar. The font file has no entry
+ * for the non-breaking hyphen either, but the renderer draws it with the hyphen's outline, so it
+ * stays and keeps its word together.
+ */
+const RECEIPT_GLYPH_FALLBACKS: Readonly<Record<string, string>> = {
+  "\u2015": "\u2014", // horizontal bar -> em dash
+  "\u02BB": "'", // modifier letter turned comma (the Hawaiian okina)
+};
+
+/** An on-this-day line as the slip can print it; the stored snapshot keeps the source's text.
+ * Runs of whitespace collapse to one space, except the no-break space, which the source puts
+ * between a number and its unit ("28 km", "50 000") to keep them on one line.
+ */
+function printableLine(text: string): string {
+  return text
+    .replace(/[\u2015\u02BB]/g, (char) => RECEIPT_GLYPH_FALLBACKS[char])
+    .replace(/[^\S\u00A0]+/g, " ")
+    .trim();
+}
+
 /** Dispatch by block.type. Returns the data shape the corresponding pressedslip
  * block schema expects. Throws AdapterError on any envelope-shape violation.
  */
@@ -186,15 +207,11 @@ export function adaptBlockData(blockType: string, raw: unknown): unknown {
     }
     case "onThisDay": {
       const out: Record<string, unknown> = {};
-      if (data.events !== undefined) {
-        out.events = needArray<string>(blockType, "events", data.events, "string");
-      }
-      if (data.births !== undefined) {
-        out.births = needArray<string>(blockType, "births", data.births, "string");
-      }
-      if (data.deaths !== undefined) {
-        out.deaths = needArray<string>(blockType, "deaths", data.deaths, "string");
-      }
+      const lines = (field: string, value: unknown): string[] =>
+        needArray<string>(blockType, field, value, "string").map(printableLine);
+      if (data.events !== undefined) out.events = lines("events", data.events);
+      if (data.births !== undefined) out.births = lines("births", data.births);
+      if (data.deaths !== undefined) out.deaths = lines("deaths", data.deaths);
       return out;
     }
     case "drawingPrompt": {

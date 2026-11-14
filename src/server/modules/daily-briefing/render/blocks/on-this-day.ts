@@ -18,20 +18,24 @@ const schema: ZodType<{
 });
 export type OnThisDayData = z.infer<typeof schema>;
 
-/** Bold the leading 3-4 digit year of a corpus line (e.g. "1969: Moon landing"). */
+/** One line as a row of columns: the bullet, the bold leading year ("1969", "332 BC",
+ * "1152 a. C.") and the text. The text has a column of its own, so a long event wraps under
+ * itself inside the block instead of running past the paper's edge. A line with no leading year
+ * keeps the bullet and text columns.
+ */
 function onThisDayLine(bullet: string, line: string, key: number): ReactElement {
-  const match = /^(\d{3,4})(:.*)$/.exec(line);
-  if (!match) return createElement("div", { key }, `${bullet} ${line}`);
-
+  const match = /^(\d{1,4}(?: [^:\d]{1,6})?):\s+(.*)$/.exec(line);
   return createElement(
     "div",
-    { key, style: { display: "flex" } },
+    { key, style: { width: "100%", display: "flex", gap: 6, alignItems: "flex-start" } },
+    createElement("div", { style: { flexShrink: 0 } }, bullet),
+    match
+      ? createElement("div", { style: { flexShrink: 0, fontWeight: 700 } }, `${match[1]}:`)
+      : null,
     createElement(
-      "span",
-      null,
-      `${bullet} `,
-      createElement("span", { style: { fontWeight: 700 } }, match[1]),
-      createElement("span", null, match[2])
+      "div",
+      { style: { flexGrow: 1, flexBasis: 0, minWidth: 0, width: "100%" } },
+      match ? match[2] : line
     )
   );
 }

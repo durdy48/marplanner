@@ -951,7 +951,9 @@ describe("daily-briefing full generation", () => {
       status: "ok",
       data: { events: ["2000: Test event"] },
     });
-    getDb().prepare("DELETE FROM daily_briefing_block_cache WHERE block_type = 'onThisDay'").run();
+    getDb()
+      .prepare("DELETE FROM daily_briefing_block_cache WHERE block_type = 'onThisDay:en'")
+      .run();
     __setOnThisDaySourceForTests(async () => {
       throw new Error("source unavailable");
     });
@@ -965,6 +967,36 @@ describe("daily-briefing full generation", () => {
     expect(
       (await generateBriefing("m1", DATE_FRI)).payload.blocks.some((b) => b.type === "onThisDay")
     ).toBe(false);
+  });
+
+  it("FR-032: onThisDay reads the household language's Wikipedia edition and caches it apart", async () => {
+    seedMember("m1", { optedIn: true });
+    seedHouseholdLanguage("es");
+    writeMemberBlockSettings("m1", "onThisDay", { enabled: true });
+    __setPrintingPluginActiveForTests(false);
+    const editions: (string | undefined)[] = [];
+    __setOnThisDaySourceForTests(async (_date, languagePrefix) => {
+      editions.push(languagePrefix);
+      return { events: [`2000: ${languagePrefix}`] };
+    });
+    const setHouseholdLanguage = (language: "en" | "es"): void => {
+      getDb()
+        .prepare("UPDATE settings_objects SET data = ? WHERE object_name = 'locale'")
+        .run(JSON.stringify({ language }));
+    };
+    const onThisDayOf = async (): Promise<unknown> =>
+      (await generateBriefing("m1", DATE_FRI)).payload.blocks.find((b) => b.type === "onThisDay");
+
+    expect(await onThisDayOf()).toMatchObject({ status: "ok", data: { events: ["2000: es"] } });
+
+    // A household language change is not served the previous language's cached row.
+    setHouseholdLanguage("en");
+    expect(await onThisDayOf()).toMatchObject({ status: "ok", data: { events: ["2000: en"] } });
+
+    // Back to Spanish: its own row is still cached, so the source is not asked again.
+    setHouseholdLanguage("es");
+    expect(await onThisDayOf()).toMatchObject({ status: "ok", data: { events: ["2000: es"] } });
+    expect(editions).toEqual(["es", "en"]);
   });
 
   //: this does NOT prove the FR-020 serial-loop fence itself — word-search's

@@ -113,6 +113,8 @@ and the automatic print after the morning chores still goes only to the Printing
 - **FR-029**: Given Print on A4 for a stored briefing, then the client MUST lay the stored preview PNG out on A4 pages of three columns without re-rendering any block, MUST end a column in the empty gap above a block header when one fits (else at an empty row, else mid-content), MUST open the browser's print dialog with only that sheet printable, MUST NOT enqueue a print job or change the derived printed-status, and MUST report a missing stored image (409) instead of printing. Contract: none (admin parity).
 - **FR-030**: Given a `choreList` block for a member and date, then it MUST list the chores the routines board schedules for that member on that date, grouped by day period in period order with empty periods left out, each with its completion state at generation time, MUST be omitted (no block) for a member without a board column or with no chore that day, and MUST print each period's heading in the household language. Contract: none (block catalogue, ADR-067).
 - **FR-031**: Given a `today` block for a member and date, then its `bullets` MUST hold the events assigned to that member and its `household` list the events assigned to nobody, each ordered all-day first then by start time and capped at 10, MUST leave out events assigned only to other members, MUST omit `household` when there is none, MUST be omitted (no block) when both are empty, and MUST print the household list under a heading in the household language. Contract: none (block catalogue, ADR-067).
+- **FR-032**: Given an `onThisDay` block, then generation MUST read the Wikipedia edition of the household language (Spanish or English; English for any other language), MUST carry events only, never births or deaths, MUST leave out events longer than 200 characters while at least three shorter ones exist, MUST write a year before the common era as `332 BC` or `332 a. C.`, and MUST cache each edition apart per date, so that after a household language change the next generation of that date reads the new edition and a row cached before this rule is never served. Contract: DAILY-BRIEFING-AC-06.
+- **FR-033**: Given an `onThisDay` block on paper, then each line MUST put the bullet, the bold leading year and the text in columns of their own, with the text wrapping under itself inside the block, the characters that print as an empty box (the horizontal bar) MUST be replaced by the nearest ones that do not, and whitespace MUST collapse except the no-break space, which keeps a number and its unit together; the stored snapshot keeps the source's text. Contract: none (block catalogue, ADR-067).
 
 ### Key Entities
 
@@ -124,7 +126,7 @@ and the automatic print after the morning chores still goes only to the Printing
 - **Block instance**: one configured content unit in the ordered list; a type may repeat, and
   a corpus-backed instance carries an optional `language` override.
 - **Shared daily block cache**: one generated payload per date + shared block type, reused
-  across members.
+  across members; `onThisDay` keeps one per language as well (FR-032).
 - **Status**: `pending | ready | partial | failed | render-failed`, derived from surviving blocks.
 - **Member schedule**: the weekdays on which a member's briefing runs, stored with the opt-in (NULL = every day); pausing a weekday never deletes existing briefings.
 

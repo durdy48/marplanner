@@ -7,7 +7,7 @@ records what was observed, what is known about the cause, and the options seen s
 | #   | Item                                                                      | Kind    | Status                             |
 | --- | ------------------------------------------------------------------------- | ------- | ---------------------------------- |
 | 1   | [Weather and streak print twice by default](#1-weather-and-streak-twice)  | Bug/UX  | Open                               |
-| 2   | [English content on a Spanish household's slip](#2-english-content)       | Feature | In progress: `onThisDay` done      |
+| 2   | [English content on a Spanish household's slip](#2-english-content)       | Feature | In progress: 2 of 7 blocks done    |
 | 3   | [Emoji typed in a reminder prints as an empty box](#3-emoji-in-reminders) | Bug     | Open                               |
 | 4   | [Print the briefing on an ordinary A4 printer](#4-a4-printing)            | Feature | Manual print done; unattended open |
 | 5   | [Household chores beyond children's routines](#5-household-chores)        | Feature | Open                               |
@@ -108,6 +108,30 @@ against the live feed and a real render:
   over 200 characters are left out while at least three shorter ones exist.
 
 A briefing generated before the change keeps its English lines; **Regenerate** replaces them.
+
+**Done: `riddle`.** `corpora/riddles.es.json` holds one Spanish riddle per English slot, with
+the slot's difficulty, so a date picks the same slot in either language (FR-034). Of the 122:
+
+- 76 keep the idea of the English riddle: 72 with the same answer and 4 with its Spanish
+  counterpart (a nine-letter palindrome, the hedgehog, the last letter of "arcoíris", the
+  cat). Some needed the Spanish form of the same idea: the coin has "cara y cruz" rather than
+  head and tail, the alphabet has 27 letters, and the letter riddles were rebuilt on Spanish
+  words ("minuto", "momento", "marzo", "abril").
+- 46 are other riddles, most of them traditional Spanish "adivinanzas". They take the slots
+  whose English riddle is a play on English words (ears of corn, stories of a building, a
+  tree's bark, a tennis serve), the slots that repeat an answer (the English corpus asks for
+  the clock, fire, silence and a hole three times each) and three slots whose riddle
+  twinned another one.
+
+No two Spanish riddles share an answer. A review of the content found no wrong answer; it
+reworded the riddles that another entry's answer also solved ("vuela sin alas", "tiene un
+ojo y no ve", "cuatro patas y no anda") and replaced the twins. A test checks, for every
+entry, the slot's difficulty, the reviewed character set, paired marks and quotes, the
+length, duplicates (ignoring accents and articles) and leftover English.
+
+A briefing generated before the change keeps its English riddle; **Regenerate** replaces
+it. A riddle language set explicitly to English in Admin → Daily briefing → Blocks stays
+English.
 
 ## 3. Emoji in reminders
 

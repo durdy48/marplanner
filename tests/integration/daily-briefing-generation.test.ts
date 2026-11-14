@@ -62,6 +62,7 @@ import { generateAnimalFact } from "../../src/server/modules/daily-briefing/bloc
 import { generateNumberFact } from "../../src/server/modules/daily-briefing/blocks/number-fact";
 import { generateWouldYouRather } from "../../src/server/modules/daily-briefing/blocks/would-you-rather";
 import { generateDrawingPrompt } from "../../src/server/modules/daily-briefing/blocks/drawing-prompt";
+import { generateRiddle } from "../../src/server/modules/daily-briefing/blocks/riddle";
 import { ALL_BLOCK_TYPES } from "../../src/server/modules/daily-briefing/corpora/index";
 import { getLabels } from "../../src/server/modules/daily-briefing/render/labels";
 import { useIsolatedDb } from "../helpers/db";
@@ -519,6 +520,7 @@ describe("daily-briefing full generation", () => {
         numberFact: generateNumberFact,
         wouldYouRather: generateWouldYouRather,
         drawingPrompt: generateDrawingPrompt,
+        riddle: generateRiddle,
       };
       for (const [type, generate] of Object.entries(generators)) {
         const block = briefing.payload.blocks.find((b) => b.type === type);
@@ -529,7 +531,7 @@ describe("daily-briefing full generation", () => {
           data: generate({ date: DATE_FRI, memberId: "m1", params: { language } }),
         });
       }
-      for (const type of ["dadJoke", "wordOfDay", "trivia", "riddle", "wordSearch"]) {
+      for (const type of ["dadJoke", "wordOfDay", "trivia", "wordSearch"]) {
         expect(briefing.payload.blocks.find((b) => b.type === type)).toMatchObject({
           status: "ok",
           language: "en",

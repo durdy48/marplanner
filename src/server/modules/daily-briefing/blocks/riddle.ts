@@ -2,7 +2,7 @@
  */
 import { hashSeed, riddlesCorpus } from "../corpora";
 import type { CorpusBlockType } from "../corpora";
-import { assertCorpusLanguageAvailable, type CorpusGenerationContext } from "./context";
+import { resolveCorpusLanguage, type CorpusGenerationContext } from "./context";
 
 const TYPE: CorpusBlockType = "riddle";
 
@@ -15,11 +15,12 @@ export interface RiddleData {
   answer: string;
 }
 
-/** v1 seed: `${date}|riddle` (table) — date-only, no memberId (v1 `scope: "shared"`). */
+/** v1 seed: `${date}|riddle` (table) — date-only, no memberId (v1 `scope: "shared"`).
+ * FR-009/INV-06: `params.language` selects the `en`/`es` variant (index-aligned corpora).
+ */
 export function generateRiddle(ctx: CorpusGenerationContext): RiddleData {
-  assertCorpusLanguageAvailable(TYPE, ctx.params); // EN-only BY POLICY (v1 study); throws on "es"
-
-  const pool = riddlesCorpus;
+  const language = resolveCorpusLanguage(TYPE, ctx.params);
+  const pool = riddlesCorpus[language];
   const idx = hashSeed(`${ctx.date}|riddle`) % pool.length;
   const entry = pool[idx];
   return { question: entry.question, answer: entry.answer };

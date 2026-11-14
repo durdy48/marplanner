@@ -41,3 +41,7 @@ Marplanner. Its level order follows the phonics progression of Letters and Sound
 Principles and Practice of High Quality Phonics (Department for Education and Skills,
 2007), the sequence also used by UK programmes such as Monster Phonics. No words,
 images, colours or names are taken from either.
+
+riddles.es.json is another: its riddles were translated from riddles.json or written for
+Marplanner, and some are traditional Spanish riddles ("adivinanzas") from the oral
+tradition, which has no author and is in the public domain.

@@ -213,7 +213,7 @@ describe("daily-briefing corpus block generators", () => {
     });
   });
 
-  describe("es-variant resolution for the 4 translated corpora (FR-009/INV-06)", () => {
+  describe("es-variant resolution for the translated corpora (FR-009/INV-06)", () => {
     it("animalFact: es resolves the SAME index as en, in the es corpus", () => {
       const en = generateAnimalFact({ date: DATE, memberId: "m1" });
       const es = generateAnimalFact({ date: DATE, memberId: "m1", params: { language: "es" } });
@@ -253,6 +253,18 @@ describe("daily-briefing corpus block generators", () => {
       expect(es.prompt).toBe(drawingPromptsCorpus.es[idx].text);
     });
 
+    it("riddle: es resolves the SAME index as en, in the es corpus (FR-034)", () => {
+      const en = generateRiddle({ date: DATE, memberId: "m1" });
+      const es = generateRiddle({ date: DATE, memberId: "m1", params: { language: "es" } });
+      const idx = riddlesCorpus.en.findIndex((entry) => entry.question === en.question);
+      expect(idx).toBeGreaterThanOrEqual(0);
+      expect(es).toEqual({
+        question: riddlesCorpus.es[idx].question,
+        answer: riddlesCorpus.es[idx].answer,
+      });
+      expect(es).not.toEqual(en);
+    });
+
     it("defaulting (no language param) always resolves the en variant", () => {
       const defaulted = generateAnimalFact({ date: DATE, memberId: "m1" });
       const explicitEn = generateAnimalFact({
@@ -275,7 +287,6 @@ describe("daily-briefing corpus block generators", () => {
         () => generateWordOfDay({ date: DATE, memberId: "m1", params: { language: "es" } }),
       ],
       ["trivia", () => generateTrivia({ date: DATE, memberId: "m1", params: { language: "es" } })],
-      ["riddle", () => generateRiddle({ date: DATE, memberId: "m1", params: { language: "es" } })],
       [
         "wordSearch",
         () => generateWordSearch({ date: DATE, memberId: "m1", params: { language: "es" } }),
@@ -290,6 +301,9 @@ describe("daily-briefing corpus block generators", () => {
     it("an unrecognized language also throws for a bilingual block (never silently defaults)", () => {
       expect(() =>
         generateAnimalFact({ date: DATE, memberId: "m1", params: { language: "fr" } })
+      ).toThrow(CorpusBlockParamError);
+      expect(() =>
+        generateRiddle({ date: DATE, memberId: "m1", params: { language: "fr" } })
       ).toThrow(CorpusBlockParamError);
     });
   });
@@ -354,10 +368,10 @@ describe("daily-briefing corpus block generators", () => {
     });
   });
 
-  describe("riddle corpus sanity (EN-only by policy, not by missing translation infra)", () => {
+  describe("riddle corpus sanity", () => {
     it("the selected riddle matches the underlying corpus entry at the recipe's index", () => {
       const result = generateRiddle({ date: DATE, memberId: "m1" });
-      const found = riddlesCorpus.find((entry) => entry.question === result.question);
+      const found = riddlesCorpus.en.find((entry) => entry.question === result.question);
       expect(found).toBeDefined();
       expect(found?.answer).toBe(result.answer);
     });
@@ -415,6 +429,14 @@ describe("daily-briefing corpus block generators", () => {
       expect(generateRiddle({ date: DATE, memberId: "m1" })).toEqual({
         question: "What comes once in a year, twice in a week, but never in a day?",
         answer: "The letter E.",
+      });
+    });
+
+    it("riddle: the same recipe selects the pinned Spanish entry of that slot", () => {
+      expect(generateRiddle({ date: DATE, memberId: "m1", params: { language: "es" } })).toEqual({
+        question:
+          "El burro la lleva a cuestas, metida está en un baúl. Yo no la tuve jamás y siempre la tienes tú. ¿Qué es?",
+        answer: "La letra U.",
       });
     });
 

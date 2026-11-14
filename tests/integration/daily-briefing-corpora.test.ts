@@ -20,9 +20,9 @@ import {
 } from "../../src/server/modules/daily-briefing/corpora/index";
 
 /** docs/features/daily-briefing.md (trap-sweep row): loader
- * shapes/counts, deterministic seeded selection, ES-variant resolution for the 4 translated
- * corpora, riddles EN-only (v1 policy), and corpus-availability-map correctness — the exact
- * surface `../settings.ts` and the future block generators depend on.
+ * shapes/counts, deterministic seeded selection, ES-variant resolution for the translated
+ * corpora, the Spanish riddles' content rules (FR-034), and corpus-availability-map
+ * correctness — the exact surface `../settings.ts` and the future block generators depend on.
  */
 describe("daily-briefing corpora", () => {
   describe("loader shapes and counts (v1 study parity)", () => {
@@ -71,9 +71,10 @@ describe("daily-briefing corpora", () => {
       expect(wouldYouRathersCorpus.es).toHaveLength(201);
     });
 
-    it("riddles: EN-only corpus, non-empty", () => {
-      expect(riddlesCorpus.length).toBeGreaterThan(0);
-      expect(riddlesCorpus[0]).toMatchObject({
+    it("riddles: 122 entries (en), 122 entries (es)", () => {
+      expect(riddlesCorpus.en).toHaveLength(122);
+      expect(riddlesCorpus.es).toHaveLength(122);
+      expect(riddlesCorpus.en[0]).toMatchObject({
         question: expect.any(String),
         answer: expect.any(String),
         difficulty: expect.stringMatching(/^(easy|medium|hard)$/),
@@ -163,12 +164,13 @@ describe("daily-briefing corpora", () => {
     });
   });
 
-  describe("ES-variant resolution (INV-06, the 4 translated corpora)", () => {
+  describe("ES-variant resolution (INV-06, the translated corpora)", () => {
     it.each([
       ["animalFact", animalFactsCorpus] as const,
       ["numberFact", numberFactsCorpus] as const,
       ["drawingPrompt", drawingPromptsCorpus] as const,
       ["wouldYouRather", wouldYouRathersCorpus] as const,
+      ["riddle", riddlesCorpus] as const,
     ])("%s: en and es siblings both resolve and are structurally aligned", (_type, corpus) => {
       expect(corpus.en.length).toBeGreaterThan(0);
       expect(corpus.es.length).toBe(corpus.en.length);
@@ -178,11 +180,85 @@ describe("daily-briefing corpora", () => {
     });
   });
 
+  /** The Spanish riddles are written in one pass and corrected as they show up on paper, so
+   * the rules a reader cannot be asked to check by eye on 122 entries are checked here. */
+  describe("Spanish riddles (FR-034)", () => {
+    const es = riddlesCorpus.es;
+    const texts = es.flatMap((entry) => [entry.question, entry.answer]);
+    const normalized = (text: string) => text.toLocaleLowerCase("es").replace(/\s+/g, " ").trim();
+    // Two answers are the same answer when they differ only in accents, punctuation or the
+    // leading article ("Un reloj." and "El reloj."); the tilde of ñ is kept.
+    const answerKey = (text: string) =>
+      normalized(text)
+        .normalize("NFD")
+        .replace(/[\u0301\u0308]/g, "")
+        .normalize("NFC")
+        .replace(/[^\p{L}\p{N} ]/gu, "")
+        .replace(/^(el|la|los|las|un|una|unos|unas|tu|su) /, "");
+    // Words of ASCII plus the Spanish letters and marks, one space apart: a reviewed subset of
+    // what JetBrains Mono draws.
+    const WORD = "[\\x21-\\x7EáéíóúüñÁÉÍÓÚÜÑ¿¡«»]+";
+    const PRINTABLE = new RegExp(`^${WORD}( ${WORD})*$`);
+
+    it("every entry has exactly a question, an answer and its English slot's difficulty", () => {
+      es.forEach((entry, index) => {
+        expect(Object.keys(entry).sort(), `entry ${index}`).toEqual([
+          "answer",
+          "difficulty",
+          "question",
+        ]);
+        expect(entry.difficulty, `entry ${index}`).toBe(riddlesCorpus.en[index].difficulty);
+      });
+    });
+
+    it("uses only the reviewed character set, a subset of what the receipt font draws, with no stray spacing", () => {
+      for (const text of texts) {
+        expect(text).toMatch(PRINTABLE);
+      }
+    });
+
+    it("pairs every question mark, exclamation mark and quote, with no space inside", () => {
+      for (const text of texts) {
+        const unpaired = text.replace(/¿[^¿?]*\?/g, "").replace(/¡[^¡!]*!/g, "");
+        expect(unpaired, text).not.toMatch(/[¿?¡!]/);
+        expect(text.split("«").length, text).toBe(text.split("»").length);
+        expect(text).not.toMatch(/ [?!.,;:»]|[¿¡«] /);
+      }
+    });
+
+    it("ends each riddle as a sentence and keeps it short enough for the slip", () => {
+      for (const entry of es) {
+        expect(entry.question).toMatch(/[?.]$/);
+        expect(entry.answer).toMatch(/\.$/);
+        expect(entry.question.length, entry.question).toBeLessThanOrEqual(160);
+        expect(entry.answer.length, entry.answer).toBeLessThanOrEqual(60);
+      }
+    });
+
+    it("repeats no question and no answer", () => {
+      const questions = es.map((entry) => normalized(entry.question));
+      const answers = es.map((entry) => answerKey(entry.answer));
+      expect(new Set(questions).size).toBe(questions.length);
+      expect(new Set(answers).size).toBe(answers.length);
+    });
+
+    it("leaves no English riddle untranslated", () => {
+      const english = new Set(
+        riddlesCorpus.en.flatMap((entry) => [normalized(entry.question), normalized(entry.answer)])
+      );
+      for (const text of texts) {
+        expect(english.has(normalized(text)), text).toBe(false);
+        expect(text).not.toMatch(/\b(what|who|the|you|am i|is it)\b/i);
+      }
+      for (const entry of es) {
+        expect(entry.answer).not.toMatch(/^(an?|the|your) [a-z]/i);
+      }
+    });
+  });
+
   describe("corpus-availability map (FR-008/FR-009)", () => {
-    it("riddles are EN-only: es is not an available language", () => {
-      expect(corpusLanguagesFor("riddle")).toEqual(["en"]);
-      expect(isCorpusLanguageAvailable("riddle", "en")).toBe(true);
-      expect(isCorpusLanguageAvailable("riddle", "es")).toBe(false);
+    it("riddles ship in English and Spanish (FR-034)", () => {
+      expect(corpusLanguagesFor("riddle")).toEqual(["en", "es"]);
     });
 
     it("trivia and wordOfDay (vocabulary) are EN-only", () => {
@@ -190,8 +266,14 @@ describe("daily-briefing corpora", () => {
       expect(isCorpusLanguageAvailable("wordOfDay", "es")).toBe(false);
     });
 
-    it("the 4 translated corpora accept both en and es", () => {
-      for (const type of ["animalFact", "numberFact", "drawingPrompt", "wouldYouRather"] as const) {
+    it("the translated corpora accept both en and es", () => {
+      for (const type of [
+        "animalFact",
+        "numberFact",
+        "drawingPrompt",
+        "wouldYouRather",
+        "riddle",
+      ] as const) {
         expect(isCorpusLanguageAvailable(type, "en")).toBe(true);
         expect(isCorpusLanguageAvailable(type, "es")).toBe(true);
       }
@@ -212,7 +294,7 @@ describe("daily-briefing corpora", () => {
       animalFact: { en: true, es: true },
       numberFact: { en: true, es: true },
       trivia: { en: true, es: false },
-      riddle: { en: true, es: false },
+      riddle: { en: true, es: true },
       phonics: { en: true, es: false },
       wouldYouRather: { en: true, es: true },
       wordSearch: { en: true, es: false },

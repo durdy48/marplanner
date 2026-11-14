@@ -396,10 +396,10 @@ describe("daily-briefing settings boundary", () => {
     expect(res.json()).toMatchObject({ error: "corpus_language_unavailable" });
   });
 
-  it("rejects a language with no on-disk corpus for that type (riddle is EN-only) with 400 corpus_language_unavailable", async () => {
+  it("rejects a language with no on-disk corpus for that type (phonics is EN-only) with 400 corpus_language_unavailable", async () => {
     const res = await app.inject({
       method: "PUT",
-      url: `/api/daily-briefing/block-settings/${memberId}/riddle`,
+      url: `/api/daily-briefing/block-settings/${memberId}/phonics`,
       cookies: auth(),
       payload: { params: { language: "es" } },
     });
@@ -423,7 +423,7 @@ describe("daily-briefing settings boundary", () => {
       method: "PUT",
       url: "/api/daily-briefing/block-order",
       cookies: auth(),
-      payload: [{ type: "riddle", params: { language: "es" } }],
+      payload: [{ type: "phonics", params: { language: "es" } }],
     });
     expect(res.statusCode).toBe(400);
     expect(res.json()).toMatchObject({ error: "corpus_language_unavailable" });

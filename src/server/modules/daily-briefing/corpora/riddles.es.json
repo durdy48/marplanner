@@ -1,0 +1,612 @@
+[
+  {
+    "question": "Tiene teclas, pero no es un piano; tiene ratón, pero no es un gato. ¿Qué es?",
+    "answer": "Un ordenador.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "Tengo agujas, pero no sé coser; tengo números, pero no sé leer. ¿Qué soy?",
+    "answer": "Un reloj.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "¿Qué se moja más cuanto más seca?",
+    "answer": "Una toalla.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "¿Qué tiene un solo ojo, no puede ver y lleva siempre un hilo detrás?",
+    "answer": "Una aguja.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "¿Qué tiene dientes, pero no muerde?",
+    "answer": "Un peine.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "¿Qué tiene cuello pero no cabeza?",
+    "answer": "Una botella.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "Tengo cuatro patas y no puedo andar; me ponen la comida y no la puedo probar. ¿Qué soy?",
+    "answer": "Una mesa.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "Oro parece, plata no es. ¿Qué es?",
+    "answer": "El plátano.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "¿Qué corre y nunca anda, tiene boca y nunca habla, y tiene lecho y nunca duerme?",
+    "answer": "Un río.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "¿Qué sube siempre y nunca baja?",
+    "answer": "La edad.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "¿Qué está lleno de agujeros y aun así retiene el agua?",
+    "answer": "Una esponja.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "Blanca por dentro, verde por fuera. Si quieres que te lo diga, espera.",
+    "answer": "La pera.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "Subo llena y bajo vacía; si no me doy prisa, la sopa se enfría. ¿Qué soy?",
+    "answer": "La cuchara.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "Tiene hojas y no es árbol, tiene lomo y no es caballo. ¿Qué es?",
+    "answer": "Un libro.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "¿Qué tiene cinco dedos, pero no está vivo?",
+    "answer": "Un guante.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "Hablo sin boca y oigo sin oídos. No tengo cuerpo, pero siempre te contesto. ¿Qué soy?",
+    "answer": "El eco.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "¿Qué tiene cara y cruz, pero no tiene ojos ni brazos?",
+    "answer": "Una moneda.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "¿Qué está siempre delante de ti, pero no se puede ver?",
+    "answer": "El futuro.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "¿Qué invento te permite ver a través de una pared?",
+    "answer": "La ventana.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "Soy ligera como una pluma, pero ni la persona más fuerte puede aguantarme más de cinco minutos. ¿Qué soy?",
+    "answer": "La respiración.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "Tengo ciudades pero no casas, bosques pero no árboles y agua pero no peces. ¿Qué soy?",
+    "answer": "Un mapa.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Cuantos más das, más dejas atrás. ¿Qué son?",
+    "answer": "Los pasos.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Vuelo de noche, duermo de día y nunca verás plumas en el ala mía. ¿Quién soy?",
+    "answer": "El murciélago.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "¿Qué puede dar la vuelta al mundo sin moverse de su esquina?",
+    "answer": "Un sello.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "¿Qué aparece una vez en un minuto, dos veces en un momento y ninguna en cien años?",
+    "answer": "La letra M.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Me sacan de la tierra y me encierran en un estuche de madera del que nunca salgo. Aun así, casi todo el mundo me usa. ¿Qué soy?",
+    "answer": "La mina de un lápiz.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Todos pasan por mí y yo no paso por nadie. Todos preguntan por mí y yo no pregunto por nadie. ¿Qué soy?",
+    "answer": "La calle.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "¿Qué puedes coger pero no lanzar?",
+    "answer": "Un resfriado.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "¿Qué es tan frágil que se rompe con solo decir su nombre?",
+    "answer": "El silencio.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "¿Qué puede llenar una habitación sin ocupar espacio?",
+    "answer": "La luz.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Lana sube, lana baja. ¿Qué es?",
+    "answer": "La navaja.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Entro seca y salgo mojada, y cuanto más tiempo paso dentro, más sabor dejo. ¿Qué soy?",
+    "answer": "Una bolsita de té.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "¿Qué tiene cabecera, pies y cuatro patas, pero no anda?",
+    "answer": "Una cama.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "¿Qué palabra de nueve letras se lee igual al derecho que al revés?",
+    "answer": "Reconocer.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "¿Qué puedes guardar sin cajones y contar sin números?",
+    "answer": "Un secreto.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Siempre tengo hambre y siempre hay que alimentarme. El dedo que toco pronto se pone rojo. ¿Qué soy?",
+    "answer": "El fuego.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "¿Qué se hace más corto cuanto más tiempo está encendido?",
+    "answer": "Una vela.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Tengo copa y no soy árbol, tengo alas y no soy pájaro. ¿Qué soy?",
+    "answer": "Un sombrero.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Una señorita muy aseñorada, que siempre va en coche y siempre va mojada. ¿Quién es?",
+    "answer": "La lengua.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Te la digo y no me entiendes, te la repito y no me comprendes. ¿Qué es?",
+    "answer": "La tela.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Tengo varillas y no soy abanico, tengo mango y no soy sartén, y solo me abro cuando llueve. ¿Qué soy?",
+    "answer": "El paraguas.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "¿Qué puedes cumplir o romper sin tocarlo?",
+    "answer": "Una promesa.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Sin ser rica tengo cuartos y, sin morir, nazco nueva. Y aunque nunca como nada, hay noches que estoy llena. ¿Quién soy?",
+    "answer": "La luna.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "¿Qué vuela sin alas cuando te diviertes y se arrastra cuando te aburres?",
+    "answer": "El tiempo.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Y lo es, y lo es, y no me lo adivinas ni en un mes. ¿Qué es?",
+    "answer": "El hilo.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Hago espuma con el agua y, cada vez que me usas, me hago más pequeña. ¿Qué soy?",
+    "answer": "Una pastilla de jabón.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "¿Qué tiene un ojo en el centro, pero no puede ver?",
+    "answer": "Un huracán.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "En medio del cielo estoy, sin ser lucero ni estrella, sin ser sol ni luna bella. ¿Quién soy?",
+    "answer": "La letra E.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Llevo miles de púas encima y, si me asusto, me hago una bola. ¿Qué soy?",
+    "answer": "Un erizo.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "¿Qué criatura anda a cuatro patas por la mañana, con dos al mediodía y con tres al atardecer?",
+    "answer": "El ser humano.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Quien lo hace no lo quiere, quien lo compra no lo usa y quien lo usa no lo sabe. ¿Qué es?",
+    "answer": "Un ataúd.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Soy hijo del agua, pero si me devuelves a ella, desaparezco. ¿Qué soy?",
+    "answer": "El hielo.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Un hombre mira un retrato y dice: «No tengo hermanos ni hermanas, pero el padre de ese hombre es hijo de mi padre». ¿Quién aparece en el retrato?",
+    "answer": "Su hijo.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Vence al tigre y al león, vence al toro embravecido, vence a señores y reyes, que a sus pies caen rendidos. ¿Qué es?",
+    "answer": "El sueño.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Un platito de avellanas que de día se recoge y de noche se derrama. ¿Qué son?",
+    "answer": "Las estrellas.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Siempre me ves a lo lejos y, por mucho que camines hacia mí, nunca me alcanzarás. ¿Qué soy?",
+    "answer": "El horizonte.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Tiras lo de fuera y cocinas lo de dentro. Luego te comes lo de fuera y tiras lo de dentro. ¿Qué has comido?",
+    "answer": "Una mazorca de maíz.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "¿Qué se hace más grande cuanto más le quitas?",
+    "answer": "Un agujero.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Caigo del cielo sin hacer ruido y lo dejo todo de blanco vestido. ¿Qué soy?",
+    "answer": "La nieve.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Dos padres y dos hijos fueron a pescar. Pescaron tres peces y a cada uno le tocó uno entero. ¿Cómo es posible?",
+    "answer": "Eran tres: un abuelo, su hijo y su nieto.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Cuanto más hay de mí, menos ves. ¿Qué soy?",
+    "answer": "La oscuridad.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Doy calorcito, soy muy redondo, salgo prontito y tarde me escondo. ¿Quién soy?",
+    "answer": "El sol.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "Canto en la orilla, vivo en el agua, no soy pescado ni soy cigarra. ¿Quién soy?",
+    "answer": "La rana.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "Soy una planta con una flor que gira y gira buscando el sol. ¿Qué planta soy?",
+    "answer": "El girasol.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "Tiene famosa memoria, gran olfato y dura piel, y las mayores narices que en el mundo pueda haber. ¿Quién es?",
+    "answer": "El elefante.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "Te sigo a todas partes cuando hace sol, pero nunca me puedes atrapar. ¿Qué soy?",
+    "answer": "Tu sombra.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "Tenemos dos piernas, pero no podemos andar si nadie nos lleva puestos. ¿Qué somos?",
+    "answer": "Unos pantalones.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "¿Qué se tira cuando se necesita y se recoge cuando ya no hace falta?",
+    "answer": "Un ancla.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "Soy una fruta y también un color. ¿Qué soy?",
+    "answer": "La naranja.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "Adivina, adivinanza: ¿qué tiene el rey en la panza?",
+    "answer": "El ombligo.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "Tengo hipo al decir mi nombre. ¿Quién soy?",
+    "answer": "El hipopótamo.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "¿Qué tiene veintisiete letras pero solo cuatro sílabas?",
+    "answer": "El alfabeto.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "Te doy calor, pero no estoy viva. Te tapas conmigo, pero no soy ropa. ¿Qué soy?",
+    "answer": "Una manta.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "Soy roja con lunares negros y, si me poso en tu dedo, enseguida echo a volar. ¿Qué soy?",
+    "answer": "Una mariquita.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "¿Qué rodea la casa, pero nunca entra en ella?",
+    "answer": "Una valla.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "Redondo, redondo, barril sin fondo. ¿Qué es?",
+    "answer": "Un anillo.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "¿Qué tiene cabeza y cola, pero todavía no tiene patas?",
+    "answer": "Un renacuajo.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "¿Qué pesa más, un kilo de hierro o un kilo de paja?",
+    "answer": "Pesan lo mismo: un kilo.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "Pequeña como una pera, alumbra la casa entera. ¿Qué es?",
+    "answer": "La bombilla.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "¿Qué hay al final del arcoíris?",
+    "answer": "La letra S.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "¿Cuántos meses del año tienen veintiocho días?",
+    "answer": "Todos.",
+    "difficulty": "easy"
+  },
+  {
+    "question": "Una cajita chiquita, blanca como la cal: todos la saben abrir, nadie la sabe cerrar. ¿Qué es?",
+    "answer": "El huevo.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Agua pasa por mi casa, cate de mi corazón. ¿Qué es?",
+    "answer": "El aguacate.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Cien amigos tengo, todos en una tabla; si yo no los toco, ellos no me hablan. ¿Qué es?",
+    "answer": "El piano.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Choco entre dos paredes, late mi corazón. ¿Qué soy?",
+    "answer": "El chocolate.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Llevo mi casa al hombro, camino sin tener patas y voy marcando mi huella con un hilito de plata. ¿Quién soy?",
+    "answer": "El caracol.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Zumba que te zumbarás, van y vienen sin descanso, de flor en flor trajinando y nuestra vida endulzando. ¿Quiénes son?",
+    "answer": "Las abejas.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Una vieja con un diente que llama a toda la gente. ¿Qué es?",
+    "answer": "La campana.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Salgo de la sala, voy a la cocina, meneando la cola como una gallina. ¿Qué soy?",
+    "answer": "La escoba.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "¿Qué corre sin piernas, ruge sin garganta y salta al vacío sin hacerse daño?",
+    "answer": "Una cascada.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "No soy un espejo, pero muestro tu cara. No soy el mar, pero tengo ondas. ¿Qué soy?",
+    "answer": "Un estanque.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Por un caminito va caminando un bicho, y el nombre del bicho ya te lo he dicho. ¿Qué bicho es?",
+    "answer": "La vaca.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Cinco hermanos muy unidos que no se pueden mirar; cuando riñen, aunque quieras, no los puedes separar. ¿Quiénes son?",
+    "answer": "Los dedos de la mano.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Soy ave y soy llana, pero no tengo pico ni alas. ¿Qué soy?",
+    "answer": "La avellana.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "¿Qué tiene un corazón que no late?",
+    "answer": "Una alcachofa.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "No es cama ni es león, y desaparece en cualquier rincón. ¿Qué es?",
+    "answer": "El camaleón.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "¿Qué puedes sujetar con la mano izquierda pero nunca con la derecha?",
+    "answer": "Tu codo derecho.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "¿Qué capa no abriga y solo se puede poner cuando está húmeda?",
+    "answer": "Una capa de pintura.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Tiene ojos de gato y no es gato, orejas de gato y no es gato, patas de gato y no es gato, rabo de gato y no es gato. ¿Qué es?",
+    "answer": "Una gata.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "¿Qué pierde la cabeza cada mañana y la recupera cada noche?",
+    "answer": "Una almohada.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "¿Qué es negro cuando lo compras, rojo cuando lo usas y gris cuando lo tiras?",
+    "answer": "El carbón.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "¿Qué atraviesa la puerta, pero nunca entra ni sale?",
+    "answer": "El ojo de la cerradura.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Silba sin boca, corre sin pies, te pega en la cara y tú no lo ves. ¿Qué es?",
+    "answer": "El viento.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Me llegan las cartas y no sé leer y, aunque me las trago, no mancho el papel. ¿Qué soy?",
+    "answer": "El buzón.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "¿Qué baja siempre, nunca sube y hace salir a los caracoles?",
+    "answer": "La lluvia.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Treinta caballitos blancos en una colina roja: primero muerden, luego pisotean y después se quedan quietos. ¿Qué son?",
+    "answer": "Los dientes.",
+    "difficulty": "medium"
+  },
+  {
+    "question": "No tengo alas, pero vuelo. No tengo ojos, pero lloro. ¿Qué soy?",
+    "answer": "Una nube.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "¿Qué está en el centro de marzo y de abril, pero no al principio ni al final de ninguno de los dos?",
+    "answer": "La letra R.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Es tuyo, pero los demás lo usan más que tú. ¿Qué es?",
+    "answer": "Tu nombre.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "No estoy viva, pero me puedo morir. ¿Qué soy?",
+    "answer": "Una batería.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "El burro la lleva a cuestas, metida está en un baúl. Yo no la tuve jamás y siempre la tienes tú. ¿Qué es?",
+    "answer": "La letra U.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Dos hermanas diligentes que caminan al compás, con el pico por delante y los ojos por detrás. ¿Qué son?",
+    "answer": "Las tijeras.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "¿Qué viaja más rápido que la luz y llega a cualquier sitio sin moverse?",
+    "answer": "La imaginación.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Tiene ojos y no ve, tiene agua y no la bebe, tiene carne y no la come, tiene barba y no es hombre. ¿Qué es?",
+    "answer": "El coco.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Un vaquero llega a un pueblo en viernes, se queda tres días y se marcha en viernes. ¿Cómo es posible?",
+    "answer": "Su caballo se llama Viernes.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "En el campo me crie, atada con verdes lazos, y aquel que llora por mí me está partiendo en pedazos. ¿Quién soy?",
+    "answer": "La cebolla.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Soy bonito por delante y algo feo por detrás. Me transformo a cada instante, pues imito a los demás. ¿Qué soy?",
+    "answer": "El espejo.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Verde me crie, rubio me cortaron, duro me molieron y blanco me amasaron. ¿Qué soy?",
+    "answer": "El trigo.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "En el mar y no me mojo, en brasas y no me abraso, en el aire y no me caigo, y me tienes en tus brazos. ¿Quién soy?",
+    "answer": "La letra A.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "No tengo boca, pero cuento historias. No tengo memoria, pero guardo un instante para siempre. ¿Qué soy?",
+    "answer": "Una fotografía.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Antes de que se descubriera el Everest, ¿cuál era la montaña más alta del mundo?",
+    "answer": "El Everest: ya era la más alta.",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Nadie puede volver a él ni cambiarlo, pero todo el mundo lo recuerda. ¿Qué es?",
+    "answer": "El pasado.",
+    "difficulty": "hard"
+  }
+]

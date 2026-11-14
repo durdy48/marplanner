@@ -1,0 +1,11 @@
+# A browser sends no SNI for an IP address, and inside the container Caddy's own address is not
+# the LAN one, so without a default it finds no certificate and the handshake fails.
+{
+	default_sni {$MP_LAN_HOST}
+}
+
+# Internal CA certificate for the LAN address; the tablet must trust Caddy's root CA once.
+{$MP_LAN_HOST} {
+	tls internal
+	reverse_proxy marplanner:3000
+}

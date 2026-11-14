@@ -1,0 +1,24 @@
+# LAN HTTPS front for Marplanner (local trial / home network).
+# Marplanner itself stays bound to 127.0.0.1; only Caddy listens on the LAN.
+# ADR-060: plain HTTP on a LAN address is unsupported (Secure cookies), so TLS is required.
+# Use together with ../compose.yaml:
+#   docker compose --env-file infra/docker/.env.local \
+#     -f infra/docker/compose.yaml -f infra/docker/lan/compose.lan.yaml -p marplanner-home up --build -d
+services:
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on:
+      - marplanner
+    ports:
+      - "443:443"
+    environment:
+      - MP_LAN_HOST=${MP_LAN_HOST:?Set MP_LAN_HOST in infra/docker/.env.local (LAN IP or hostname)}
+    volumes:
+      - ./lan/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+
+volumes:
+  caddy-data:
+  caddy-config:

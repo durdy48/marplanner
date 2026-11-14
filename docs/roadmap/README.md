@@ -7,7 +7,7 @@ records what was observed, what is known about the cause, and the options seen s
 | #   | Item                                                                      | Kind    | Status                             |
 | --- | ------------------------------------------------------------------------- | ------- | ---------------------------------- |
 | 1   | [Weather and streak print twice by default](#1-weather-and-streak-twice)  | Bug/UX  | Open                               |
-| 2   | [English content on a Spanish household's slip](#2-english-content)       | Feature | In progress: 2 of 7 blocks done    |
+| 2   | [English content on a Spanish household's slip](#2-english-content)       | Feature | In progress: 3 of 7 blocks done    |
 | 3   | [Emoji typed in a reminder prints as an empty box](#3-emoji-in-reminders) | Bug     | Open                               |
 | 4   | [Print the briefing on an ordinary A4 printer](#4-a4-printing)            | Feature | Manual print done; unattended open |
 | 5   | [Household chores beyond children's routines](#5-household-chores)        | Feature | Open                               |
@@ -132,6 +132,20 @@ length, duplicates (ignoring accents and articles) and leftover English.
 A briefing generated before the change keeps its English riddle; **Regenerate** replaces
 it. A riddle language set explicitly to English in Admin → Daily briefing → Blocks stays
 English.
+
+**Done: `dadJoke`.** `corpora/jokes.es.json` holds 588 Spanish jokes, as many as the English
+corpus, so a date picks a slot in either language (FR-035). None is a translation: English
+puns ("a quack mob", "import-ant") do not survive one. The mix: 160 "¿Qué le dijo...?", 117
+"colmos", 153 short questions with a pun for an answer ("¿Por qué...?", "¿Cómo se
+llama...?", "¿Qué sale de cruzar...?") and 158 short scenes (doctor, waiter, Jaimito, "van
+dos", "toc, toc"). A first draft of 863 was cut by a third on review: jokes with no pun,
+English puns that slipped through, ones that made fun of someone's body, disability or
+origin, and repeats of an idea.
+A test checks the character set, paired marks and quotes, the length, duplicates and leftover
+English.
+
+A briefing generated before the change keeps its English joke; **Regenerate** replaces it. A
+joke language set explicitly to English in Admin → Daily briefing → Blocks stays English.
 
 ## 3. Emoji in reminders
 

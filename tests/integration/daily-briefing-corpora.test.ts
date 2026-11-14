@@ -26,10 +26,11 @@ import {
  */
 describe("daily-briefing corpora", () => {
   describe("loader shapes and counts (v1 study parity)", () => {
-    it("jokes: 588 entries, each a TextEntry", () => {
-      expect(dadJokesCorpus).toHaveLength(588);
-      expect(dadJokesCorpus[0]).toHaveProperty("text");
-      expect(typeof dadJokesCorpus[0].text).toBe("string");
+    it("jokes: 588 entries (en), 588 entries (es), each a TextEntry", () => {
+      expect(dadJokesCorpus.en).toHaveLength(588);
+      expect(dadJokesCorpus.es).toHaveLength(588);
+      expect(dadJokesCorpus.en[0]).toHaveProperty("text");
+      expect(typeof dadJokesCorpus.en[0].text).toBe("string");
     });
 
     it("trivia: 832 entries", () => {
@@ -117,15 +118,15 @@ describe("daily-briefing corpora", () => {
 
     it("the SAME seed selects the SAME corpus entry twice", () => {
       const seed = hashSeed("2026-09-08|joke");
-      const idxA = seed % dadJokesCorpus.length;
-      const idxB = hashSeed("2026-09-08|joke") % dadJokesCorpus.length;
+      const idxA = seed % dadJokesCorpus.en.length;
+      const idxB = hashSeed("2026-09-08|joke") % dadJokesCorpus.en.length;
       expect(idxA).toBe(idxB);
-      expect(dadJokesCorpus[idxA]).toBe(dadJokesCorpus[idxB]);
+      expect(dadJokesCorpus.en[idxA]).toBe(dadJokesCorpus.en[idxB]);
     });
 
     it("a DIFFERENT date generally selects a different entry", () => {
-      const idxDay1 = hashSeed("2026-09-08|joke") % dadJokesCorpus.length;
-      const idxDay2 = hashSeed("2026-09-09|joke") % dadJokesCorpus.length;
+      const idxDay1 = hashSeed("2026-09-08|joke") % dadJokesCorpus.en.length;
+      const idxDay2 = hashSeed("2026-09-09|joke") % dadJokesCorpus.en.length;
       // Not a mathematical guarantee (a hash collision on the modulus is possible), but a
       // 588-entry pool makes an accidental collision on ANY two adjacent-day probes vanishingly
       // unlikely — if this ever flakes, the recipe (not the test) is the first suspect.
@@ -171,6 +172,7 @@ describe("daily-briefing corpora", () => {
       ["drawingPrompt", drawingPromptsCorpus] as const,
       ["wouldYouRather", wouldYouRathersCorpus] as const,
       ["riddle", riddlesCorpus] as const,
+      ["dadJoke", dadJokesCorpus] as const,
     ])("%s: en and es siblings both resolve and are structurally aligned", (_type, corpus) => {
       expect(corpus.en.length).toBeGreaterThan(0);
       expect(corpus.es.length).toBe(corpus.en.length);
@@ -256,7 +258,69 @@ describe("daily-briefing corpora", () => {
     });
   });
 
+  /** The Spanish jokes are written for the household, not translated, so these checks stand in
+   * for a reader's eye on 588 entries: the slip's font, paired marks, length and repeats. */
+  describe("Spanish jokes (FR-035)", () => {
+    const es = dadJokesCorpus.es.map((entry) => entry.text);
+    const normalized = (text: string) =>
+      text
+        .toLocaleLowerCase("es")
+        .normalize("NFD")
+        .replace(/[\u0301\u0308]/g, "")
+        .normalize("NFC")
+        .replace(/[^\p{L}\p{N} ]/gu, "")
+        .replace(/\s+/g, " ")
+        .trim();
+    // Words of ASCII plus the Spanish letters and marks, one space apart: a reviewed subset of
+    // what JetBrains Mono draws.
+    const WORD = "[\\x21-\\x7EáéíóúüñÁÉÍÓÚÜÑ¿¡«»]+";
+    const PRINTABLE = new RegExp(`^${WORD}( ${WORD})*$`);
+
+    it("every entry has exactly a text", () => {
+      dadJokesCorpus.es.forEach((entry, index) => {
+        expect(Object.keys(entry), `entry ${index}`).toEqual(["text"]);
+      });
+    });
+
+    it("uses only the reviewed character set, a subset of what the receipt font draws, with no stray spacing", () => {
+      for (const text of es) {
+        expect(text).toMatch(PRINTABLE);
+      }
+    });
+
+    it("pairs every question mark, exclamation mark and quote, with no space inside", () => {
+      for (const text of es) {
+        const unpaired = text.replace(/¿[^¿?]*\?/g, "").replace(/¡[^¡!]*!/g, "");
+        expect(unpaired, text).not.toMatch(/[¿?¡!]/);
+        expect(text.split("«").length, text).toBe(text.split("»").length);
+        expect(text.split('"').length % 2, text).toBe(1);
+        expect(text).not.toMatch(/ [?!.,;:»]|[¿¡«] /);
+      }
+    });
+
+    it("ends each joke as a sentence and keeps it short enough for the slip", () => {
+      for (const text of es) {
+        expect(text).toMatch(/[.?!»]$/);
+        expect(text.length, text).toBeLessThanOrEqual(200);
+      }
+    });
+
+    it("repeats no joke and leaves no English one", () => {
+      const keys = es.map(normalized);
+      expect(new Set(keys).size).toBe(keys.length);
+      const english = new Set(dadJokesCorpus.en.map((entry) => normalized(entry.text)));
+      for (const text of es) {
+        expect(english.has(normalized(text)), text).toBe(false);
+        expect(text).not.toMatch(/\b(what|why|who|the|you)\b/i);
+      }
+    });
+  });
+
   describe("corpus-availability map (FR-008/FR-009)", () => {
+    it("jokes ship in English and Spanish (FR-035)", () => {
+      expect(corpusLanguagesFor("dadJoke")).toEqual(["en", "es"]);
+    });
+
     it("riddles ship in English and Spanish (FR-034)", () => {
       expect(corpusLanguagesFor("riddle")).toEqual(["en", "es"]);
     });
@@ -273,6 +337,7 @@ describe("daily-briefing corpora", () => {
         "drawingPrompt",
         "wouldYouRather",
         "riddle",
+        "dadJoke",
       ] as const) {
         expect(isCorpusLanguageAvailable(type, "en")).toBe(true);
         expect(isCorpusLanguageAvailable(type, "es")).toBe(true);
@@ -281,7 +346,7 @@ describe("daily-briefing corpora", () => {
 
     /** (batch-B): table-drive the FULL corpus-backed-type x language matrix against a
      * hardcoded expected table (not derived from `corpusLanguagesFor`, which would make this
-     * tautological) — a per-cell mutation of `CORPUS_LANGUAGE_AVAILABILITY` (e.g. dadJoke
+     * tautological) — a per-cell mutation of `CORPUS_LANGUAGE_AVAILABILITY` (e.g. trivia
      * silently gaining `es`) fails exactly the one affected cell instead of surviving the
      * looser spot-checks below.
      */
@@ -289,7 +354,7 @@ describe("daily-briefing corpora", () => {
       (typeof CORPUS_BLOCK_TYPES)[number],
       { en: boolean; es: boolean }
     > = {
-      dadJoke: { en: true, es: false },
+      dadJoke: { en: true, es: true },
       wordOfDay: { en: true, es: false },
       animalFact: { en: true, es: true },
       numberFact: { en: true, es: true },

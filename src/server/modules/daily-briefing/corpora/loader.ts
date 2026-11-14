@@ -30,7 +30,8 @@ import type {
 } from "./types";
 import type { CorpusLanguage } from "./block-types";
 
-import jokesJson from "./jokes.json";
+import jokesEnJson from "./jokes.json";
+import jokesEsJson from "./jokes.es.json";
 import riddlesEnJson from "./riddles.json";
 import riddlesEsJson from "./riddles.es.json";
 import triviaQuestionsJson from "./trivia-questions.json";
@@ -47,7 +48,6 @@ import wordSearchCorpusJson from "./word-search-corpus.json";
 import phonicsWordsJson from "./phonics-words.json";
 
 // ── EN-only corpora ──────────────────────────────────────────────────────────
-export const dadJokesCorpus = jokesJson as TextEntry[];
 export const triviaCorpus = triviaQuestionsJson as TriviaEntry[];
 export const vocabularyCorpus = vocabularyEntriesJson as VocabularyEntry[];
 export const phonicsCorpus = phonicsWordsJson as PhonicsWordEntry[];
@@ -68,6 +68,12 @@ export const drawingPromptsCorpus: Record<CorpusLanguage, TextEntry[]> = {
 export const wouldYouRathersCorpus: Record<CorpusLanguage, WouldYouRatherEntry[]> = {
   en: wouldYouRathersEnJson as WouldYouRatherEntry[],
   es: wouldYouRathersEsJson as WouldYouRatherEntry[],
+};
+/** The Spanish jokes are new jokes, not translations: English puns do not survive translation,
+ * so a slot holds an unrelated Spanish joke and only the count matches. */
+export const dadJokesCorpus: Record<CorpusLanguage, TextEntry[]> = {
+  en: jokesEnJson as TextEntry[],
+  es: jokesEsJson as TextEntry[],
 };
 /** The Spanish riddles are not translations entry by entry: a slot whose English riddle is a
  * play on English words holds a riddle that works in Spanish, with the slot's difficulty. */

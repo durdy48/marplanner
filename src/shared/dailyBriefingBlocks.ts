@@ -71,7 +71,13 @@ export const BRIEFING_BLOCKS = [
   { type: "meals", scope: "shared", kind: "local", defaultEnabled: true },
   { type: "birthday", scope: "member", kind: "local", defaultEnabled: true },
   { type: "reminders", scope: "member", kind: "local", defaultEnabled: true },
-  { type: "dadJoke", scope: "shared", kind: "corpus", defaultEnabled: true, languages: ["en"] },
+  {
+    type: "dadJoke",
+    scope: "shared",
+    kind: "corpus",
+    defaultEnabled: true,
+    languages: ["en", "es"],
+  },
   {
     type: "wordOfDay",
     scope: "shared",

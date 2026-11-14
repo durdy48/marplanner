@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   animalFactsCorpus,
+  dadJokesCorpus,
   drawingPromptsCorpus,
   numberFactsCorpus,
   riddlesCorpus,
@@ -265,6 +266,14 @@ describe("daily-briefing corpus block generators", () => {
       expect(es).not.toEqual(en);
     });
 
+    it("dadJoke: es resolves the SAME index as en, in the es corpus (FR-035)", () => {
+      const en = generateDadJoke({ date: DATE, memberId: "m1" });
+      const es = generateDadJoke({ date: DATE, memberId: "m1", params: { language: "es" } });
+      const idx = dadJokesCorpus.en.findIndex((entry) => entry.text === en.text);
+      expect(idx).toBeGreaterThanOrEqual(0);
+      expect(es).toEqual({ text: dadJokesCorpus.es[idx].text });
+    });
+
     it("defaulting (no language param) always resolves the en variant", () => {
       const defaulted = generateAnimalFact({ date: DATE, memberId: "m1" });
       const explicitEn = generateAnimalFact({
@@ -278,10 +287,6 @@ describe("daily-briefing corpus block generators", () => {
 
   describe("assert-throw on a language without a corpus (no English-fallback degradation)", () => {
     it.each([
-      [
-        "dadJoke",
-        () => generateDadJoke({ date: DATE, memberId: "m1", params: { language: "es" } }),
-      ],
       [
         "wordOfDay",
         () => generateWordOfDay({ date: DATE, memberId: "m1", params: { language: "es" } }),
@@ -422,6 +427,12 @@ describe("daily-briefing corpus block generators", () => {
     it("dadJoke: `${date}|joke` selects a pinned entry for 2026-09-08", () => {
       expect(generateDadJoke({ date: DATE, memberId: "m1" })).toEqual({
         text: "What do you call a crowd of ducks? A quack mob.",
+      });
+    });
+
+    it("dadJoke: the same recipe selects the pinned Spanish entry of that slot", () => {
+      expect(generateDadJoke({ date: DATE, memberId: "m1", params: { language: "es" } })).toEqual({
+        text: "¿Cuál es el colmo de un río? Que le den una mala corriente.",
       });
     });
 

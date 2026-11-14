@@ -63,6 +63,7 @@ import { generateNumberFact } from "../../src/server/modules/daily-briefing/bloc
 import { generateWouldYouRather } from "../../src/server/modules/daily-briefing/blocks/would-you-rather";
 import { generateDrawingPrompt } from "../../src/server/modules/daily-briefing/blocks/drawing-prompt";
 import { generateRiddle } from "../../src/server/modules/daily-briefing/blocks/riddle";
+import { generateDadJoke } from "../../src/server/modules/daily-briefing/blocks/dad-joke";
 import { ALL_BLOCK_TYPES } from "../../src/server/modules/daily-briefing/corpora/index";
 import { getLabels } from "../../src/server/modules/daily-briefing/render/labels";
 import { useIsolatedDb } from "../helpers/db";
@@ -521,6 +522,7 @@ describe("daily-briefing full generation", () => {
         wouldYouRather: generateWouldYouRather,
         drawingPrompt: generateDrawingPrompt,
         riddle: generateRiddle,
+        dadJoke: generateDadJoke,
       };
       for (const [type, generate] of Object.entries(generators)) {
         const block = briefing.payload.blocks.find((b) => b.type === type);
@@ -531,7 +533,7 @@ describe("daily-briefing full generation", () => {
           data: generate({ date: DATE_FRI, memberId: "m1", params: { language } }),
         });
       }
-      for (const type of ["dadJoke", "wordOfDay", "trivia", "wordSearch"]) {
+      for (const type of ["wordOfDay", "trivia", "wordSearch"]) {
         expect(briefing.payload.blocks.find((b) => b.type === type)).toMatchObject({
           status: "ok",
           language: "en",
@@ -578,19 +580,19 @@ describe("daily-briefing full generation", () => {
     seedMember("m1", { optedIn: true });
     // No daily_messages row seeded for m1/DATE_FRI: "message" resolves null (handoff note the
     // null-omit trap) — must be ABSENT from blocks, never a {status:"failed"} record.
-    // "dadJoke" is EN-only; an illegal "es" request (bypassing settings.ts's write-boundary
-    // validator, simulating stale/legacy data) makes `generateDadJoke` throw
+    // "trivia" is EN-only; an illegal "es" request (bypassing settings.ts's write-boundary
+    // validator, simulating stale/legacy data) makes `generateTrivia` throw
     // `CorpusBlockParamError` — caught and RECORDED as a failed block (never omitted).
-    seedIllegalMemberBlockParams("m1", "dadJoke", { language: "es" });
+    seedIllegalMemberBlockParams("m1", "trivia", { language: "es" });
 
     const briefing = await generateBriefing("m1", DATE_FRI);
     const types = briefing.payload.blocks.map((b) => b.type);
 
     expect(types).not.toContain("message");
-    const dadJoke = briefing.payload.blocks.find((b) => b.type === "dadJoke");
-    expect(dadJoke).toMatchObject({ status: "failed", error: "gather_failed" });
-    expect(dadJoke?.data).toBeUndefined();
-    // Survivors exist (corpus/shotgun content unaffected by the dadJoke throw) — "partial", not
+    const trivia = briefing.payload.blocks.find((b) => b.type === "trivia");
+    expect(trivia).toMatchObject({ status: "failed", error: "gather_failed" });
+    expect(trivia?.data).toBeUndefined();
+    // Survivors exist (corpus/shotgun content unaffected by the trivia throw) — "partial", not
     // "failed" (DAILY-BRIEFING-AC-09).
     expect(briefing.status).toBe("partial");
     expect(briefing.payload.blocks.some((b) => b.status === "ok")).toBe(true);

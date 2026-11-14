@@ -45,3 +45,7 @@ images, colours or names are taken from either.
 riddles.es.json is another: its riddles were translated from riddles.json or written for
 Marplanner, and some are traditional Spanish riddles ("adivinanzas") from the oral
 tradition, which has no author and is in the public domain.
+
+jokes.es.json is another: its jokes were written for Marplanner, and some are traditional
+Spanish jokes ("chistes", "colmos") from the oral tradition, which has no author and is in
+the public domain. They are not translations of jokes.json.

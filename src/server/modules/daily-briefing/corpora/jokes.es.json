@@ -1,0 +1,1766 @@
+[
+  {
+    "text": "¿Qué le dijo un semáforo a otro? No me mires, que me estoy cambiando."
+  },
+  {
+    "text": "¿Qué le dijo una pared a otra pared? Nos vemos en la esquina."
+  },
+  {
+    "text": "¿Qué le dijo el 0 al 8? ¡Qué cinturón tan bonito!"
+  },
+  {
+    "text": "¿Qué le dijo el 1 al 10? Para ser como yo, tienes que ser sincero."
+  },
+  {
+    "text": "¿Qué le dijo una uva verde a una uva morada? ¡Respira, que te estás poniendo morada!"
+  },
+  {
+    "text": "¿Qué le dijo un pez a otro pez? Nada, nada."
+  },
+  {
+    "text": "¿Qué le dijo el café al azúcar? Sin ti, mi vida es muy amarga."
+  },
+  {
+    "text": "¿Qué le dijo un techo a otro techo? Techo de menos."
+  },
+  {
+    "text": "¿Qué le dijo un árbol a otro árbol? Nos han dejado plantados."
+  },
+  {
+    "text": "¿Qué le dijo una impresora a otra? ¿Esa hoja es tuya o es impresión mía?"
+  },
+  {
+    "text": "¿Qué le dijo una iguana a su hermana gemela? Somos iguanitas."
+  },
+  {
+    "text": "¿Qué le dijo la cuchara a la gelatina? No tiembles, cobarde."
+  },
+  {
+    "text": "¿Qué le dijo la goma al lápiz? Tranquilo, yo borro tus errores."
+  },
+  {
+    "text": "¿Qué le dijo el mar a la arena? Nada, solo la saludó con una ola."
+  },
+  {
+    "text": "¿Qué le dijo un gusano a otro gusano? Me voy a dar una vuelta a la manzana."
+  },
+  {
+    "text": "¿Qué le dijo el minutero al segundero? Qué prisa llevas, tómate un minuto."
+  },
+  {
+    "text": "¿Qué le dijo el fuego al agua? Siempre me apagas la ilusión."
+  },
+  {
+    "text": "¿Qué le dijo una vaca a otra vaca? ¿Tú también vienes a pastar o solo a mirar?"
+  },
+  {
+    "text": "¿Qué le dijo el tenedor al cuchillo? Eres el más cortante de toda la mesa."
+  },
+  {
+    "text": "¿Qué le dijo la sartén al huevo? Contigo siempre acabo frita."
+  },
+  {
+    "text": "¿Qué le dijo un plátano a otro plátano? ¿Te pelas o te pelo?"
+  },
+  {
+    "text": "¿Qué le dijo la leche al cacao? Contigo me pongo de todos los colores."
+  },
+  {
+    "text": "¿Qué le dijo una media a la otra? Estoy hecha un desastre, se me ve el talón."
+  },
+  {
+    "text": "¿Qué le dijo un zapato a otro zapato? Vamos por buen camino."
+  },
+  {
+    "text": "¿Qué le dijo el pie derecho al pie izquierdo? Siempre vas un paso por detrás."
+  },
+  {
+    "text": "¿Qué le dijo un ojo al otro ojo? Entre tú y yo hay algo que huele."
+  },
+  {
+    "text": "¿Qué le dijo la nariz al dedo? Deja de meterte donde no te llaman."
+  },
+  {
+    "text": "¿Qué le dijo una ceja a la otra ceja? Siempre tan cerca y nunca nos tocamos."
+  },
+  {
+    "text": "¿Qué le dijo un diente a otro diente? Hoy viene el dentista, ¡aguanta firme!"
+  },
+  {
+    "text": "¿Qué le dijo el cepillo de dientes a la pasta? Eres la única que me da la mano todas las mañanas."
+  },
+  {
+    "text": "¿Qué le dijo el champú al pelo? Contigo me lo paso de espuma."
+  },
+  {
+    "text": "¿Qué le dijo el jabón a la esponja? No te hagas la dura, que te estás empapando."
+  },
+  {
+    "text": "¿Qué le dijo la toalla a la bañera? Yo te seco las lágrimas cada día."
+  },
+  {
+    "text": "¿Qué le dijo el grifo al vaso? Deja de pedirme tanto, que me dejas seco."
+  },
+  {
+    "text": "¿Qué le dijo la escalera al ascensor? Tú siempre por la vía rápida."
+  },
+  {
+    "text": "¿Qué le dijo la llave a la cerradura? Tú y yo encajamos perfectamente."
+  },
+  {
+    "text": "¿Qué le dijo la ventana a la persiana? Siempre me dejas a oscuras."
+  },
+  {
+    "text": "¿Qué le dijo una bombilla a otra bombilla? Hoy estás muy brillante."
+  },
+  {
+    "text": "¿Qué le dijo un enchufe a otro? Contigo siento la corriente."
+  },
+  {
+    "text": "¿Qué le dijo una pila a otra pila? Tengo la energía por los suelos."
+  },
+  {
+    "text": "¿Qué le dijo el móvil al cargador? Sin ti, me apago."
+  },
+  {
+    "text": "¿Qué le dijo el ratón al teclado? Eres el único que me hace clic."
+  },
+  {
+    "text": "¿Qué le dijo un ordenador a otro? Tengo un virus, no te acerques."
+  },
+  {
+    "text": "¿Qué le dijo la tele al mando? Siempre me cambias de canal sin preguntar."
+  },
+  {
+    "text": "¿Qué le dijo la nevera al congelador? ¡Qué frío eres conmigo!"
+  },
+  {
+    "text": "¿Qué le dijo el microondas a la pizza? Dame un minuto y estás de vuelta."
+  },
+  {
+    "text": "¿Qué le dijo la tostadora al pan? Cuando estés listo, salta."
+  },
+  {
+    "text": "¿Qué le dijo la lavadora a la ropa sucia? Tranquila, que yo te doy unas vueltas."
+  },
+  {
+    "text": "¿Qué le dijo la plancha a la camisa? Contigo no hay arrugas que valgan."
+  },
+  {
+    "text": "¿Qué le dijo la aspiradora a la alfombra? Tú no te muevas, que yo me lo trago todo."
+  },
+  {
+    "text": "¿Qué le dijo la escoba al polvo? Ni te escondas, que te pillo."
+  },
+  {
+    "text": "¿Qué le dijo el papel al lápiz? Escríbeme algo bonito."
+  },
+  {
+    "text": "¿Qué le dijo la tiza a la pizarra? Contigo me quedo en blanco."
+  },
+  {
+    "text": "¿Qué le dijo un libro de matemáticas a otro? Tengo muchos problemas."
+  },
+  {
+    "text": "¿Qué le dijo la regla al compás? Tú das vueltas a todo y yo voy siempre recto."
+  },
+  {
+    "text": "¿Qué le dijo la calculadora al alumno? Puedes contar conmigo."
+  },
+  {
+    "text": "¿Qué le dijo el pegamento al papel? Me tienes enganchado."
+  },
+  {
+    "text": "¿Qué le dijo la tijera al papel? Lo siento, pero tenemos que cortar."
+  },
+  {
+    "text": "¿Qué le dijo el sacapuntas al lápiz? Te veo muy despuntado."
+  },
+  {
+    "text": "¿Qué le dijo el estuche a la mochila? Llévame contigo a todas partes."
+  },
+  {
+    "text": "¿Qué le dijo el balón a la portería? Siempre que te veo, me quedo dentro."
+  },
+  {
+    "text": "¿Qué le dijo la red a la pelota de tenis? No pasarás."
+  },
+  {
+    "text": "¿Qué le dijo una canasta a un balón? Entra, que estás en tu casa."
+  },
+  {
+    "text": "¿Qué le dijo el arroz a la paella? Sin mí no eres nada."
+  },
+  {
+    "text": "¿Qué le dijo el patinete a la acera? Contigo siempre voy sobre ruedas."
+  },
+  {
+    "text": "¿Qué le dijo un coche a otro coche? ¿Damos una vuelta a la rotonda?"
+  },
+  {
+    "text": "¿Qué le dijo el tren a la vía? Contigo voy siempre por el buen camino."
+  },
+  {
+    "text": "¿Qué le dijo un avión a otro avión? ¡Qué alto has llegado!"
+  },
+  {
+    "text": "¿Qué le dijo el barco al puerto? Siempre vuelvo a ti."
+  },
+  {
+    "text": "¿Qué le dijo un globo a otro globo? Ten cuidado con el cactus."
+  },
+  {
+    "text": "¿Qué le dijo el cactus al globo? ¿Un abrazo?"
+  },
+  {
+    "text": "¿Qué le dijo una araña a otra araña? Te veo en la red."
+  },
+  {
+    "text": "¿Qué le dijo una mosca a otra mosca? No me molestes, que estoy en la sopa."
+  },
+  {
+    "text": "¿Qué le dijo un mosquito a otro? Esta noche cenamos fuera."
+  },
+  {
+    "text": "¿Qué le dijo la oruga a la mariposa? Cuando sea mayor, quiero ser como tú."
+  },
+  {
+    "text": "¿Qué le dijo un caracol a otro? No corras tanto, que te vas a cansar."
+  },
+  {
+    "text": "¿Qué le dijo una tortuga a un caracol? Por fin alguien de mi velocidad."
+  },
+  {
+    "text": "¿Qué le dijo una rana a otra rana? Croac que vamos a llegar tarde."
+  },
+  {
+    "text": "¿Qué le dijo un pollito a otro pollito? Nos tenemos que ir, que nos pía mamá."
+  },
+  {
+    "text": "¿Qué le dijo la gallina al huevo? Pórtate bien, que no quiero que salgas revuelto."
+  },
+  {
+    "text": "¿Qué le dijo el gallo a la gallina? Siempre que te veo, se me pone la cresta de punta."
+  },
+  {
+    "text": "¿Qué le dijo un pato a otro pato? Estamos empatados."
+  },
+  {
+    "text": "¿Qué le dijo un cerdito a otro cerdito? ¿Jugamos en el barro? ¡Venga, que es gratis!"
+  },
+  {
+    "text": "¿Qué le dijo una oveja a otra? Bee-llísima te veo hoy."
+  },
+  {
+    "text": "¿Qué le dijo el perro al hueso? Hoy no puedo jugar, tengo que enterrarte."
+  },
+  {
+    "text": "¿Qué le dijo un gato a otro gato? Miau aburrido."
+  },
+  {
+    "text": "¿Qué le dijo el ratón al queso? Tienes muchos agujeros en tu historia."
+  },
+  {
+    "text": "¿Qué le dijo un caballo a otro caballo? Venga, no te pongas al trote."
+  },
+  {
+    "text": "¿Qué le dijo un león a otro león? Esta selva es nuestra, rey."
+  },
+  {
+    "text": "¿Qué le dijo un tiburón a otro tiburón? Esta playa está llena de comida rápida."
+  },
+  {
+    "text": "¿Qué le dijo un pulpo a otro pulpo? Dame la mano, la mano, la mano, la mano..."
+  },
+  {
+    "text": "¿Qué le dijo una estrella de mar a otra? Brillas más que las del cielo."
+  },
+  {
+    "text": "¿Qué le dijo un cangrejo a otro cangrejo? Vamos de lado a lado."
+  },
+  {
+    "text": "¿Qué le dijo una sardina a otra? ¡Vamos en lata!"
+  },
+  {
+    "text": "¿Qué le dijo una gamba a otra gamba? Ay, me estoy poniendo roja."
+  },
+  {
+    "text": "¿Qué le dijo un búho a otro búho? Hoy no duermo, que tengo examen."
+  },
+  {
+    "text": "¿Qué le dijo un loro a otro loro? Lo que tú digas."
+  },
+  {
+    "text": "¿Qué le dijo una paloma a otra? Vamos a la plaza, que hay migas."
+  },
+  {
+    "text": "¿Qué le dijo un murciélago a otro? Mañana nos colgamos juntos."
+  },
+  {
+    "text": "¿Qué le dijo una serpiente a otra serpiente? ¿Me abrazas un ratito?"
+  },
+  {
+    "text": "¿Qué le dijo un dinosaurio a otro? Estamos todos extintos de risa."
+  },
+  {
+    "text": "¿Qué le dijo la luna al sol? Tan grande y no te dejan salir de noche."
+  },
+  {
+    "text": "¿Qué le dijo una estrella a otra estrella? Hoy brillas más que nunca."
+  },
+  {
+    "text": "¿Qué le dijo la Tierra a la Luna? Deja de dar vueltas a mi alrededor."
+  },
+  {
+    "text": "¿Qué le dijo un planeta a otro planeta? ¡Tienes unos anillos preciosos!"
+  },
+  {
+    "text": "¿Qué le dijo la nube al sol? Hoy te tapo yo."
+  },
+  {
+    "text": "¿Qué le dijo una gota de lluvia a otra? Nos vemos en el charco."
+  },
+  {
+    "text": "¿Qué le dijo el viento a la cometa? Agárrate, que vamos para arriba."
+  },
+  {
+    "text": "¿Qué le dijo el rayo al trueno? Siempre llegas tarde."
+  },
+  {
+    "text": "¿Qué le dijo el arcoíris a la lluvia? Gracias por traerme siempre de visita."
+  },
+  {
+    "text": "¿Qué le dijo un copo de nieve a otro? Eres único."
+  },
+  {
+    "text": "¿Qué le dijo el muñeco de nieve al sol? No me mires así, que me derrito."
+  },
+  {
+    "text": "¿Qué le dijo el volcán a la montaña? ¿Te importa si echo humo?"
+  },
+  {
+    "text": "¿Qué le dijo el río al mar? Por fin llego, que llevo todo el día corriendo."
+  },
+  {
+    "text": "¿Qué le dijo una piedra a otra piedra? La vida es muy dura."
+  },
+  {
+    "text": "¿Qué le dijo la arena a la ola? Siempre me dejas mojada."
+  },
+  {
+    "text": "¿Qué le dijo el tomate a la lechuga? Contigo me pongo colorado."
+  },
+  {
+    "text": "¿Qué le dijo la cebolla al cuchillo? Me vas a hacer llorar."
+  },
+  {
+    "text": "¿Qué le dijo una zanahoria a otra? ¡Qué naranja estás hoy!"
+  },
+  {
+    "text": "¿Qué le dijo un guisante a otro? Tú y yo somos de la misma vaina."
+  },
+  {
+    "text": "¿Qué le dijo una patata a otra patata? Hoy estoy hecha puré."
+  },
+  {
+    "text": "¿Qué le dijo la manzana a la pera? ¿Por qué tienes ese tipo tan raro?"
+  },
+  {
+    "text": "¿Qué le dijo un limón a otro limón? Qué vida tan agria la nuestra."
+  },
+  {
+    "text": "¿Qué le dijo una naranja a otra naranja? Tú eres mi media naranja."
+  },
+  {
+    "text": "¿Qué le dijo una fresa a otra fresa? Si no fuéramos fresas, seríamos mermelada."
+  },
+  {
+    "text": "¿Qué le dijo una sandía a un melón? Tú y yo somos pepitas de la misma fruta."
+  },
+  {
+    "text": "¿Qué le dijo la pizza al horno? Contigo me derrito."
+  },
+  {
+    "text": "¿Qué le dijo el pan a la mantequilla? Úntame, que tengo prisa."
+  },
+  {
+    "text": "¿Qué le dijo el queso a la tostada? Me encantas cuando estás calentita."
+  },
+  {
+    "text": "¿Qué le dijo el huevo a la sartén? Me estás friendo la paciencia."
+  },
+  {
+    "text": "¿Qué le dijo la sopa a la cuchara? Vas a tener que tragarte tus palabras."
+  },
+  {
+    "text": "¿Qué le dijo una galleta a otra? Esta leche está muy mojada."
+  },
+  {
+    "text": "¿Qué le dijo un caramelo a otro? Hoy estás muy dulce."
+  },
+  {
+    "text": "¿Qué le dijo el helado al cucurucho? Sostenme, que me caigo."
+  },
+  {
+    "text": "¿Qué le dijo una palomita a otra en el cine? ¡Salta, que empieza la película!"
+  },
+  {
+    "text": "¿Qué le dijo un churro al chocolate? Siempre me haces mojar."
+  },
+  {
+    "text": "¿Qué le dijo la tarta a las velas? Gracias por darme tanta luz un día al año."
+  },
+  {
+    "text": "¿Qué le dijo el regalo al papel de regalo? No me dejes desnudo hasta el cumpleaños."
+  },
+  {
+    "text": "¿Qué le dijo el calendario al reloj? Tus días están contados."
+  },
+  {
+    "text": "¿Qué le dijo el lunes al viernes? ¿Por qué todo el mundo te quiere más a ti?"
+  },
+  {
+    "text": "¿Qué le dijo el verano al invierno? Contigo nadie quiere ir a la playa."
+  },
+  {
+    "text": "¿Qué le dijo la hoja al árbol en otoño? Me voy, que ya estoy amarilla."
+  },
+  {
+    "text": "¿Cuál es el colmo de un electricista? Que su mujer se llame Luz y sus hijos le sigan la corriente."
+  },
+  {
+    "text": "¿Cuál es el colmo de un jardinero? Que su novia se llame Rosa y lo deje plantado."
+  },
+  {
+    "text": "¿Cuál es el colmo de un astronauta? Quedarse sin espacio."
+  },
+  {
+    "text": "¿Cuál es el colmo de un pez? Morir ahogado."
+  },
+  {
+    "text": "¿Cuál es el colmo de un calvo? Tener ideas descabelladas."
+  },
+  {
+    "text": "¿Cuál es el colmo de un peluquero? Perder el tren por los pelos."
+  },
+  {
+    "text": "¿Cuál es el colmo de un dentista? Que su hijo tenga muelas del juicio y ningún juicio."
+  },
+  {
+    "text": "¿Cuál es el colmo de un fotógrafo? Revelar los secretos de todo el mundo."
+  },
+  {
+    "text": "¿Cuál es el colmo de un cartero? Que nadie le escriba."
+  },
+  {
+    "text": "¿Cuál es el colmo de un bombero? Que le pidan que eche más leña al fuego."
+  },
+  {
+    "text": "¿Cuál es el colmo de un policía? Que le roben la paciencia."
+  },
+  {
+    "text": "¿Cuál es el colmo de un ladrón? Que le roben la idea."
+  },
+  {
+    "text": "¿Cuál es el colmo de un mago? Que su hijo desaparezca a la hora de recoger."
+  },
+  {
+    "text": "¿Cuál es el colmo de un payaso? Que su hijo sea muy serio."
+  },
+  {
+    "text": "¿Cuál es el colmo de un pastelero? Tener un hijo muy salado."
+  },
+  {
+    "text": "¿Cuál es el colmo de un zapatero? Meter la pata."
+  },
+  {
+    "text": "¿Cuál es el colmo de un sastre? Que su hijo sea un desastre."
+  },
+  {
+    "text": "¿Cuál es el colmo de un relojero? Que no tenga tiempo para nada."
+  },
+  {
+    "text": "¿Cuál es el colmo de un pintor? Que su vida no tenga color."
+  },
+  {
+    "text": "¿Cuál es el colmo de un arquitecto? Hacer castillos en el aire."
+  },
+  {
+    "text": "¿Cuál es el colmo de un médico? Tener paciencia con sus pacientes impacientes."
+  },
+  {
+    "text": "¿Cuál es el colmo de un profesor de matemáticas? Tener problemas que no sabe resolver."
+  },
+  {
+    "text": "¿Cuál es el colmo de un profesor de lengua? Quedarse sin palabras."
+  },
+  {
+    "text": "¿Cuál es el colmo de un profesor de historia? Que su hijo no tenga pasado."
+  },
+  {
+    "text": "¿Cuál es el colmo de un profesor de música? Que su hijo no le dé ni una nota."
+  },
+  {
+    "text": "¿Cuál es el colmo de un profesor de geografía? Perderse en su propio barrio."
+  },
+  {
+    "text": "¿Cuál es el colmo de un profesor de gimnasia? Que su hijo se canse de esperar."
+  },
+  {
+    "text": "¿Cuál es el colmo de un bibliotecario? Que su vida sea un libro abierto."
+  },
+  {
+    "text": "¿Cuál es el colmo de un escritor? Que su hijo no tenga argumentos."
+  },
+  {
+    "text": "¿Cuál es el colmo de un poeta? Que no le salga ni una rima en todo el día."
+  },
+  {
+    "text": "¿Cuál es el colmo de un guitarrista? Que le corten las cuerdas en el mejor momento."
+  },
+  {
+    "text": "¿Cuál es el colmo de un batería? Que su vida no tenga ritmo."
+  },
+  {
+    "text": "¿Cuál es el colmo de un futbolista? Que su novia lo deje en fuera de juego."
+  },
+  {
+    "text": "¿Cuál es el colmo de un portero? Que no le abran la puerta."
+  },
+  {
+    "text": "¿Cuál es el colmo de un árbitro? Que le saquen tarjeta roja en casa."
+  },
+  {
+    "text": "¿Cuál es el colmo de un tenista? Que su vida sea una red de problemas."
+  },
+  {
+    "text": "¿Cuál es el colmo de un piloto? Perder el vuelo."
+  },
+  {
+    "text": "¿Cuál es el colmo de un taxista? Que su hijo nunca quiera ir a ningún sitio."
+  },
+  {
+    "text": "¿Cuál es el colmo de un conductor de autobús? Perder el autobús."
+  },
+  {
+    "text": "¿Cuál es el colmo de un marinero? Marearse en la bañera."
+  },
+  {
+    "text": "¿Cuál es el colmo de un pirata? Perder el norte con la brújula en la mano."
+  },
+  {
+    "text": "¿Cuál es el colmo de un buzo? Tener la cabeza en las nubes."
+  },
+  {
+    "text": "¿Cuál es el colmo de un explorador? Perderse en el pasillo de su casa."
+  },
+  {
+    "text": "¿Cuál es el colmo de un detective? No encontrar sus gafas."
+  },
+  {
+    "text": "¿Cuál es el colmo de un espía? Que todo el mundo sepa que es espía."
+  },
+  {
+    "text": "¿Cuál es el colmo de un granjero? Que las vacas le tomen el pelo."
+  },
+  {
+    "text": "¿Cuál es el colmo de un pescador? Que los peces se rían de él en su cara."
+  },
+  {
+    "text": "¿Cuál es el colmo de un frutero? Que su hijo sea un melón."
+  },
+  {
+    "text": "¿Cuál es el colmo de un heladero? Que su hijo tenga un corazón de hielo."
+  },
+  {
+    "text": "¿Cuál es el colmo de un vendedor de colchones? Quedarse dormido en el trabajo y que lo despidan."
+  },
+  {
+    "text": "¿Cuál es el colmo de un fontanero? Que su vida se vaya por el desagüe."
+  },
+  {
+    "text": "¿Cuál es el colmo de un informático? Que su hijo no tenga memoria."
+  },
+  {
+    "text": "¿Cuál es el colmo de un químico? Que su hijo no tenga química con nadie."
+  },
+  {
+    "text": "¿Cuál es el colmo de un matemático? Que su vida no tenga solución."
+  },
+  {
+    "text": "¿Cuál es el colmo de un astrónomo? Que su hijo viva en la luna."
+  },
+  {
+    "text": "¿Cuál es el colmo de un meteorólogo? Que le llueva en su cumpleaños sin avisar."
+  },
+  {
+    "text": "¿Cuál es el colmo de un geólogo? Que su hijo sea un cabeza de piedra."
+  },
+  {
+    "text": "¿Cuál es el colmo de un abogado? Perder el juicio."
+  },
+  {
+    "text": "¿Cuál es el colmo de un juez? Que su hijo no tenga juicio."
+  },
+  {
+    "text": "¿Cuál es el colmo de un banquero? Que no tenga interés por nada."
+  },
+  {
+    "text": "¿Cuál es el colmo de un vendedor? Que no venda ni una escoba en una casa de brujas."
+  },
+  {
+    "text": "¿Cuál es el colmo de un actor? Que le den un papel en blanco."
+  },
+  {
+    "text": "¿Cuál es el colmo de un director de cine? Que su vida sea una película de miedo."
+  },
+  {
+    "text": "¿Cuál es el colmo de un equilibrista? No saber mantener una conversación."
+  },
+  {
+    "text": "¿Cuál es el colmo de un malabarista? Que se le caigan todas las ideas."
+  },
+  {
+    "text": "¿Cuál es el colmo de una costurera? Perder el hilo de la conversación."
+  },
+  {
+    "text": "¿Cuál es el colmo de una peluquera? Que le tomen el pelo."
+  },
+  {
+    "text": "¿Cuál es el colmo de un pollo? Tener la piel de gallina."
+  },
+  {
+    "text": "¿Cuál es el colmo de un gato? Tener una vida de perros."
+  },
+  {
+    "text": "¿Cuál es el colmo de un ratón? Tener un gato de mascota."
+  },
+  {
+    "text": "¿Cuál es el colmo de un león? Tener una melena despeinada el día de la foto."
+  },
+  {
+    "text": "¿Cuál es el colmo de una jirafa? Tener dolor de cuello."
+  },
+  {
+    "text": "¿Cuál es el colmo de un canguro? Que su hijo no quiera saltar."
+  },
+  {
+    "text": "¿Cuál es el colmo de un mono? Que le cierren la frutería."
+  },
+  {
+    "text": "¿Cuál es el colmo de una tortuga? Que le pongan una multa por exceso de velocidad."
+  },
+  {
+    "text": "¿Cuál es el colmo de un caracol? Llegar tarde a su propia casa."
+  },
+  {
+    "text": "¿Cuál es el colmo de una araña? Que la despidan por no tener red."
+  },
+  {
+    "text": "¿Cuál es el colmo de una abeja? Ser alérgica a la miel."
+  },
+  {
+    "text": "¿Cuál es el colmo de una mosca? Que la inviten a la sopa y no sepa nadar."
+  },
+  {
+    "text": "¿Cuál es el colmo de un mosquito? Que le dé miedo la sangre."
+  },
+  {
+    "text": "¿Cuál es el colmo de un murciélago? Que le dé vértigo colgarse."
+  },
+  {
+    "text": "¿Cuál es el colmo de un búho? Que se quede dormido de noche."
+  },
+  {
+    "text": "¿Cuál es el colmo de un pájaro? Tener miedo a las alturas."
+  },
+  {
+    "text": "¿Cuál es el colmo de un pingüino? Ir de etiqueta y no tener fiesta."
+  },
+  {
+    "text": "¿Cuál es el colmo de un tiburón? Ser vegetariano."
+  },
+  {
+    "text": "¿Cuál es el colmo de un pulpo? Tener ocho brazos y no saber dar un abrazo."
+  },
+  {
+    "text": "¿Cuál es el colmo de un cangrejo? Que le pidan que vaya recto."
+  },
+  {
+    "text": "¿Cuál es el colmo de un dinosaurio? Que le digan que está pasado de moda."
+  },
+  {
+    "text": "¿Cuál es el colmo de un fantasma? Tener miedo a la oscuridad."
+  },
+  {
+    "text": "¿Cuál es el colmo de un vampiro? Que le den miedo los murciélagos."
+  },
+  {
+    "text": "¿Cuál es el colmo de una momia? Quedarse sin papel higiénico."
+  },
+  {
+    "text": "¿Cuál es el colmo de una bruja? Que su escoba no tenga carné de conducir."
+  },
+  {
+    "text": "¿Cuál es el colmo de un monstruo? Que se asuste al mirarse al espejo."
+  },
+  {
+    "text": "¿Cuál es el colmo de un reloj? Perder los minutos."
+  },
+  {
+    "text": "¿Cuál es el colmo de un semáforo? Ponerse rojo de vergüenza."
+  },
+  {
+    "text": "¿Cuál es el colmo de un libro? Tener mala letra."
+  },
+  {
+    "text": "¿Cuál es el colmo de un diccionario? Que le digan que no tiene definición."
+  },
+  {
+    "text": "¿Cuál es el colmo de una goma de borrar? Que no se le olvide nada."
+  },
+  {
+    "text": "¿Cuál es el colmo de una tijera? Que no corte el bacalao."
+  },
+  {
+    "text": "¿Cuál es el colmo de una escalera? Que le den bajón."
+  },
+  {
+    "text": "¿Cuál es el colmo de un ascensor? Tener altibajos."
+  },
+  {
+    "text": "¿Cuál es el colmo de una puerta? Que le den con la puerta en las narices."
+  },
+  {
+    "text": "¿Cuál es el colmo de una cama? Que no pueda dormir."
+  },
+  {
+    "text": "¿Cuál es el colmo de una almohada? Tener pesadillas."
+  },
+  {
+    "text": "¿Cuál es el colmo de una silla? Que no tenga dónde sentarse."
+  },
+  {
+    "text": "¿Cuál es el colmo de una mesa? Que no sepa poner la mesa."
+  },
+  {
+    "text": "¿Cuál es el colmo de un espejo? Que no se pueda ver ni en pintura."
+  },
+  {
+    "text": "¿Cuál es el colmo de una vela? Que le corten la luz."
+  },
+  {
+    "text": "¿Cuál es el colmo de una bombilla? Tener una idea apagada."
+  },
+  {
+    "text": "¿Cuál es el colmo de un paraguas? Que le guste la lluvia y no lo saquen nunca."
+  },
+  {
+    "text": "¿Cuál es el colmo de una nube? Tener un mal día y no poder llorar."
+  },
+  {
+    "text": "¿Cuál es el colmo de un río? Que le den una mala corriente."
+  },
+  {
+    "text": "¿Cuál es el colmo de un volcán? Que le digan que no se caliente."
+  },
+  {
+    "text": "¿Cuál es el colmo de una isla? Sentirse sola."
+  },
+  {
+    "text": "¿Cuál es el colmo de un barco? Que le dé miedo el agua."
+  },
+  {
+    "text": "¿Cuál es el colmo de un avión? Tener miedo a volar."
+  },
+  {
+    "text": "¿Cuál es el colmo de una bicicleta? Que se canse de pedalear."
+  },
+  {
+    "text": "¿Por qué el libro de matemáticas está triste? Porque tiene demasiados problemas."
+  },
+  {
+    "text": "¿Por qué el tomate no toma café? Porque toma-te."
+  },
+  {
+    "text": "¿Por qué la escoba está feliz? Porque ha barrido en los exámenes."
+  },
+  {
+    "text": "¿Por qué el esqueleto no fue a la fiesta? Porque no tenía cuerpo para ir."
+  },
+  {
+    "text": "¿Por qué los fantasmas no mienten? Porque se les ve a través."
+  },
+  {
+    "text": "¿Por qué el mar es salado? Porque los peces no saben cocinar sin sal."
+  },
+  {
+    "text": "¿Por qué las focas miran siempre hacia arriba? Porque ahí están los focos."
+  },
+  {
+    "text": "¿Por qué el pato no tiene amigos? Porque es un poco patoso."
+  },
+  {
+    "text": "¿Por qué la vaca va al espacio? Para ver la Vía Láctea."
+  },
+  {
+    "text": "¿Por qué los peces viven en el agua salada? Porque en la pimienta estornudan."
+  },
+  {
+    "text": "¿Por qué el elefante no usa ordenador? Porque le dan miedo los ratones."
+  },
+  {
+    "text": "¿Por qué la gallina cruzó la carretera? Para llegar al otro lado, como todo el mundo."
+  },
+  {
+    "text": "¿Por qué el sol no va a la escuela? Porque ya tiene millones de grados."
+  },
+  {
+    "text": "¿Por qué la luna no tiene hambre? Porque ya está llena."
+  },
+  {
+    "text": "¿Por qué las estrellas no se pelean? Porque cada una va a su galaxia."
+  },
+  {
+    "text": "¿Por qué las plantas odian las matemáticas? Porque les sacan la raíz cuadrada."
+  },
+  {
+    "text": "¿Por qué el lápiz no gana nunca a las cartas? Porque siempre le sacan punta a todo."
+  },
+  {
+    "text": "¿Por qué el reloj fue al médico? Porque le dolían las manecillas."
+  },
+  {
+    "text": "¿Por qué el ordenador fue al médico? Porque tenía un virus."
+  },
+  {
+    "text": "¿Por qué el pan no cuenta secretos? Porque se le quedan en la miga."
+  },
+  {
+    "text": "¿Por qué el huevo no cuenta chistes? Porque se parte de risa."
+  },
+  {
+    "text": "¿Por qué los plátanos usan crema solar? Porque se pelan con el sol."
+  },
+  {
+    "text": "¿Por qué la naranja se paró en medio del camino? Porque se quedó sin zumo."
+  },
+  {
+    "text": "¿Por qué el helado no tiene amigos? Porque es muy frío."
+  },
+  {
+    "text": "¿Por qué los calcetines siempre se pierden? Porque van de dos en dos y se escapan de uno en uno."
+  },
+  {
+    "text": "¿Por qué la cama está cansada? Porque la usan todas las noches."
+  },
+  {
+    "text": "¿Por qué la escalera es tan simpática? Porque siempre te ayuda a subir."
+  },
+  {
+    "text": "¿Por qué la puerta fue a terapia? Porque todos la abrían y nadie la escuchaba."
+  },
+  {
+    "text": "¿Por qué los futbolistas no juegan al escondite? Porque siempre los marcan."
+  },
+  {
+    "text": "¿Por qué las bicicletas no se tienen en pie? Porque están dos-cansadas."
+  },
+  {
+    "text": "¿Por qué los peces no juegan al tenis? Porque les dan miedo las redes."
+  },
+  {
+    "text": "¿Por qué los vampiros no van a la playa? Porque no hay sombrillas para tanta sombra."
+  },
+  {
+    "text": "¿Por qué los esqueletos no pelean? Porque no tienen agallas."
+  },
+  {
+    "text": "¿Por qué el mago no hace los deberes? Porque los hace desaparecer."
+  },
+  {
+    "text": "¿Por qué el profesor lleva gafas de sol? Porque sus alumnos son muy brillantes."
+  },
+  {
+    "text": "¿Por qué el niño se llevó una escalera al colegio? Porque quería ir al instituto superior."
+  },
+  {
+    "text": "¿Por qué el niño tiró el reloj por la ventana? Para ver volar el tiempo."
+  },
+  {
+    "text": "¿Por qué el niño estudia en el avión? Para sacar notas altas."
+  },
+  {
+    "text": "¿Por qué el niño metió la regla en la cama? Para ver cuánto dormía."
+  },
+  {
+    "text": "¿Por qué el niño puso azúcar en la almohada? Para tener dulces sueños."
+  },
+  {
+    "text": "¿Por qué el niño se sentó encima del reloj? Porque quería llegar a tiempo."
+  },
+  {
+    "text": "¿Qué hace una abeja en el gimnasio? Zum-ba."
+  },
+  {
+    "text": "¿Qué hace un perro con un taladro? Taladrando."
+  },
+  {
+    "text": "¿Qué hace un pez en el ordenador? Nada en internet."
+  },
+  {
+    "text": "¿Qué hace una vaca cuando sale el sol? Sombra."
+  },
+  {
+    "text": "¿Qué hace una oveja en el banco? Ingresar su lana."
+  },
+  {
+    "text": "¿Qué hace un mosquito en la ópera? Cantar en el oído del público."
+  },
+  {
+    "text": "¿Qué hace una gallina en la biblioteca? Pide libros, libros, libros."
+  },
+  {
+    "text": "¿Qué hace un caracol en una autopista? Tardar mucho en llegar."
+  },
+  {
+    "text": "¿Qué hace una momia de vacaciones? Desenrollarse un poco."
+  },
+  {
+    "text": "¿Qué hace un vampiro en la cocina? Prepara un zumo de tomate y disimula."
+  },
+  {
+    "text": "¿Qué hace un esqueleto en la ducha? Lavarse los huesos."
+  },
+  {
+    "text": "¿Qué hace un dinosaurio en el cine? Ver una película jurásica."
+  },
+  {
+    "text": "¿Qué hace un tomate en un semáforo? Ponerse en rojo."
+  },
+  {
+    "text": "¿Qué hace una galleta en el hospital? Está hecha migas."
+  },
+  {
+    "text": "¿Cómo se llama un boomerang que no vuelve? Un palo."
+  },
+  {
+    "text": "¿Cómo se llama un dinosaurio que duerme? Dinoronca."
+  },
+  {
+    "text": "¿Cómo se llama un perro sin patas? Da igual, no va a venir."
+  },
+  {
+    "text": "¿Cómo se llama un oso sin dientes? Oso de gominola."
+  },
+  {
+    "text": "¿Cómo se llama una vaca sin patas? Carne picada."
+  },
+  {
+    "text": "¿Cómo se llama un pez que hace magia? Pezcadabra."
+  },
+  {
+    "text": "¿Cómo se llama el hermano de Bob Esponja? Bob Estropajo."
+  },
+  {
+    "text": "¿Cómo se llama un chiste que no hace gracia? Este."
+  },
+  {
+    "text": "¿Cómo se llama un lápiz sin punta? Inútil."
+  },
+  {
+    "text": "¿Cómo se llama un ratón que sabe kárate? Ratón de dojo."
+  },
+  {
+    "text": "¿Cómo se llama un oso polar sin abrigo? Oso helado."
+  },
+  {
+    "text": "¿Cómo se llama el pez más listo del mar? Sardinteligente."
+  },
+  {
+    "text": "¿Cómo se llama el café más peligroso del mundo? El ex-preso."
+  },
+  {
+    "text": "¿Cómo se llama una cebolla en una bicicleta? Cebollicleta."
+  },
+  {
+    "text": "¿Qué es un punto verde en una esquina? Un guisante castigado."
+  },
+  {
+    "text": "¿Qué es un punto verde con una escoba? Un guisante barrendero."
+  },
+  {
+    "text": "¿Qué es un punto rojo en un árbol? Una fresa que se ha perdido."
+  },
+  {
+    "text": "¿Qué es un punto marrón en el mar? Una aceituna buceando."
+  },
+  {
+    "text": "¿Qué es un punto azul en un sofá? Un arándano viendo la tele."
+  },
+  {
+    "text": "¿Qué es un punto blanco en la nevera? Un garbanzo con frío."
+  },
+  {
+    "text": "¿Qué es un punto negro en un avión? Una lenteja con prisa."
+  },
+  {
+    "text": "¿Qué es rojo y está en una esquina? Un tomate castigado."
+  },
+  {
+    "text": "¿Qué es verde y salta? Una lechuga en una cama elástica."
+  },
+  {
+    "text": "¿Qué es amarillo y no se ve? Un plátano en la niebla."
+  },
+  {
+    "text": "¿Qué es blanco y salta? Un yogur con resortes."
+  },
+  {
+    "text": "¿Qué tiene un pájaro en el ala? Plumas, y en la otra ala también."
+  },
+  {
+    "text": "¿Qué tiene cuatro patas y no anda? Una mesa muy perezosa."
+  },
+  {
+    "text": "¿Qué le pasa a un pez si lo mojas? Que se moja más."
+  },
+  {
+    "text": "¿Qué le pasa a un gato si come limones? Que se vuelve un gato amargado."
+  },
+  {
+    "text": "¿Qué pasa si tiras un pato al agua? Nada."
+  },
+  {
+    "text": "¿Qué pasa si tiras una piedra roja al mar azul? Que se moja."
+  },
+  {
+    "text": "¿Qué pasa si cruzas una vaca con un patinete? Que obtienes un batido sobre ruedas."
+  },
+  {
+    "text": "¿Qué sale de cruzar una gallina con un reloj? Un pollo despertador."
+  },
+  {
+    "text": "¿Qué sale de cruzar un perro con una calculadora? Un amigo con el que puedes contar."
+  },
+  {
+    "text": "¿Qué sale de cruzar un erizo con una serpiente? Un alambre de espino."
+  },
+  {
+    "text": "¿Qué sale de cruzar una vaca con una oveja? Leche de lana."
+  },
+  {
+    "text": "¿Qué sale de cruzar un canguro con una oveja? Un jersey con bolsillos."
+  },
+  {
+    "text": "¿Qué sale de cruzar un pez con un elefante? Un bañador muy grande."
+  },
+  {
+    "text": "¿Qué sale de cruzar una tortuga con un erizo? Un pinchazo muy lento."
+  },
+  {
+    "text": "¿Qué sale de cruzar un perro con un gato? Un animal que se pelea consigo mismo."
+  },
+  {
+    "text": "¿Qué sale de cruzar un pollo con una vaca? Una tortilla con leche."
+  },
+  {
+    "text": "¿Qué sale de cruzar una lechuga con un mono? Una ensalada que salta."
+  },
+  {
+    "text": "¿Qué sale de cruzar un reloj con un pájaro? Un cucú."
+  },
+  {
+    "text": "¿Qué sale de cruzar un libro con una cama? Una novela para dormir."
+  },
+  {
+    "text": "¿Qué sale de cruzar un ordenador con un elefante? Mucha memoria."
+  },
+  {
+    "text": "¿Cuántos huevos puedes comer en ayunas? Uno, porque después ya no estás en ayunas."
+  },
+  {
+    "text": "¿Cuántos ojos tiene un pirata? Uno, porque el otro está de vacaciones debajo del parche."
+  },
+  {
+    "text": "¿Cuál es el animal más antiguo? La cebra, porque está en blanco y negro."
+  },
+  {
+    "text": "¿Cuál es el animal más feliz? El pez, porque nada le preocupa."
+  },
+  {
+    "text": "¿Cuál es el baile favorito de un tomate? La salsa."
+  },
+  {
+    "text": "¿Cuál es el país favorito de los gatos? Miaulandia."
+  },
+  {
+    "text": "¿Cuál es el pez más divertido? El pez payaso."
+  },
+  {
+    "text": "¿Cuál es la fruta más paciente? La espera."
+  },
+  {
+    "text": "¿Cuál es la fruta más divertida? La naranja ja ja ja."
+  },
+  {
+    "text": "¿Cuál es la verdura más tranquila? El brócoli, porque es muy zen."
+  },
+  {
+    "text": "¿Cuál es el último animal que subió al arca de Noé? El del-fin."
+  },
+  {
+    "text": "Mamá, mamá, en el colegio me llaman despistado. Niño, que esta no es tu casa."
+  },
+  {
+    "text": "Mamá, mamá, ¿cuándo vamos a comer? Cuando acabes de hacer la comida, hijo."
+  },
+  {
+    "text": "Mamá, mamá, ¿me haces un bocadillo? Abracadabra, ya eres un bocadillo."
+  },
+  {
+    "text": "Doctor, doctor, tengo un problema: no me hacen caso. Siguiente, por favor."
+  },
+  {
+    "text": "Doctor, doctor, veo puntos negros por todas partes. ¿Ha ido al oculista? No, solo veo puntos negros."
+  },
+  {
+    "text": "Doctor, doctor, me siento como una cortina. Pues córrase un poco."
+  },
+  {
+    "text": "Doctor, doctor, me siento como un perro. ¿Desde cuándo? Desde cachorro."
+  },
+  {
+    "text": "Doctor, doctor, creo que soy invisible. ¿Quién ha dicho eso?"
+  },
+  {
+    "text": "Doctor, doctor, tengo un plátano en la oreja. Hable más alto, que lleva un plátano en la oreja."
+  },
+  {
+    "text": "Doctor, doctor, me duele aquí, aquí y aquí. Usted lo que tiene es el dedo roto."
+  },
+  {
+    "text": "Doctor, doctor, me olvido de todo. ¿Desde cuándo le pasa? ¿Desde cuándo me pasa qué?"
+  },
+  {
+    "text": "Doctor, doctor, creo que soy un reloj. Tranquilo, que tenemos tiempo."
+  },
+  {
+    "text": "Doctor, doctor, creo que soy una abeja. Pues zumbe a la consulta de al lado."
+  },
+  {
+    "text": "Doctor, doctor, me siento como una baraja de cartas. Siéntese, que luego le atiendo."
+  },
+  {
+    "text": "Doctor, doctor, ¿cómo está mi corazón? Muy bien, latiendo de alegría."
+  },
+  {
+    "text": "Doctor, doctor, tengo los pies hinchados. Pues cómprese unos zapatos inflables."
+  },
+  {
+    "text": "Doctor, doctor, me encuentro fatal. ¿Dónde se encontraba antes?"
+  },
+  {
+    "text": "Doctor, doctor, estoy muy nervioso, es mi primera operación. Tranquilo, que también es la mía."
+  },
+  {
+    "text": "Doctor, doctor, ¿qué tal la operación? ¿Qué operación? Yo soy el pintor."
+  },
+  {
+    "text": "Doctor, doctor, el niño se ha tragado una moneda. Tranquila, que ya le veremos el cambio."
+  },
+  {
+    "text": "Doctor, doctor, creo que soy una cabra. ¿Desde cuándo? Desde que era un cabritillo."
+  },
+  {
+    "text": "Doctor, doctor, cada vez que tomo café me duele un ojo. Pruebe a sacar la cucharilla de la taza."
+  },
+  {
+    "text": "Doctor, doctor, no puedo dormir. Pues acuéstese en el borde de la cama, que seguro que se cae dormido."
+  },
+  {
+    "text": "Doctor, doctor, me duele cuando hago así. Pues no haga así."
+  },
+  {
+    "text": "Doctor, doctor, tengo tendencia a robar cosas. ¿Ha tomado algo? No, todavía no, pero esa grapadora me está mirando."
+  },
+  {
+    "text": "Doctor, doctor, creo que me he tragado un caballo. Ya decía yo que estaba usted desbocado."
+  },
+  {
+    "text": "Doctor, doctor, oigo voces. ¿Y qué le dicen? Que vaya al médico."
+  },
+  {
+    "text": "Van dos y se cae el del medio."
+  },
+  {
+    "text": "Van dos cerillas por el bosque y una le dice a la otra: «Cuidado, que nos vamos a quemar»."
+  },
+  {
+    "text": "Van dos ovejas por el campo y una le dice a la otra: «Beeee». Y la otra: «Qué casualidad, eso mismo iba a decir yo»."
+  },
+  {
+    "text": "Van dos tomates por la calle, uno se para y le dice al otro: «¡Corre, que nos convierten en kétchup!»."
+  },
+  {
+    "text": "Van dos gotas de agua por el desierto y una le dice a la otra: «¿Cuánto falta?». «Poco, poco...»."
+  },
+  {
+    "text": "Van dos huevos por la calle, se cae uno y dice el otro: «¿Estás bien?». «Sí, pero estoy un poco revuelto»."
+  },
+  {
+    "text": "Van dos pulgas por la calle y una le dice a la otra: «¿Vamos andando o cogemos un perro?»."
+  },
+  {
+    "text": "Van dos caracoles por la carretera y uno dice: «Vamos, que llegamos tarde al año que viene»."
+  },
+  {
+    "text": "Van dos semáforos por la calle y uno le dice al otro: «No me mires, que me pongo rojo»."
+  },
+  {
+    "text": "Van dos piedras por la calle y una le dice a la otra: «Estoy hecha polvo»."
+  },
+  {
+    "text": "Van dos calcetines y uno le dice al otro: «Mañana nos lavan». Y el otro: «Ya era hora, que no nos aguantamos ni nosotros»."
+  },
+  {
+    "text": "Había una vez un perro llamado Pegamento. Se cayó y se pegó."
+  },
+  {
+    "text": "Había una vez un pollito que se llamaba Tito. Se cayó por la escalera y se hizo pío-pío-tito."
+  },
+  {
+    "text": "Había una vez un niño tan despistado que se fue al colegio en sábado y se puso a esperar a la profesora."
+  },
+  {
+    "text": "Había una vez un señor tan alto que se tenía que subir a una escalera para afeitarse."
+  },
+  {
+    "text": "Había una vez un hombre tan pequeño que se subía a una canica y decía: «¡Qué vistas tengo desde aquí!»."
+  },
+  {
+    "text": "Había una vez un caracol tan rápido que llegó a su casa antes de salir."
+  },
+  {
+    "text": "Había una vez un señor tan bajito que se le veían los zapatos desde el cuello."
+  },
+  {
+    "text": "Había una vez un hombre tan despistado que se buscaba las gafas con las gafas puestas."
+  },
+  {
+    "text": "Había una vez un niño tan listo que se aprendió el abecedario en orden alfabético."
+  },
+  {
+    "text": "Había una vez un pez tan feo que el acuario ponía cortinas."
+  },
+  {
+    "text": "Había una vez una vaca tan lista que daba leche con cacao."
+  },
+  {
+    "text": "Había una vez un señor tan distraído que metió las llaves en la nevera y la leche en el bolsillo."
+  },
+  {
+    "text": "Un señor entra en una tienda y pregunta: «¿Tienen libros para el cansancio?». «Sí, pero están agotados»."
+  },
+  {
+    "text": "Un señor entra en una zapatería y dice: «Quiero unos zapatos de cocodrilo». «¿Qué número calza su cocodrilo?»."
+  },
+  {
+    "text": "Un señor entra en una frutería: «¿Tiene uvas sin pepitas?». «No, pero tengo pepitas sin uvas»."
+  },
+  {
+    "text": "Un señor entra en una librería: «¿Tiene el libro \"Cómo ser más alto\"?». «Sí, está en la estantería de arriba del todo»."
+  },
+  {
+    "text": "Un hombre entra en una biblioteca y pide: «Un bocadillo de tortilla». «Señor, esto es una biblioteca». Y el hombre susurra: «Perdón... un bocadillo de tortilla»."
+  },
+  {
+    "text": "Un hombre entra en el médico con un pollo en la cabeza. El médico pregunta: «¿Qué le pasa?». Y el pollo responde: «Que se me ha pegado este señor a los pies»."
+  },
+  {
+    "text": "Un hombre entra en una tienda de animales: «¿Tiene loros que hablen?». «No, pero tengo un pájaro carpintero que escribe a máquina»."
+  },
+  {
+    "text": "Un hombre entra en un bar con un pato en la cabeza. El camarero pregunta: «¿Y eso?». Y el pato dice: «Pues no sé, me salió ayer»."
+  },
+  {
+    "text": "Un señor entra en una tienda: «¿Tiene pilas?». «Sí». «Pues pase usted primero»."
+  },
+  {
+    "text": "Un niño le pregunta a su padre: «Papá, ¿qué se siente al tener un hijo tan guapo?». «No lo sé, pregúntale a tu abuelo»."
+  },
+  {
+    "text": "Un niño le dice a su padre: «Papá, ¿puedes ayudarme con los deberes?». «Hijo, no estaría bien». «Ya, pero inténtalo de todas formas»."
+  },
+  {
+    "text": "Un niño le pregunta a su abuela: «Abuela, ¿cuántos años tienes?». «Los suficientes». «Pues yo tengo los suficientes menos sesenta»."
+  },
+  {
+    "text": "Un niño llega a casa y dice: «Mamá, he sacado un diez». «¿En qué asignatura?». «Entre todas»."
+  },
+  {
+    "text": "Un niño le dice a su madre: «Mamá, ¿me das cinco euros para un señor que está llorando?». «¿Qué le pasa?». «Que vende helados»."
+  },
+  {
+    "text": "Un padre le dice a su hijo: «¿Qué haces con esa lupa?». «Buscando la paciencia que dices que no tienes»."
+  },
+  {
+    "text": "La profesora le pregunta a Jaimito: «Si tengo cinco caramelos y te doy dos, ¿cuántos me quedan?». «Ninguno, profe, porque me los voy a comer todos»."
+  },
+  {
+    "text": "La profesora le pregunta a Jaimito: «¿Dónde está el río Ebro?». «No lo sé, profe, pero seguro que en su sitio»."
+  },
+  {
+    "text": "La profesora le dice a Jaimito: «Dime una palabra que tenga muchas oes». «Gooool»."
+  },
+  {
+    "text": "La profesora le pregunta a Jaimito: «¿Por qué llegas tarde?». «Porque había una señal que decía: \"Escuela, despacio\"»."
+  },
+  {
+    "text": "La profesora le pregunta a Jaimito: «¿Qué es un pronombre?». «Un nombre que ya es profesional»."
+  },
+  {
+    "text": "La profesora pregunta: «¿Qué animal es el mejor amigo del hombre?». Y Jaimito contesta: «El del hombre no sé, pero el mío es mi perro Toby»."
+  },
+  {
+    "text": "La profesora le dice a Jaimito: «Tu redacción del perro es igual que la de tu hermano». «Claro, profe, es el mismo perro»."
+  },
+  {
+    "text": "La profesora le pregunta a Jaimito: «Dime cinco animales de África». «Tres leones y dos elefantes»."
+  },
+  {
+    "text": "La profesora le pregunta a Jaimito: «¿Por qué has traído una escalera a clase?». «Porque dijo usted que este curso íbamos a subir nota»."
+  },
+  {
+    "text": "La profesora le dice a Jaimito: «Tu examen tiene muchas faltas». «Ya, profe, es que no quería que se sintiera sola»."
+  },
+  {
+    "text": "La profesora le pregunta a Jaimito: «¿Qué hiciste el fin de semana?». «Nada». «¿Y el domingo?». «Seguí con lo del sábado»."
+  },
+  {
+    "text": "Jaimito, ¿por qué has puesto que la Tierra es cuadrada? Porque mi abuela siempre dice que va a recorrer los cuatro rincones del mundo."
+  },
+  {
+    "text": "Jaimito, ¿cuál es el animal que vuela más alto? El elefante en avión, profe."
+  },
+  {
+    "text": "Un caracol le pide a un hombre que lo lleve en coche. El hombre lo tira lejos. Un año después, el caracol vuelve y dice: «¿A qué ha venido eso?»."
+  },
+  {
+    "text": "Un pez le pregunta a otro: «¿Qué hace tu padre?». «Nada». «¿Y el tuyo?». «Nada también»."
+  },
+  {
+    "text": "Un perro le dice a otro: «Guau». Y el otro: «Miau». «¿Y eso?». «Estoy aprendiendo idiomas»."
+  },
+  {
+    "text": "Un gato le dice a un ratón: «Ven, que tengo queso». Y el ratón: «Ya, y yo nací ayer»."
+  },
+  {
+    "text": "Un pollito le dice a su madre: «Mamá, ¿yo nací de un huevo?». «Sí, hijo». «Pues vaya cascarón tenía»."
+  },
+  {
+    "text": "Un ciempiés llega tarde a casa y su madre le pregunta: «¿Dónde estabas?». «Atándome los zapatos»."
+  },
+  {
+    "text": "Un vampiro entra en un bar y pide un zumo de tomate. El camarero dice: «¿No prefiere otra cosa?». «No, que estoy a dieta»."
+  },
+  {
+    "text": "Un esqueleto entra en un bar y pide: «Un refresco y una fregona»."
+  },
+  {
+    "text": "Un fantasma se encuentra a otro y le dice: «Qué pálido te veo»."
+  },
+  {
+    "text": "Un dinosaurio le dice a otro: «¿Tú crees que algún día nos pondrán en un museo?»."
+  },
+  {
+    "text": "Un plátano va al médico. El médico le pregunta: «¿Qué le pasa?». «No me encuentro bien, estoy un poco pocho»."
+  },
+  {
+    "text": "Un huevo le dice a otro: «¿Por qué estás tan amarillo?». «Porque he visto una sartén»."
+  },
+  {
+    "text": "Una vaca le dice a otra: «¿Has oído lo de la enfermedad de las vacas locas?». «A mí no me afecta, soy un helicóptero»."
+  },
+  {
+    "text": "Una gallina entra en una biblioteca y dice: «Libro, libro, libro». La bibliotecaria le da tres libros y la gallina se va con ellos."
+  },
+  {
+    "text": "Una oveja le pregunta a otra: «¿Has visto al pastor?». «No, pero me lo han contado»."
+  },
+  {
+    "text": "Un pingüino le dice a otro: «Pareces un camarero». «Tú también»."
+  },
+  {
+    "text": "Un pirata entra en una tienda y pide: «Un parche, por favor». «¿De qué ojo?». «Del que no veo»."
+  },
+  {
+    "text": "Un robot le dice a otro: «Me siento un poco oxidado». «Eso es la edad»."
+  },
+  {
+    "text": "Dos amigos se encuentran y uno dice: «¿Qué tal tu nuevo trabajo en la fábrica de relojes?». «Hago horas extra»."
+  },
+  {
+    "text": "Dos amigos se encuentran y uno le dice al otro: «He soñado que me comía una nube de algodón». «¿Y qué?». «Que me he despertado sin almohada»."
+  },
+  {
+    "text": "Llaman a la puerta: «¿Quién es?». «La paciencia». «Espera un momento»."
+  },
+  {
+    "text": "Llaman por teléfono: «¿Es el veterinario?». «Sí». «Mi perro se ha comido un bolígrafo». «¿Y qué hace?». «Escribo con un lápiz, de momento»."
+  },
+  {
+    "text": "Llaman por teléfono: «¿Está Agustín?». «No, estoy a disgustín»."
+  },
+  {
+    "text": "Un hombre en el desierto ve a otro y le pregunta: «¿Dónde está el mar?». «A dos mil kilómetros». «¡Pues qué playa tan grande!»."
+  },
+  {
+    "text": "El camarero le pregunta al cliente: «¿Cómo ha encontrado el filete?». «Por casualidad, detrás de una patata»."
+  },
+  {
+    "text": "Camarero, hay una mosca en mi sopa. No se preocupe, que no se va a comer mucho."
+  },
+  {
+    "text": "Camarero, hay una mosca en mi sopa. Baje la voz, que van a querer todos."
+  },
+  {
+    "text": "Camarero, ¿tienen ancas de rana? Sí. Pues no se le notan nada al andar."
+  },
+  {
+    "text": "Camarero, ¿esta sopa es de pollo? No, señor, es nuestra, pero el pollo la ha probado."
+  },
+  {
+    "text": "Camarero, la sopa está fría. Pues póngase la chaqueta, señor."
+  },
+  {
+    "text": "Un juez le pregunta a un ladrón: «¿Por qué robó el banco?». «Porque estaba muy cansado y quería sentarme»."
+  },
+  {
+    "text": "Un policía para un coche y le dice al conductor: «¿No ha visto el semáforo en rojo?». «Sí, el que no le he visto es a usted»."
+  },
+  {
+    "text": "El revisor del tren le dice a un viajero: «Su billete es de niño». «Ya, es que he crecido por el camino»."
+  },
+  {
+    "text": "El capitán del barco grita: «¡Hombre al agua!». Y el hombre contesta: «¡Gracias, ya tengo sed!»."
+  },
+  {
+    "text": "Un ratón ve pasar un murciélago y le dice a su madre: «¡Mamá, mira, un ángel!»."
+  },
+  {
+    "text": "Toc, toc. ¿Quién es? Lola. ¿Qué Lola? Lola-vadora, que viene a por la ropa sucia."
+  },
+  {
+    "text": "Toc, toc. ¿Quién es? Ana. ¿Qué Ana? Ana-ranja, que traigo zumo."
+  },
+  {
+    "text": "Toc, toc. ¿Quién es? Paco. ¿Qué Paco? Paco-mer, que ya es la hora."
+  },
+  {
+    "text": "Toc, toc. ¿Quién es? El impaciente. ¿Qué impac...? ¡Abre ya!"
+  },
+  {
+    "text": "Toc, toc. ¿Quién es? Nadie. Pues entonces, pasa."
+  },
+  {
+    "text": "Oye, ¿sabes qué le pasó al hombre que se tragó una linterna? Que estuvo un mes con la luz dentro."
+  },
+  {
+    "text": "¿Sabes por qué el mar no se seca? Porque no tiene toalla."
+  },
+  {
+    "text": "¿Sabes por qué los elefantes llevan las uñas pintadas de rojo? Para esconderse en los fresales. ¿Y a que nunca has visto uno? Pues funciona."
+  },
+  {
+    "text": "¿Sabes por qué el cielo es tan alto? Para que los pájaros no se den en la cabeza."
+  },
+  {
+    "text": "¿Sabes cuál es la comida favorita de los fantasmas? Los espaguetis... a la boo-loñesa."
+  },
+  {
+    "text": "¿Cómo se despiden los químicos? Ácido un placer."
+  },
+  {
+    "text": "¿Cómo meterías cuatro elefantes en un coche? Dos delante y dos detrás."
+  },
+  {
+    "text": "¿Cómo sabes si un elefante ha estado en tu nevera? Por las huellas en la mantequilla."
+  },
+  {
+    "text": "¿Cómo se llama el hermano vegetariano de Drácula? Draculechuga."
+  },
+  {
+    "text": "¿Cómo se llama un perro que hace magia? Labracadabrador."
+  },
+  {
+    "text": "¿Cómo se llama un mono que coge un tren? Mono-raíl."
+  },
+  {
+    "text": "¿Cómo se llama un gusano en la manzana? Inquilino."
+  },
+  {
+    "text": "¿Qué hace una oveja cuando va de compras? Sale con una bolsa de baa-ratas."
+  },
+  {
+    "text": "¿Qué hace una araña en internet? Busca páginas web."
+  },
+  {
+    "text": "¿Qué hace un oso polar cuando tiene calor? Se pone de mal hielo."
+  },
+  {
+    "text": "¿Qué hace una vaca con los ojos cerrados? Leche concentrada."
+  },
+  {
+    "text": "¿Qué hace un fantasma cuando se cae? Se da un susto."
+  },
+  {
+    "text": "¿Qué es un perro con fiebre? Un perrito caliente."
+  },
+  {
+    "text": "¿Qué es una vaca con terremoto? Batido de leche."
+  },
+  {
+    "text": "¿Qué es más rápido, el calor o el frío? El calor, porque el frío se coge."
+  },
+  {
+    "text": "¿Qué está siempre al final de todo? La letra o."
+  },
+  {
+    "text": "¿Qué animal tiene más dientes? El ratón Pérez, porque los tiene todos."
+  },
+  {
+    "text": "¿Qué animal es más fuerte? El caracol, porque lleva su casa a cuestas."
+  },
+  {
+    "text": "¿Qué animal es más rico? El pez, porque nada en la abundancia."
+  },
+  {
+    "text": "¿Qué animal es más educado? El pingüino, siempre va de traje."
+  },
+  {
+    "text": "¿Qué le dijo el sol al girasol? Deja de mirarme, que me pongo colorado."
+  },
+  {
+    "text": "¿Qué le dijo un pájaro a la cometa? Tienes cuerda para rato."
+  },
+  {
+    "text": "¿Qué le dijo la tortuga a la liebre? Ve tú delante, que yo llego igual."
+  },
+  {
+    "text": "¿Qué le dijo el saltamontes a la hierba? Hoy salto de alegría."
+  },
+  {
+    "text": "¿Qué le dijo la arena a la sombrilla? Aquí te quedas clavada."
+  },
+  {
+    "text": "¿Qué le dijo el pato a la pata? Vamos a cuac-tuar como si no pasara nada."
+  },
+  {
+    "text": "¿Qué le dijo un número a otro? Eres un uno en un millón."
+  },
+  {
+    "text": "¿Qué le dijo la O a la Q? Llevas la etiqueta por fuera."
+  },
+  {
+    "text": "Un niño le dice a su madre: «Mamá, he roto el jarrón». «¿Cuál?». «El que tú decías que era de la abuela». «¡Ay!». «Tranquila, la abuela ni se ha enterado»."
+  },
+  {
+    "text": "Un niño entra en la cocina y dice: «Mamá, ¿la tortilla se hace con huevos?». «Claro». «Pues dile al pollo que no se enfade»."
+  },
+  {
+    "text": "Un niño le dice a su padre: «Papá, en el colegio dicen que soy un despistado». «¿Y tú qué dices?». «Que yo no voy a ese colegio»."
+  },
+  {
+    "text": "Un niño le pregunta al profesor: «¿Me pueden castigar por algo que no he hecho?». «Claro que no». «Pues no he hecho los deberes»."
+  },
+  {
+    "text": "Un niño pregunta: «Papá, ¿qué es la amnesia?». «¿Qué es qué?»."
+  },
+  {
+    "text": "Un abuelo le dice a su nieto: «En mis tiempos, la tele solo tenía dos canales». «¿Y cómo veíais los dibujos?». «Con mucha imaginación»."
+  },
+  {
+    "text": "La profesora le pregunta a Jaimito: «¿Qué es más importante, la Luna o el Sol?». «La Luna, porque sale de noche, cuando más falta hace»."
+  },
+  {
+    "text": "La profesora le pregunta a Jaimito: «¿Qué tiempo verbal es \"yo estudiaré\"?». «El futuro, profe, porque ahora no me apetece»."
+  },
+  {
+    "text": "La profesora le pregunta a Jaimito: «¿Cuál es la capital de Francia?». «La F, profe»."
+  },
+  {
+    "text": "La profesora le pregunta a Jaimito: «Si en una mano tengo ocho naranjas y en la otra seis, ¿qué tengo?». «Unas manos enormes»."
+  },
+  {
+    "text": "La profesora le dice a Jaimito: «No puedes dormir en clase». «Podría, profe, si hablara usted un poco más bajo»."
+  },
+  {
+    "text": "Un hombre le dice a su vecino: «Me he comprado un perro sin olfato». «¿Y cómo huele?». «Fatal»."
+  },
+  {
+    "text": "Un hombre le dice al cartero: «¿Hay alguna carta para mí?». «¿Cómo se llama usted?». «Lo pone en el sobre»."
+  },
+  {
+    "text": "Un señor va a la farmacia: «¿Tiene algo para el hipo?». El farmacéutico le da un susto. «¿Se le ha quitado?». «Yo no tenía hipo, es para mi mujer»."
+  },
+  {
+    "text": "Una madre le dice a su hijo: «Vete a la cama, que mañana hay colegio». «¿Y si me voy al colegio y mañana hay cama?»."
+  },
+  {
+    "text": "Una sardina ve pasar un submarino y le dice a su madre: «¡Mamá, mira, una lata de personas!»."
+  },
+  {
+    "text": "Un gusano le dice a otro: «¿Me das la mano?». «No tengo». «Pues entonces un abrazo, que tampoco»."
+  },
+  {
+    "text": "Un caracol se sube a una tortuga y grita: «¡Yujuuu, qué velocidad!»."
+  },
+  {
+    "text": "Un caballo entra en un bar y el camarero le pregunta: «¿Por qué esa cara tan larga?»."
+  },
+  {
+    "text": "Un esqueleto va al médico. El médico le mira y le dice: «Llega usted un poco tarde»."
+  },
+  {
+    "text": "Un vampiro va al dentista y le dice: «Me duele el colmillo». «Pues no muerda tanto entre horas»."
+  },
+  {
+    "text": "Dos fantasmas se encuentran: «¿Crees en los humanos?». «Yo no, eso son cuentos para asustar a los fantasmitas»."
+  },
+  {
+    "text": "Dos pollitos se encuentran: «¿Tú a qué hora naces mañana?»."
+  },
+  {
+    "text": "¿Cómo se llama un dinosaurio con gafas? Tucreesqueveosaurio."
+  },
+  {
+    "text": "¿Cómo se llama un dinosaurio que no para de hablar? Blablasaurio."
+  },
+  {
+    "text": "¿Cómo se llama el pez que más madruga? El pez espada, porque se levanta a las cinco en punta."
+  },
+  {
+    "text": "¿Por qué el sol nunca llega tarde? Porque siempre sale a su hora."
+  },
+  {
+    "text": "¿Por qué la tortuga no juega al escondite? Porque siempre se lleva la casa a cuestas y se la ven."
+  },
+  {
+    "text": "¿Por qué el pájaro carpintero tiene dolor de cabeza? Porque trabaja con la cabeza todo el día."
+  },
+  {
+    "text": "¿Por qué el cartero no juega al fútbol? Porque siempre devuelve los pases al remitente."
+  },
+  {
+    "text": "¿Por qué el cuaderno está tan tranquilo? Porque tiene las ideas en línea."
+  },
+  {
+    "text": "¿Por qué los peces no van a la escuela? Porque ya están en un banco de peces."
+  },
+  {
+    "text": "¿Por qué el teléfono lleva gafas? Porque ha perdido los contactos."
+  },
+  {
+    "text": "¿Por qué el reloj está siempre cansado? Porque trabaja las veinticuatro horas."
+  },
+  {
+    "text": "¿Qué es un terapeuta? Mil gigapeutas, más o menos."
+  },
+  {
+    "text": "¿Qué hace un elefante en una bañera? Quitarte el sitio."
+  },
+  {
+    "text": "¿Qué hace un perro en el polo norte? Un perrito helado."
+  },
+  {
+    "text": "¿Qué tiene que hacer un fantasma para entrar en el equipo? Pasar a través de la prueba."
+  },
+  {
+    "text": "¿Qué le dijo una montaña a otra? Te veo en la cumbre."
+  },
+  {
+    "text": "¿Qué le dijo un cuadro a la pared? Perdona, que te tapo."
+  },
+  {
+    "text": "¿Qué le dijo la hamburguesa al pan? Abrázame fuerte, que me caigo."
+  },
+  {
+    "text": "¿Qué le dijo el perro a la pulga? Deja de saltar, que me haces cosquillas."
+  },
+  {
+    "text": "¿Qué le dijo la luna llena a la luna nueva? Te veo muy flaquita, come algo."
+  },
+  {
+    "text": "¿Qué le dijo una vela a otra vela? ¿Salimos esta noche?"
+  },
+  {
+    "text": "¿Qué le dijo el lunes al martes? Tranquilo, que lo peor ya ha pasado."
+  },
+  {
+    "text": "Un perro entra en una oficina de correos y dice: «Quiero mandar un telegrama: guau, guau, guau, guau». «Por el mismo precio puede poner otro guau». «Entonces ya no tendría sentido»."
+  },
+  {
+    "text": "Un pez le pregunta a su madre: «Mamá, ¿por qué no puedo salir del agua?». «Porque te mojarías de aire»."
+  },
+  {
+    "text": "Un niño le dice a su padre: «Papá, ¿me dejas ir a la luna?». «Vale, pero vuelve antes de que se haga de noche»."
+  },
+  {
+    "text": "Un niño le dice a su abuela: «Abuela, ¿me cuentas un cuento?». «Había una vez un cuento muy corto». «¿Y?». «Fin»."
+  },
+  {
+    "text": "Un niño llega a casa: «Mamá, hoy en el cole he aprendido a escribir». «¿Y qué has escrito?». «No lo sé, todavía no he aprendido a leer»."
+  },
+  {
+    "text": "La profesora le pregunta a Jaimito: «¿Cómo te imaginas el año 3000?». «Con tres ceros, profe»."
+  },
+  {
+    "text": "La profesora le pregunta a Jaimito: «¿Dónde se firmó la paz?». «Al final del papel, profe»."
+  },
+  {
+    "text": "La profesora le pregunta a Jaimito: «¿Qué pesa más, un kilo de paja o un kilo de hierro?». «El de hierro, si se te cae en el pie»."
+  },
+  {
+    "text": "Un hombre llama al fontanero: «Venga rápido, que tengo una fuga». «¿Dónde?». «Si lo supiera, no se habría fugado»."
+  },
+  {
+    "text": "Un perro le dice a otro: «He ido al psicólogo». «¿Y qué te ha dicho?». «Que no me suba al sofá»."
+  },
+  {
+    "text": "Un gato le dice a otro: «Me han comprado un ratón». «¿De verdad?». «Sí, pero es del ordenador»."
+  },
+  {
+    "text": "Un astronauta le dice a otro: «¿Hacemos una fiesta en la Luna?». «No, que no hay ambiente»."
+  },
+  {
+    "text": "¿Qué le dijo el ratón del ordenador al gato? A mí no me pillas, que tengo cable."
+  },
+  {
+    "text": "¿Qué le dijo un bolígrafo a otro? Tú y yo tenemos mucha tinta en común."
+  },
+  {
+    "text": "¿Qué le dijo un cuaderno a otro? Tengo una página en blanco y no sé qué hacer con mi vida."
+  },
+  {
+    "text": "¿Por qué el libro de historia no tiene amigos? Porque siempre está hablando del pasado."
+  },
+  {
+    "text": "¿Por qué el futbolista llevó cuerda al partido? Para atar el empate."
+  },
+  {
+    "text": "¿Por qué el profesor de música se subió a una escalera? Para dar las notas más altas."
+  },
+  {
+    "text": "Un niño le pregunta a su padre: «¿Por qué los peces no hablan?». «¿Tú hablarías con la boca llena de agua?»."
+  },
+  {
+    "text": "La profesora le pregunta a Jaimito: «¿Por qué tu perro ha hecho los deberes?». «Yo no he dicho que los haya hecho bien, profe»."
+  },
+  {
+    "text": "Una vaca le pregunta a otra: «¿Tú qué prefieres, la hierba o el pienso?». «Yo pienso, luego existo»."
+  },
+  {
+    "text": "Un tomate le dice a otro: «¿Vamos a la playa?». «No, que me pongo rojo»."
+  }
+]

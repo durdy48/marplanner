@@ -7,13 +7,15 @@ records what was observed, what is known about the cause, and the options seen s
 | #   | Item                                                                      | Kind    | Status                             |
 | --- | ------------------------------------------------------------------------- | ------- | ---------------------------------- |
 | 1   | [Weather and streak print twice by default](#1-weather-and-streak-twice)  | Bug/UX  | Open                               |
-| 2   | [English content on a Spanish household's slip](#2-english-content)       | Feature | Open                               |
+| 2   | [English content on a Spanish household's slip](#2-english-content)       | Feature | Open, design decided               |
 | 3   | [Emoji typed in a reminder prints as an empty box](#3-emoji-in-reminders) | Bug     | Open                               |
 | 4   | [Print the briefing on an ordinary A4 printer](#4-a4-printing)            | Feature | Manual print done; unattended open |
 | 5   | [Household chores beyond children's routines](#5-household-chores)        | Feature | Open                               |
 | 6   | [The day's chores on the printed briefing](#6-chores-on-the-briefing)     | Feature | Done                               |
 | 7   | [Household events on the briefing's agenda](#7-household-events)          | Feature | Done                               |
 | 8   | [Reusing chores across routines](#8-reusing-chores)                       | Feature | Copies done; shared catalogue open |
+| 9   | [The saint's day on the briefing](#9-saints-day)                          | Feature | Open, after item 2                 |
+| 10  | [An English word a day for a Spanish household](#10-english-word)         | Feature | Open, after item 2                 |
 
 The observations come from one generated briefing (all blocks enabled, household language
 Spanish, 576-dot paper width, image 576 × 5272 px).
@@ -73,6 +75,24 @@ corpus and printed in Spanish. `phonics` is English by design.
 - **Do not print what cannot be localized.** Until a corpus exists, a block with no content in
   the household language could default to off, or be flagged in the admin matrix ("English
   only"). Today nothing warns the parent before the slip is printed.
+
+**Decided (2026-11-14).** For this household only, not as an upstream contribution; one block
+at a time, each deployed and seen on paper before the next:
+
+| Block        | Decision                                                                        |
+| ------------ | ------------------------------------------------------------------------------- |
+| `onThisDay`  | Spanish Wikipedia, events only (no births or deaths), always                    |
+| `riddle`     | Translate the 122, replacing the ones that depend on English                    |
+| `dadJoke`    | 588 new Spanish jokes: wordplay, "colmos", absurd questions, short situations   |
+| `quoteOfDay` | Local Spanish corpus mixing proverbs and well-attributed quotes; `en` unchanged |
+| `wordSearch` | Curated themed word list; `Ñ` is a letter, vowels unaccented in the grid        |
+| `wordOfDay`  | Spanish vocabulary (Spanish word, Spanish definition), 398 words in four levels |
+| `trivia`     | Translate, replacing US-centric and non-child questions; same total of 832      |
+
+The word search prints its word list with accents ("CAMIÓN") while the grid holds "CAMION".
+Content is written in one pass and corrected as it shows up on paper, so each corpus goes
+through an automated check (facts, answers, duplicates, tone for ages 10 to 13).
+Items [9](#9-saints-day) and [10](#10-english-word) follow in the same run.
 
 ## 3. Emoji in reminders
 
@@ -221,3 +241,33 @@ a schema change, because a completion is stored per chore: the same catalogue ch
 routines on one day needs a completion per placement, which also reaches the board, the streak
 and the admin page. Best done together with [item 5](#5-household-chores), which already
 reshapes how chores, routines and members relate.
+
+## 9. Saint's day
+
+**Goal.** A briefing block with the Spanish _santoral_ of the day (the saints celebrated on
+that date), as printed on a Spanish wall calendar.
+
+**To investigate.**
+
+- A source for the data and its licence, and how many saints to print per day (the calendar
+  lists several; a wall calendar prints one or two).
+- Shape: a local corpus keyed by day of the year, like `numberFact`, needs no network and no
+  cache. February 29 needs an entry.
+- It only makes sense for a Spanish household: decide whether the block is offered at all when
+  the household language is English.
+
+## 10. English word
+
+**Goal.** A block that teaches one English word a day to a Spanish-speaking child: the word,
+its explanation and its Spanish translation. It is separate from `wordOfDay`, which
+[item 2](#2-english-content) turns into Spanish vocabulary for a Spanish household.
+
+**To investigate.**
+
+- Whether it reuses the 398 English entries of `corpora/vocabulary-entries.json`. Their levels
+  (L1 to L4) were set for native speakers: L1 and L2 suit a 10 to 13 year old learning English,
+  L4 ("acrimony", "circumlocution") does not.
+- Which fields print: word, pronunciation, translation, explanation in Spanish, example in
+  English. The current entry has no `translation` field.
+- Whether it is a new block type or a mode of `wordOfDay`. A language selector that offers
+  "Spanish" for an English word would mislead.

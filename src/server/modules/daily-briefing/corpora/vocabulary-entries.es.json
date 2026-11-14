@@ -1,0 +1,3186 @@
+[
+  {
+    "word": "alegre",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que siente o muestra alegría.",
+    "example": "Mi abuela siempre está alegre cuando venimos a verla.",
+    "pronunciation": null
+  },
+  {
+    "word": "valiente",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que se atreve a hacer algo difícil o que da miedo.",
+    "example": "Fue muy valiente al decir la verdad delante de toda la clase.",
+    "pronunciation": null
+  },
+  {
+    "word": "amable",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que trata a los demás con cariño y buenos modales.",
+    "example": "El conductor del autobús fue muy amable con nosotros.",
+    "pronunciation": null
+  },
+  {
+    "word": "curioso",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que quiere saber y aprender cosas nuevas.",
+    "example": "Mi hermano es tan curioso que lo pregunta todo.",
+    "pronunciation": null
+  },
+  {
+    "word": "tranquilo",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que está en calma, sin nervios ni ruido.",
+    "example": "Por la noche el parque está muy tranquilo.",
+    "pronunciation": null
+  },
+  {
+    "word": "enorme",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Muy grande.",
+    "example": "En el museo vimos el esqueleto de una ballena enorme.",
+    "pronunciation": null
+  },
+  {
+    "word": "diminuto",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Muy pequeño.",
+    "example": "La mariquita tenía unas patas diminutas.",
+    "pronunciation": null
+  },
+  {
+    "word": "brillante",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que da o refleja mucha luz.",
+    "example": "La luna estaba brillante sobre el mar.",
+    "pronunciation": null
+  },
+  {
+    "word": "sabroso",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que tiene buen sabor.",
+    "example": "La tortilla de la abuela está muy sabrosa.",
+    "pronunciation": null
+  },
+  {
+    "word": "ruidoso",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que hace mucho ruido.",
+    "example": "El comedor estaba muy ruidoso a la hora de comer.",
+    "pronunciation": null
+  },
+  {
+    "word": "silencioso",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que no hace ruido.",
+    "example": "El gato entró en la cocina silencioso como una sombra.",
+    "pronunciation": null
+  },
+  {
+    "word": "generoso",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que comparte lo que tiene con los demás.",
+    "example": "Fue generoso y repartió su merienda con todos.",
+    "pronunciation": null
+  },
+  {
+    "word": "paciente",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que sabe esperar sin enfadarse.",
+    "example": "Hay que ser paciente para hacer un puzle de mil piezas.",
+    "pronunciation": null
+  },
+  {
+    "word": "ordenado",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que tiene cada cosa en su sitio.",
+    "example": "Su habitación está siempre ordenada.",
+    "pronunciation": null
+  },
+  {
+    "word": "distraído",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que no presta atención a lo que pasa o a lo que hace.",
+    "example": "Iba tan distraído que se pasó de parada.",
+    "pronunciation": null
+  },
+  {
+    "word": "cansado",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que necesita descansar.",
+    "example": "Después del partido llegamos muy cansados.",
+    "pronunciation": null
+  },
+  {
+    "word": "asustado",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que siente miedo.",
+    "example": "El perro estaba asustado por los truenos.",
+    "pronunciation": null
+  },
+  {
+    "word": "orgulloso",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Contento por algo bueno que ha hecho uno mismo o alguien cercano.",
+    "example": "Mi madre está orgullosa de mis notas.",
+    "pronunciation": null
+  },
+  {
+    "word": "sorprendido",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que siente sorpresa por algo que no esperaba.",
+    "example": "Se quedó sorprendido al ver la tarta.",
+    "pronunciation": null
+  },
+  {
+    "word": "travieso",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que hace travesuras.",
+    "example": "El cachorro es tan travieso que muerde las zapatillas.",
+    "pronunciation": null
+  },
+  {
+    "word": "puntual",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que llega a la hora acordada.",
+    "example": "Mi profesora es muy puntual: entra en clase a las nueve en punto.",
+    "pronunciation": null
+  },
+  {
+    "word": "sincero",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que dice lo que piensa de verdad.",
+    "example": "Te voy a ser sincero: no me gusta el brócoli.",
+    "pronunciation": null
+  },
+  {
+    "word": "responsable",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que cumple con sus obligaciones y cuida de lo que se le encarga.",
+    "example": "Es muy responsable con los deberes.",
+    "pronunciation": null
+  },
+  {
+    "word": "divertido",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que hace reír o pasarlo bien.",
+    "example": "La excursión al zoo fue muy divertida.",
+    "pronunciation": null
+  },
+  {
+    "word": "aburrido",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que no tiene nada interesante, o que no sabe qué hacer.",
+    "example": "La película era tan aburrida que me dormí.",
+    "pronunciation": null
+  },
+  {
+    "word": "húmedo",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Un poco mojado.",
+    "example": "La toalla aún está húmeda.",
+    "pronunciation": null
+  },
+  {
+    "word": "áspero",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que no es suave al tocarlo.",
+    "example": "La corteza del árbol es áspera.",
+    "pronunciation": null
+  },
+  {
+    "word": "suave",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Agradable al tacto, sin asperezas.",
+    "example": "El gatito tiene el pelo muy suave.",
+    "pronunciation": null
+  },
+  {
+    "word": "veloz",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Muy rápido.",
+    "example": "El guepardo es el animal terrestre más veloz.",
+    "pronunciation": null
+  },
+  {
+    "word": "lento",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que tarda mucho en moverse o en hacer algo.",
+    "example": "El caracol es muy lento.",
+    "pronunciation": null
+  },
+  {
+    "word": "antiguo",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que existe desde hace mucho tiempo.",
+    "example": "Visitamos un castillo antiguo.",
+    "pronunciation": null
+  },
+  {
+    "word": "moderno",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "De ahora o de hace poco tiempo.",
+    "example": "La biblioteca nueva es muy moderna.",
+    "pronunciation": null
+  },
+  {
+    "word": "peligroso",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que puede causar un daño.",
+    "example": "Cruzar sin mirar es peligroso.",
+    "pronunciation": null
+  },
+  {
+    "word": "afortunado",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que tiene buena suerte.",
+    "example": "Fue afortunado y encontró su llave.",
+    "pronunciation": null
+  },
+  {
+    "word": "hambriento",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que tiene mucha hambre.",
+    "example": "Llegué del cole hambriento.",
+    "pronunciation": null
+  },
+  {
+    "word": "sediento",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que tiene sed.",
+    "example": "Tras la carrera estábamos sedientos.",
+    "pronunciation": null
+  },
+  {
+    "word": "nervioso",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Inquieto, que no consigue estar tranquilo.",
+    "example": "Estaba nervioso antes del examen.",
+    "pronunciation": null
+  },
+  {
+    "word": "feliz",
+    "level": "L1",
+    "type": "adjetivo",
+    "definition": "Que siente alegría y está contento.",
+    "example": "Fue el día más feliz de mis vacaciones.",
+    "pronunciation": null
+  },
+  {
+    "word": "amistad",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Cariño y confianza entre amigos.",
+    "example": "Nuestra amistad empezó en primero.",
+    "pronunciation": null
+  },
+  {
+    "word": "aventura",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Suceso emocionante o arriesgado.",
+    "example": "Las vacaciones en la montaña fueron una aventura.",
+    "pronunciation": null
+  },
+  {
+    "word": "sorpresa",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Algo que no se espera y que llama la atención.",
+    "example": "La fiesta fue una sorpresa.",
+    "pronunciation": null
+  },
+  {
+    "word": "tesoro",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Conjunto de cosas de mucho valor guardadas.",
+    "example": "Los piratas escondieron su tesoro.",
+    "pronunciation": null
+  },
+  {
+    "word": "paisaje",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Lo que se ve de un lugar desde un sitio.",
+    "example": "Desde la cima había un paisaje precioso.",
+    "pronunciation": null
+  },
+  {
+    "word": "horizonte",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Línea donde parece que se juntan el cielo y la tierra o el mar.",
+    "example": "El sol se escondía por el horizonte.",
+    "pronunciation": null
+  },
+  {
+    "word": "cosecha",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Frutos que se recogen del campo, y el momento de recogerlos.",
+    "example": "Este año la cosecha de naranjas fue buena.",
+    "pronunciation": null
+  },
+  {
+    "word": "huella",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Marca que deja un pie, una pata o un dedo al pisar o tocar.",
+    "example": "En la nieve había huellas de un zorro.",
+    "pronunciation": null
+  },
+  {
+    "word": "recuerdo",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Algo que se guarda en la memoria, o un objeto que hace recordar.",
+    "example": "Tengo un recuerdo precioso de aquel verano.",
+    "pronunciation": null
+  },
+  {
+    "word": "esfuerzo",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Uso de mucha fuerza o empeño para conseguir algo.",
+    "example": "Con esfuerzo aprendió a nadar.",
+    "pronunciation": null
+  },
+  {
+    "word": "equipo",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Grupo de personas que trabajan o juegan juntas.",
+    "example": "Nuestro equipo ganó el torneo.",
+    "pronunciation": null
+  },
+  {
+    "word": "promesa",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Compromiso de hacer algo.",
+    "example": "Cumplió su promesa de ayudarme.",
+    "pronunciation": null
+  },
+  {
+    "word": "consejo",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Opinión que se da a alguien para ayudarle.",
+    "example": "Mi abuelo me dio un buen consejo.",
+    "pronunciation": null
+  },
+  {
+    "word": "pregunta",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Lo que se dice para saber algo.",
+    "example": "La profesora contestó a mi pregunta.",
+    "pronunciation": null
+  },
+  {
+    "word": "respuesta",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Lo que se dice para contestar.",
+    "example": "Escribe la respuesta en tu cuaderno.",
+    "pronunciation": null
+  },
+  {
+    "word": "invento",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Cosa nueva que alguien ha creado.",
+    "example": "La rueda fue un gran invento.",
+    "pronunciation": null
+  },
+  {
+    "word": "viaje",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Ir de un lugar a otro, normalmente lejos.",
+    "example": "El viaje a la playa duró tres horas.",
+    "pronunciation": null
+  },
+  {
+    "word": "brújula",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Instrumento con una aguja que señala siempre el norte.",
+    "example": "Sin brújula nos habríamos perdido.",
+    "pronunciation": null
+  },
+  {
+    "word": "estación",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Cada una de las cuatro partes del año, o lugar donde paran los trenes.",
+    "example": "La primavera es mi estación favorita.",
+    "pronunciation": null
+  },
+  {
+    "word": "tormenta",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Mal tiempo con lluvia fuerte, viento, rayos y truenos.",
+    "example": "La tormenta dejó la calle llena de charcos.",
+    "pronunciation": null
+  },
+  {
+    "word": "nido",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Lugar que hacen los pájaros para poner huevos y criar.",
+    "example": "Hay un nido de golondrinas en el balcón.",
+    "pronunciation": null
+  },
+  {
+    "word": "colmena",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Casa de las abejas, donde hacen la miel.",
+    "example": "El apicultor revisa la colmena.",
+    "pronunciation": null
+  },
+  {
+    "word": "semilla",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Parte de la planta de la que nace otra planta nueva.",
+    "example": "Plantamos una semilla de girasol.",
+    "pronunciation": null
+  },
+  {
+    "word": "cumbre",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Parte más alta de una montaña.",
+    "example": "Llegamos a la cumbre a mediodía.",
+    "pronunciation": null
+  },
+  {
+    "word": "orilla",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Borde de un río, un lago o el mar.",
+    "example": "Nos sentamos en la orilla del río.",
+    "pronunciation": null
+  },
+  {
+    "word": "olor",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Lo que se percibe con la nariz.",
+    "example": "En la panadería hay un olor riquísimo.",
+    "pronunciation": null
+  },
+  {
+    "word": "sabor",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Lo que se percibe con la lengua al comer o beber.",
+    "example": "Este helado tiene sabor a fresa.",
+    "pronunciation": null
+  },
+  {
+    "word": "idea",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Algo que se nos ocurre o que pensamos.",
+    "example": "Tuve una idea para el trabajo de ciencias.",
+    "pronunciation": null
+  },
+  {
+    "word": "sueño",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Ganas de dormir, o lo que se imagina mientras se duerme.",
+    "example": "Anoche tuve un sueño muy raro.",
+    "pronunciation": null
+  },
+  {
+    "word": "risa",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Lo que hacemos al reírnos.",
+    "example": "Su risa se oía desde el pasillo.",
+    "pronunciation": null
+  },
+  {
+    "word": "miedo",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Lo que se siente ante un peligro.",
+    "example": "Le da miedo la oscuridad.",
+    "pronunciation": null
+  },
+  {
+    "word": "vecino",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Persona que vive cerca de nosotros.",
+    "example": "Nuestro vecino tiene un perro enorme.",
+    "pronunciation": null
+  },
+  {
+    "word": "regalo",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Lo que se da a alguien sin pedir nada a cambio.",
+    "example": "Le hice un regalo por su cumpleaños.",
+    "pronunciation": null
+  },
+  {
+    "word": "juguete",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Objeto que sirve para jugar.",
+    "example": "Guardó los juguetes en la caja.",
+    "pronunciation": null
+  },
+  {
+    "word": "herramienta",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Objeto que sirve para hacer un trabajo.",
+    "example": "El martillo es una herramienta.",
+    "pronunciation": null
+  },
+  {
+    "word": "receta",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Instrucciones para preparar una comida, o lo que escribe el médico.",
+    "example": "Seguimos la receta del bizcocho.",
+    "pronunciation": null
+  },
+  {
+    "word": "merienda",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Comida ligera de la tarde.",
+    "example": "De merienda tomé pan con chocolate.",
+    "pronunciation": null
+  },
+  {
+    "word": "barrio",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Cada una de las zonas en las que se divide una ciudad.",
+    "example": "En mi barrio hay un parque nuevo.",
+    "pronunciation": null
+  },
+  {
+    "word": "puente",
+    "level": "L1",
+    "type": "sustantivo",
+    "definition": "Construcción que permite pasar por encima de un río o un camino.",
+    "example": "Cruzamos el puente andando.",
+    "pronunciation": null
+  },
+  {
+    "word": "explorar",
+    "level": "L1",
+    "type": "verbo",
+    "definition": "Recorrer un lugar para conocerlo.",
+    "example": "Fuimos a explorar la cueva con linternas.",
+    "pronunciation": null
+  },
+  {
+    "word": "descubrir",
+    "level": "L1",
+    "type": "verbo",
+    "definition": "Encontrar algo que no se conocía.",
+    "example": "Descubrimos un camino secreto en el bosque.",
+    "pronunciation": null
+  },
+  {
+    "word": "compartir",
+    "level": "L1",
+    "type": "verbo",
+    "definition": "Dar a otros parte de lo que uno tiene.",
+    "example": "Me gusta compartir mis libros.",
+    "pronunciation": null
+  },
+  {
+    "word": "ayudar",
+    "level": "L1",
+    "type": "verbo",
+    "definition": "Hacer algo para que otro lo tenga más fácil.",
+    "example": "Ayudé a mi padre a poner la mesa.",
+    "pronunciation": null
+  },
+  {
+    "word": "imaginar",
+    "level": "L1",
+    "type": "verbo",
+    "definition": "Pensar en algo que no está delante o que no existe.",
+    "example": "Imagina que vives en un castillo.",
+    "pronunciation": null
+  },
+  {
+    "word": "construir",
+    "level": "L1",
+    "type": "verbo",
+    "definition": "Hacer algo juntando piezas o materiales.",
+    "example": "Construimos una cabaña con ramas.",
+    "pronunciation": null
+  },
+  {
+    "word": "adivinar",
+    "level": "L1",
+    "type": "verbo",
+    "definition": "Acertar algo sin saberlo seguro.",
+    "example": "¿A que no adivinas qué tengo en la mano?",
+    "pronunciation": null
+  },
+  {
+    "word": "susurrar",
+    "level": "L1",
+    "type": "verbo",
+    "definition": "Hablar muy bajito.",
+    "example": "Me susurró un secreto al oído.",
+    "pronunciation": null
+  },
+  {
+    "word": "gritar",
+    "level": "L1",
+    "type": "verbo",
+    "definition": "Hablar muy alto.",
+    "example": "No hace falta gritar, te oigo bien.",
+    "pronunciation": null
+  },
+  {
+    "word": "saltar",
+    "level": "L1",
+    "type": "verbo",
+    "definition": "Levantarse del suelo con un impulso de las piernas.",
+    "example": "El canguro puede saltar muy lejos.",
+    "pronunciation": null
+  },
+  {
+    "word": "trepar",
+    "level": "L1",
+    "type": "verbo",
+    "definition": "Subir a un sitio alto ayudándose de pies y manos.",
+    "example": "El gato trepó al árbol.",
+    "pronunciation": null
+  },
+  {
+    "word": "recordar",
+    "level": "L1",
+    "type": "verbo",
+    "definition": "Traer algo a la memoria.",
+    "example": "No recuerdo dónde dejé el estuche.",
+    "pronunciation": null
+  },
+  {
+    "word": "olvidar",
+    "level": "L1",
+    "type": "verbo",
+    "definition": "Dejar de recordar algo.",
+    "example": "Se me olvidó la mochila en casa.",
+    "pronunciation": null
+  },
+  {
+    "word": "practicar",
+    "level": "L1",
+    "type": "verbo",
+    "definition": "Hacer algo muchas veces para aprenderlo bien.",
+    "example": "Practico piano todas las tardes.",
+    "pronunciation": null
+  },
+  {
+    "word": "resolver",
+    "level": "L1",
+    "type": "verbo",
+    "definition": "Encontrar la solución de un problema.",
+    "example": "Resolvió el acertijo en un minuto.",
+    "pronunciation": null
+  },
+  {
+    "word": "cuidar",
+    "level": "L1",
+    "type": "verbo",
+    "definition": "Ocuparse de que alguien o algo esté bien.",
+    "example": "Cuidamos de las plantas de la terraza.",
+    "pronunciation": null
+  },
+  {
+    "word": "celebrar",
+    "level": "L1",
+    "type": "verbo",
+    "definition": "Hacer una fiesta por algo bueno.",
+    "example": "Celebramos el final del curso.",
+    "pronunciation": null
+  },
+  {
+    "word": "esconder",
+    "level": "L1",
+    "type": "verbo",
+    "definition": "Poner algo donde no se vea.",
+    "example": "Escondí el regalo debajo de la cama.",
+    "pronunciation": null
+  },
+  {
+    "word": "dibujar",
+    "level": "L1",
+    "type": "verbo",
+    "definition": "Hacer una imagen con lápiz u otro material.",
+    "example": "Me gusta dibujar animales.",
+    "pronunciation": null
+  },
+  {
+    "word": "viajar",
+    "level": "L1",
+    "type": "verbo",
+    "definition": "Ir de un lugar a otro lejano.",
+    "example": "Este verano vamos a viajar en tren.",
+    "pronunciation": null
+  },
+  {
+    "word": "deprisa",
+    "level": "L1",
+    "type": "adverbio",
+    "definition": "Con rapidez.",
+    "example": "Vístete deprisa, que llegamos tarde.",
+    "pronunciation": null
+  },
+  {
+    "word": "despacio",
+    "level": "L1",
+    "type": "adverbio",
+    "definition": "Con lentitud.",
+    "example": "Habla despacio para que te entienda.",
+    "pronunciation": null
+  },
+  {
+    "word": "temprano",
+    "level": "L1",
+    "type": "adverbio",
+    "definition": "Pronto, al principio del día o antes de lo normal.",
+    "example": "Mañana nos levantamos temprano.",
+    "pronunciation": null
+  },
+  {
+    "word": "amistoso",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que se comporta como un amigo.",
+    "example": "Fue un partido amistoso, sin trofeo.",
+    "pronunciation": null
+  },
+  {
+    "word": "astuto",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Listo para darse cuenta de las cosas y conseguir lo que quiere.",
+    "example": "El zorro de la fábula era muy astuto.",
+    "pronunciation": null
+  },
+  {
+    "word": "torpe",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que se mueve con poca habilidad o tropieza con facilidad.",
+    "example": "Hoy estoy torpe: se me ha caído el vaso dos veces.",
+    "pronunciation": null
+  },
+  {
+    "word": "terco",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que no cambia de opinión aunque le den razones.",
+    "example": "Es tan terco que no hay manera de convencerle.",
+    "pronunciation": null
+  },
+  {
+    "word": "honrado",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que no engaña ni se queda con lo que no es suyo.",
+    "example": "Fue honrado y devolvió la cartera.",
+    "pronunciation": null
+  },
+  {
+    "word": "tímido",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que siente vergüenza al hablar o tratar con gente que no conoce.",
+    "example": "El primer día de clase estaba muy tímido.",
+    "pronunciation": null
+  },
+  {
+    "word": "optimista",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que ve el lado bueno de las cosas.",
+    "example": "Aunque perdimos, el entrenador estaba optimista.",
+    "pronunciation": null
+  },
+  {
+    "word": "cauteloso",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que actúa con cuidado para evitar problemas.",
+    "example": "Bajamos por la ladera de forma cautelosa.",
+    "pronunciation": null
+  },
+  {
+    "word": "ingenioso",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que tiene facilidad para inventar o encontrar soluciones.",
+    "example": "Encontró una solución ingeniosa con una pinza.",
+    "pronunciation": null
+  },
+  {
+    "word": "espontáneo",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que se hace o se dice sin haberlo preparado.",
+    "example": "Sus aplausos fueron espontáneos.",
+    "pronunciation": null
+  },
+  {
+    "word": "frágil",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que se rompe con facilidad.",
+    "example": "Cuidado con la caja, que es frágil.",
+    "pronunciation": null
+  },
+  {
+    "word": "resistente",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que aguanta golpes, peso o esfuerzo sin romperse.",
+    "example": "Esta mochila es muy resistente.",
+    "pronunciation": null
+  },
+  {
+    "word": "transparente",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que deja ver lo que hay detrás.",
+    "example": "El agua del río era transparente.",
+    "pronunciation": null
+  },
+  {
+    "word": "gigantesco",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Enorme, de un tamaño muy grande.",
+    "example": "Construyeron un castillo de arena gigantesco.",
+    "pronunciation": null
+  },
+  {
+    "word": "solitario",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que está solo o sin gente.",
+    "example": "Era una playa solitaria en invierno.",
+    "pronunciation": null
+  },
+  {
+    "word": "abundante",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que hay mucho.",
+    "example": "Este año la lluvia ha sido abundante.",
+    "pronunciation": null
+  },
+  {
+    "word": "escaso",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que hay poco.",
+    "example": "En el desierto el agua es escasa.",
+    "pronunciation": null
+  },
+  {
+    "word": "misterioso",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que no se entiende o esconde algo.",
+    "example": "Recibimos un paquete misterioso.",
+    "pronunciation": null
+  },
+  {
+    "word": "peculiar",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Propio de alguien o algo, y que lo distingue.",
+    "example": "Tiene una risa muy peculiar.",
+    "pronunciation": null
+  },
+  {
+    "word": "cotidiano",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que pasa todos los días.",
+    "example": "Lavarse los dientes es una tarea cotidiana.",
+    "pronunciation": null
+  },
+  {
+    "word": "fértil",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que produce mucho, como la tierra buena para cultivar.",
+    "example": "El valle tiene tierras fértiles.",
+    "pronunciation": null
+  },
+  {
+    "word": "árido",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Seco, con muy poca agua o vegetación.",
+    "example": "El paisaje del desierto es árido.",
+    "pronunciation": null
+  },
+  {
+    "word": "salvaje",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que vive en libertad en la naturaleza, sin domesticar.",
+    "example": "En la sabana viven animales salvajes.",
+    "pronunciation": null
+  },
+  {
+    "word": "ágil",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que se mueve con facilidad y rapidez.",
+    "example": "La ardilla es muy ágil.",
+    "pronunciation": null
+  },
+  {
+    "word": "impaciente",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que no sabe esperar.",
+    "example": "Estaba impaciente por abrir los regalos.",
+    "pronunciation": null
+  },
+  {
+    "word": "agradecido",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que da las gracias o siente gratitud.",
+    "example": "Estoy muy agradecido por tu ayuda.",
+    "pronunciation": null
+  },
+  {
+    "word": "envidioso",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que siente envidia de lo que tienen otros.",
+    "example": "No seas envidioso: tú también tienes cosas buenas.",
+    "pronunciation": null
+  },
+  {
+    "word": "creativo",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que tiene facilidad para crear o inventar cosas nuevas.",
+    "example": "Mi hermana es muy creativa con las manualidades.",
+    "pronunciation": null
+  },
+  {
+    "word": "competitivo",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que quiere ganar siempre.",
+    "example": "Es tan competitivo que no le gusta perder ni al parchís.",
+    "pronunciation": null
+  },
+  {
+    "word": "solidario",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que ayuda a los demás cuando lo necesitan.",
+    "example": "La clase fue solidaria con los afectados por la inundación.",
+    "pronunciation": null
+  },
+  {
+    "word": "puntiagudo",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que acaba en punta.",
+    "example": "El castillo tenía torres puntiagudas.",
+    "pronunciation": null
+  },
+  {
+    "word": "resbaladizo",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que hace resbalar.",
+    "example": "El suelo mojado está resbaladizo.",
+    "pronunciation": null
+  },
+  {
+    "word": "inolvidable",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que no se puede olvidar.",
+    "example": "Fue un viaje inolvidable.",
+    "pronunciation": null
+  },
+  {
+    "word": "imprescindible",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que no se puede dejar de tener o de hacer.",
+    "example": "El agua es imprescindible para vivir.",
+    "pronunciation": null
+  },
+  {
+    "word": "nocturno",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "De la noche, o que hace su vida de noche.",
+    "example": "El búho es un animal nocturno.",
+    "pronunciation": null
+  },
+  {
+    "word": "entusiasmado",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Muy ilusionado y con muchas ganas.",
+    "example": "Está entusiasmado con su nuevo telescopio.",
+    "pronunciation": null
+  },
+  {
+    "word": "asombroso",
+    "level": "L2",
+    "type": "adjetivo",
+    "definition": "Que causa asombro o admiración.",
+    "example": "El espectáculo de magia fue asombroso.",
+    "pronunciation": null
+  },
+  {
+    "word": "paciencia",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Capacidad de esperar o aguantar sin enfadarse.",
+    "example": "Montar el puzle requiere paciencia.",
+    "pronunciation": null
+  },
+  {
+    "word": "gratitud",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Sentimiento de agradecimiento hacia quien nos ha hecho un bien.",
+    "example": "Le escribí una carta de gratitud.",
+    "pronunciation": null
+  },
+  {
+    "word": "curiosidad",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Ganas de saber o conocer algo.",
+    "example": "La curiosidad le llevó a abrir la caja.",
+    "pronunciation": null
+  },
+  {
+    "word": "ingenio",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Facilidad para inventar o resolver problemas.",
+    "example": "Con ingenio arregló la bici.",
+    "pronunciation": null
+  },
+  {
+    "word": "hazaña",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Hecho valiente o difícil que se recuerda.",
+    "example": "Subir aquella montaña fue toda una hazaña.",
+    "pronunciation": null
+  },
+  {
+    "word": "leyenda",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Historia antigua que mezcla hechos reales con fantasía.",
+    "example": "Hay una leyenda sobre un dragón en ese castillo.",
+    "pronunciation": null
+  },
+  {
+    "word": "fábula",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Cuento corto, a menudo con animales, que deja una enseñanza.",
+    "example": "En la fábula, la tortuga gana a la liebre.",
+    "pronunciation": null
+  },
+  {
+    "word": "moraleja",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Enseñanza que se saca de un cuento o una fábula.",
+    "example": "La moraleja es que la constancia tiene premio.",
+    "pronunciation": null
+  },
+  {
+    "word": "refrán",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Frase popular y corta que da un consejo.",
+    "example": "Mi abuela siempre tiene un refrán para todo.",
+    "pronunciation": null
+  },
+  {
+    "word": "eco",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Sonido que vuelve tras chocar con algo.",
+    "example": "Gritamos en la cueva y oímos el eco.",
+    "pronunciation": null
+  },
+  {
+    "word": "espejismo",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Imagen falsa, como el agua que parece verse en el desierto.",
+    "example": "Aquel lago era solo un espejismo.",
+    "pronunciation": null
+  },
+  {
+    "word": "amanecer",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Momento en que sale el sol.",
+    "example": "Nos levantamos para ver el amanecer.",
+    "pronunciation": null
+  },
+  {
+    "word": "crepúsculo",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Luz que hay al empezar el día o al anochecer.",
+    "example": "En el crepúsculo, el cielo se volvió naranja.",
+    "pronunciation": null
+  },
+  {
+    "word": "acantilado",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Costa alta con paredes de roca casi verticales.",
+    "example": "Las gaviotas anidan en el acantilado.",
+    "pronunciation": null
+  },
+  {
+    "word": "manantial",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Lugar donde el agua sale de la tierra.",
+    "example": "Bebimos agua fresca del manantial.",
+    "pronunciation": null
+  },
+  {
+    "word": "arrecife",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Rocas o corales cerca de la superficie del mar.",
+    "example": "En el arrecife viven peces de colores.",
+    "pronunciation": null
+  },
+  {
+    "word": "estrecho",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Paso de mar entre dos tierras.",
+    "example": "El estrecho de Gibraltar separa Europa de África.",
+    "pronunciation": null
+  },
+  {
+    "word": "cordillera",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Serie de montañas unidas entre sí.",
+    "example": "Los Pirineos son una cordillera.",
+    "pronunciation": null
+  },
+  {
+    "word": "cosmos",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "El universo entero.",
+    "example": "El cosmos está lleno de galaxias.",
+    "pronunciation": null
+  },
+  {
+    "word": "órbita",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Camino que sigue un astro alrededor de otro.",
+    "example": "La Luna gira en órbita alrededor de la Tierra.",
+    "pronunciation": null
+  },
+  {
+    "word": "fósil",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Resto de un ser vivo antiguo que se ha convertido en piedra.",
+    "example": "Encontramos un fósil de concha en la montaña.",
+    "pronunciation": null
+  },
+  {
+    "word": "especie",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Grupo de seres vivos parecidos que pueden tener crías entre sí.",
+    "example": "El lince ibérico es una especie protegida.",
+    "pronunciation": null
+  },
+  {
+    "word": "hábitat",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Lugar natural donde vive un animal o una planta.",
+    "example": "El hábitat del pingüino es frío.",
+    "pronunciation": null
+  },
+  {
+    "word": "camuflaje",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Forma de esconderse confundiéndose con lo de alrededor.",
+    "example": "El camaleón usa el camuflaje para no ser visto.",
+    "pronunciation": null
+  },
+  {
+    "word": "reflejo",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Imagen que se ve en un espejo o en el agua.",
+    "example": "Vi mi reflejo en el lago.",
+    "pronunciation": null
+  },
+  {
+    "word": "sombra",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Zona oscura que se forma cuando algo tapa la luz.",
+    "example": "Nos sentamos a la sombra de un pino.",
+    "pronunciation": null
+  },
+  {
+    "word": "desafío",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Reto, algo difícil que se intenta conseguir.",
+    "example": "Aprender a leer partituras es un desafío.",
+    "pronunciation": null
+  },
+  {
+    "word": "logro",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Algo que se consigue con esfuerzo.",
+    "example": "Terminar la carrera fue un gran logro.",
+    "pronunciation": null
+  },
+  {
+    "word": "costumbre",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Lo que se hace a menudo y de la misma manera.",
+    "example": "Tenemos la costumbre de cenar juntos.",
+    "pronunciation": null
+  },
+  {
+    "word": "tradición",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Costumbre que pasa de padres a hijos.",
+    "example": "Comer uvas en Nochevieja es una tradición.",
+    "pronunciation": null
+  },
+  {
+    "word": "tesón",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Constancia y firmeza para conseguir algo.",
+    "example": "Con tesón aprendió a tocar la guitarra.",
+    "pronunciation": null
+  },
+  {
+    "word": "ruta",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Camino que se sigue para ir de un sitio a otro.",
+    "example": "Planeamos la ruta en bici.",
+    "pronunciation": null
+  },
+  {
+    "word": "pista",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Señal que ayuda a descubrir algo.",
+    "example": "El detective encontró una pista.",
+    "pronunciation": null
+  },
+  {
+    "word": "enigma",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Algo misterioso difícil de entender.",
+    "example": "Cómo se escapó el hámster sigue siendo un enigma.",
+    "pronunciation": null
+  },
+  {
+    "word": "rumor",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Noticia que corre entre la gente sin saber si es verdad.",
+    "example": "Hay un rumor de que vamos de excursión.",
+    "pronunciation": null
+  },
+  {
+    "word": "aldea",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Pueblo muy pequeño.",
+    "example": "La aldea tenía solo diez casas.",
+    "pronunciation": null
+  },
+  {
+    "word": "muralla",
+    "level": "L2",
+    "type": "sustantivo",
+    "definition": "Muro grueso que rodea una ciudad o un castillo.",
+    "example": "Paseamos por la muralla de Ávila.",
+    "pronunciation": null
+  },
+  {
+    "word": "averiguar",
+    "level": "L2",
+    "type": "verbo",
+    "definition": "Buscar la manera de saber algo.",
+    "example": "Quiero averiguar quién se comió las galletas.",
+    "pronunciation": null
+  },
+  {
+    "word": "comprobar",
+    "level": "L2",
+    "type": "verbo",
+    "definition": "Mirar si algo es cierto o está bien.",
+    "example": "Comprueba que has cerrado la puerta.",
+    "pronunciation": null
+  },
+  {
+    "word": "conseguir",
+    "level": "L2",
+    "type": "verbo",
+    "definition": "Lograr lo que se quiere.",
+    "example": "Al final consiguió montar en bici sin ruedines.",
+    "pronunciation": null
+  },
+  {
+    "word": "insistir",
+    "level": "L2",
+    "type": "verbo",
+    "definition": "Pedir o decir algo muchas veces.",
+    "example": "Insistió tanto que le dejaron ir.",
+    "pronunciation": null
+  },
+  {
+    "word": "convencer",
+    "level": "L2",
+    "type": "verbo",
+    "definition": "Hacer que alguien piense o haga algo dándole razones.",
+    "example": "Me convenció para apuntarme al teatro.",
+    "pronunciation": null
+  },
+  {
+    "word": "dudar",
+    "level": "L2",
+    "type": "verbo",
+    "definition": "No estar seguro de algo.",
+    "example": "Dudo que llueva hoy.",
+    "pronunciation": null
+  },
+  {
+    "word": "sospechar",
+    "level": "L2",
+    "type": "verbo",
+    "definition": "Creer que algo pasa por algunas señales.",
+    "example": "Sospecho que el perro se ha comido el bocadillo.",
+    "pronunciation": null
+  },
+  {
+    "word": "merecer",
+    "level": "L2",
+    "type": "verbo",
+    "definition": "Ser digno de un premio o de un castigo.",
+    "example": "Te mereces un descanso.",
+    "pronunciation": null
+  },
+  {
+    "word": "madrugar",
+    "level": "L2",
+    "type": "verbo",
+    "definition": "Levantarse muy temprano.",
+    "example": "Los sábados no me gusta madrugar.",
+    "pronunciation": null
+  },
+  {
+    "word": "agradecer",
+    "level": "L2",
+    "type": "verbo",
+    "definition": "Dar las gracias.",
+    "example": "Te agradezco mucho tu ayuda.",
+    "pronunciation": null
+  },
+  {
+    "word": "disculparse",
+    "level": "L2",
+    "type": "verbo",
+    "definition": "Pedir perdón.",
+    "example": "Se disculpó por llegar tarde.",
+    "pronunciation": null
+  },
+  {
+    "word": "colaborar",
+    "level": "L2",
+    "type": "verbo",
+    "definition": "Trabajar junto a otros.",
+    "example": "Todos colaboramos para limpiar la playa.",
+    "pronunciation": null
+  },
+  {
+    "word": "observar",
+    "level": "L2",
+    "type": "verbo",
+    "definition": "Mirar con atención.",
+    "example": "Observamos las estrellas con un telescopio.",
+    "pronunciation": null
+  },
+  {
+    "word": "investigar",
+    "level": "L2",
+    "type": "verbo",
+    "definition": "Buscar información para descubrir algo.",
+    "example": "Investigamos cómo viven las hormigas.",
+    "pronunciation": null
+  },
+  {
+    "word": "proteger",
+    "level": "L2",
+    "type": "verbo",
+    "definition": "Cuidar de algo para que no sufra daño.",
+    "example": "El casco protege la cabeza.",
+    "pronunciation": null
+  },
+  {
+    "word": "reciclar",
+    "level": "L2",
+    "type": "verbo",
+    "definition": "Volver a usar materiales para hacer cosas nuevas.",
+    "example": "Reciclamos el papel en el contenedor azul.",
+    "pronunciation": null
+  },
+  {
+    "word": "improvisar",
+    "level": "L2",
+    "type": "verbo",
+    "definition": "Hacer algo sin haberlo preparado.",
+    "example": "Se le olvidó el discurso e improvisó.",
+    "pronunciation": null
+  },
+  {
+    "word": "rescatar",
+    "level": "L2",
+    "type": "verbo",
+    "definition": "Salvar a alguien de un peligro.",
+    "example": "Los bomberos rescataron al gato del tejado.",
+    "pronunciation": null
+  },
+  {
+    "word": "deslizarse",
+    "level": "L2",
+    "type": "verbo",
+    "definition": "Moverse suavemente sobre una superficie.",
+    "example": "Los pingüinos se deslizan sobre el hielo.",
+    "pronunciation": null
+  },
+  {
+    "word": "brotar",
+    "level": "L2",
+    "type": "verbo",
+    "definition": "Empezar a salir una planta, una hoja o el agua.",
+    "example": "En primavera brotan las hojas.",
+    "pronunciation": null
+  },
+  {
+    "word": "alcanzar",
+    "level": "L2",
+    "type": "verbo",
+    "definition": "Llegar hasta algo o hasta alguien.",
+    "example": "No alcanzo el estante de arriba.",
+    "pronunciation": null
+  },
+  {
+    "word": "atreverse",
+    "level": "L2",
+    "type": "verbo",
+    "definition": "Decidirse a hacer algo que da miedo o es difícil.",
+    "example": "Por fin se atrevió a tirarse del trampolín.",
+    "pronunciation": null
+  },
+  {
+    "word": "aprovechar",
+    "level": "L2",
+    "type": "verbo",
+    "definition": "Sacar partido de algo.",
+    "example": "Aprovecha el sol para salir a jugar.",
+    "pronunciation": null
+  },
+  {
+    "word": "aplaudir",
+    "level": "L2",
+    "type": "verbo",
+    "definition": "Chocar las palmas para mostrar que algo gusta.",
+    "example": "El público aplaudió al terminar la obra.",
+    "pronunciation": null
+  },
+  {
+    "word": "aproximadamente",
+    "level": "L2",
+    "type": "adverbio",
+    "definition": "Más o menos, de forma no exacta.",
+    "example": "Tardamos aproximadamente una hora.",
+    "pronunciation": null
+  },
+  {
+    "word": "últimamente",
+    "level": "L2",
+    "type": "adverbio",
+    "definition": "En los últimos días o en los últimos tiempos.",
+    "example": "Últimamente leo mucho.",
+    "pronunciation": null
+  },
+  {
+    "word": "efímero",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Que dura muy poco.",
+    "example": "La belleza del arcoíris es efímera.",
+    "pronunciation": null
+  },
+  {
+    "word": "perspicaz",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Que se da cuenta de cosas que a otros se les escapan.",
+    "example": "La detective era muy perspicaz.",
+    "pronunciation": null
+  },
+  {
+    "word": "meticuloso",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Que hace las cosas con mucho cuidado y detalle.",
+    "example": "Es meticuloso hasta para ordenar los lápices.",
+    "pronunciation": null
+  },
+  {
+    "word": "tenaz",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Que no se rinde ante las dificultades.",
+    "example": "Fue tenaz y acabó aprobando.",
+    "pronunciation": null
+  },
+  {
+    "word": "prudente",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Que piensa antes de actuar para evitar riesgos.",
+    "example": "Sé prudente al cruzar la carretera.",
+    "pronunciation": null
+  },
+  {
+    "word": "elocuente",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Que habla de forma clara y convincente.",
+    "example": "Su discurso fue muy elocuente.",
+    "pronunciation": null
+  },
+  {
+    "word": "ambicioso",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Que desea conseguir grandes cosas.",
+    "example": "Tiene un plan ambicioso para el verano.",
+    "pronunciation": null
+  },
+  {
+    "word": "humilde",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Que no presume de lo que sabe o tiene.",
+    "example": "A pesar de ganar, siguió siendo humilde.",
+    "pronunciation": null
+  },
+  {
+    "word": "ecuánime",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Que juzga con calma y de forma justa.",
+    "example": "El árbitro fue ecuánime con los dos equipos.",
+    "pronunciation": null
+  },
+  {
+    "word": "minucioso",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Que se fija en los más pequeños detalles.",
+    "example": "Hizo un dibujo minucioso de la hoja.",
+    "pronunciation": null
+  },
+  {
+    "word": "insólito",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Raro, que no suele pasar.",
+    "example": "Ver nevar en la playa fue algo insólito.",
+    "pronunciation": null
+  },
+  {
+    "word": "inédito",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Que no se ha publicado o que no se ha visto nunca.",
+    "example": "El museo mostró dibujos inéditos del pintor.",
+    "pronunciation": null
+  },
+  {
+    "word": "intrépido",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Que no tiene miedo ante el peligro.",
+    "example": "Era un explorador intrépido.",
+    "pronunciation": null
+  },
+  {
+    "word": "sigiloso",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Que actúa en silencio para no ser notado.",
+    "example": "El gato se acercó sigiloso al pájaro.",
+    "pronunciation": null
+  },
+  {
+    "word": "vasto",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Muy extenso.",
+    "example": "El océano es vasto.",
+    "pronunciation": null
+  },
+  {
+    "word": "remoto",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Muy lejano en el espacio o en el tiempo.",
+    "example": "Vivían en una aldea remota.",
+    "pronunciation": null
+  },
+  {
+    "word": "arduo",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Muy difícil y que exige mucho esfuerzo.",
+    "example": "Fue un trabajo arduo, pero mereció la pena.",
+    "pronunciation": null
+  },
+  {
+    "word": "fugaz",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Que pasa muy deprisa.",
+    "example": "Vimos una estrella fugaz.",
+    "pronunciation": null
+  },
+  {
+    "word": "apacible",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Tranquilo y agradable.",
+    "example": "Hacía una tarde apacible.",
+    "pronunciation": null
+  },
+  {
+    "word": "inhóspito",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Donde es difícil vivir o estar.",
+    "example": "La Antártida es un lugar inhóspito.",
+    "pronunciation": null
+  },
+  {
+    "word": "autóctono",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Que es propio del lugar en el que vive o se encuentra.",
+    "example": "La encina es un árbol autóctono de la península.",
+    "pronunciation": null
+  },
+  {
+    "word": "pintoresco",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Bonito y llamativo, como para pintarlo.",
+    "example": "Visitamos un pueblo pintoresco.",
+    "pronunciation": null
+  },
+  {
+    "word": "evidente",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Tan claro que no deja dudas.",
+    "example": "Era evidente que iba a llover.",
+    "pronunciation": null
+  },
+  {
+    "word": "ingenuo",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Que cree fácilmente lo que le dicen.",
+    "example": "Fue ingenuo y se creyó la broma.",
+    "pronunciation": null
+  },
+  {
+    "word": "obstinado",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Que mantiene su idea sin escuchar razones.",
+    "example": "Es tan obstinado como una mula.",
+    "pronunciation": null
+  },
+  {
+    "word": "versátil",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Que sirve para muchas cosas o sabe hacer muchas cosas.",
+    "example": "Es un jugador versátil: puede jugar en cualquier puesto.",
+    "pronunciation": null
+  },
+  {
+    "word": "nostálgico",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Que echa de menos el pasado.",
+    "example": "Mirando fotos se puso nostálgico.",
+    "pronunciation": null
+  },
+  {
+    "word": "melancólico",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Triste de forma suave y duradera.",
+    "example": "La música de la película era melancólica.",
+    "pronunciation": null
+  },
+  {
+    "word": "lúcido",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Que piensa con claridad.",
+    "example": "A sus noventa años, mi bisabuela está muy lúcida.",
+    "pronunciation": null
+  },
+  {
+    "word": "monótono",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Siempre igual, sin cambios.",
+    "example": "El ruido de la lluvia era monótono.",
+    "pronunciation": null
+  },
+  {
+    "word": "inverosímil",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Que no parece verdad.",
+    "example": "Contó una excusa inverosímil.",
+    "pronunciation": null
+  },
+  {
+    "word": "imparcial",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Que no se pone de parte de nadie.",
+    "example": "Un juez debe ser imparcial.",
+    "pronunciation": null
+  },
+  {
+    "word": "sagaz",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Listo y rápido para entender las cosas.",
+    "example": "Es un lector sagaz: adivina siempre el final.",
+    "pronunciation": null
+  },
+  {
+    "word": "exhausto",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Agotado, sin fuerzas.",
+    "example": "Llegó a la meta exhausto.",
+    "pronunciation": null
+  },
+  {
+    "word": "pulcro",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Muy limpio y cuidadoso.",
+    "example": "Lleva el cuaderno pulcro.",
+    "pronunciation": null
+  },
+  {
+    "word": "trivial",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Sin importancia.",
+    "example": "Discutieron por un motivo trivial.",
+    "pronunciation": null
+  },
+  {
+    "word": "recóndito",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Muy escondido o apartado.",
+    "example": "Encontró el tesoro en un rincón recóndito.",
+    "pronunciation": null
+  },
+  {
+    "word": "colosal",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Enorme, de tamaño o importancia extraordinarios.",
+    "example": "Las pirámides de Egipto son colosales.",
+    "pronunciation": null
+  },
+  {
+    "word": "sublime",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "De una belleza o calidad extraordinaria.",
+    "example": "El final del concierto fue sublime.",
+    "pronunciation": null
+  },
+  {
+    "word": "nómada",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Que va de un lugar a otro sin vivir siempre en el mismo.",
+    "example": "Algunos pueblos del desierto son nómadas.",
+    "pronunciation": null
+  },
+  {
+    "word": "sobrio",
+    "level": "L3",
+    "type": "adjetivo",
+    "definition": "Sencillo, sin adornos de más.",
+    "example": "La casa tenía una decoración sobria.",
+    "pronunciation": null
+  },
+  {
+    "word": "perseverancia",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Constancia para seguir adelante con algo.",
+    "example": "Con perseverancia, logró el cinturón negro.",
+    "pronunciation": null
+  },
+  {
+    "word": "empatía",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Capacidad de ponerse en el lugar del otro.",
+    "example": "La empatía ayuda a entender a los demás.",
+    "pronunciation": null
+  },
+  {
+    "word": "dilema",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Situación en la que hay que elegir entre dos opciones difíciles.",
+    "example": "Tenía un dilema: ir al cine o al cumpleaños.",
+    "pronunciation": null
+  },
+  {
+    "word": "hipótesis",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Idea que se propone para explicar algo y que hay que comprobar.",
+    "example": "Nuestra hipótesis era que la planta crecería más con luz.",
+    "pronunciation": null
+  },
+  {
+    "word": "paradoja",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Idea que parece contradictoria pero puede ser verdad.",
+    "example": "Es una paradoja: cuanto más prisa tengo, más tardo.",
+    "pronunciation": null
+  },
+  {
+    "word": "metáfora",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Forma de hablar que nombra una cosa con el nombre de otra que se le parece.",
+    "example": "Decir «perlas» por «dientes» es una metáfora.",
+    "pronunciation": null
+  },
+  {
+    "word": "anécdota",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Historia breve y curiosa que le ha pasado a alguien.",
+    "example": "El abuelo nos contó una anécdota de su infancia.",
+    "pronunciation": null
+  },
+  {
+    "word": "alegoría",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Representación de una idea mediante imágenes o personajes.",
+    "example": "La balanza es una alegoría de la justicia.",
+    "pronunciation": null
+  },
+  {
+    "word": "odisea",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Viaje largo y lleno de dificultades.",
+    "example": "Volver a casa con la nevada fue una odisea.",
+    "pronunciation": null
+  },
+  {
+    "word": "travesía",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Viaje por mar o a través de un territorio.",
+    "example": "La travesía en barco duró dos días.",
+    "pronunciation": null
+  },
+  {
+    "word": "expedición",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Viaje organizado para explorar o investigar.",
+    "example": "La expedición llegó al Polo Sur.",
+    "pronunciation": null
+  },
+  {
+    "word": "vestigio",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Señal o resto que queda de algo pasado.",
+    "example": "Quedan vestigios de una muralla romana.",
+    "pronunciation": null
+  },
+  {
+    "word": "legado",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Lo que alguien deja a quienes vienen después.",
+    "example": "Las catedrales son un legado de la Edad Media.",
+    "pronunciation": null
+  },
+  {
+    "word": "patrimonio",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Bienes que se heredan, también los de un país o de la humanidad.",
+    "example": "La Alhambra es patrimonio de la humanidad.",
+    "pronunciation": null
+  },
+  {
+    "word": "ecosistema",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Conjunto de seres vivos y del medio en el que viven.",
+    "example": "El bosque es un ecosistema muy rico.",
+    "pronunciation": null
+  },
+  {
+    "word": "biodiversidad",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Variedad de seres vivos de un lugar.",
+    "example": "La selva tiene una enorme biodiversidad.",
+    "pronunciation": null
+  },
+  {
+    "word": "erosión",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Desgaste de la tierra o de las rocas por el agua o el viento.",
+    "example": "La erosión ha formado ese cañón.",
+    "pronunciation": null
+  },
+  {
+    "word": "sequía",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Largo tiempo sin llover.",
+    "example": "La sequía secó el pantano.",
+    "pronunciation": null
+  },
+  {
+    "word": "estratagema",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Plan astuto para engañar o conseguir algo.",
+    "example": "Su estratagema para no recoger no funcionó.",
+    "pronunciation": null
+  },
+  {
+    "word": "pericia",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Habilidad que da la práctica.",
+    "example": "Condujo el barco con gran pericia.",
+    "pronunciation": null
+  },
+  {
+    "word": "destreza",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Habilidad para hacer algo bien.",
+    "example": "Tiene mucha destreza con las manos.",
+    "pronunciation": null
+  },
+  {
+    "word": "osadía",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Atrevimiento.",
+    "example": "Tuvo la osadía de retar al campeón.",
+    "pronunciation": null
+  },
+  {
+    "word": "astucia",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Habilidad para conseguir algo con engaños o ingenio.",
+    "example": "El zorro usó la astucia.",
+    "pronunciation": null
+  },
+  {
+    "word": "escepticismo",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Actitud de quien duda de lo que no está demostrado.",
+    "example": "Recibió la noticia con escepticismo.",
+    "pronunciation": null
+  },
+  {
+    "word": "consenso",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Acuerdo entre todos.",
+    "example": "Llegamos a un consenso sobre la excursión.",
+    "pronunciation": null
+  },
+  {
+    "word": "iniciativa",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Capacidad de empezar algo sin que te lo pidan.",
+    "example": "Tomó la iniciativa y organizó el juego.",
+    "pronunciation": null
+  },
+  {
+    "word": "utopía",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Plan o sociedad ideal que parece imposible.",
+    "example": "Un mundo sin guerras parece una utopía.",
+    "pronunciation": null
+  },
+  {
+    "word": "efeméride",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Acontecimiento importante que se recuerda en su fecha.",
+    "example": "Hoy es una efeméride: hace cien años se inauguró el metro.",
+    "pronunciation": null
+  },
+  {
+    "word": "cenit",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Punto del cielo justo encima de nosotros, o el mejor momento de algo.",
+    "example": "A mediodía el sol está cerca del cenit.",
+    "pronunciation": null
+  },
+  {
+    "word": "equinoccio",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Momento del año en que el día y la noche duran lo mismo.",
+    "example": "El equinoccio de primavera es en marzo.",
+    "pronunciation": null
+  },
+  {
+    "word": "solsticio",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Momento del año en que el día es el más largo o el más corto.",
+    "example": "El solsticio de verano es en junio.",
+    "pronunciation": null
+  },
+  {
+    "word": "meridiano",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Línea imaginaria que va de polo a polo en la Tierra.",
+    "example": "El meridiano de Greenwich pasa por Castellón.",
+    "pronunciation": null
+  },
+  {
+    "word": "archipiélago",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Grupo de islas cercanas.",
+    "example": "Canarias es un archipiélago.",
+    "pronunciation": null
+  },
+  {
+    "word": "delta",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Terreno en forma de triángulo donde un río llega al mar.",
+    "example": "El delta del Ebro está lleno de arrozales.",
+    "pronunciation": null
+  },
+  {
+    "word": "afluente",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Río que desemboca en otro.",
+    "example": "El Jarama es afluente del Tajo.",
+    "pronunciation": null
+  },
+  {
+    "word": "altiplano",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Meseta alta y extensa.",
+    "example": "En los Andes hay un gran altiplano.",
+    "pronunciation": null
+  },
+  {
+    "word": "artesano",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Persona que hace objetos a mano.",
+    "example": "El artesano tallaba cucharas de madera.",
+    "pronunciation": null
+  },
+  {
+    "word": "mecenas",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Persona que ayuda con su dinero a artistas o científicos.",
+    "example": "Ese pintor tuvo un mecenas rico.",
+    "pronunciation": null
+  },
+  {
+    "word": "virtud",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Cualidad buena de una persona.",
+    "example": "La paciencia es una virtud.",
+    "pronunciation": null
+  },
+  {
+    "word": "matiz",
+    "level": "L3",
+    "type": "sustantivo",
+    "definition": "Diferencia pequeña entre cosas parecidas.",
+    "example": "Hay un matiz entre mirar y ver.",
+    "pronunciation": null
+  },
+  {
+    "word": "deducir",
+    "level": "L3",
+    "type": "verbo",
+    "definition": "Llegar a una conclusión a partir de datos.",
+    "example": "Por las huellas, dedujo que había pasado un perro.",
+    "pronunciation": null
+  },
+  {
+    "word": "argumentar",
+    "level": "L3",
+    "type": "verbo",
+    "definition": "Dar razones para defender una idea.",
+    "example": "Argumentó muy bien su respuesta.",
+    "pronunciation": null
+  },
+  {
+    "word": "anticipar",
+    "level": "L3",
+    "type": "verbo",
+    "definition": "Hacer algo antes de tiempo o prever lo que va a pasar.",
+    "example": "El portero anticipó el disparo.",
+    "pronunciation": null
+  },
+  {
+    "word": "persuadir",
+    "level": "L3",
+    "type": "verbo",
+    "definition": "Convencer a alguien con razones.",
+    "example": "Me persuadió para leer ese libro.",
+    "pronunciation": null
+  },
+  {
+    "word": "discrepar",
+    "level": "L3",
+    "type": "verbo",
+    "definition": "No estar de acuerdo.",
+    "example": "Discrepo de tu opinión, pero la respeto.",
+    "pronunciation": null
+  },
+  {
+    "word": "reflexionar",
+    "level": "L3",
+    "type": "verbo",
+    "definition": "Pensar con calma sobre algo.",
+    "example": "Antes de decidir, reflexiona.",
+    "pronunciation": null
+  },
+  {
+    "word": "contemplar",
+    "level": "L3",
+    "type": "verbo",
+    "definition": "Mirar algo con atención y calma.",
+    "example": "Contemplamos el atardecer.",
+    "pronunciation": null
+  },
+  {
+    "word": "vislumbrar",
+    "level": "L3",
+    "type": "verbo",
+    "definition": "Ver algo de forma confusa o a lo lejos.",
+    "example": "Vislumbramos el faro entre la niebla.",
+    "pronunciation": null
+  },
+  {
+    "word": "merodear",
+    "level": "L3",
+    "type": "verbo",
+    "definition": "Andar por un sitio dando vueltas, a veces con malas intenciones.",
+    "example": "Un zorro merodeaba por el gallinero.",
+    "pronunciation": null
+  },
+  {
+    "word": "deambular",
+    "level": "L3",
+    "type": "verbo",
+    "definition": "Andar sin rumbo fijo.",
+    "example": "Deambulamos por el casco antiguo.",
+    "pronunciation": null
+  },
+  {
+    "word": "divagar",
+    "level": "L3",
+    "type": "verbo",
+    "definition": "Hablar o pensar sin centrarse en el tema.",
+    "example": "Deja de divagar y responde a la pregunta.",
+    "pronunciation": null
+  },
+  {
+    "word": "evocar",
+    "level": "L3",
+    "type": "verbo",
+    "definition": "Traer algo a la memoria o a la imaginación.",
+    "example": "Esa canción me evoca el verano.",
+    "pronunciation": null
+  },
+  {
+    "word": "fomentar",
+    "level": "L3",
+    "type": "verbo",
+    "definition": "Ayudar a que algo crezca o aumente.",
+    "example": "La biblioteca fomenta la lectura.",
+    "pronunciation": null
+  },
+  {
+    "word": "mitigar",
+    "level": "L3",
+    "type": "verbo",
+    "definition": "Hacer que algo sea menos fuerte o doloroso.",
+    "example": "El hielo mitigó el dolor del golpe.",
+    "pronunciation": null
+  },
+  {
+    "word": "erradicar",
+    "level": "L3",
+    "type": "verbo",
+    "definition": "Eliminar algo por completo.",
+    "example": "La vacuna erradicó la viruela.",
+    "pronunciation": null
+  },
+  {
+    "word": "subestimar",
+    "level": "L3",
+    "type": "verbo",
+    "definition": "Pensar que alguien o algo vale menos de lo que vale.",
+    "example": "No subestimes a tu rival.",
+    "pronunciation": null
+  },
+  {
+    "word": "sobresalir",
+    "level": "L3",
+    "type": "verbo",
+    "definition": "Destacar entre los demás.",
+    "example": "Sobresale en matemáticas.",
+    "pronunciation": null
+  },
+  {
+    "word": "paulatinamente",
+    "level": "L3",
+    "type": "adverbio",
+    "definition": "Poco a poco.",
+    "example": "El hielo se fue derritiendo paulatinamente.",
+    "pronunciation": null
+  },
+  {
+    "word": "deliberadamente",
+    "level": "L3",
+    "type": "adverbio",
+    "definition": "A propósito, sabiendo lo que se hace.",
+    "example": "Dejó la puerta abierta deliberadamente.",
+    "pronunciation": null
+  },
+  {
+    "word": "inefable",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Tan grande o bonito que no se puede explicar con palabras.",
+    "example": "Sintió una alegría inefable.",
+    "pronunciation": null
+  },
+  {
+    "word": "perenne",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Que dura siempre, como las hojas que no se caen en invierno.",
+    "example": "El pino es un árbol de hoja perenne.",
+    "pronunciation": null
+  },
+  {
+    "word": "caduco",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Que se cae o se acaba con el tiempo, como las hojas en otoño.",
+    "example": "El roble es de hoja caduca.",
+    "pronunciation": null
+  },
+  {
+    "word": "ubicuo",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Que está en todas partes.",
+    "example": "Los móviles se han vuelto ubicuos.",
+    "pronunciation": null
+  },
+  {
+    "word": "inexorable",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Que no se puede evitar ni detener.",
+    "example": "El paso del tiempo es inexorable.",
+    "pronunciation": null
+  },
+  {
+    "word": "efervescente",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Que suelta burbujas.",
+    "example": "La pastilla efervescente burbujeaba en el vaso.",
+    "pronunciation": null
+  },
+  {
+    "word": "translúcido",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Que deja pasar la luz pero no deja ver con claridad.",
+    "example": "El cristal de la ducha es translúcido.",
+    "pronunciation": null
+  },
+  {
+    "word": "iridiscente",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Que brilla con los colores del arcoíris.",
+    "example": "Las pompas de jabón son iridiscentes.",
+    "pronunciation": null
+  },
+  {
+    "word": "taciturno",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Callado, que habla poco y parece triste.",
+    "example": "Aquel día estaba taciturno.",
+    "pronunciation": null
+  },
+  {
+    "word": "locuaz",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Que habla mucho.",
+    "example": "Mi loro es muy locuaz.",
+    "pronunciation": null
+  },
+  {
+    "word": "lacónico",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Que dice mucho con pocas palabras.",
+    "example": "Su respuesta fue lacónica: «No».",
+    "pronunciation": null
+  },
+  {
+    "word": "ecléctico",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Que mezcla ideas o estilos diferentes.",
+    "example": "Tiene un gusto musical ecléctico.",
+    "pronunciation": null
+  },
+  {
+    "word": "pragmático",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Que se fija en lo práctico.",
+    "example": "Fue pragmático y eligió el camino más corto.",
+    "pronunciation": null
+  },
+  {
+    "word": "altruista",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Que ayuda a los demás sin esperar nada.",
+    "example": "Su gesto altruista emocionó a todos.",
+    "pronunciation": null
+  },
+  {
+    "word": "magnánimo",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Generoso y noble, que perdona con facilidad.",
+    "example": "El rey fue magnánimo con sus enemigos.",
+    "pronunciation": null
+  },
+  {
+    "word": "impávido",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Que no muestra miedo ni se altera.",
+    "example": "Permaneció impávido ante el trueno.",
+    "pronunciation": null
+  },
+  {
+    "word": "indómito",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Que no se deja domar o dominar.",
+    "example": "Era un caballo indómito.",
+    "pronunciation": null
+  },
+  {
+    "word": "inquebrantable",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Que no se puede romper ni debilitar.",
+    "example": "Su amistad es inquebrantable.",
+    "pronunciation": null
+  },
+  {
+    "word": "imperturbable",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Que no se altera por nada.",
+    "example": "El portero se mantuvo imperturbable.",
+    "pronunciation": null
+  },
+  {
+    "word": "quimérico",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Imaginado, que no puede hacerse realidad.",
+    "example": "Era un plan quimérico.",
+    "pronunciation": null
+  },
+  {
+    "word": "idílico",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Muy bonito y tranquilo, casi perfecto.",
+    "example": "Pasamos unos días idílicos en la playa.",
+    "pronunciation": null
+  },
+  {
+    "word": "lóbrego",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Oscuro y triste.",
+    "example": "El sótano era un lugar lóbrego.",
+    "pronunciation": null
+  },
+  {
+    "word": "exiguo",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Muy escaso.",
+    "example": "El presupuesto para la fiesta era exiguo.",
+    "pronunciation": null
+  },
+  {
+    "word": "prolijo",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Demasiado largo y detallado.",
+    "example": "La explicación fue tan prolija que me perdí.",
+    "pronunciation": null
+  },
+  {
+    "word": "conciso",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Que dice lo necesario en pocas palabras.",
+    "example": "Escribe un resumen conciso.",
+    "pronunciation": null
+  },
+  {
+    "word": "fehaciente",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Que prueba algo sin dejar dudas.",
+    "example": "Hay pruebas fehacientes de que estuvo allí.",
+    "pronunciation": null
+  },
+  {
+    "word": "inocuo",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Que no hace daño.",
+    "example": "Es un insecto inocuo.",
+    "pronunciation": null
+  },
+  {
+    "word": "nocivo",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Que hace daño.",
+    "example": "El humo es nocivo para la salud.",
+    "pronunciation": null
+  },
+  {
+    "word": "arcaico",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Muy antiguo o pasado de moda.",
+    "example": "Usaba un vocabulario arcaico.",
+    "pronunciation": null
+  },
+  {
+    "word": "anacrónico",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Que no corresponde a la época de la que se habla.",
+    "example": "Un caballero medieval con reloj de pulsera es anacrónico.",
+    "pronunciation": null
+  },
+  {
+    "word": "incólume",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Sin daño, sano y salvo.",
+    "example": "Salió incólume del accidente.",
+    "pronunciation": null
+  },
+  {
+    "word": "inaudito",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Nunca oído, sorprendente.",
+    "example": "Fue un resultado inaudito.",
+    "pronunciation": null
+  },
+  {
+    "word": "ínfimo",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Muy pequeño o de muy poca importancia.",
+    "example": "La diferencia era ínfima.",
+    "pronunciation": null
+  },
+  {
+    "word": "sempiterno",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Que dura para siempre.",
+    "example": "Su sempiterna sonrisa nos alegraba.",
+    "pronunciation": null
+  },
+  {
+    "word": "fútil",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "De poca importancia.",
+    "example": "Discutir por eso es fútil.",
+    "pronunciation": null
+  },
+  {
+    "word": "ignoto",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "No conocido ni descubierto.",
+    "example": "Exploraron tierras ignotas.",
+    "pronunciation": null
+  },
+  {
+    "word": "prístino",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Puro, como al principio, sin alterar.",
+    "example": "El agua del lago estaba prístina.",
+    "pronunciation": null
+  },
+  {
+    "word": "sosegado",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Tranquilo y calmado.",
+    "example": "Tiene un carácter sosegado.",
+    "pronunciation": null
+  },
+  {
+    "word": "avezado",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Con experiencia en algo.",
+    "example": "Es un alpinista avezado.",
+    "pronunciation": null
+  },
+  {
+    "word": "diáfano",
+    "level": "L4",
+    "type": "adjetivo",
+    "definition": "Claro, que deja pasar la luz o que se entiende sin dudas.",
+    "example": "El cielo estaba diáfano.",
+    "pronunciation": null
+  },
+  {
+    "word": "serendipia",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Descubrimiento feliz que se hace por casualidad.",
+    "example": "La penicilina se descubrió por serendipia.",
+    "pronunciation": null
+  },
+  {
+    "word": "resiliencia",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Capacidad de superar los problemas y salir reforzado.",
+    "example": "Su resiliencia le ayudó tras la lesión.",
+    "pronunciation": null
+  },
+  {
+    "word": "epifanía",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Momento en que de repente se comprende algo.",
+    "example": "Tuvo una epifanía y resolvió el problema.",
+    "pronunciation": null
+  },
+  {
+    "word": "sinestesia",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Sensación de un sentido provocada por otro, como ver colores al oír música.",
+    "example": "Algunas personas tienen sinestesia y ven colores al oír notas.",
+    "pronunciation": null
+  },
+  {
+    "word": "onomatopeya",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Palabra que imita un sonido.",
+    "example": "«Miau» es una onomatopeya.",
+    "pronunciation": null
+  },
+  {
+    "word": "palíndromo",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Palabra o frase que se lee igual al derecho y al revés.",
+    "example": "«Reconocer» es un palíndromo.",
+    "pronunciation": null
+  },
+  {
+    "word": "neologismo",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Palabra nueva en una lengua.",
+    "example": "«Tuitear» es un neologismo.",
+    "pronunciation": null
+  },
+  {
+    "word": "eufemismo",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Palabra suave que se usa en lugar de otra que suena mal.",
+    "example": "Decir «entrado en años» es un eufemismo de «viejo».",
+    "pronunciation": null
+  },
+  {
+    "word": "hipérbole",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Exageración que se usa al hablar.",
+    "example": "«Te lo he dicho un millón de veces» es una hipérbole.",
+    "pronunciation": null
+  },
+  {
+    "word": "oxímoron",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Unión de dos palabras de sentido opuesto.",
+    "example": "«Silencio atronador» es un oxímoron.",
+    "pronunciation": null
+  },
+  {
+    "word": "etimología",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Origen de una palabra.",
+    "example": "La etimología de «planeta» es griega.",
+    "pronunciation": null
+  },
+  {
+    "word": "idiosincrasia",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Forma de ser propia de una persona o de un pueblo.",
+    "example": "Cada pueblo tiene su idiosincrasia.",
+    "pronunciation": null
+  },
+  {
+    "word": "parsimonia",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Calma excesiva al hacer las cosas.",
+    "example": "Desayunaba con una parsimonia exasperante.",
+    "pronunciation": null
+  },
+  {
+    "word": "procrastinación",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Costumbre de dejar para más tarde lo que hay que hacer.",
+    "example": "La procrastinación le hizo estudiar la última noche.",
+    "pronunciation": null
+  },
+  {
+    "word": "ostracismo",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Apartamiento de alguien de la vida pública o de un grupo.",
+    "example": "Tras perder las elecciones, cayó en el ostracismo.",
+    "pronunciation": null
+  },
+  {
+    "word": "vorágine",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Mucho movimiento y confusión.",
+    "example": "Se perdió en la vorágine de la ciudad.",
+    "pronunciation": null
+  },
+  {
+    "word": "penumbra",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Sombra débil entre la luz y la oscuridad.",
+    "example": "Leía en la penumbra de la habitación.",
+    "pronunciation": null
+  },
+  {
+    "word": "ímpetu",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Fuerza o energía con que se hace algo.",
+    "example": "Empezó el curso con mucho ímpetu.",
+    "pronunciation": null
+  },
+  {
+    "word": "ahínco",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Empeño grande al hacer algo.",
+    "example": "Estudió con ahínco.",
+    "pronunciation": null
+  },
+  {
+    "word": "desidia",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Falta de cuidado o de ganas.",
+    "example": "Por desidia, dejó morir las plantas.",
+    "pronunciation": null
+  },
+  {
+    "word": "abnegación",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Renuncia a lo propio para ayudar a otros.",
+    "example": "Los médicos trabajaron con abnegación.",
+    "pronunciation": null
+  },
+  {
+    "word": "retórica",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Arte de hablar bien para convencer.",
+    "example": "Estudiaron la retórica de los grandes oradores.",
+    "pronunciation": null
+  },
+  {
+    "word": "falacia",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Engaño o razonamiento falso que parece correcto.",
+    "example": "Su argumento era una falacia.",
+    "pronunciation": null
+  },
+  {
+    "word": "dogma",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Idea que se presenta como verdad indiscutible.",
+    "example": "La ciencia no acepta dogmas.",
+    "pronunciation": null
+  },
+  {
+    "word": "paradigma",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Modelo o ejemplo que se toma como referencia.",
+    "example": "Ese edificio es el paradigma del gótico.",
+    "pronunciation": null
+  },
+  {
+    "word": "apogeo",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Momento de mayor esplendor.",
+    "example": "El Imperio romano vivió su apogeo con Trajano.",
+    "pronunciation": null
+  },
+  {
+    "word": "ocaso",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Puesta del sol, o final de algo.",
+    "example": "Fue el ocaso de su carrera.",
+    "pronunciation": null
+  },
+  {
+    "word": "efluvio",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Olor o vapor que se desprende de algo.",
+    "example": "Del horno salía un efluvio a canela.",
+    "pronunciation": null
+  },
+  {
+    "word": "acervo",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Conjunto de bienes o conocimientos de una comunidad.",
+    "example": "Los refranes forman parte del acervo popular.",
+    "pronunciation": null
+  },
+  {
+    "word": "baluarte",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Fortaleza, o lo que sirve de defensa.",
+    "example": "La muralla era el baluarte de la ciudad.",
+    "pronunciation": null
+  },
+  {
+    "word": "bonanza",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Tiempo tranquilo en el mar, o época de prosperidad.",
+    "example": "Tras la tormenta llegó la bonanza.",
+    "pronunciation": null
+  },
+  {
+    "word": "entelequia",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Algo que solo existe en la imaginación.",
+    "example": "La máquina del movimiento perpetuo es una entelequia.",
+    "pronunciation": null
+  },
+  {
+    "word": "albor",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Comienzo de algo; también la primera luz del día.",
+    "example": "En los albores de la aviación, volar era una aventura.",
+    "pronunciation": null
+  },
+  {
+    "word": "periplo",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Viaje largo con muchas paradas.",
+    "example": "Hicieron un periplo por el Mediterráneo.",
+    "pronunciation": null
+  },
+  {
+    "word": "vicisitud",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Cambio o dificultad que interrumpe lo esperado.",
+    "example": "Superaron muchas vicisitudes durante el viaje.",
+    "pronunciation": null
+  },
+  {
+    "word": "denuedo",
+    "level": "L4",
+    "type": "sustantivo",
+    "definition": "Valor y esfuerzo.",
+    "example": "Defendieron el castillo con denuedo.",
+    "pronunciation": null
+  },
+  {
+    "word": "dilucidar",
+    "level": "L4",
+    "type": "verbo",
+    "definition": "Aclarar algo que estaba confuso.",
+    "example": "La profesora nos ayudó a dilucidar el problema.",
+    "pronunciation": null
+  },
+  {
+    "word": "escudriñar",
+    "level": "L4",
+    "type": "verbo",
+    "definition": "Examinar algo con mucho cuidado.",
+    "example": "Escudriñó el mapa en busca del tesoro.",
+    "pronunciation": null
+  },
+  {
+    "word": "vaticinar",
+    "level": "L4",
+    "type": "verbo",
+    "definition": "Anunciar lo que va a pasar.",
+    "example": "El meteorólogo vaticinó lluvias.",
+    "pronunciation": null
+  },
+  {
+    "word": "soslayar",
+    "level": "L4",
+    "type": "verbo",
+    "definition": "Evitar una dificultad dando un rodeo.",
+    "example": "Soslayó la pregunta difícil.",
+    "pronunciation": null
+  },
+  {
+    "word": "enmendar",
+    "level": "L4",
+    "type": "verbo",
+    "definition": "Corregir un error.",
+    "example": "Enmendó su error pidiendo perdón.",
+    "pronunciation": null
+  },
+  {
+    "word": "dirimir",
+    "level": "L4",
+    "type": "verbo",
+    "definition": "Resolver una discusión o un desacuerdo.",
+    "example": "Dirimieron la disputa a cara o cruz.",
+    "pronunciation": null
+  },
+  {
+    "word": "menoscabar",
+    "level": "L4",
+    "type": "verbo",
+    "definition": "Quitar valor o importancia a algo.",
+    "example": "Las críticas no menoscabaron su ánimo.",
+    "pronunciation": null
+  },
+  {
+    "word": "exacerbar",
+    "level": "L4",
+    "type": "verbo",
+    "definition": "Hacer más fuerte un sentimiento o un problema.",
+    "example": "El calor exacerbó la sequía.",
+    "pronunciation": null
+  },
+  {
+    "word": "ensimismarse",
+    "level": "L4",
+    "type": "verbo",
+    "definition": "Quedarse absorto en los propios pensamientos.",
+    "example": "Se ensimismó mirando las nubes.",
+    "pronunciation": null
+  },
+  {
+    "word": "desdeñar",
+    "level": "L4",
+    "type": "verbo",
+    "definition": "Despreciar algo o a alguien.",
+    "example": "No desdeñes la ayuda de los demás.",
+    "pronunciation": null
+  },
+  {
+    "word": "ponderar",
+    "level": "L4",
+    "type": "verbo",
+    "definition": "Pensar con cuidado los pros y los contras.",
+    "example": "Ponderó las dos opciones antes de elegir.",
+    "pronunciation": null
+  },
+  {
+    "word": "subyugar",
+    "level": "L4",
+    "type": "verbo",
+    "definition": "Dominar por completo, o atraer con mucha fuerza.",
+    "example": "La música subyugó al público.",
+    "pronunciation": null
+  },
+  {
+    "word": "claudicar",
+    "level": "L4",
+    "type": "verbo",
+    "definition": "Rendirse o dejar de luchar.",
+    "example": "Nunca claudicó ante las dificultades.",
+    "pronunciation": null
+  },
+  {
+    "word": "dilapidar",
+    "level": "L4",
+    "type": "verbo",
+    "definition": "Gastar sin cuidado lo que se tiene.",
+    "example": "Dilapidó sus ahorros en caprichos.",
+    "pronunciation": null
+  },
+  {
+    "word": "amedrentar",
+    "level": "L4",
+    "type": "verbo",
+    "definition": "Asustar a alguien.",
+    "example": "La tormenta no amedrentó a los marineros.",
+    "pronunciation": null
+  },
+  {
+    "word": "auspiciar",
+    "level": "L4",
+    "type": "verbo",
+    "definition": "Favorecer o apoyar algo.",
+    "example": "El ayuntamiento auspició el festival.",
+    "pronunciation": null
+  },
+  {
+    "word": "corroborar",
+    "level": "L4",
+    "type": "verbo",
+    "definition": "Confirmar algo con nuevos datos.",
+    "example": "El experimento corroboró la hipótesis.",
+    "pronunciation": null
+  },
+  {
+    "word": "ufanarse",
+    "level": "L4",
+    "type": "verbo",
+    "definition": "Presumir de algo.",
+    "example": "Se ufanaba de no haber perdido nunca.",
+    "pronunciation": null
+  },
+  {
+    "word": "zozobrar",
+    "level": "L4",
+    "type": "verbo",
+    "definition": "Hundirse una embarcación, o fracasar un proyecto.",
+    "example": "La barca zozobró con el oleaje.",
+    "pronunciation": null
+  },
+  {
+    "word": "ineludiblemente",
+    "level": "L4",
+    "type": "adverbio",
+    "definition": "Sin poder evitarlo.",
+    "example": "Ineludiblemente, llegó el lunes.",
+    "pronunciation": null
+  },
+  {
+    "word": "sucintamente",
+    "level": "L4",
+    "type": "adverbio",
+    "definition": "De forma breve.",
+    "example": "Explicó sucintamente la regla.",
+    "pronunciation": null
+  },
+  {
+    "word": "otrora",
+    "level": "L4",
+    "type": "adverbio",
+    "definition": "En otro tiempo.",
+    "example": "Otrora la plaza fue un mercado.",
+    "pronunciation": null
+  }
+]

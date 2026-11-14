@@ -75,6 +75,11 @@ pronunciation kept per word, reshaped to
 `{word, level, type, definition, example, pronunciation}`. This file is distributed under
 the same license. (The API's own GPL-3.0 license covers its server code, not this data.)
 
+**`vocabulary-entries.es.json` (398 entries).** Not a translation of
+`vocabulary-entries.json`: its Spanish words, definitions and examples were written for
+Marplanner, and nothing is taken from Wiktionary. It is covered by Marplanner's license and
+listed here only because it shares the English file's name.
+
 **`number-facts.json` (366 entries).** Retrieved on 2026-06-12 (commit fe71295) from
 `number-trivia.com` math and trivia responses; 18 numbers the service did not answer
 use the script's own arithmetic sentences. `number-trivia.com` publishes no terms,

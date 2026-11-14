@@ -38,6 +38,7 @@ import riddlesEnJson from "./riddles.json";
 import riddlesEsJson from "./riddles.es.json";
 import triviaQuestionsJson from "./trivia-questions.json";
 import vocabularyEntriesJson from "./vocabulary-entries.json";
+import vocabularyEntriesEsJson from "./vocabulary-entries.es.json";
 import animalFactsEnJson from "./animal-facts.json";
 import animalFactsEsJson from "./animal-facts.es.json";
 import numberFactsEnJson from "./number-facts.json";
@@ -52,7 +53,6 @@ import phonicsWordsJson from "./phonics-words.json";
 
 // ── EN-only corpora ──────────────────────────────────────────────────────────
 export const triviaCorpus = triviaQuestionsJson as TriviaEntry[];
-export const vocabularyCorpus = vocabularyEntriesJson as VocabularyEntry[];
 export const phonicsCorpus = phonicsWordsJson as PhonicsWordEntry[];
 
 // ── EN + ES corpora (INV-06: language variant = the `.es.json` sibling) ─────────────
@@ -71,6 +71,12 @@ export const drawingPromptsCorpus: Record<CorpusLanguage, TextEntry[]> = {
 export const wouldYouRathersCorpus: Record<CorpusLanguage, WouldYouRatherEntry[]> = {
   en: wouldYouRathersEnJson as WouldYouRatherEntry[],
   es: wouldYouRathersEsJson as WouldYouRatherEntry[],
+};
+/** The Spanish words are Spanish vocabulary, not translations: a Spanish word with a Spanish
+ * definition and example, as many per level as the English corpus (FR-038). */
+export const vocabularyCorpus: Record<CorpusLanguage, VocabularyEntry[]> = {
+  en: vocabularyEntriesJson as VocabularyEntry[],
+  es: vocabularyEntriesEsJson as VocabularyEntry[],
 };
 /** Spanish only: the English quote of the day comes from ZenQuotes, which has no Spanish
  * (FR-036). One entry per day of the year, a proverb or a well-attributed quote. */

@@ -60,7 +60,7 @@ export function resolveCorpusLanguage(
   return requested as CorpusLanguage;
 }
 
-/** EN-only block types (wordOfDay, trivia) still route through
+/** EN-only block types (trivia) still route through
  * `resolveCorpusLanguage` so an illegal `language: "es"` request throws instead of being ignored
  * — the return value is simply never needed since there is only ever one pool to read from.
  */

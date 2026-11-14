@@ -7,7 +7,7 @@ records what was observed, what is known about the cause, and the options seen s
 | #   | Item                                                                      | Kind    | Status                             |
 | --- | ------------------------------------------------------------------------- | ------- | ---------------------------------- |
 | 1   | [Weather and streak print twice by default](#1-weather-and-streak-twice)  | Bug/UX  | Open                               |
-| 2   | [English content on a Spanish household's slip](#2-english-content)       | Feature | In progress: 5 of 7 blocks done    |
+| 2   | [English content on a Spanish household's slip](#2-english-content)       | Feature | In progress: 6 of 7 blocks done    |
 | 3   | [Emoji typed in a reminder prints as an empty box](#3-emoji-in-reminders) | Bug     | Open                               |
 | 4   | [Print the briefing on an ordinary A4 printer](#4-a4-printing)            | Feature | Manual print done; unattended open |
 | 5   | [Household chores beyond children's routines](#5-household-chores)        | Feature | Open                               |
@@ -173,6 +173,13 @@ block, a Spanish household gets Spanish or English by date, picked by a hash of 
 rather than strict alternation, so the same for every member that day and stable on
 **Regenerate**. Setting the block's language to Spanish or English in Admin → Daily briefing
 → Blocks pins it. The English path is unchanged byte for byte (its pinned tests still pass).
+
+**Done: `wordOfDay`.** `corpora/vocabulary-entries.es.json` holds 398 Spanish words, as many
+per level as the English corpus (100, 100, 100, 98), so a date and a level pick the same slot
+in either language (FR-038). Level 1 is everyday vocabulary for a ten-year-old ("valiente",
+"huella", "trepar"); level 4 is literary ("inefable", "serendipia", "dilucidar"). Each entry has
+a Spanish word class, an own definition (not copied from a dictionary) and an example; no
+pronunciation is printed. Checked on a real render.
 
 ## 3. Emoji in reminders
 

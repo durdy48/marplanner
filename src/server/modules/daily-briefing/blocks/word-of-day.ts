@@ -3,7 +3,7 @@
 import { hashSeed, vocabularyCorpus } from "../corpora";
 import type { CorpusBlockType } from "../corpora";
 import {
-  assertCorpusLanguageAvailable,
+  resolveCorpusLanguage,
   CorpusBlockParamError,
   type CorpusGenerationContext,
 } from "./context";
@@ -32,11 +32,12 @@ export interface WordOfDayData {
 
 /** v1 seed: `${date}|wordOfDay|${level}` (table) — level-scoped, memberId-independent:
  * every household member at the SAME level sees the same word on a given date.
+ * FR-038: `params.language` selects the `en`/`es` corpus, with as many entries per level in each.
  * `params.level` defaults to L2 (v1 parity); an out-of-range level throws (settings.ts already
  * validates this at the write boundary — see the `params` row).
  */
 export function generateWordOfDay(ctx: CorpusGenerationContext): WordOfDayData {
-  assertCorpusLanguageAvailable(TYPE, ctx.params); // EN-only (no vocabulary.es.json); throws on "es"
+  const language = resolveCorpusLanguage(TYPE, ctx.params);
 
   const requested = ctx.params?.level;
   let level: string;
@@ -50,7 +51,7 @@ export function generateWordOfDay(ctx: CorpusGenerationContext): WordOfDayData {
     );
   }
 
-  const pool = vocabularyCorpus.filter((entry) => entry.level === level);
+  const pool = vocabularyCorpus[language].filter((entry) => entry.level === level);
   if (pool.length === 0) {
     throw new CorpusBlockParamError(
       `daily-briefing wordOfDay: no vocabulary entries for level "${level}"`

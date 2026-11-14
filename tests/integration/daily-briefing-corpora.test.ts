@@ -45,9 +45,10 @@ describe("daily-briefing corpora", () => {
       });
     });
 
-    it("vocabulary: 398 entries", () => {
-      expect(vocabularyCorpus).toHaveLength(398);
-      expect(vocabularyCorpus[0]).toMatchObject({
+    it("vocabulary: 398 entries (en), 398 entries (es)", () => {
+      expect(vocabularyCorpus.en).toHaveLength(398);
+      expect(vocabularyCorpus.es).toHaveLength(398);
+      expect(vocabularyCorpus.en[0]).toMatchObject({
         word: expect.any(String),
         level: expect.stringMatching(/^L[1-4]$/),
       });
@@ -386,6 +387,46 @@ describe("daily-briefing corpora", () => {
     });
   });
 
+  /** FR-038: Spanish vocabulary, not translations, with the English corpus's count per level so a
+   * date and level select the same slot in either language. */
+  describe("Spanish word of the day (FR-038)", () => {
+    const es = vocabularyCorpus.es;
+    const WORD = "[\\x21-\\x7EáéíóúüñÁÉÍÓÚÜÑ¿¡«»]+";
+    const PRINTABLE = new RegExp(`^${WORD}( ${WORD})*$`);
+
+    it("has as many words per level as the English corpus, each with a Spanish word class", () => {
+      for (const level of ["L1", "L2", "L3", "L4"]) {
+        expect(es.filter((entry) => entry.level === level).length, level).toBe(
+          vocabularyCorpus.en.filter((entry) => entry.level === level).length
+        );
+      }
+      for (const entry of es) {
+        expect(["sustantivo", "adjetivo", "verbo", "adverbio"]).toContain(entry.type);
+        expect(entry.pronunciation).toBeNull();
+      }
+    });
+
+    it("writes each word in lowercase Spanish letters, once in the whole corpus", () => {
+      const words = es.map((entry) => entry.word);
+      for (const word of words) expect(word).toMatch(/^[a-zñáéíóúü]+$/);
+      expect(new Set(words).size).toBe(words.length);
+    });
+
+    it("gives every word a definition and an example that read as sentences on the slip", () => {
+      for (const { word, definition, example } of es) {
+        for (const text of [definition, example ?? ""]) {
+          expect(text, word).toMatch(PRINTABLE);
+          expect(text, word).toMatch(/[.?!]$/);
+          expect(text.length, word).toBeLessThanOrEqual(120);
+          const unpaired = text.replace(/¿[^¿?]*\?/g, "").replace(/¡[^¡!]*!/g, "");
+          expect(unpaired, text).not.toMatch(/[¿?¡!]/);
+          expect(text.split("«").length, text).toBe(text.split("»").length);
+        }
+        expect(definition.toLocaleLowerCase("es"), word).not.toContain(word);
+      }
+    });
+  });
+
   describe("corpus-availability map (FR-008/FR-009)", () => {
     it("jokes ship in English and Spanish (FR-035)", () => {
       expect(corpusLanguagesFor("dadJoke")).toEqual(["en", "es"]);
@@ -395,9 +436,12 @@ describe("daily-briefing corpora", () => {
       expect(corpusLanguagesFor("riddle")).toEqual(["en", "es"]);
     });
 
-    it("trivia and wordOfDay (vocabulary) are EN-only", () => {
+    it("trivia is EN-only", () => {
       expect(isCorpusLanguageAvailable("trivia", "es")).toBe(false);
-      expect(isCorpusLanguageAvailable("wordOfDay", "es")).toBe(false);
+    });
+
+    it("the word of the day ships in English and Spanish (FR-038)", () => {
+      expect(corpusLanguagesFor("wordOfDay")).toEqual(["en", "es"]);
     });
 
     it("the translated corpora accept both en and es", () => {
@@ -425,7 +469,7 @@ describe("daily-briefing corpora", () => {
       { en: boolean; es: boolean }
     > = {
       dadJoke: { en: true, es: true },
-      wordOfDay: { en: true, es: false },
+      wordOfDay: { en: true, es: true },
       animalFact: { en: true, es: true },
       numberFact: { en: true, es: true },
       trivia: { en: true, es: false },

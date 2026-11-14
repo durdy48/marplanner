@@ -18,6 +18,11 @@ vocabulary-entries.json
   Changes: one definition, example and pronunciation kept per word, reshaped to
   {word, level, type, definition, example, pronunciation}.
 
+vocabulary-entries.es.json
+  Not a translation of vocabulary-entries.json: its Spanish words, definitions and
+  examples were written for Marplanner, and nothing is taken from Wiktionary. It is
+  covered by Marplanner's license.
+
 number-facts.json
   Math and trivia facts from number-trivia.com, retrieved 2026-06-12; 18 numbers the
   service did not answer use generated arithmetic sentences. number-trivia.com

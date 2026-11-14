@@ -5,6 +5,7 @@ import {
   drawingPromptsCorpus,
   numberFactsCorpus,
   riddlesCorpus,
+  vocabularyCorpus,
   wouldYouRathersCorpus,
 } from "../../src/server/modules/daily-briefing/corpora/index";
 import { CorpusBlockParamError } from "../../src/server/modules/daily-briefing/blocks/context";
@@ -278,6 +279,27 @@ describe("daily-briefing corpus block generators", () => {
       expect(es).toEqual({ text: dadJokesCorpus.es[idx].text });
     });
 
+    it("wordOfDay: es resolves the SAME slot of the level as en, in the es corpus (FR-038)", () => {
+      const params = { level: "L3" };
+      const en = generateWordOfDay({ date: DATE, memberId: "m1", params });
+      const es = generateWordOfDay({
+        date: DATE,
+        memberId: "m1",
+        params: { ...params, language: "es" },
+      });
+      const levelOf = (language: "en" | "es") =>
+        vocabularyCorpus[language].filter((entry) => entry.level === "L3");
+      const idx = levelOf("en").findIndex((entry) => entry.word === en.word);
+      expect(idx).toBeGreaterThanOrEqual(0);
+      expect(es.word).toBe(levelOf("es")[idx].word);
+      expect(es).toEqual({
+        word: "pericia",
+        type: "sustantivo",
+        definition: "Habilidad que da la práctica.",
+        example: "Condujo el barco con gran pericia.",
+      });
+    });
+
     it("defaulting (no language param) always resolves the en variant", () => {
       const defaulted = generateAnimalFact({ date: DATE, memberId: "m1" });
       const explicitEn = generateAnimalFact({
@@ -291,10 +313,6 @@ describe("daily-briefing corpus block generators", () => {
 
   describe("assert-throw on a language without a corpus (no English-fallback degradation)", () => {
     it.each([
-      [
-        "wordOfDay",
-        () => generateWordOfDay({ date: DATE, memberId: "m1", params: { language: "es" } }),
-      ],
       ["trivia", () => generateTrivia({ date: DATE, memberId: "m1", params: { language: "es" } })],
     ] as const)(
       "%s: an illegal es request throws CorpusBlockParamError, never falls back",

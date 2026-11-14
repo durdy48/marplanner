@@ -64,6 +64,7 @@ import { generateWouldYouRather } from "../../src/server/modules/daily-briefing/
 import { generateDrawingPrompt } from "../../src/server/modules/daily-briefing/blocks/drawing-prompt";
 import { generateRiddle } from "../../src/server/modules/daily-briefing/blocks/riddle";
 import { generateDadJoke } from "../../src/server/modules/daily-briefing/blocks/dad-joke";
+import { generateWordOfDay } from "../../src/server/modules/daily-briefing/blocks/word-of-day";
 import { spanishQuoteOfDay } from "../../src/server/modules/daily-briefing/blocks/quoteOfDay";
 import {
   generateWordSearch,
@@ -528,6 +529,7 @@ describe("daily-briefing full generation", () => {
         drawingPrompt: generateDrawingPrompt,
         riddle: generateRiddle,
         dadJoke: generateDadJoke,
+        wordOfDay: generateWordOfDay,
       };
       for (const [type, generate] of Object.entries(generators)) {
         const block = briefing.payload.blocks.find((b) => b.type === type);
@@ -538,7 +540,7 @@ describe("daily-briefing full generation", () => {
           data: generate({ date: DATE_FRI, memberId: "m1", params: { language } }),
         });
       }
-      for (const type of ["wordOfDay", "trivia"]) {
+      for (const type of ["trivia"]) {
         expect(briefing.payload.blocks.find((b) => b.type === type)).toMatchObject({
           status: "ok",
           language: "en",

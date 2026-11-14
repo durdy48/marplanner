@@ -52,6 +52,8 @@ describe("daily content demo seed boundary", () => {
       "streakText",
       "weatherText",
       "phonics",
+      "englishWord",
+      "saintOfDay",
     ];
     expect(readAllSettings().blockOrder.map(({ type }) => type)).toEqual(types);
     for (const memberId of ["demo:member:homer", "demo:member:lisa", "demo:member:marge"]) {
@@ -151,6 +153,8 @@ describe("daily content demo seed boundary", () => {
         { type: "streakText" },
         { type: "weatherText" },
         { type: "phonics" },
+        { type: "englishWord" },
+        { type: "saintOfDay" },
       ],
       memberBlockSettings: [
         {

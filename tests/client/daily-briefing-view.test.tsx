@@ -283,6 +283,28 @@ function fullRegistryBlocks(): BlockInstance[] {
       data: { prompt: "Draw your favorite animal", requiresDrawingSpace: true },
     },
     {
+      type: "englishWord",
+      scope: "shared",
+      status: "ok",
+      index: 24,
+      title: "24 PALABRA EN INGLÉS",
+      data: {
+        word: "embarrassed",
+        type: "adjetivo",
+        translation: "avergonzado",
+        example: "I felt embarrassed when I fell over.",
+        exampleEs: "Me sentí avergonzado cuando me caí.",
+      },
+    },
+    {
+      type: "saintOfDay",
+      scope: "shared",
+      status: "ok",
+      index: 25,
+      title: "25 SANTORAL",
+      data: { feast: "Asunción de la Virgen María", saints: ["San Tarsicio"] },
+    },
+    {
       type: "streakText",
       scope: "member",
       status: "ok",
@@ -496,6 +518,16 @@ describe("DailyBriefingView — full block registry", () => {
     expect(screen.getByTestId("daily-briefing-block-drawingPrompt")).toHaveTextContent(
       "Draw your favorite animal"
     );
+
+    const englishWord = screen.getByTestId("daily-briefing-block-englishWord");
+    expect(englishWord).toHaveTextContent("embarrassed");
+    expect(englishWord).toHaveTextContent("= avergonzado");
+    expect(englishWord).toHaveTextContent("I felt embarrassed when I fell over.");
+    expect(englishWord).toHaveTextContent("Me sentí avergonzado cuando me caí.");
+
+    const saintOfDay = screen.getByTestId("daily-briefing-block-saintOfDay");
+    expect(saintOfDay).toHaveTextContent("Asunción de la Virgen María");
+    expect(saintOfDay).toHaveTextContent("San Tarsicio");
 
     // Text-variant twins render identically to their visual counterparts (FR-023 Clarifications).
     const streakText = screen.getByTestId("daily-briefing-block-streakText");

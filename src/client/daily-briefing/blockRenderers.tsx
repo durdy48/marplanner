@@ -115,6 +115,19 @@ export interface WordOfDayData {
   pronunciation?: string;
 }
 
+export interface EnglishWordData {
+  word: string;
+  type: string;
+  translation: string;
+  example: string;
+  exampleEs: string;
+}
+
+export interface SaintOfDayData {
+  feast?: string;
+  saints: string[];
+}
+
 export interface PhonicsData {
   level: string;
   words: Array<{ word: string; graphemes: string[]; tricky: boolean }>;
@@ -387,6 +400,31 @@ export function WordOfDayBlock({ data }: { data: WordOfDayData }): React.JSX.Ele
       <p className="text-sm italic text-muted-foreground">{data.type}</p>
       <p className="mt-1 text-base">{data.definition}</p>
       {data.example ? <p className="mt-1 text-sm italic">“{data.example}”</p> : null}
+    </div>
+  );
+}
+
+export function EnglishWordBlock({ data }: { data: EnglishWordData }): React.JSX.Element {
+  return (
+    <div>
+      <p className="text-xl font-semibold">{data.word}</p>
+      <p className="text-sm italic text-muted-foreground">{data.type}</p>
+      <p className="mt-1 text-base">= {data.translation}</p>
+      <p className="mt-1 text-sm italic">“{data.example}”</p>
+      <p className="text-sm text-muted-foreground">{data.exampleEs}</p>
+    </div>
+  );
+}
+
+export function SaintOfDayBlock({ data }: { data: SaintOfDayData }): React.JSX.Element {
+  return (
+    <div>
+      {data.feast ? <p className="text-base italic">{data.feast}</p> : null}
+      <ul className="text-base">
+        {data.saints.map((saint, index) => (
+          <li key={`${saint}-${index}`}>{saint}</li>
+        ))}
+      </ul>
     </div>
   );
 }

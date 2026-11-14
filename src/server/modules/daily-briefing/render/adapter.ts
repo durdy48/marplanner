@@ -123,6 +123,23 @@ export function adaptBlockData(blockType: string, raw: unknown): unknown {
       };
     case "dadJoke":
       return { text: needString(blockType, "text", data.text) };
+    case "englishWord":
+      return {
+        word: needString(blockType, "word", data.word),
+        type: needString(blockType, "type", data.type),
+        translation: needString(blockType, "translation", data.translation),
+        example: needString(blockType, "example", data.example),
+        exampleEs: needString(blockType, "exampleEs", data.exampleEs),
+      };
+    case "saintOfDay": {
+      const out: Record<string, unknown> = {
+        saints: needArray<string>(blockType, "saints", data.saints, "string").map((saint, i) =>
+          needString(blockType, `saints[${i}]`, saint)
+        ),
+      };
+      if (data.feast !== undefined) out.feast = needString(blockType, "feast", data.feast);
+      return out;
+    }
     case "wordOfDay": {
       const out: Record<string, unknown> = {
         word: needString(blockType, "word", data.word),

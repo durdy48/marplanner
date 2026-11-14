@@ -22,6 +22,11 @@ import {
 } from "../../src/server/modules/daily-briefing/blocks/number-fact";
 import { generateTrivia } from "../../src/server/modules/daily-briefing/blocks/trivia";
 import { generatePhonics } from "../../src/server/modules/daily-briefing/blocks/phonics";
+import { englishWordBlock } from "../../src/server/modules/daily-briefing/blocks/english-word";
+import {
+  calendarDayIndex,
+  saintOfDayBlock,
+} from "../../src/server/modules/daily-briefing/blocks/saint-of-day";
 import { generateRiddle } from "../../src/server/modules/daily-briefing/blocks/riddle";
 import { generateWouldYouRather } from "../../src/server/modules/daily-briefing/blocks/would-you-rather";
 import {
@@ -626,6 +631,36 @@ describe("daily-briefing corpus block generators", () => {
       expect(languages.map((_, i) => wordSearchDailyLanguage(days[i]))).toEqual(languages);
       expect(languages.filter((language) => language === "es").length).toBeGreaterThan(15);
       expect(languages.filter((language) => language === "en").length).toBeGreaterThan(15);
+    });
+  });
+
+  /** FR-040/FR-041: keyed by month and day, so a date names the same saint in every year. */
+  describe("Spanish-household day blocks (FR-040, FR-041)", () => {
+    it("maps a date to its leap-year calendar slot in any year", () => {
+      expect(calendarDayIndex("2026-01-01")).toBe(0);
+      expect(calendarDayIndex("2024-02-29")).toBe(59);
+      expect(calendarDayIndex("2024-03-01")).toBe(60);
+      expect(calendarDayIndex("2026-03-01")).toBe(60);
+      expect(calendarDayIndex("2026-12-31")).toBe(365);
+    });
+
+    it("prints the same saints for a date in a leap and a common year", () => {
+      for (const year of ["2024", "2026"]) {
+        expect(saintOfDayBlock.generate({ date: `${year}-03-19`, language: "es" })?.saints[0]).toBe(
+          "San José"
+        );
+        expect(saintOfDayBlock.generate({ date: `${year}-08-15`, language: "es" })?.feast).toBe(
+          "Asunción de la Virgen María"
+        );
+      }
+    });
+
+    it("prints nothing for a household that is not Spanish", () => {
+      expect(saintOfDayBlock.generate({ date: DATE, language: "en" })).toBeNull();
+      expect(englishWordBlock.generate({ date: DATE, language: "en" })).toBeNull();
+      expect(englishWordBlock.generate({ date: DATE, language: "es" })?.word).toEqual(
+        expect.any(String)
+      );
     });
   });
 });

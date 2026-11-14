@@ -18,6 +18,8 @@ import { riddleBlock } from "./blocks/riddle";
 import { shotgunBlock } from "./blocks/shotgun";
 import { streakBlock } from "./blocks/streak";
 import { streakTextBlock } from "./blocks/streak-text";
+import { englishWordBlock } from "./blocks/english-word";
+import { saintOfDayBlock } from "./blocks/saint-of-day";
 import { todayBlock } from "./blocks/today";
 import { triviaBlock } from "./blocks/trivia";
 import { weatherBlock } from "./blocks/weather";
@@ -49,6 +51,8 @@ export const RENDER_BLOCKS = {
   wordSearch: wordSearchBlock,
   drawingPrompt: drawingPromptBlock,
   streakText: streakTextBlock,
+  englishWord: englishWordBlock,
+  saintOfDay: saintOfDayBlock,
   weatherText: weatherTextBlock,
   phonics: phonicsBlock,
 } satisfies Record<BlockRegistryType, { readonly type: string }>;

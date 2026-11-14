@@ -5327,7 +5327,10 @@
             "daily-briefing corpus block generators Spanish word search (FR-037) easy: every listed word is in the grid, printed with its accents, on a Spanish alphabet",
             "daily-briefing corpus block generators Spanish word search (FR-037) medium: every listed word is in the grid, printed with its accents, on a Spanish alphabet",
             "daily-briefing corpus block generators Spanish word search (FR-037) hard: every listed word is in the grid, printed with its accents, on a Spanish alphabet",
-            "daily-briefing corpus block generators Spanish word search (FR-037) picks the daily language from the date: the same all day, both over a season"
+            "daily-briefing corpus block generators Spanish word search (FR-037) picks the daily language from the date: the same all day, both over a season",
+            "daily-briefing corpus block generators Spanish-household day blocks (FR-040, FR-041) maps a date to its leap-year calendar slot in any year",
+            "daily-briefing corpus block generators Spanish-household day blocks (FR-040, FR-041) prints the same saints for a date in a leap and a common year",
+            "daily-briefing corpus block generators Spanish-household day blocks (FR-040, FR-041) prints nothing for a household that is not Spanish"
           ],
           "tests/integration/daily-briefing-blocks-domain.test.ts": [
             "daily-briefing domain blocks (FR-013) message preserves the injected daily-message's text VERBATIM (emojis included) at generation, adapter-compatible (FR-013, AC-07)",
@@ -5460,6 +5463,8 @@
             "daily-briefing corpora Spanish trivia (FR-039) offers four distinct options in Spanish order, one of them the answer",
             "daily-briefing corpora Spanish trivia (FR-039) uses only the reviewed character set, pairs its marks and stays short enough for the slip",
             "daily-briefing corpora Spanish trivia (FR-039) asks no question twice and leaves no English question untranslated",
+            "daily-briefing corpora Spanish-household day corpora (FR-040, FR-041) English words: 366 distinct words with a Spanish word class, translation and examples",
+            "daily-briefing corpora Spanish-household day corpora (FR-040, FR-041) saints: 366 days, each with one to three saints and an optional solemnity",
             "daily-briefing corpora corpus-availability map (FR-008/FR-009) jokes ship in English and Spanish (FR-035)",
             "daily-briefing corpora corpus-availability map (FR-008/FR-009) riddles ship in English and Spanish (FR-034)",
             "daily-briefing corpora corpus-availability map (FR-008/FR-009) phonics is EN-only, by design",
@@ -5502,6 +5507,8 @@
             "daily-briefing full generation FR-009/INV-06: a corpus-backed block instance's language is resolved, frozen, and reflected in content",
             "daily-briefing full generation corpus defaults follow the es household with English-only fallback",
             "daily-briefing full generation corpus defaults follow the en household with English-only fallback",
+            "daily-briefing full generation FR-040/FR-041: the English word and the saints of the day print only for a Spanish household (es)",
+            "daily-briefing full generation FR-040/FR-041: the English word and the saints of the day print only for a Spanish household (en)",
             "daily-briefing full generation explicit corpus overrides win while household changes leave stored snapshots intact",
             "daily-briefing full generation FR-011/INV-07: null-omit vs recorded-failed — a generator resolving null is ABSENT, a generator throwing is RECORDED failed, status is partial",
             "daily-briefing full generation render-layer isolation (D5, review fold P1-2 partition) a registry-miss-only day: unrendered_blocks is populated, failed_render_blocks stays empty, status is data-derived",
@@ -5569,6 +5576,8 @@
           "tests/integration/daily-briefing-render-defs.test.ts": [
             "daily-briefing render-defs — per-type render through the real bridge type \"message\" renders: raster produced, absent from unrendered AND failed lists",
             "daily-briefing render-defs — per-type render through the real bridge type \"phonics\" renders: raster produced, absent from unrendered AND failed lists",
+            "daily-briefing render-defs — per-type render through the real bridge type \"englishWord\" renders: raster produced, absent from unrendered AND failed lists",
+            "daily-briefing render-defs — per-type render through the real bridge type \"saintOfDay\" renders: raster produced, absent from unrendered AND failed lists",
             "daily-briefing render-defs — per-type render through the real bridge type \"quoteOfDay\" renders: raster produced, absent from unrendered AND failed lists",
             "daily-briefing render-defs — per-type render through the real bridge type \"dadJoke\" renders: raster produced, absent from unrendered AND failed lists",
             "daily-briefing render-defs — per-type render through the real bridge type \"wordOfDay\" renders: raster produced, absent from unrendered AND failed lists",
@@ -11684,6 +11693,66 @@
           "lines": 6,
           "statements": 6,
           "functions": 3,
+          "branches": 2
+        },
+        "minimumRates": {
+          "lines": 100,
+          "statements": 100,
+          "functions": 100,
+          "branches": 100
+        }
+      },
+      "src/server/modules/daily-briefing/blocks/english-word.ts": {
+        "layer": "server",
+        "minimumTotals": {
+          "lines": 3,
+          "statements": 4,
+          "functions": 1,
+          "branches": 2
+        },
+        "minimumRates": {
+          "lines": 100,
+          "statements": 100,
+          "functions": 100,
+          "branches": 100
+        }
+      },
+      "src/server/modules/daily-briefing/blocks/saint-of-day.ts": {
+        "layer": "server",
+        "minimumTotals": {
+          "lines": 6,
+          "statements": 8,
+          "functions": 2,
+          "branches": 4
+        },
+        "minimumRates": {
+          "lines": 100,
+          "statements": 100,
+          "functions": 100,
+          "branches": 100
+        }
+      },
+      "src/server/modules/daily-briefing/render/blocks/english-word.ts": {
+        "layer": "server",
+        "minimumTotals": {
+          "lines": 4,
+          "statements": 4,
+          "functions": 1,
+          "branches": 0
+        },
+        "minimumRates": {
+          "lines": 100,
+          "statements": 100,
+          "functions": 100,
+          "branches": 100
+        }
+      },
+      "src/server/modules/daily-briefing/render/blocks/saint-of-day.ts": {
+        "layer": "server",
+        "minimumTotals": {
+          "lines": 5,
+          "statements": 5,
+          "functions": 2,
           "branches": 2
         },
         "minimumRates": {

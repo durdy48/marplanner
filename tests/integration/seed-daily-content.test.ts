@@ -151,6 +151,8 @@ describe("daily content demo seed integration", () => {
           { type: "streakText" },
           { type: "weatherText" },
           { type: "phonics" },
+          { type: "englishWord" },
+          { type: "saintOfDay" },
         ],
         memberBlockSettings: [
           {

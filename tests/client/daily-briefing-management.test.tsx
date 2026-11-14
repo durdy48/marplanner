@@ -190,7 +190,7 @@ describe("DailyBriefingManagement — Generate-all opt-in interlock (#555)", () 
 
     act(() => matrix.props?.onReorder("weather", "shotgun"));
     await waitFor(() => expect(savedOrder?.[0]).toEqual({ type: "weather" }));
-    expect(savedOrder).toHaveLength(23);
+    expect(savedOrder).toHaveLength(25);
     expect(firstRow()).toBe("daily-briefing-admin-block-settings-row-weather");
 
     failOrder = true;

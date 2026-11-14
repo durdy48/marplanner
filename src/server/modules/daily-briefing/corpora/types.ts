@@ -13,6 +13,19 @@ export interface TextEntry {
   text: string;
 }
 
+export interface EnglishWordEntry {
+  word: string;
+  type: string;
+  translation: string;
+  example: string;
+  exampleEs: string;
+}
+
+export interface SaintsEntry {
+  feast?: string;
+  saints: string[];
+}
+
 export interface QuoteEntry {
   text: string;
   author: string;

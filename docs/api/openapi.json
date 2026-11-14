@@ -223,7 +223,9 @@
           "drawingPrompt",
           "streakText",
           "weatherText",
-          "phonics"
+          "phonics",
+          "englishWord",
+          "saintOfDay"
         ]
       },
       "BoardChore": {
@@ -376,7 +378,9 @@
                           "drawingPrompt",
                           "streakText",
                           "weatherText",
-                          "phonics"
+                          "phonics",
+                          "englishWord",
+                          "saintOfDay"
                         ]
                       }
                     }

@@ -1,0 +1,2564 @@
+[
+  {
+    "word": "friend",
+    "type": "sustantivo",
+    "translation": "amigo, amiga",
+    "example": "My best friend lives next door.",
+    "exampleEs": "Mi mejor amigo vive en la casa de al lado."
+  },
+  {
+    "word": "apple",
+    "type": "sustantivo",
+    "translation": "manzana",
+    "example": "I eat an apple every morning.",
+    "exampleEs": "Me como una manzana todas las mañanas."
+  },
+  {
+    "word": "happy",
+    "type": "adjetivo",
+    "translation": "feliz, contento",
+    "example": "I'm happy because it's my birthday!",
+    "exampleEs": "¡Estoy contento porque es mi cumpleaños!"
+  },
+  {
+    "word": "rabbit",
+    "type": "sustantivo",
+    "translation": "conejo",
+    "example": "The rabbit is eating a carrot.",
+    "exampleEs": "El conejo se está comiendo una zanahoria."
+  },
+  {
+    "word": "snow",
+    "type": "sustantivo",
+    "translation": "nieve",
+    "example": "There is snow on the mountains today.",
+    "exampleEs": "Hoy hay nieve en las montañas."
+  },
+  {
+    "word": "pencil",
+    "type": "sustantivo",
+    "translation": "lápiz",
+    "example": "Can I use your pencil, please?",
+    "exampleEs": "¿Puedo usar tu lápiz, por favor?"
+  },
+  {
+    "word": "kitchen",
+    "type": "sustantivo",
+    "translation": "cocina",
+    "example": "Dad is making soup in the kitchen.",
+    "exampleEs": "Papá está haciendo sopa en la cocina."
+  },
+  {
+    "word": "jump",
+    "type": "verbo",
+    "translation": "saltar",
+    "example": "Kangaroos can jump very high.",
+    "exampleEs": "Los canguros pueden saltar muy alto."
+  },
+  {
+    "word": "scarf",
+    "type": "sustantivo",
+    "translation": "bufanda",
+    "example": "Wear your scarf, it's cold outside!",
+    "exampleEs": "¡Ponte la bufanda, que hace frío fuera!"
+  },
+  {
+    "word": "grandmother",
+    "type": "sustantivo",
+    "translation": "abuela",
+    "example": "My grandmother makes the best cakes.",
+    "exampleEs": "Mi abuela hace las mejores tartas."
+  },
+  {
+    "word": "tomorrow",
+    "type": "adverbio",
+    "translation": "mañana",
+    "example": "We have a maths test tomorrow.",
+    "exampleEs": "Mañana tenemos un examen de matemáticas."
+  },
+  {
+    "word": "under",
+    "type": "preposición",
+    "translation": "debajo de",
+    "example": "The cat is sleeping under the table.",
+    "exampleEs": "El gato está durmiendo debajo de la mesa."
+  },
+  {
+    "word": "cold",
+    "type": "adjetivo",
+    "translation": "frío",
+    "example": "The water in the pool is very cold.",
+    "exampleEs": "El agua de la piscina está muy fría."
+  },
+  {
+    "word": "ticket",
+    "type": "sustantivo",
+    "translation": "billete",
+    "example": "I bought a ticket for the train.",
+    "exampleEs": "Compré un billete para el tren."
+  },
+  {
+    "word": "tired",
+    "type": "adjetivo",
+    "translation": "cansado",
+    "example": "I'm tired after the football match.",
+    "exampleEs": "Estoy cansado después del partido de fútbol."
+  },
+  {
+    "word": "window",
+    "type": "sustantivo",
+    "translation": "ventana",
+    "example": "Please open the window, it's hot.",
+    "exampleEs": "Abre la ventana, por favor, que hace calor."
+  },
+  {
+    "word": "breakfast",
+    "type": "sustantivo",
+    "translation": "desayuno",
+    "example": "I have toast and milk for breakfast.",
+    "exampleEs": "Desayuno tostadas y leche."
+  },
+  {
+    "word": "hand",
+    "type": "sustantivo",
+    "translation": "mano",
+    "example": "Raise your hand if you know the answer.",
+    "exampleEs": "Levanta la mano si sabes la respuesta."
+  },
+  {
+    "word": "wake up",
+    "type": "verbo",
+    "translation": "despertarse",
+    "example": "I wake up at seven o'clock on school days.",
+    "exampleEs": "Me despierto a las siete los días de colegio."
+  },
+  {
+    "word": "library",
+    "type": "sustantivo",
+    "translation": "biblioteca",
+    "example": "I borrow books from the school library.",
+    "exampleEs": "Saco libros de la biblioteca del colegio."
+  },
+  {
+    "word": "horse",
+    "type": "sustantivo",
+    "translation": "caballo",
+    "example": "My cousin rides a horse on Saturdays.",
+    "exampleEs": "Mi primo monta a caballo los sábados."
+  },
+  {
+    "word": "sunny",
+    "type": "adjetivo",
+    "translation": "soleado",
+    "example": "It's a sunny day, let's go to the park!",
+    "exampleEs": "Hace un día soleado, ¡vamos al parque!"
+  },
+  {
+    "word": "shoe",
+    "type": "sustantivo",
+    "translation": "zapato",
+    "example": "I can't find my other shoe!",
+    "exampleEs": "¡No encuentro mi otro zapato!"
+  },
+  {
+    "word": "teacher",
+    "type": "sustantivo",
+    "translation": "profesor, profesora",
+    "example": "Our English teacher is very nice.",
+    "exampleEs": "Nuestra profesora de inglés es muy maja."
+  },
+  {
+    "word": "small",
+    "type": "adjetivo",
+    "translation": "pequeño",
+    "example": "This T-shirt is too small for me.",
+    "exampleEs": "Esta camiseta me queda pequeña."
+  },
+  {
+    "word": "of course",
+    "type": "expresión",
+    "translation": "claro, por supuesto",
+    "example": "Can you help me? Of course!",
+    "exampleEs": "¿Me puedes ayudar? ¡Claro!"
+  },
+  {
+    "word": "bread",
+    "type": "sustantivo",
+    "translation": "pan",
+    "example": "We buy fresh bread every morning.",
+    "exampleEs": "Compramos pan recién hecho cada mañana."
+  },
+  {
+    "word": "swim",
+    "type": "verbo",
+    "translation": "nadar",
+    "example": "My little sister is learning to swim.",
+    "exampleEs": "Mi hermana pequeña está aprendiendo a nadar."
+  },
+  {
+    "word": "computer",
+    "type": "sustantivo",
+    "translation": "ordenador",
+    "example": "We use the computer to do our project.",
+    "exampleEs": "Usamos el ordenador para hacer nuestro proyecto."
+  },
+  {
+    "word": "week",
+    "type": "sustantivo",
+    "translation": "semana",
+    "example": "There are seven days in a week.",
+    "exampleEs": "Una semana tiene siete días."
+  },
+  {
+    "word": "street",
+    "type": "sustantivo",
+    "translation": "calle",
+    "example": "I live on a quiet street.",
+    "exampleEs": "Vivo en una calle tranquila."
+  },
+  {
+    "word": "cousin",
+    "type": "sustantivo",
+    "translation": "primo, prima",
+    "example": "My cousin is coming to stay this weekend.",
+    "exampleEs": "Mi prima viene a quedarse este fin de semana."
+  },
+  {
+    "word": "cheese",
+    "type": "sustantivo",
+    "translation": "queso",
+    "example": "Do you want a cheese sandwich?",
+    "exampleEs": "¿Quieres un sándwich de queso?"
+  },
+  {
+    "word": "owl",
+    "type": "sustantivo",
+    "translation": "búho",
+    "example": "The owl sleeps during the day.",
+    "exampleEs": "El búho duerme durante el día."
+  },
+  {
+    "word": "rain",
+    "type": "sustantivo",
+    "translation": "lluvia",
+    "example": "The rain stopped after lunch.",
+    "exampleEs": "La lluvia paró después de comer."
+  },
+  {
+    "word": "homework",
+    "type": "sustantivo",
+    "translation": "deberes",
+    "example": "I always do my homework before dinner.",
+    "exampleEs": "Siempre hago los deberes antes de cenar."
+  },
+  {
+    "word": "knee",
+    "type": "sustantivo",
+    "translation": "rodilla",
+    "example": "I fell over and hurt my knee.",
+    "exampleEs": "Me caí y me hice daño en la rodilla."
+  },
+  {
+    "word": "bored",
+    "type": "adjetivo",
+    "translation": "aburrido",
+    "example": "I'm bored, let's play a game!",
+    "exampleEs": "Estoy aburrido, ¡juguemos a algo!"
+  },
+  {
+    "word": "draw",
+    "type": "verbo",
+    "translation": "dibujar",
+    "example": "Can you draw a horse?",
+    "exampleEs": "¿Sabes dibujar un caballo?"
+  },
+  {
+    "word": "between",
+    "type": "preposición",
+    "translation": "entre",
+    "example": "The bank is between the bakery and the park.",
+    "exampleEs": "El banco está entre la panadería y el parque."
+  },
+  {
+    "word": "jacket",
+    "type": "sustantivo",
+    "translation": "chaqueta",
+    "example": "Put on your jacket before you go out.",
+    "exampleEs": "Ponte la chaqueta antes de salir."
+  },
+  {
+    "word": "tree",
+    "type": "sustantivo",
+    "translation": "árbol",
+    "example": "There's a bird in that tree.",
+    "exampleEs": "Hay un pájaro en ese árbol."
+  },
+  {
+    "word": "bedroom",
+    "type": "sustantivo",
+    "translation": "dormitorio, habitación",
+    "example": "My bedroom is next to the bathroom.",
+    "exampleEs": "Mi habitación está al lado del cuarto de baño."
+  },
+  {
+    "word": "fast",
+    "type": "adjetivo",
+    "translation": "rápido",
+    "example": "Cheetahs are very fast animals.",
+    "exampleEs": "Los guepardos son animales muy rápidos."
+  },
+  {
+    "word": "birthday",
+    "type": "sustantivo",
+    "translation": "cumpleaños",
+    "example": "My birthday is in March.",
+    "exampleEs": "Mi cumpleaños es en marzo."
+  },
+  {
+    "word": "team",
+    "type": "sustantivo",
+    "translation": "equipo",
+    "example": "Our team won the match!",
+    "exampleEs": "¡Nuestro equipo ganó el partido!"
+  },
+  {
+    "word": "suitcase",
+    "type": "sustantivo",
+    "translation": "maleta",
+    "example": "Mum packed my suitcase for the holidays.",
+    "exampleEs": "Mamá me hizo la maleta para las vacaciones."
+  },
+  {
+    "word": "brush",
+    "type": "verbo",
+    "translation": "cepillarse",
+    "example": "Brush your teeth before bed.",
+    "exampleEs": "Cepíllate los dientes antes de acostarte."
+  },
+  {
+    "word": "actually",
+    "type": "adverbio",
+    "translation": "en realidad",
+    "example": "He looks serious, but actually he's very funny.",
+    "exampleEs": "Parece serio, pero en realidad es muy gracioso."
+  },
+  {
+    "word": "strawberry",
+    "type": "sustantivo",
+    "translation": "fresa",
+    "example": "Strawberries are my favourite fruit.",
+    "exampleEs": "Las fresas son mi fruta favorita."
+  },
+  {
+    "word": "screen",
+    "type": "sustantivo",
+    "translation": "pantalla",
+    "example": "Don't sit too close to the screen.",
+    "exampleEs": "No te sientes demasiado cerca de la pantalla."
+  },
+  {
+    "word": "always",
+    "type": "adverbio",
+    "translation": "siempre",
+    "example": "I always walk to school with my sister.",
+    "exampleEs": "Siempre voy andando al colegio con mi hermana."
+  },
+  {
+    "word": "kind",
+    "type": "adjetivo",
+    "translation": "amable",
+    "example": "It was very kind of you to help me.",
+    "exampleEs": "Fue muy amable por tu parte ayudarme."
+  },
+  {
+    "word": "park",
+    "type": "sustantivo",
+    "translation": "parque",
+    "example": "We play football in the park after school.",
+    "exampleEs": "Jugamos al fútbol en el parque después del colegio."
+  },
+  {
+    "word": "butterfly",
+    "type": "sustantivo",
+    "translation": "mariposa",
+    "example": "A butterfly landed on my hand.",
+    "exampleEs": "Una mariposa se posó en mi mano."
+  },
+  {
+    "word": "cloudy",
+    "type": "adjetivo",
+    "translation": "nublado",
+    "example": "It's cloudy, so take an umbrella.",
+    "exampleEs": "Está nublado, así que coge un paraguas."
+  },
+  {
+    "word": "look for",
+    "type": "verbo",
+    "translation": "buscar",
+    "example": "I'm looking for my keys.",
+    "exampleEs": "Estoy buscando mis llaves."
+  },
+  {
+    "word": "ruler",
+    "type": "sustantivo",
+    "translation": "regla",
+    "example": "Use a ruler to draw a straight line.",
+    "exampleEs": "Usa una regla para dibujar una línea recta."
+  },
+  {
+    "word": "aunt",
+    "type": "sustantivo",
+    "translation": "tía",
+    "example": "My aunt lives in London.",
+    "exampleEs": "Mi tía vive en Londres."
+  },
+  {
+    "word": "tooth",
+    "type": "sustantivo",
+    "translation": "diente",
+    "example": "My little brother lost his first tooth!",
+    "exampleEs": "¡A mi hermano pequeño se le ha caído su primer diente!"
+  },
+  {
+    "word": "hat",
+    "type": "sustantivo",
+    "translation": "sombrero, gorro",
+    "example": "Wear a hat when it's sunny.",
+    "exampleEs": "Ponte un sombrero cuando haga sol."
+  },
+  {
+    "word": "honey",
+    "type": "sustantivo",
+    "translation": "miel",
+    "example": "Bees make honey.",
+    "exampleEs": "Las abejas hacen miel."
+  },
+  {
+    "word": "river",
+    "type": "sustantivo",
+    "translation": "río",
+    "example": "We had a picnic next to the river.",
+    "exampleEs": "Hicimos un pícnic junto al río."
+  },
+  {
+    "word": "angry",
+    "type": "adjetivo",
+    "translation": "enfadado",
+    "example": "Mum was angry because my room was messy.",
+    "exampleEs": "Mamá estaba enfadada porque mi habitación estaba desordenada."
+  },
+  {
+    "word": "board game",
+    "type": "sustantivo",
+    "translation": "juego de mesa",
+    "example": "We play a board game every Sunday.",
+    "exampleEs": "Jugamos a un juego de mesa todos los domingos."
+  },
+  {
+    "word": "early",
+    "type": "adverbio",
+    "translation": "temprano",
+    "example": "I go to bed early during the week.",
+    "exampleEs": "Entre semana me acuesto temprano."
+  },
+  {
+    "word": "dirty",
+    "type": "adjetivo",
+    "translation": "sucio",
+    "example": "Your hands are dirty, go and wash them.",
+    "exampleEs": "Tienes las manos sucias, ve a lavártelas."
+  },
+  {
+    "word": "whisper",
+    "type": "verbo",
+    "translation": "susurrar",
+    "example": "She whispered a secret in my ear.",
+    "exampleEs": "Me susurró un secreto al oído."
+  },
+  {
+    "word": "frog",
+    "type": "sustantivo",
+    "translation": "rana",
+    "example": "The frog jumped into the pond.",
+    "exampleEs": "La rana saltó al estanque."
+  },
+  {
+    "word": "train",
+    "type": "sustantivo",
+    "translation": "tren",
+    "example": "We went to Madrid by train.",
+    "exampleEs": "Fuimos a Madrid en tren."
+  },
+  {
+    "word": "behind",
+    "type": "preposición",
+    "translation": "detrás de",
+    "example": "The ball is behind the sofa.",
+    "exampleEs": "La pelota está detrás del sofá."
+  },
+  {
+    "word": "shoulder",
+    "type": "sustantivo",
+    "translation": "hombro",
+    "example": "The bird sat on my shoulder.",
+    "exampleEs": "El pájaro se posó en mi hombro."
+  },
+  {
+    "word": "password",
+    "type": "sustantivo",
+    "translation": "contraseña",
+    "example": "Never tell anyone your password.",
+    "exampleEs": "Nunca le digas tu contraseña a nadie."
+  },
+  {
+    "word": "spring",
+    "type": "sustantivo",
+    "translation": "primavera",
+    "example": "Lots of flowers grow in spring.",
+    "exampleEs": "En primavera crecen muchas flores."
+  },
+  {
+    "word": "embarrassed",
+    "type": "adjetivo",
+    "translation": "avergonzado",
+    "example": "I was embarrassed when I fell over in class.",
+    "exampleEs": "Me sentí avergonzado cuando me caí en clase."
+  },
+  {
+    "word": "win",
+    "type": "verbo",
+    "translation": "ganar",
+    "example": "I hope we win the match on Saturday.",
+    "exampleEs": "Espero que ganemos el partido del sábado."
+  },
+  {
+    "word": "bakery",
+    "type": "sustantivo",
+    "translation": "panadería",
+    "example": "The bakery opens at eight.",
+    "exampleEs": "La panadería abre a las ocho."
+  },
+  {
+    "word": "easy",
+    "type": "adjetivo",
+    "translation": "fácil",
+    "example": "The first exercise was very easy.",
+    "exampleEs": "El primer ejercicio era muy fácil."
+  },
+  {
+    "word": "uncle",
+    "type": "sustantivo",
+    "translation": "tío",
+    "example": "My uncle has a big dog.",
+    "exampleEs": "Mi tío tiene un perro grande."
+  },
+  {
+    "word": "rice",
+    "type": "sustantivo",
+    "translation": "arroz",
+    "example": "Paella is made with rice.",
+    "exampleEs": "La paella se hace con arroz."
+  },
+  {
+    "word": "help",
+    "type": "verbo",
+    "translation": "ayudar",
+    "example": "Can you help me with my homework?",
+    "exampleEs": "¿Me ayudas con los deberes?"
+  },
+  {
+    "word": "beach",
+    "type": "sustantivo",
+    "translation": "playa",
+    "example": "We build sandcastles on the beach.",
+    "exampleEs": "Hacemos castillos de arena en la playa."
+  },
+  {
+    "word": "nervous",
+    "type": "adjetivo",
+    "translation": "nervioso",
+    "example": "I always feel nervous before an exam.",
+    "exampleEs": "Siempre me pongo nervioso antes de un examen."
+  },
+  {
+    "word": "coat",
+    "type": "sustantivo",
+    "translation": "abrigo",
+    "example": "It's very cold, put on your coat!",
+    "exampleEs": "¡Hace mucho frío, ponte el abrigo!"
+  },
+  {
+    "word": "clock",
+    "type": "sustantivo",
+    "translation": "reloj",
+    "example": "The clock in the kitchen is five minutes fast.",
+    "exampleEs": "El reloj de la cocina va cinco minutos adelantado."
+  },
+  {
+    "word": "good luck",
+    "type": "expresión",
+    "translation": "buena suerte",
+    "example": "Good luck with your exam tomorrow!",
+    "exampleEs": "¡Buena suerte en el examen de mañana!"
+  },
+  {
+    "word": "sheep",
+    "type": "sustantivo",
+    "translation": "oveja",
+    "example": "The farmer has fifty sheep.",
+    "exampleEs": "El granjero tiene cincuenta ovejas."
+  },
+  {
+    "word": "quickly",
+    "type": "adverbio",
+    "translation": "rápidamente, deprisa",
+    "example": "Finish your breakfast quickly, we're late!",
+    "exampleEs": "¡Termina el desayuno deprisa, que llegamos tarde!"
+  },
+  {
+    "word": "sofa",
+    "type": "sustantivo",
+    "translation": "sofá",
+    "example": "The dog is sleeping on the sofa again.",
+    "exampleEs": "El perro está durmiendo otra vez en el sofá."
+  },
+  {
+    "word": "storm",
+    "type": "sustantivo",
+    "translation": "tormenta",
+    "example": "The storm woke me up last night.",
+    "exampleEs": "La tormenta me despertó anoche."
+  },
+  {
+    "word": "exam",
+    "type": "sustantivo",
+    "translation": "examen",
+    "example": "I studied all weekend for the science exam.",
+    "exampleEs": "Estudié todo el fin de semana para el examen de ciencias."
+  },
+  {
+    "word": "proud",
+    "type": "adjetivo",
+    "translation": "orgulloso",
+    "example": "My parents were proud of my good marks.",
+    "exampleEs": "Mis padres estaban orgullosos de mis buenas notas."
+  },
+  {
+    "word": "guitar",
+    "type": "sustantivo",
+    "translation": "guitarra",
+    "example": "My brother plays the guitar in a band.",
+    "exampleEs": "Mi hermano toca la guitarra en un grupo."
+  },
+  {
+    "word": "pocket",
+    "type": "sustantivo",
+    "translation": "bolsillo",
+    "example": "I keep my keys in my pocket.",
+    "exampleEs": "Llevo las llaves en el bolsillo."
+  },
+  {
+    "word": "airport",
+    "type": "sustantivo",
+    "translation": "aeropuerto",
+    "example": "We arrived at the airport two hours early.",
+    "exampleEs": "Llegamos al aeropuerto con dos horas de antelación."
+  },
+  {
+    "word": "borrow",
+    "type": "verbo",
+    "translation": "pedir prestado",
+    "example": "I borrowed a book from my friend.",
+    "exampleEs": "Le pedí prestado un libro a mi amigo."
+  },
+  {
+    "word": "heavy",
+    "type": "adjetivo",
+    "translation": "pesado",
+    "example": "This box is too heavy for me.",
+    "exampleEs": "Esta caja es demasiado pesada para mí."
+  },
+  {
+    "word": "bee",
+    "type": "sustantivo",
+    "translation": "abeja",
+    "example": "A bee is flying around the flowers.",
+    "exampleEs": "Una abeja vuela alrededor de las flores."
+  },
+  {
+    "word": "neighbour",
+    "type": "sustantivo",
+    "translation": "vecino, vecina",
+    "example": "Our neighbour waters our plants when we're away.",
+    "exampleEs": "Nuestra vecina riega nuestras plantas cuando no estamos."
+  },
+  {
+    "word": "cook",
+    "type": "verbo",
+    "translation": "cocinar",
+    "example": "My dad loves to cook on Sundays.",
+    "exampleEs": "A mi padre le encanta cocinar los domingos."
+  },
+  {
+    "word": "sensible",
+    "type": "adjetivo",
+    "translation": "sensato",
+    "example": "It's sensible to wear a helmet on your bike.",
+    "exampleEs": "Es sensato llevar casco cuando vas en bici."
+  },
+  {
+    "word": "rainbow",
+    "type": "sustantivo",
+    "translation": "arcoíris",
+    "example": "Look, there's a rainbow after the rain!",
+    "exampleEs": "¡Mira, hay un arcoíris después de la lluvia!"
+  },
+  {
+    "word": "subject",
+    "type": "sustantivo",
+    "translation": "asignatura",
+    "example": "Science is my favourite subject.",
+    "exampleEs": "Ciencias es mi asignatura favorita."
+  },
+  {
+    "word": "headache",
+    "type": "sustantivo",
+    "translation": "dolor de cabeza",
+    "example": "I've got a headache, I need some water.",
+    "exampleEs": "Me duele la cabeza, necesito un poco de agua."
+  },
+  {
+    "word": "weekend",
+    "type": "sustantivo",
+    "translation": "fin de semana",
+    "example": "What are you doing this weekend?",
+    "exampleEs": "¿Qué vas a hacer este fin de semana?"
+  },
+  {
+    "word": "bridge",
+    "type": "sustantivo",
+    "translation": "puente",
+    "example": "We walked across the old bridge.",
+    "exampleEs": "Cruzamos el puente viejo andando."
+  },
+  {
+    "word": "turn off",
+    "type": "verbo",
+    "translation": "apagar",
+    "example": "Turn off the light when you leave the room.",
+    "exampleEs": "Apaga la luz cuando salgas de la habitación."
+  },
+  {
+    "word": "funny",
+    "type": "adjetivo",
+    "translation": "gracioso, divertido",
+    "example": "My grandad tells really funny jokes.",
+    "exampleEs": "Mi abuelo cuenta chistes muy graciosos."
+  },
+  {
+    "word": "penguin",
+    "type": "sustantivo",
+    "translation": "pingüino",
+    "example": "Penguins can't fly, but they swim very well.",
+    "exampleEs": "Los pingüinos no pueden volar, pero nadan muy bien."
+  },
+  {
+    "word": "above",
+    "type": "preposición",
+    "translation": "encima de, por encima de",
+    "example": "There's a shelf above my bed.",
+    "exampleEs": "Hay una estantería encima de mi cama."
+  },
+  {
+    "word": "achieve",
+    "type": "verbo",
+    "translation": "lograr, conseguir",
+    "example": "If you work hard, you can achieve your goals.",
+    "exampleEs": "Si te esfuerzas, puedes lograr tus objetivos."
+  },
+  {
+    "word": "worried",
+    "type": "adjetivo",
+    "translation": "preocupado",
+    "example": "Grandma was worried because we were late.",
+    "exampleEs": "La abuela estaba preocupada porque llegábamos tarde."
+  },
+  {
+    "word": "laptop",
+    "type": "sustantivo",
+    "translation": "portátil",
+    "example": "Dad works on his laptop at home.",
+    "exampleEs": "Papá trabaja en casa con su portátil."
+  },
+  {
+    "word": "summer",
+    "type": "sustantivo",
+    "translation": "verano",
+    "example": "In summer we go to the beach every day.",
+    "exampleEs": "En verano vamos a la playa todos los días."
+  },
+  {
+    "word": "referee",
+    "type": "sustantivo",
+    "translation": "árbitro",
+    "example": "The referee blew the whistle.",
+    "exampleEs": "El árbitro tocó el silbato."
+  },
+  {
+    "word": "trousers",
+    "type": "sustantivo",
+    "translation": "pantalones",
+    "example": "These trousers are too long for me.",
+    "exampleEs": "Estos pantalones me quedan demasiado largos."
+  },
+  {
+    "word": "village",
+    "type": "sustantivo",
+    "translation": "pueblo",
+    "example": "My grandparents live in a small village.",
+    "exampleEs": "Mis abuelos viven en un pueblo pequeño."
+  },
+  {
+    "word": "remember",
+    "type": "verbo",
+    "translation": "recordar, acordarse",
+    "example": "Do you remember my phone number?",
+    "exampleEs": "¿Te acuerdas de mi número de teléfono?"
+  },
+  {
+    "word": "cave",
+    "type": "sustantivo",
+    "translation": "cueva",
+    "example": "We explored a dark cave in the mountains.",
+    "exampleEs": "Exploramos una cueva oscura en la montaña."
+  },
+  {
+    "word": "polite",
+    "type": "adjetivo",
+    "translation": "educado",
+    "example": "Be polite and say thank you.",
+    "exampleEs": "Sé educado y da las gracias."
+  },
+  {
+    "word": "timetable",
+    "type": "sustantivo",
+    "translation": "horario",
+    "example": "Check the timetable to see what lessons we have.",
+    "exampleEs": "Mira el horario para ver qué clases tenemos."
+  },
+  {
+    "word": "thunder",
+    "type": "sustantivo",
+    "translation": "trueno",
+    "example": "My dog is scared of thunder.",
+    "exampleEs": "Mi perro tiene miedo de los truenos."
+  },
+  {
+    "word": "grow up",
+    "type": "verbo",
+    "translation": "crecer, hacerse mayor",
+    "example": "I want to be a vet when I grow up.",
+    "exampleEs": "Quiero ser veterinario cuando sea mayor."
+  },
+  {
+    "word": "elbow",
+    "type": "sustantivo",
+    "translation": "codo",
+    "example": "Don't put your elbows on the table.",
+    "exampleEs": "No pongas los codos en la mesa."
+  },
+  {
+    "word": "dessert",
+    "type": "sustantivo",
+    "translation": "postre",
+    "example": "We had ice cream for dessert.",
+    "exampleEs": "De postre tomamos helado."
+  },
+  {
+    "word": "dolphin",
+    "type": "sustantivo",
+    "translation": "delfín",
+    "example": "We saw dolphins from the boat.",
+    "exampleEs": "Vimos delfines desde el barco."
+  },
+  {
+    "word": "lonely",
+    "type": "adjetivo",
+    "translation": "solo, solitario",
+    "example": "I felt lonely when my best friend moved away.",
+    "exampleEs": "Me sentí solo cuando mi mejor amigo se mudó."
+  },
+  {
+    "word": "map",
+    "type": "sustantivo",
+    "translation": "mapa",
+    "example": "Let's look at the map to find the hotel.",
+    "exampleEs": "Miremos el mapa para encontrar el hotel."
+  },
+  {
+    "word": "dangerous",
+    "type": "adjetivo",
+    "translation": "peligroso",
+    "example": "It's dangerous to play near the road.",
+    "exampleEs": "Es peligroso jugar cerca de la carretera."
+  },
+  {
+    "word": "exit",
+    "type": "sustantivo",
+    "translation": "salida",
+    "example": "The exit is at the back of the cinema.",
+    "exampleEs": "La salida está al fondo del cine."
+  },
+  {
+    "word": "practise",
+    "type": "verbo",
+    "translation": "practicar",
+    "example": "I practise my English with songs.",
+    "exampleEs": "Practico mi inglés con canciones."
+  },
+  {
+    "word": "cupboard",
+    "type": "sustantivo",
+    "translation": "armario",
+    "example": "The plates are in the kitchen cupboard.",
+    "exampleEs": "Los platos están en el armario de la cocina."
+  },
+  {
+    "word": "often",
+    "type": "adverbio",
+    "translation": "a menudo",
+    "example": "I often visit my grandparents on Sundays.",
+    "exampleEs": "A menudo visito a mis abuelos los domingos."
+  },
+  {
+    "word": "glue",
+    "type": "sustantivo",
+    "translation": "pegamento",
+    "example": "We need glue for the art project.",
+    "exampleEs": "Necesitamos pegamento para el proyecto de plástica."
+  },
+  {
+    "word": "squirrel",
+    "type": "sustantivo",
+    "translation": "ardilla",
+    "example": "A squirrel is hiding nuts in the garden.",
+    "exampleEs": "Una ardilla está escondiendo nueces en el jardín."
+  },
+  {
+    "word": "throw",
+    "type": "verbo",
+    "translation": "lanzar, tirar",
+    "example": "Throw the ball to me!",
+    "exampleEs": "¡Tírame la pelota!"
+  },
+  {
+    "word": "wet",
+    "type": "adjetivo",
+    "translation": "mojado",
+    "example": "My socks are wet because of the rain.",
+    "exampleEs": "Tengo los calcetines mojados por la lluvia."
+  },
+  {
+    "word": "market",
+    "type": "sustantivo",
+    "translation": "mercado",
+    "example": "We buy fruit at the market on Saturdays.",
+    "exampleEs": "Compramos fruta en el mercado los sábados."
+  },
+  {
+    "word": "twin",
+    "type": "sustantivo",
+    "translation": "gemelo, gemela",
+    "example": "My friend has a twin sister.",
+    "exampleEs": "Mi amiga tiene una hermana gemela."
+  },
+  {
+    "word": "download",
+    "type": "verbo",
+    "translation": "descargar",
+    "example": "Can I download this game?",
+    "exampleEs": "¿Puedo descargar este juego?"
+  },
+  {
+    "word": "surprised",
+    "type": "adjetivo",
+    "translation": "sorprendido",
+    "example": "I was surprised to see snow in April.",
+    "exampleEs": "Me sorprendió ver nieve en abril."
+  },
+  {
+    "word": "slowly",
+    "type": "adverbio",
+    "translation": "despacio",
+    "example": "Please speak slowly, I don't understand.",
+    "exampleEs": "Habla despacio, por favor, no te entiendo."
+  },
+  {
+    "word": "forest",
+    "type": "sustantivo",
+    "translation": "bosque",
+    "example": "We went for a walk in the forest.",
+    "exampleEs": "Fuimos a dar un paseo por el bosque."
+  },
+  {
+    "word": "gloves",
+    "type": "sustantivo",
+    "translation": "guantes",
+    "example": "My hands are cold, where are my gloves?",
+    "exampleEs": "Tengo las manos frías, ¿dónde están mis guantes?"
+  },
+  {
+    "word": "pretend",
+    "type": "verbo",
+    "translation": "fingir",
+    "example": "My little brother pretends to be asleep.",
+    "exampleEs": "Mi hermano pequeño finge estar dormido."
+  },
+  {
+    "word": "carrot",
+    "type": "sustantivo",
+    "translation": "zanahoria",
+    "example": "Carrots are good for your eyes.",
+    "exampleEs": "Las zanahorias son buenas para la vista."
+  },
+  {
+    "word": "match",
+    "type": "sustantivo",
+    "translation": "partido",
+    "example": "The match starts at five.",
+    "exampleEs": "El partido empieza a las cinco."
+  },
+  {
+    "word": "calm",
+    "type": "adjetivo",
+    "translation": "tranquilo",
+    "example": "Stay calm and listen to the teacher.",
+    "exampleEs": "Quédate tranquilo y escucha al profesor."
+  },
+  {
+    "word": "platform",
+    "type": "sustantivo",
+    "translation": "andén",
+    "example": "The train leaves from platform three.",
+    "exampleEs": "El tren sale del andén tres."
+  },
+  {
+    "word": "lend",
+    "type": "verbo",
+    "translation": "prestar",
+    "example": "Could you lend me a pen?",
+    "exampleEs": "¿Me podrías prestar un boli?"
+  },
+  {
+    "word": "finger",
+    "type": "sustantivo",
+    "translation": "dedo",
+    "example": "I cut my finger with the scissors.",
+    "exampleEs": "Me corté el dedo con las tijeras."
+  },
+  {
+    "word": "midnight",
+    "type": "sustantivo",
+    "translation": "medianoche",
+    "example": "The film finished at midnight.",
+    "exampleEs": "La película terminó a medianoche."
+  },
+  {
+    "word": "cheap",
+    "type": "adjetivo",
+    "translation": "barato",
+    "example": "This T-shirt was really cheap.",
+    "exampleEs": "Esta camiseta era muy barata."
+  },
+  {
+    "word": "whale",
+    "type": "sustantivo",
+    "translation": "ballena",
+    "example": "The blue whale is the largest animal in the world.",
+    "exampleEs": "La ballena azul es el animal más grande del mundo."
+  },
+  {
+    "word": "fridge",
+    "type": "sustantivo",
+    "translation": "nevera, frigorífico",
+    "example": "Put the milk back in the fridge.",
+    "exampleEs": "Vuelve a meter la leche en la nevera."
+  },
+  {
+    "word": "climb",
+    "type": "verbo",
+    "translation": "trepar, escalar",
+    "example": "The children climbed the tree.",
+    "exampleEs": "Los niños treparon al árbol."
+  },
+  {
+    "word": "parents",
+    "type": "sustantivo",
+    "translation": "padres",
+    "example": "My parents work in a hospital.",
+    "exampleEs": "Mis padres trabajan en un hospital."
+  },
+  {
+    "word": "sand",
+    "type": "sustantivo",
+    "translation": "arena",
+    "example": "There's sand in my shoes!",
+    "exampleEs": "¡Tengo arena en los zapatos!"
+  },
+  {
+    "word": "scared",
+    "type": "adjetivo",
+    "translation": "asustado",
+    "example": "My sister is scared of spiders.",
+    "exampleEs": "Mi hermana tiene miedo de las arañas."
+  },
+  {
+    "word": "keyboard",
+    "type": "sustantivo",
+    "translation": "teclado",
+    "example": "The keyboard on this laptop is very small.",
+    "exampleEs": "El teclado de este portátil es muy pequeño."
+  },
+  {
+    "word": "holiday",
+    "type": "sustantivo",
+    "translation": "vacaciones",
+    "example": "We're going to the mountains on holiday.",
+    "exampleEs": "Nos vamos de vacaciones a la montaña."
+  },
+  {
+    "word": "through",
+    "type": "preposición",
+    "translation": "a través de, por",
+    "example": "We walked through the forest.",
+    "exampleEs": "Caminamos por el bosque."
+  },
+  {
+    "word": "clever",
+    "type": "adjetivo",
+    "translation": "listo, inteligente",
+    "example": "Dolphins are very clever animals.",
+    "exampleEs": "Los delfines son animales muy listos."
+  },
+  {
+    "word": "lunch",
+    "type": "sustantivo",
+    "translation": "comida, almuerzo",
+    "example": "We have lunch at school at two o'clock.",
+    "exampleEs": "Comemos en el colegio a las dos."
+  },
+  {
+    "word": "tidy up",
+    "type": "verbo",
+    "translation": "ordenar, recoger",
+    "example": "Tidy up your room before you go out.",
+    "exampleEs": "Recoge tu habitación antes de salir."
+  },
+  {
+    "word": "dress",
+    "type": "sustantivo",
+    "translation": "vestido",
+    "example": "My sister wore a yellow dress to the party.",
+    "exampleEs": "Mi hermana llevó un vestido amarillo a la fiesta."
+  },
+  {
+    "word": "hungry",
+    "type": "adjetivo",
+    "translation": "hambriento",
+    "example": "I'm hungry, what's for dinner?",
+    "exampleEs": "Tengo hambre, ¿qué hay de cena?"
+  },
+  {
+    "word": "score",
+    "type": "verbo",
+    "translation": "marcar",
+    "example": "She scored two goals in the match.",
+    "exampleEs": "Marcó dos goles en el partido."
+  },
+  {
+    "word": "autumn",
+    "type": "sustantivo",
+    "translation": "otoño",
+    "example": "The leaves turn brown in autumn.",
+    "exampleEs": "En otoño las hojas se vuelven marrones."
+  },
+  {
+    "word": "along",
+    "type": "preposición",
+    "translation": "a lo largo de",
+    "example": "We cycled along the river.",
+    "exampleEs": "Fuimos en bici a lo largo del río."
+  },
+  {
+    "word": "knowledge",
+    "type": "sustantivo",
+    "translation": "conocimientos",
+    "example": "Reading books increases your knowledge.",
+    "exampleEs": "Leer libros aumenta tus conocimientos."
+  },
+  {
+    "word": "spider",
+    "type": "sustantivo",
+    "translation": "araña",
+    "example": "There's a big spider in the bath!",
+    "exampleEs": "¡Hay una araña enorme en la bañera!"
+  },
+  {
+    "word": "shy",
+    "type": "adjetivo",
+    "translation": "tímido",
+    "example": "My cousin is shy, but very friendly.",
+    "exampleEs": "Mi primo es tímido, pero muy simpático."
+  },
+  {
+    "word": "suddenly",
+    "type": "adverbio",
+    "translation": "de repente",
+    "example": "Suddenly, the lights went out.",
+    "exampleEs": "De repente, se fue la luz."
+  },
+  {
+    "word": "fabric",
+    "type": "sustantivo",
+    "translation": "tela",
+    "example": "This fabric is soft and warm.",
+    "exampleEs": "Esta tela es suave y calentita."
+  },
+  {
+    "word": "neck",
+    "type": "sustantivo",
+    "translation": "cuello",
+    "example": "Giraffes have very long necks.",
+    "exampleEs": "Las jirafas tienen el cuello muy largo."
+  },
+  {
+    "word": "fog",
+    "type": "sustantivo",
+    "translation": "niebla",
+    "example": "There was thick fog on the road this morning.",
+    "exampleEs": "Esta mañana había mucha niebla en la carretera."
+  },
+  {
+    "word": "pack",
+    "type": "verbo",
+    "translation": "hacer la maleta",
+    "example": "Have you packed for the trip yet?",
+    "exampleEs": "¿Ya has hecho la maleta para el viaje?"
+  },
+  {
+    "word": "by heart",
+    "type": "expresión",
+    "translation": "de memoria",
+    "example": "I know the poem by heart.",
+    "exampleEs": "Me sé el poema de memoria."
+  },
+  {
+    "word": "by the way",
+    "type": "expresión",
+    "translation": "por cierto",
+    "example": "By the way, have you seen my blue pen?",
+    "exampleEs": "Por cierto, ¿has visto mi boli azul?"
+  },
+  {
+    "word": "lazy",
+    "type": "adjetivo",
+    "translation": "perezoso, vago",
+    "example": "My cat is so lazy, it sleeps all day.",
+    "exampleEs": "Mi gato es muy perezoso, duerme todo el día."
+  },
+  {
+    "word": "recipe",
+    "type": "sustantivo",
+    "translation": "receta",
+    "example": "This is my grandma's recipe for pancakes.",
+    "exampleEs": "Esta es la receta de tortitas de mi abuela."
+  },
+  {
+    "word": "lifeguard",
+    "type": "sustantivo",
+    "translation": "socorrista",
+    "example": "The lifeguard watches the swimmers.",
+    "exampleEs": "El socorrista vigila a los bañistas."
+  },
+  {
+    "word": "against",
+    "type": "preposición",
+    "translation": "contra",
+    "example": "Lean your bike against the wall.",
+    "exampleEs": "Apoya la bici contra la pared."
+  },
+  {
+    "word": "thirsty",
+    "type": "adjetivo",
+    "translation": "sediento",
+    "example": "I'm thirsty, can I have some water?",
+    "exampleEs": "Tengo sed, ¿me das un poco de agua?"
+  },
+  {
+    "word": "island",
+    "type": "sustantivo",
+    "translation": "isla",
+    "example": "Mallorca is a beautiful island.",
+    "exampleEs": "Mallorca es una isla preciosa."
+  },
+  {
+    "word": "tortoise",
+    "type": "sustantivo",
+    "translation": "tortuga",
+    "example": "Our tortoise is fifty years old.",
+    "exampleEs": "Nuestra tortuga tiene cincuenta años."
+  },
+  {
+    "word": "lose",
+    "type": "verbo",
+    "translation": "perder",
+    "example": "Don't lose your keys again!",
+    "exampleEs": "¡No vuelvas a perder las llaves!"
+  },
+  {
+    "word": "abroad",
+    "type": "adverbio",
+    "translation": "en el extranjero",
+    "example": "My uncle lives and works abroad.",
+    "exampleEs": "Mi tío vive y trabaja en el extranjero."
+  },
+  {
+    "word": "excited",
+    "type": "adjetivo",
+    "translation": "emocionado, ilusionado",
+    "example": "I'm so excited about the school trip!",
+    "exampleEs": "¡Estoy muy ilusionado con la excursión del colegio!"
+  },
+  {
+    "word": "battery",
+    "type": "sustantivo",
+    "translation": "batería, pila",
+    "example": "My phone battery is almost dead.",
+    "exampleEs": "La batería de mi móvil está casi agotada."
+  },
+  {
+    "word": "wave",
+    "type": "sustantivo",
+    "translation": "ola",
+    "example": "The waves are very big today.",
+    "exampleEs": "Hoy las olas son muy grandes."
+  },
+  {
+    "word": "during",
+    "type": "preposición",
+    "translation": "durante",
+    "example": "Don't talk during the film.",
+    "exampleEs": "No hables durante la película."
+  },
+  {
+    "word": "put on",
+    "type": "verbo",
+    "translation": "ponerse",
+    "example": "Put on your sun cream before you go out.",
+    "exampleEs": "Ponte crema solar antes de salir."
+  },
+  {
+    "word": "behave",
+    "type": "verbo",
+    "translation": "portarse, comportarse",
+    "example": "The children behaved very well on the trip.",
+    "exampleEs": "Los niños se portaron muy bien en la excursión."
+  },
+  {
+    "word": "skin",
+    "type": "sustantivo",
+    "translation": "piel",
+    "example": "Sun cream protects your skin.",
+    "exampleEs": "La crema solar protege la piel."
+  },
+  {
+    "word": "tent",
+    "type": "sustantivo",
+    "translation": "tienda de campaña",
+    "example": "We slept in a tent by the lake.",
+    "exampleEs": "Dormimos en una tienda de campaña junto al lago."
+  },
+  {
+    "word": "brave",
+    "type": "adjetivo",
+    "translation": "valiente",
+    "example": "The firefighter was very brave.",
+    "exampleEs": "El bombero fue muy valiente."
+  },
+  {
+    "word": "shark",
+    "type": "sustantivo",
+    "translation": "tiburón",
+    "example": "Sharks have lots of sharp teeth.",
+    "exampleEs": "Los tiburones tienen muchos dientes afilados."
+  },
+  {
+    "word": "across",
+    "type": "preposición",
+    "translation": "al otro lado de",
+    "example": "The library is across the road.",
+    "exampleEs": "La biblioteca está al otro lado de la calle."
+  },
+  {
+    "word": "ice cream",
+    "type": "sustantivo",
+    "translation": "helado",
+    "example": "I'd like a chocolate ice cream, please.",
+    "exampleEs": "Quiero un helado de chocolate, por favor."
+  },
+  {
+    "word": "hot",
+    "type": "adjetivo",
+    "translation": "caliente",
+    "example": "Be careful, the soup is hot!",
+    "exampleEs": "¡Cuidado, la sopa está caliente!"
+  },
+  {
+    "word": "relatives",
+    "type": "sustantivo",
+    "translation": "familiares, parientes",
+    "example": "We visit our relatives in Galicia every summer.",
+    "exampleEs": "Visitamos a nuestros familiares de Galicia cada verano."
+  },
+  {
+    "word": "sunset",
+    "type": "sustantivo",
+    "translation": "puesta de sol",
+    "example": "We watched the sunset from the beach.",
+    "exampleEs": "Vimos la puesta de sol desde la playa."
+  },
+  {
+    "word": "kite",
+    "type": "sustantivo",
+    "translation": "cometa",
+    "example": "We made a kite at school.",
+    "exampleEs": "Hicimos una cometa en el colegio."
+  },
+  {
+    "word": "usually",
+    "type": "adverbio",
+    "translation": "normalmente",
+    "example": "I usually go to bed at ten.",
+    "exampleEs": "Normalmente me acuesto a las diez."
+  },
+  {
+    "word": "comfortable",
+    "type": "adjetivo",
+    "translation": "cómodo",
+    "example": "These trainers are really comfortable.",
+    "exampleEs": "Estas zapatillas son muy cómodas."
+  },
+  {
+    "word": "souvenir",
+    "type": "sustantivo",
+    "translation": "recuerdo",
+    "example": "I bought a souvenir for my grandma.",
+    "exampleEs": "Le compré un recuerdo a mi abuela."
+  },
+  {
+    "word": "forget",
+    "type": "verbo",
+    "translation": "olvidar",
+    "example": "Don't forget your swimsuit!",
+    "exampleEs": "¡No olvides el bañador!"
+  },
+  {
+    "word": "shell",
+    "type": "sustantivo",
+    "translation": "concha",
+    "example": "I found a beautiful shell on the beach.",
+    "exampleEs": "Encontré una concha preciosa en la playa."
+  },
+  {
+    "word": "at least",
+    "type": "expresión",
+    "translation": "al menos",
+    "example": "Drink at least six glasses of water a day.",
+    "exampleEs": "Bebe al menos seis vasos de agua al día."
+  },
+  {
+    "word": "in front of",
+    "type": "preposición",
+    "translation": "delante de",
+    "example": "Don't stand in front of the TV!",
+    "exampleEs": "¡No te pongas delante de la tele!"
+  },
+  {
+    "word": "crowded",
+    "type": "adjetivo",
+    "translation": "abarrotado, lleno de gente",
+    "example": "The beach is very crowded in August.",
+    "exampleEs": "La playa está abarrotada en agosto."
+  },
+  {
+    "word": "lake",
+    "type": "sustantivo",
+    "translation": "lago",
+    "example": "We swam in the lake.",
+    "exampleEs": "Nos bañamos en el lago."
+  },
+  {
+    "word": "next to",
+    "type": "preposición",
+    "translation": "al lado de",
+    "example": "Can I sit next to you?",
+    "exampleEs": "¿Me puedo sentar a tu lado?"
+  },
+  {
+    "word": "boat",
+    "type": "sustantivo",
+    "translation": "barco",
+    "example": "We went on a boat trip around the island.",
+    "exampleEs": "Hicimos una excursión en barco alrededor de la isla."
+  },
+  {
+    "word": "carefully",
+    "type": "adverbio",
+    "translation": "con cuidado",
+    "example": "Carry the glasses carefully.",
+    "exampleEs": "Lleva los vasos con cuidado."
+  },
+  {
+    "word": "enough",
+    "type": "adverbio",
+    "translation": "suficiente, bastante",
+    "example": "I didn't sleep enough last night.",
+    "exampleEs": "Anoche no dormí lo suficiente."
+  },
+  {
+    "word": "look after",
+    "type": "verbo",
+    "translation": "cuidar",
+    "example": "I look after my neighbour's cat in August.",
+    "exampleEs": "En agosto cuido al gato de mi vecina."
+  },
+  {
+    "word": "sleeve",
+    "type": "sustantivo",
+    "translation": "manga",
+    "example": "This shirt has short sleeves.",
+    "exampleEs": "Esta camisa es de manga corta."
+  },
+  {
+    "word": "chess",
+    "type": "sustantivo",
+    "translation": "ajedrez",
+    "example": "My grandad taught me to play chess.",
+    "exampleEs": "Mi abuelo me enseñó a jugar al ajedrez."
+  },
+  {
+    "word": "jealous",
+    "type": "adjetivo",
+    "translation": "celoso",
+    "example": "My dog gets jealous when I stroke the cat.",
+    "exampleEs": "Mi perro se pone celoso cuando acaricio al gato."
+  },
+  {
+    "word": "journey",
+    "type": "sustantivo",
+    "translation": "viaje, trayecto",
+    "example": "The journey to my grandparents' house takes three hours.",
+    "exampleEs": "El viaje a casa de mis abuelos dura tres horas."
+  },
+  {
+    "word": "opposite",
+    "type": "preposición",
+    "translation": "enfrente de",
+    "example": "The bakery is opposite the school.",
+    "exampleEs": "La panadería está enfrente del colegio."
+  },
+  {
+    "word": "cough",
+    "type": "sustantivo",
+    "translation": "tos",
+    "example": "I've got a bad cough.",
+    "exampleEs": "Tengo mucha tos."
+  },
+  {
+    "word": "delicious",
+    "type": "adjetivo",
+    "translation": "delicioso, riquísimo",
+    "example": "This paella is delicious!",
+    "exampleEs": "¡Esta paella está riquísima!"
+  },
+  {
+    "word": "hedgehog",
+    "type": "sustantivo",
+    "translation": "erizo",
+    "example": "We saw a hedgehog in the garden at night.",
+    "exampleEs": "Vimos un erizo en el jardín por la noche."
+  },
+  {
+    "word": "on purpose",
+    "type": "expresión",
+    "translation": "a propósito, adrede",
+    "example": "Sorry, I didn't do it on purpose!",
+    "exampleEs": "¡Perdón, no lo hice a propósito!"
+  },
+  {
+    "word": "hill",
+    "type": "sustantivo",
+    "translation": "colina",
+    "example": "We cycled up a steep hill.",
+    "exampleEs": "Subimos en bici una colina empinada."
+  },
+  {
+    "word": "delete",
+    "type": "verbo",
+    "translation": "borrar",
+    "example": "Don't delete my photos!",
+    "exampleEs": "¡No borres mis fotos!"
+  },
+  {
+    "word": "grateful",
+    "type": "adjetivo",
+    "translation": "agradecido",
+    "example": "I'm very grateful for all your help.",
+    "exampleEs": "Te estoy muy agradecido por toda tu ayuda."
+  },
+  {
+    "word": "peach",
+    "type": "sustantivo",
+    "translation": "melocotón",
+    "example": "This peach is sweet and juicy.",
+    "exampleEs": "Este melocotón es dulce y jugoso."
+  },
+  {
+    "word": "have fun",
+    "type": "expresión",
+    "translation": "pasarlo bien, divertirse",
+    "example": "Have fun at the party!",
+    "exampleEs": "¡Pásalo bien en la fiesta!"
+  },
+  {
+    "word": "wardrobe",
+    "type": "sustantivo",
+    "translation": "armario",
+    "example": "Hang your clothes in the wardrobe.",
+    "exampleEs": "Cuelga la ropa en el armario."
+  },
+  {
+    "word": "race",
+    "type": "sustantivo",
+    "translation": "carrera",
+    "example": "My sister came first in the race.",
+    "exampleEs": "Mi hermana quedó primera en la carrera."
+  },
+  {
+    "word": "stay",
+    "type": "verbo",
+    "translation": "quedarse, alojarse",
+    "example": "We stayed at a hotel near the sea.",
+    "exampleEs": "Nos alojamos en un hotel cerca del mar."
+  },
+  {
+    "word": "excuse me",
+    "type": "expresión",
+    "translation": "perdone, disculpe",
+    "example": "Excuse me, where is the station?",
+    "exampleEs": "Perdone, ¿dónde está la estación?"
+  },
+  {
+    "word": "recycle",
+    "type": "verbo",
+    "translation": "reciclar",
+    "example": "We recycle paper and plastic at home.",
+    "exampleEs": "En casa reciclamos papel y plástico."
+  },
+  {
+    "word": "eventually",
+    "type": "adverbio",
+    "translation": "al final, finalmente",
+    "example": "We got lost, but eventually we found the hotel.",
+    "exampleEs": "Nos perdimos, pero al final encontramos el hotel."
+  },
+  {
+    "word": "puzzle",
+    "type": "sustantivo",
+    "translation": "puzle, rompecabezas",
+    "example": "We finished a 1000-piece puzzle!",
+    "exampleEs": "¡Terminamos un puzle de 1000 piezas!"
+  },
+  {
+    "word": "ankle",
+    "type": "sustantivo",
+    "translation": "tobillo",
+    "example": "I twisted my ankle playing basketball.",
+    "exampleEs": "Me torcí el tobillo jugando al baloncesto."
+  },
+  {
+    "word": "around",
+    "type": "preposición",
+    "translation": "alrededor de",
+    "example": "We walked around the lake.",
+    "exampleEs": "Dimos una vuelta alrededor del lago."
+  },
+  {
+    "word": "ready",
+    "type": "adjetivo",
+    "translation": "listo, preparado",
+    "example": "Are you ready to go?",
+    "exampleEs": "¿Estás listo para salir?"
+  },
+  {
+    "word": "dream",
+    "type": "verbo",
+    "translation": "soñar",
+    "example": "Last night I dreamt about dinosaurs.",
+    "exampleEs": "Anoche soñé con dinosaurios."
+  },
+  {
+    "word": "schoolbag",
+    "type": "sustantivo",
+    "translation": "mochila",
+    "example": "My schoolbag is very heavy today.",
+    "exampleEs": "Hoy mi mochila pesa mucho."
+  },
+  {
+    "word": "classmate",
+    "type": "sustantivo",
+    "translation": "compañero de clase",
+    "example": "My classmates are very friendly.",
+    "exampleEs": "Mis compañeros de clase son muy simpáticos."
+  },
+  {
+    "word": "friendly",
+    "type": "adjetivo",
+    "translation": "simpático, amable",
+    "example": "The new teacher is really friendly.",
+    "exampleEs": "El profesor nuevo es muy simpático."
+  },
+  {
+    "word": "notebook",
+    "type": "sustantivo",
+    "translation": "cuaderno",
+    "example": "Write the new words in your notebook.",
+    "exampleEs": "Escribid las palabras nuevas en el cuaderno."
+  },
+  {
+    "word": "learn",
+    "type": "verbo",
+    "translation": "aprender",
+    "example": "We're learning about volcanoes in science.",
+    "exampleEs": "Estamos aprendiendo sobre los volcanes en ciencias."
+  },
+  {
+    "word": "mistake",
+    "type": "sustantivo",
+    "translation": "error, fallo",
+    "example": "Everybody makes mistakes.",
+    "exampleEs": "Todo el mundo comete errores."
+  },
+  {
+    "word": "attend",
+    "type": "verbo",
+    "translation": "asistir a",
+    "example": "I attend swimming classes twice a week.",
+    "exampleEs": "Asisto a clases de natación dos veces por semana."
+  },
+  {
+    "word": "playground",
+    "type": "sustantivo",
+    "translation": "patio de recreo",
+    "example": "We play football in the playground at break.",
+    "exampleEs": "En el recreo jugamos al fútbol en el patio."
+  },
+  {
+    "word": "explain",
+    "type": "verbo",
+    "translation": "explicar",
+    "example": "Can you explain this exercise again?",
+    "exampleEs": "¿Puedes explicar otra vez este ejercicio?"
+  },
+  {
+    "word": "scissors",
+    "type": "sustantivo",
+    "translation": "tijeras",
+    "example": "Be careful with the scissors.",
+    "exampleEs": "Ten cuidado con las tijeras."
+  },
+  {
+    "word": "inside",
+    "type": "preposición",
+    "translation": "dentro de",
+    "example": "The keys are inside my schoolbag.",
+    "exampleEs": "Las llaves están dentro de mi mochila."
+  },
+  {
+    "word": "improve",
+    "type": "verbo",
+    "translation": "mejorar",
+    "example": "My English is improving every day.",
+    "exampleEs": "Mi inglés está mejorando cada día."
+  },
+  {
+    "word": "desk",
+    "type": "sustantivo",
+    "translation": "pupitre, escritorio",
+    "example": "Keep your desk tidy, please.",
+    "exampleEs": "Mantén tu pupitre ordenado, por favor."
+  },
+  {
+    "word": "bus stop",
+    "type": "sustantivo",
+    "translation": "parada de autobús",
+    "example": "I wait at the bus stop near my house.",
+    "exampleEs": "Espero en la parada de autobús que hay cerca de mi casa."
+  },
+  {
+    "word": "pass",
+    "type": "verbo",
+    "translation": "aprobar",
+    "example": "I passed all my exams!",
+    "exampleEs": "¡Aprobé todos los exámenes!"
+  },
+  {
+    "word": "busy",
+    "type": "adjetivo",
+    "translation": "ocupado",
+    "example": "Mum is busy, she's on the phone.",
+    "exampleEs": "Mamá está ocupada, está hablando por teléfono."
+  },
+  {
+    "word": "introduce",
+    "type": "verbo",
+    "translation": "presentar",
+    "example": "Let me introduce my new friend, Ana.",
+    "exampleEs": "Te presento a mi nueva amiga, Ana."
+  },
+  {
+    "word": "mushroom",
+    "type": "sustantivo",
+    "translation": "champiñón, seta",
+    "example": "I don't like mushrooms on my pizza.",
+    "exampleEs": "No me gustan los champiñones en la pizza."
+  },
+  {
+    "word": "below",
+    "type": "preposición",
+    "translation": "debajo de, por debajo de",
+    "example": "Write your name below the picture.",
+    "exampleEs": "Escribe tu nombre debajo del dibujo."
+  },
+  {
+    "word": "cheerful",
+    "type": "adjetivo",
+    "translation": "alegre",
+    "example": "Our teacher is always cheerful in the morning.",
+    "exampleEs": "Nuestra profesora siempre está alegre por la mañana."
+  },
+  {
+    "word": "headphones",
+    "type": "sustantivo",
+    "translation": "auriculares",
+    "example": "Use your headphones when you play games.",
+    "exampleEs": "Usa los auriculares cuando juegues."
+  },
+  {
+    "word": "among",
+    "type": "preposición",
+    "translation": "entre",
+    "example": "I found my pen among the books on the shelf.",
+    "exampleEs": "Encontré mi boli entre los libros de la estantería."
+  },
+  {
+    "word": "find out",
+    "type": "verbo",
+    "translation": "averiguar, descubrir",
+    "example": "Let's find out how bees make honey.",
+    "exampleEs": "Vamos a averiguar cómo hacen miel las abejas."
+  },
+  {
+    "word": "leaf",
+    "type": "sustantivo",
+    "translation": "hoja",
+    "example": "A yellow leaf fell from the tree.",
+    "exampleEs": "Una hoja amarilla cayó del árbol."
+  },
+  {
+    "word": "traffic lights",
+    "type": "sustantivo",
+    "translation": "semáforo",
+    "example": "Wait until the traffic lights turn green.",
+    "exampleEs": "Espera hasta que el semáforo se ponga verde."
+  },
+  {
+    "word": "jumper",
+    "type": "sustantivo",
+    "translation": "jersey",
+    "example": "Take a jumper, it might get cold.",
+    "exampleEs": "Coge un jersey, puede que haga frío."
+  },
+  {
+    "word": "yet",
+    "type": "adverbio",
+    "translation": "ya, todavía",
+    "example": "Have you finished your homework yet?",
+    "exampleEs": "¿Ya has terminado los deberes?"
+  },
+  {
+    "word": "helmet",
+    "type": "sustantivo",
+    "translation": "casco",
+    "example": "Always wear a helmet when you ride your bike.",
+    "exampleEs": "Ponte siempre el casco cuando montes en bici."
+  },
+  {
+    "word": "argument",
+    "type": "sustantivo",
+    "translation": "discusión",
+    "example": "My brother and I had an argument about the TV.",
+    "exampleEs": "Mi hermano y yo tuvimos una discusión por la tele."
+  },
+  {
+    "word": "healthy",
+    "type": "adjetivo",
+    "translation": "sano, saludable",
+    "example": "Vegetables are healthy.",
+    "exampleEs": "Las verduras son saludables."
+  },
+  {
+    "word": "pumpkin",
+    "type": "sustantivo",
+    "translation": "calabaza",
+    "example": "We made soup with a big pumpkin.",
+    "exampleEs": "Hicimos sopa con una calabaza grande."
+  },
+  {
+    "word": "costume",
+    "type": "sustantivo",
+    "translation": "disfraz",
+    "example": "I'm going to wear a pirate costume to the party.",
+    "exampleEs": "Voy a llevar un disfraz de pirata a la fiesta."
+  },
+  {
+    "word": "windy",
+    "type": "adjetivo",
+    "translation": "ventoso, de viento",
+    "example": "It's too windy to play tennis today.",
+    "exampleEs": "Hoy hace demasiado viento para jugar al tenis."
+  },
+  {
+    "word": "bat",
+    "type": "sustantivo",
+    "translation": "murciélago",
+    "example": "Bats sleep upside down.",
+    "exampleEs": "Los murciélagos duermen boca abajo."
+  },
+  {
+    "word": "strange",
+    "type": "adjetivo",
+    "translation": "raro, extraño",
+    "example": "I heard a strange noise in the attic.",
+    "exampleEs": "Oí un ruido extraño en el desván."
+  },
+  {
+    "word": "blanket",
+    "type": "sustantivo",
+    "translation": "manta",
+    "example": "It's cold, can I have another blanket?",
+    "exampleEs": "Hace frío, ¿me das otra manta?"
+  },
+  {
+    "word": "bone",
+    "type": "sustantivo",
+    "translation": "hueso",
+    "example": "The dog buried a bone in the garden.",
+    "exampleEs": "El perro enterró un hueso en el jardín."
+  },
+  {
+    "word": "set off",
+    "type": "verbo",
+    "translation": "salir, ponerse en camino",
+    "example": "We set off early to avoid the traffic.",
+    "exampleEs": "Salimos temprano para evitar el tráfico."
+  },
+  {
+    "word": "chestnut",
+    "type": "sustantivo",
+    "translation": "castaña",
+    "example": "In autumn we eat roasted chestnuts.",
+    "exampleEs": "En otoño comemos castañas asadas."
+  },
+  {
+    "word": "careful",
+    "type": "adjetivo",
+    "translation": "cuidadoso",
+    "example": "My brother is very careful with his toys.",
+    "exampleEs": "Mi hermano es muy cuidadoso con sus juguetes."
+  },
+  {
+    "word": "dark",
+    "type": "adjetivo",
+    "translation": "oscuro",
+    "example": "My room is dark and quiet at night.",
+    "exampleEs": "Mi habitación está oscura y tranquila por la noche."
+  },
+  {
+    "word": "knock",
+    "type": "verbo",
+    "translation": "llamar (a la puerta)",
+    "example": "Please knock before you come in.",
+    "exampleEs": "Llama a la puerta antes de entrar, por favor."
+  },
+  {
+    "word": "century",
+    "type": "sustantivo",
+    "translation": "siglo",
+    "example": "This castle is from the twelfth century.",
+    "exampleEs": "Este castillo es del siglo XII."
+  },
+  {
+    "word": "coach",
+    "type": "sustantivo",
+    "translation": "entrenador, entrenadora",
+    "example": "Our coach says we played very well.",
+    "exampleEs": "Nuestro entrenador dice que jugamos muy bien."
+  },
+  {
+    "word": "print",
+    "type": "verbo",
+    "translation": "imprimir",
+    "example": "Can you print the photos for my project?",
+    "exampleEs": "¿Puedes imprimir las fotos para mi proyecto?"
+  },
+  {
+    "word": "forecast",
+    "type": "sustantivo",
+    "translation": "previsión, pronóstico",
+    "example": "The weather forecast says it will rain tomorrow.",
+    "exampleEs": "La previsión del tiempo dice que mañana lloverá."
+  },
+  {
+    "word": "niece",
+    "type": "sustantivo",
+    "translation": "sobrina",
+    "example": "My aunt is taking her niece to the zoo.",
+    "exampleEs": "Mi tía va a llevar a su sobrina al zoo."
+  },
+  {
+    "word": "fail",
+    "type": "verbo",
+    "translation": "suspender",
+    "example": "If you don't study, you might fail the test.",
+    "exampleEs": "Si no estudias, podrías suspender el examen."
+  },
+  {
+    "word": "disgusting",
+    "type": "adjetivo",
+    "translation": "asqueroso",
+    "example": "Ugh, this soup is disgusting!",
+    "exampleEs": "¡Puaj, esta sopa está asquerosa!"
+  },
+  {
+    "word": "without",
+    "type": "preposición",
+    "translation": "sin",
+    "example": "I can't see without my glasses.",
+    "exampleEs": "No veo nada sin mis gafas."
+  },
+  {
+    "word": "towards",
+    "type": "preposición",
+    "translation": "hacia",
+    "example": "The dog ran towards me.",
+    "exampleEs": "El perro corrió hacia mí."
+  },
+  {
+    "word": "onion",
+    "type": "sustantivo",
+    "translation": "cebolla",
+    "example": "Cutting onions makes me cry.",
+    "exampleEs": "Cortar cebolla me hace llorar."
+  },
+  {
+    "word": "field",
+    "type": "sustantivo",
+    "translation": "campo",
+    "example": "The cows are in the field.",
+    "exampleEs": "Las vacas están en el campo."
+  },
+  {
+    "word": "boots",
+    "type": "sustantivo",
+    "translation": "botas",
+    "example": "Put on your boots, it's muddy outside.",
+    "exampleEs": "Ponte las botas, que fuera hay barro."
+  },
+  {
+    "word": "probably",
+    "type": "adverbio",
+    "translation": "probablemente",
+    "example": "It will probably rain this afternoon.",
+    "exampleEs": "Probablemente lloverá esta tarde."
+  },
+  {
+    "word": "brain",
+    "type": "sustantivo",
+    "translation": "cerebro",
+    "example": "Your brain needs sleep to learn.",
+    "exampleEs": "Tu cerebro necesita dormir para aprender."
+  },
+  {
+    "word": "collect",
+    "type": "verbo",
+    "translation": "coleccionar",
+    "example": "My brother collects football cards.",
+    "exampleEs": "Mi hermano colecciona cromos de fútbol."
+  },
+  {
+    "word": "rope",
+    "type": "sustantivo",
+    "translation": "cuerda",
+    "example": "Hold the rope tightly!",
+    "exampleEs": "¡Agarra bien la cuerda!"
+  },
+  {
+    "word": "quiet",
+    "type": "adjetivo",
+    "translation": "callado, silencioso",
+    "example": "Please be quiet, the baby is sleeping.",
+    "exampleEs": "Por favor, estad callados, que el bebé está durmiendo."
+  },
+  {
+    "word": "save",
+    "type": "verbo",
+    "translation": "ahorrar",
+    "example": "I'm saving money to buy a new bike.",
+    "exampleEs": "Estoy ahorrando para comprarme una bici nueva."
+  },
+  {
+    "word": "square",
+    "type": "sustantivo",
+    "translation": "plaza",
+    "example": "There's a market in the town square.",
+    "exampleEs": "Hay un mercado en la plaza del pueblo."
+  },
+  {
+    "word": "realise",
+    "type": "verbo",
+    "translation": "darse cuenta",
+    "example": "I didn't realise it was so late!",
+    "exampleEs": "¡No me había dado cuenta de que era tan tarde!"
+  },
+  {
+    "word": "disappointed",
+    "type": "adjetivo",
+    "translation": "decepcionado",
+    "example": "I was disappointed when the trip was cancelled.",
+    "exampleEs": "Me quedé decepcionado cuando cancelaron la excursión."
+  },
+  {
+    "word": "environment",
+    "type": "sustantivo",
+    "translation": "medio ambiente",
+    "example": "We must protect the environment.",
+    "exampleEs": "Tenemos que proteger el medio ambiente."
+  },
+  {
+    "word": "umbrella",
+    "type": "sustantivo",
+    "translation": "paraguas",
+    "example": "Don't forget your umbrella, it's raining.",
+    "exampleEs": "No te olvides el paraguas, que está lloviendo."
+  },
+  {
+    "word": "fill in",
+    "type": "verbo",
+    "translation": "rellenar",
+    "example": "Fill in the gaps with the correct word.",
+    "exampleEs": "Rellena los huecos con la palabra correcta."
+  },
+  {
+    "word": "generous",
+    "type": "adjetivo",
+    "translation": "generoso",
+    "example": "My friend is generous, she always shares her snacks.",
+    "exampleEs": "Mi amiga es generosa, siempre comparte su merienda."
+  },
+  {
+    "word": "roof",
+    "type": "sustantivo",
+    "translation": "tejado",
+    "example": "There's a cat on the roof!",
+    "exampleEs": "¡Hay un gato en el tejado!"
+  },
+  {
+    "word": "wrist",
+    "type": "sustantivo",
+    "translation": "muñeca",
+    "example": "I wear my watch on my left wrist.",
+    "exampleEs": "Llevo el reloj en la muñeca izquierda."
+  },
+  {
+    "word": "until",
+    "type": "preposición",
+    "translation": "hasta",
+    "example": "We have school until half past four.",
+    "exampleEs": "Tenemos colegio hasta las cuatro y media."
+  },
+  {
+    "word": "hiking",
+    "type": "sustantivo",
+    "translation": "senderismo",
+    "example": "We love going hiking in the mountains.",
+    "exampleEs": "Nos encanta hacer senderismo en la montaña."
+  },
+  {
+    "word": "website",
+    "type": "sustantivo",
+    "translation": "página web",
+    "example": "Our school has a new website.",
+    "exampleEs": "Nuestro colegio tiene una página web nueva."
+  },
+  {
+    "word": "luggage",
+    "type": "sustantivo",
+    "translation": "equipaje",
+    "example": "Our luggage was too heavy.",
+    "exampleEs": "Nuestro equipaje pesaba demasiado."
+  },
+  {
+    "word": "honest",
+    "type": "adjetivo",
+    "translation": "sincero, honrado",
+    "example": "Be honest and tell me what happened.",
+    "exampleEs": "Sé sincero y cuéntame qué pasó."
+  },
+  {
+    "word": "success",
+    "type": "sustantivo",
+    "translation": "éxito",
+    "example": "The school play was a great success.",
+    "exampleEs": "La obra de teatro del colegio fue todo un éxito."
+  },
+  {
+    "word": "choose",
+    "type": "verbo",
+    "translation": "elegir",
+    "example": "Choose a book from the shelf.",
+    "exampleEs": "Elige un libro de la estantería."
+  },
+  {
+    "word": "never mind",
+    "type": "expresión",
+    "translation": "no importa",
+    "example": "I left your pen at home. Never mind, I have another one!",
+    "exampleEs": "Me he dejado tu boli en casa. ¡No importa, tengo otro!"
+  },
+  {
+    "word": "advice",
+    "type": "sustantivo",
+    "translation": "consejo, consejos",
+    "example": "My grandad always gives me good advice.",
+    "exampleEs": "Mi abuelo siempre me da buenos consejos."
+  },
+  {
+    "word": "nest",
+    "type": "sustantivo",
+    "translation": "nido",
+    "example": "There's a bird's nest in our tree.",
+    "exampleEs": "Hay un nido de pájaro en nuestro árbol."
+  },
+  {
+    "word": "floor",
+    "type": "sustantivo",
+    "translation": "suelo",
+    "example": "Don't leave your clothes on the floor.",
+    "exampleEs": "No dejes la ropa en el suelo."
+  },
+  {
+    "word": "still",
+    "type": "adverbio",
+    "translation": "todavía, aún",
+    "example": "Are you still hungry?",
+    "exampleEs": "¿Todavía tienes hambre?"
+  },
+  {
+    "word": "large",
+    "type": "adjetivo",
+    "translation": "grande",
+    "example": "Can I have a large pizza, please?",
+    "exampleEs": "¿Me pone una pizza grande, por favor?"
+  },
+  {
+    "word": "button",
+    "type": "sustantivo",
+    "translation": "botón",
+    "example": "A button fell off my shirt.",
+    "exampleEs": "Se me cayó un botón de la camisa."
+  },
+  {
+    "word": "medicine",
+    "type": "sustantivo",
+    "translation": "medicina, medicamento",
+    "example": "Take this medicine after dinner.",
+    "exampleEs": "Tómate esta medicina después de cenar."
+  },
+  {
+    "word": "message",
+    "type": "sustantivo",
+    "translation": "mensaje",
+    "example": "Send me a message when you get home.",
+    "exampleEs": "Mándame un mensaje cuando llegues a casa."
+  },
+  {
+    "word": "upset",
+    "type": "adjetivo",
+    "translation": "disgustado, triste",
+    "example": "She was upset because she lost her bracelet.",
+    "exampleEs": "Estaba disgustada porque había perdido su pulsera."
+  },
+  {
+    "word": "neighbourhood",
+    "type": "sustantivo",
+    "translation": "barrio",
+    "example": "There's a new park in my neighbourhood.",
+    "exampleEs": "Hay un parque nuevo en mi barrio."
+  },
+  {
+    "word": "on foot",
+    "type": "expresión",
+    "translation": "a pie, andando",
+    "example": "We go to school on foot.",
+    "exampleEs": "Vamos al colegio andando."
+  },
+  {
+    "word": "deep",
+    "type": "adjetivo",
+    "translation": "profundo",
+    "example": "The lake is very deep in the middle.",
+    "exampleEs": "El lago es muy profundo en el centro."
+  },
+  {
+    "word": "hurry",
+    "type": "verbo",
+    "translation": "darse prisa",
+    "example": "Hurry, the bus is coming!",
+    "exampleEs": "¡Date prisa, que viene el autobús!"
+  },
+  {
+    "word": "topic",
+    "type": "sustantivo",
+    "translation": "tema",
+    "example": "The topic of my project is the solar system.",
+    "exampleEs": "El tema de mi proyecto es el sistema solar."
+  },
+  {
+    "word": "winter",
+    "type": "sustantivo",
+    "translation": "invierno",
+    "example": "In winter it snows in the mountains.",
+    "exampleEs": "En invierno nieva en la montaña."
+  },
+  {
+    "word": "present",
+    "type": "sustantivo",
+    "translation": "regalo",
+    "example": "What present do you want for your birthday?",
+    "exampleEs": "¿Qué regalo quieres por tu cumpleaños?"
+  },
+  {
+    "word": "share",
+    "type": "verbo",
+    "translation": "compartir",
+    "example": "Share your sweets with your sister.",
+    "exampleEs": "Comparte tus golosinas con tu hermana."
+  },
+  {
+    "word": "ice",
+    "type": "sustantivo",
+    "translation": "hielo",
+    "example": "Be careful, there's ice on the pavement.",
+    "exampleEs": "Cuidado, hay hielo en la acera."
+  },
+  {
+    "word": "grapes",
+    "type": "sustantivo",
+    "translation": "uvas",
+    "example": "In Spain we eat twelve grapes on New Year's Eve.",
+    "exampleEs": "En España comemos doce uvas en Nochevieja."
+  },
+  {
+    "word": "contest",
+    "type": "sustantivo",
+    "translation": "concurso",
+    "example": "I won the school drawing contest!",
+    "exampleEs": "¡Gané el concurso de dibujo del colegio!"
+  },
+  {
+    "word": "warm",
+    "type": "adjetivo",
+    "translation": "templado, cálido",
+    "example": "The water is warm, come in!",
+    "exampleEs": "¡El agua está templada, métete!"
+  },
+  {
+    "word": "slippers",
+    "type": "sustantivo",
+    "translation": "zapatillas de casa",
+    "example": "I always wear my slippers at home.",
+    "exampleEs": "En casa siempre llevo las zapatillas de estar por casa."
+  },
+  {
+    "word": "freezing",
+    "type": "adjetivo",
+    "translation": "helado, muy frío",
+    "example": "It's freezing outside!",
+    "exampleEs": "¡Fuera hace un frío que pela!"
+  },
+  {
+    "word": "together",
+    "type": "adverbio",
+    "translation": "juntos",
+    "example": "Let's do the puzzle together.",
+    "exampleEs": "Hagamos el puzle juntos."
+  },
+  {
+    "word": "reindeer",
+    "type": "sustantivo",
+    "translation": "reno",
+    "example": "Reindeer live in very cold places.",
+    "exampleEs": "Los renos viven en lugares muy fríos."
+  },
+  {
+    "word": "wrap",
+    "type": "verbo",
+    "translation": "envolver",
+    "example": "Help me wrap the presents, please.",
+    "exampleEs": "Ayúdame a envolver los regalos, por favor."
+  },
+  {
+    "word": "candle",
+    "type": "sustantivo",
+    "translation": "vela",
+    "example": "Blow out the candles on your cake!",
+    "exampleEs": "¡Sopla las velas de tu tarta!"
+  },
+  {
+    "word": "thumb",
+    "type": "sustantivo",
+    "translation": "pulgar",
+    "example": "The baby is sucking his thumb.",
+    "exampleEs": "El bebé se está chupando el pulgar."
+  },
+  {
+    "word": "almost",
+    "type": "adverbio",
+    "translation": "casi",
+    "example": "It's almost Christmas!",
+    "exampleEs": "¡Ya casi es Navidad!"
+  },
+  {
+    "word": "sledge",
+    "type": "sustantivo",
+    "translation": "trineo",
+    "example": "We went down the hill on a sledge.",
+    "exampleEs": "Bajamos la colina en trineo."
+  },
+  {
+    "word": "give up",
+    "type": "verbo",
+    "translation": "rendirse",
+    "example": "Don't give up, you can do it!",
+    "exampleEs": "¡No te rindas, tú puedes!"
+  },
+  {
+    "word": "bright",
+    "type": "adjetivo",
+    "translation": "brillante, luminoso",
+    "example": "The moon is very bright tonight.",
+    "exampleEs": "Esta noche la luna está muy brillante."
+  },
+  {
+    "word": "snowman",
+    "type": "sustantivo",
+    "translation": "muñeco de nieve",
+    "example": "Let's build a snowman!",
+    "exampleEs": "¡Vamos a hacer un muñeco de nieve!"
+  },
+  {
+    "word": "invite",
+    "type": "verbo",
+    "translation": "invitar",
+    "example": "I invited all my class to my party.",
+    "exampleEs": "Invité a toda mi clase a mi fiesta."
+  },
+  {
+    "word": "near",
+    "type": "preposición",
+    "translation": "cerca de",
+    "example": "My school is near my house.",
+    "exampleEs": "Mi colegio está cerca de mi casa."
+  },
+  {
+    "word": "biscuit",
+    "type": "sustantivo",
+    "translation": "galleta",
+    "example": "Would you like a biscuit with your milk?",
+    "exampleEs": "¿Quieres una galleta con la leche?"
+  },
+  {
+    "word": "take care",
+    "type": "expresión",
+    "translation": "cuídate",
+    "example": "Bye, Grandma! Take care!",
+    "exampleEs": "¡Adiós, abuela! ¡Cuídate!"
+  },
+  {
+    "word": "star",
+    "type": "sustantivo",
+    "translation": "estrella",
+    "example": "On a clear night you can see lots of stars.",
+    "exampleEs": "En una noche despejada se ven muchas estrellas."
+  },
+  {
+    "word": "well done",
+    "type": "expresión",
+    "translation": "bien hecho",
+    "example": "You got ten out of ten, well done!",
+    "exampleEs": "Has sacado un diez, ¡bien hecho!"
+  },
+  {
+    "word": "look forward to",
+    "type": "verbo",
+    "translation": "tener ganas de",
+    "example": "I'm looking forward to the holidays.",
+    "exampleEs": "Tengo muchas ganas de que lleguen las vacaciones."
+  },
+  {
+    "word": "wish",
+    "type": "verbo",
+    "translation": "desear",
+    "example": "I wish you a happy new year!",
+    "exampleEs": "¡Te deseo un feliz año nuevo!"
+  },
+  {
+    "word": "cosy",
+    "type": "adjetivo",
+    "translation": "acogedor",
+    "example": "Our living room is warm and cosy.",
+    "exampleEs": "Nuestro salón es cálido y acogedor."
+  },
+  {
+    "word": "year",
+    "type": "sustantivo",
+    "translation": "año",
+    "example": "Next year I'll start secondary school.",
+    "exampleEs": "El año que viene empezaré el instituto."
+  },
+  {
+    "word": "celebrate",
+    "type": "verbo",
+    "translation": "celebrar",
+    "example": "We celebrate New Year with the whole family.",
+    "exampleEs": "Celebramos el Año Nuevo con toda la familia."
+  },
+  {
+    "word": "hope",
+    "type": "verbo",
+    "translation": "esperar",
+    "example": "I hope next year is even better!",
+    "exampleEs": "¡Espero que el año que viene sea aún mejor!"
+  }
+]

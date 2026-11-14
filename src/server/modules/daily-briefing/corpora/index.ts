@@ -4,10 +4,12 @@
 export * from "./block-types";
 export type {
   AnimalFactEntry,
+  EnglishWordEntry,
   PhonicsWordEntry,
   NumberFactEntry,
   QuoteEntry,
   RiddleEntry,
+  SaintsEntry,
   TextEntry,
   TriviaEntry,
   VocabularyEntry,
@@ -19,12 +21,14 @@ export { hashSeed, fisherYates, seededRandom, withSeededMathRandom } from "./det
 export {
   animalFactsCorpus,
   dadJokesCorpus,
+  englishWordsCorpus,
   drawingPromptsCorpus,
   phonicsCorpus,
   getWordSearchPool,
   numberFactsCorpus,
   quotesEsCorpus,
   riddlesCorpus,
+  saintsEsCorpus,
   triviaCorpus,
   vocabularyCorpus,
   wouldYouRathersCorpus,

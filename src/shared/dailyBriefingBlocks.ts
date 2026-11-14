@@ -148,6 +148,10 @@ export const BRIEFING_BLOCKS = [
     languages: ["en"],
     params: { level: true, count: { min: 1, max: 6, default: 3 } },
   },
+  // Spanish-household blocks (FR-040, FR-041): one entry per day of the year, omitted when the
+  // household language is not Spanish.
+  { type: "englishWord", scope: "shared", kind: "local", defaultEnabled: true },
+  { type: "saintOfDay", scope: "shared", kind: "local", defaultEnabled: true },
 ] as const satisfies readonly BriefingBlockDescriptor[];
 
 type CatalogEntry = (typeof BRIEFING_BLOCKS)[number];

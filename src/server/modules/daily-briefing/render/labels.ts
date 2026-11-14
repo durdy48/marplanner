@@ -146,6 +146,8 @@ const EN: DailyBriefingLabels = {
     phonics: "PHONICS",
     streakText: "STREAK TEXT",
     weatherText: "WEATHER TEXT",
+    englishWord: "ENGLISH WORD",
+    saintOfDay: "SAINT'S DAY",
   },
 };
 
@@ -225,6 +227,8 @@ const ES: DailyBriefingLabels = {
     phonics: "FONÉTICA",
     streakText: "RACHA TEXTO",
     weatherText: "METEOROLOGÍA TEXTO",
+    englishWord: "PALABRA EN INGLÉS",
+    saintOfDay: "SANTORAL",
   },
 };
 

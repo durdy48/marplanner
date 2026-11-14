@@ -32,12 +32,14 @@ import {
   ChoreListBlock,
   displayText,
   DrawingPromptBlock,
+  EnglishWordBlock,
   MealsBlock,
   NumberFactBlock,
   OnThisDayBlock,
   QuoteOfDayBlock,
   RemindersBlock,
   RiddleBlock,
+  SaintOfDayBlock,
   ShotgunBlock,
   StreakBlock,
   TextList,
@@ -66,6 +68,8 @@ import {
   type TodayData,
   type TriviaData,
   type WordOfDayData,
+  type EnglishWordData,
+  type SaintOfDayData,
   type PhonicsData,
   type WordSearchData,
   type WouldYouRatherData,
@@ -314,6 +318,10 @@ function BlockData({ type, data }: Pick<BlockInstance, "type" | "data">): React.
       return <WordSearchBlock data={data as WordSearchData} />;
     case "drawingPrompt":
       return <DrawingPromptBlock data={data as DrawingPromptData} />;
+    case "englishWord":
+      return <EnglishWordBlock data={data as EnglishWordData} />;
+    case "saintOfDay":
+      return <SaintOfDayBlock data={data as SaintOfDayData} />;
     default: {
       // Unknown/future block type (FR-023): quiet generic fallback — title only, no crash.
       const unhandled: never = blockType;

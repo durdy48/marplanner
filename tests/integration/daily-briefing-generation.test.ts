@@ -67,6 +67,8 @@ import { generateDadJoke } from "../../src/server/modules/daily-briefing/blocks/
 import { generateWordOfDay } from "../../src/server/modules/daily-briefing/blocks/word-of-day";
 import { generateTrivia } from "../../src/server/modules/daily-briefing/blocks/trivia";
 import { spanishQuoteOfDay } from "../../src/server/modules/daily-briefing/blocks/quoteOfDay";
+import { englishWordBlock } from "../../src/server/modules/daily-briefing/blocks/english-word";
+import { saintOfDayBlock } from "../../src/server/modules/daily-briefing/blocks/saint-of-day";
 import {
   generateWordSearch,
   wordSearchDailyLanguage,
@@ -554,6 +556,31 @@ describe("daily-briefing full generation", () => {
           params: { language: wordSearchLanguage },
         }),
       });
+    }
+  );
+
+  it.each(["es", "en"] as const)(
+    "FR-040/FR-041: the English word and the saints of the day print only for a Spanish household (%s)",
+    async (language) => {
+      seedHouseholdLanguage(language);
+      seedMember("m1", { optedIn: true });
+      const briefing = await generateBriefing("m1", DATE_FRI);
+      const blockOf = (type: string) => briefing.payload.blocks.find((b) => b.type === type);
+      if (language === "es") {
+        expect(blockOf("englishWord")).toMatchObject({
+          status: "ok",
+          scope: "shared",
+          data: englishWordBlock.generate({ date: DATE_FRI, language }),
+        });
+        expect(blockOf("saintOfDay")).toMatchObject({
+          status: "ok",
+          scope: "shared",
+          data: saintOfDayBlock.generate({ date: DATE_FRI, language }),
+        });
+      } else {
+        expect(blockOf("englishWord")).toBeUndefined();
+        expect(blockOf("saintOfDay")).toBeUndefined();
+      }
     }
   );
 

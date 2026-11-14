@@ -117,6 +117,14 @@ const TYPE_FIXTURES: Record<BlockRegistryType, unknown> = {
   weather: { date: DATE, conditionKey: "rain", tempMinC: 14, tempMaxC: 20, rainPct: 60 },
   weatherText: { date: DATE, conditionKey: "clear", tempMinC: 15, tempMaxC: 25, rainPct: 0 },
   shotgun: { ranking: ["Alice", "Bob", "Carol"] },
+  englishWord: {
+    word: "embarrassed",
+    type: "adjetivo",
+    translation: "avergonzado",
+    example: "I felt embarrassed when I fell over.",
+    exampleEs: "Me sentí avergonzado cuando me caí.",
+  },
+  saintOfDay: { feast: "Solemnidad de San José", saints: ["San José", "San Juan de Parrano"] },
   wordSearch: {
     difficulty: "easy",
     cols: 6,

@@ -4,6 +4,7 @@ import {
   CORPUS_BLOCK_TYPES,
   corpusLanguagesFor,
   dadJokesCorpus,
+  englishWordsCorpus,
   drawingPromptsCorpus,
   fisherYates,
   getWordSearchPool,
@@ -14,6 +15,7 @@ import {
   numberFactsCorpus,
   quotesEsCorpus,
   riddlesCorpus,
+  saintsEsCorpus,
   triviaCorpus,
   vocabularyCorpus,
   withSeededMathRandom,
@@ -499,6 +501,67 @@ describe("daily-briefing corpora", () => {
       for (const { question } of es) {
         expect(english.has(key(question)), question).toBe(false);
         expect(question).not.toMatch(/\b(what|which|who|the)\b/i);
+      }
+    });
+  });
+
+  /** FR-040 and FR-041: one entry per day of a leap year, in the slip's character set. */
+  describe("Spanish-household day corpora (FR-040, FR-041)", () => {
+    const WORD = "[\\x21-\\x7EáéíóúüñÁÉÍÓÚÜÑ¿¡«»]+";
+    const PRINTABLE = new RegExp(`^${WORD}( ${WORD})*$`);
+    const paired = (text: string) => {
+      const unpaired = text.replace(/¿[^¿?]*\?/g, "").replace(/¡[^¡!]*!/g, "");
+      expect(unpaired, text).not.toMatch(/[¿¡]/);
+    };
+
+    it("English words: 366 distinct words with a Spanish word class, translation and examples", () => {
+      expect(englishWordsCorpus).toHaveLength(366);
+      const words = englishWordsCorpus.map((entry) => entry.word);
+      expect(new Set(words).size).toBe(words.length);
+      for (const entry of englishWordsCorpus) {
+        expect(Object.keys(entry).sort()).toEqual([
+          "example",
+          "exampleEs",
+          "translation",
+          "type",
+          "word",
+        ]);
+        expect([
+          "sustantivo",
+          "verbo",
+          "adjetivo",
+          "adverbio",
+          "preposición",
+          "expresión",
+        ]).toContain(entry.type);
+        expect(entry.word).toMatch(/^[a-z][a-z' -]*$/);
+        for (const text of [entry.translation, entry.example, entry.exampleEs]) {
+          expect(text, entry.word).toMatch(PRINTABLE);
+        }
+        expect(entry.translation.length, entry.word).toBeLessThanOrEqual(40);
+        expect(entry.example.length, entry.word).toBeLessThanOrEqual(90);
+        expect(entry.exampleEs.length, entry.word).toBeLessThanOrEqual(110);
+        expect(entry.example, entry.word).toMatch(/[.?!]$/);
+        expect(entry.exampleEs, entry.word).toMatch(/[.?!]$/);
+        paired(entry.exampleEs);
+      }
+    });
+
+    it("saints: 366 days, each with one to three saints and an optional solemnity", () => {
+      expect(saintsEsCorpus).toHaveLength(366);
+      for (const [index, entry] of saintsEsCorpus.entries()) {
+        expect(entry.saints.length, `day ${index + 1}`).toBeGreaterThanOrEqual(1);
+        expect(entry.saints.length, `day ${index + 1}`).toBeLessThanOrEqual(3);
+        expect(new Set(entry.saints).size, `day ${index + 1}`).toBe(entry.saints.length);
+        for (const saint of entry.saints) {
+          expect(saint).toMatch(PRINTABLE);
+          expect(saint).toMatch(/^(San|Santo|Santa|Santos|Santas|Santiago) /);
+          expect(saint.length, saint).toBeLessThanOrEqual(40);
+        }
+        if (entry.feast !== undefined) {
+          expect(entry.feast).toMatch(PRINTABLE);
+          expect(entry.feast.length, entry.feast).toBeLessThanOrEqual(60);
+        }
       }
     });
   });

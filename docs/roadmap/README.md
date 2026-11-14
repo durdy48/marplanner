@@ -14,8 +14,8 @@ records what was observed, what is known about the cause, and the options seen s
 | 6   | [The day's chores on the printed briefing](#6-chores-on-the-briefing)     | Feature | Done                               |
 | 7   | [Household events on the briefing's agenda](#7-household-events)          | Feature | Done                               |
 | 8   | [Reusing chores across routines](#8-reusing-chores)                       | Feature | Copies done; shared catalogue open |
-| 9   | [The saint's day on the briefing](#9-saints-day)                          | Feature | Open, after item 2                 |
-| 10  | [An English word a day for a Spanish household](#10-english-word)         | Feature | Open, after item 2                 |
+| 9   | [The saint's day on the briefing](#9-saints-day)                          | Feature | Done                               |
+| 10  | [An English word a day for a Spanish household](#10-english-word)         | Feature | Done                               |
 
 The observations come from one generated briefing (all blocks enabled, household language
 Spanish, 576-dot paper width, image 576 × 5272 px).
@@ -358,6 +358,17 @@ that date), as printed on a Spanish wall calendar.
 - It only makes sense for a Spanish household: decide whether the block is offered at all when
   the household language is English.
 
+**Done.** A `saintOfDay` block (FR-041) prints one or two saints of the day and, when there is
+one, the day's solemnity or feast first. It is a local block, not a corpus one, and it is
+omitted for a household whose language is not Spanish. `corpora/saints.es.json` holds 366
+entries keyed by month and day (29 February included), so a date names the same saint in
+every year. The data comes from the "Santoral católico" section of each Spanish Wikipedia
+date page (CC BY-SA 4.0, NOTICE). Those lists are long and not ordered by prominence, so each
+day keeps the two saints with the most Wikipedia editions (Wikidata sitelinks), and a reviewed
+list fixes the dates a Spanish wall calendar is known for (San José, San Jorge, Santiago, San
+Isidro, the Asunción, the Pilar, Todos los Santos...), which some pages leave out. Foreign
+Marian titles a Spanish calendar does not print were dropped. Checked on a real render.
+
 ## 10. English word
 
 **Goal.** A block that teaches one English word a day to a Spanish-speaking child: the word,
@@ -373,3 +384,11 @@ its explanation and its Spanish translation. It is separate from `wordOfDay`, wh
   English. The current entry has no `translation` field.
 - Whether it is a new block type or a mode of `wordOfDay`. A language selector that offers
   "Spanish" for an English word would mislead.
+
+**Done.** A new `englishWord` block (FR-040), not a mode of `wordOfDay`: a local block with no
+language selector, omitted for a household whose language is not Spanish. It does not reuse
+the native-speaker vocabulary. `corpora/english-words.json` holds 366 new words for a child
+learning English at school (mostly A1-A2, some B1, British spelling), keyed by month and day so
+seasonal words keep their date: the word, its Spanish word class and translation, an English
+example and its Spanish translation; no pronunciation. It includes 22 false friends
+("embarrassed", "actually", "library"). Checked on a real render.

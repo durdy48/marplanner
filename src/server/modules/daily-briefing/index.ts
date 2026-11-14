@@ -60,6 +60,8 @@ import type { ShotgunActiveMember } from "./blocks/shotgun";
 import { messageBlock } from "./blocks/message";
 import { streakBlock } from "./blocks/streak";
 import { streakTextBlock } from "./blocks/streak-text";
+import { englishWordBlock } from "./blocks/english-word";
+import { saintOfDayBlock } from "./blocks/saint-of-day";
 import { todayBlock } from "./blocks/today";
 import { choreListBlock } from "./blocks/chore-list";
 import { mealsBlock } from "./blocks/meals";
@@ -682,6 +684,14 @@ function generateLocalBlockData(
           date,
           language,
         });
+        return data === null ? null : { data };
+      }
+      case "englishWord": {
+        const data = englishWordBlock.generate({ date, language });
+        return data === null ? null : { data };
+      }
+      case "saintOfDay": {
+        const data = saintOfDayBlock.generate({ date, language });
         return data === null ? null : { data };
       }
       case "today": {

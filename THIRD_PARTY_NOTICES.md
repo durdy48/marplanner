@@ -66,6 +66,14 @@ reshaped to `{question, correctAnswer, options, difficulty, category}`. This fil
 distributed under the same license; the notice travels with the build as
 `dist/server/CORPORA-NOTICE.txt`.
 
+**`saints.es.json` (366 days).** The saints of each day, taken on 2026-11-14 from the
+"Santoral católico" section of the Spanish Wikipedia's date pages
+(`https://es.wikipedia.org/wiki/<día>_de_<mes>`), licensed under
+[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/); this file is distributed
+under the same license. Changes: one or two saints kept per day, chosen by how many Wikipedia
+editions have an article on them (Wikidata sitelinks, CC0), names shortened to the saint's
+name, and the day's solemnity or feast kept when it heads the list.
+
 **`trivia-questions.es.json` (832 questions).** A Spanish version of
 `trivia-questions.json` made for Marplanner, one question per slot with the slot's
 difficulty. Most questions are translations of the Open Trivia Database questions and are

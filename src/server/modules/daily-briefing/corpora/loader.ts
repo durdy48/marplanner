@@ -18,10 +18,12 @@
  */
 import type {
   AnimalFactEntry,
+  EnglishWordEntry,
   PhonicsWordEntry,
   NumberFactEntry,
   QuoteEntry,
   RiddleEntry,
+  SaintsEntry,
   TextEntry,
   TriviaEntry,
   VocabularyEntry,
@@ -34,6 +36,8 @@ import type { CorpusLanguage } from "./block-types";
 import jokesEnJson from "./jokes.json";
 import jokesEsJson from "./jokes.es.json";
 import quotesEsJson from "./quotes.es.json";
+import englishWordsJson from "./english-words.json";
+import saintsEsJson from "./saints.es.json";
 import riddlesEnJson from "./riddles.json";
 import riddlesEsJson from "./riddles.es.json";
 import triviaQuestionsJson from "./trivia-questions.json";
@@ -87,6 +91,9 @@ export const vocabularyCorpus: Record<CorpusLanguage, VocabularyEntry[]> = {
 /** Spanish only: the English quote of the day comes from ZenQuotes, which has no Spanish
  * (FR-036). One entry per day of the year, a proverb or a well-attributed quote. */
 export const quotesEsCorpus = quotesEsJson as QuoteEntry[];
+/** Spanish-household blocks, one entry per day of a leap year (FR-040, FR-041). */
+export const englishWordsCorpus = englishWordsJson as EnglishWordEntry[];
+export const saintsEsCorpus = saintsEsJson as SaintsEntry[];
 /** The Spanish jokes are new jokes, not translations: English puns do not survive translation,
  * so a slot holds an unrelated Spanish joke and only the count matches. */
 export const dadJokesCorpus: Record<CorpusLanguage, TextEntry[]> = {

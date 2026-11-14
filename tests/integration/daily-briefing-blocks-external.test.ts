@@ -12,7 +12,10 @@ import {
   wikipediaOnThisDaySource,
   zenQuotesSource,
 } from "../../src/server/modules/daily-briefing/external/ports";
-import { generateQuoteOfDayBlock } from "../../src/server/modules/daily-briefing/blocks/quoteOfDay";
+import {
+  generateQuoteOfDayBlock,
+  spanishQuoteOfDay,
+} from "../../src/server/modules/daily-briefing/blocks/quoteOfDay";
 import { generateOnThisDayBlock } from "../../src/server/modules/daily-briefing/blocks/onThisDay";
 import {
   generateWeatherBlock,
@@ -61,6 +64,25 @@ describe("daily-briefing EXTERNAL blocks + shared cache", () => {
   }
 
   describe("quoteOfDay", () => {
+    it("Spanish: the local corpus is keyed by day of year, the leap day included (FR-036)", () => {
+      expect(spanishQuoteOfDay(DATE)).toEqual({
+        text: "La esperanza es lo último que se pierde.",
+        author: "Refrán",
+      });
+      expect(spanishQuoteOfDay("2026-01-01")).toEqual({
+        text: "A quien madruga, Dios le ayuda.",
+        author: "Refrán",
+      });
+      expect(spanishQuoteOfDay("2026-12-31")).toEqual({
+        text: "Un niño, un profesor, un libro y un lápiz pueden cambiar el mundo.",
+        author: "Malala Yousafzai",
+      });
+      expect(spanishQuoteOfDay("2024-12-31")).toEqual({
+        text: "Unos nacen con estrella y otros nacen estrellados.",
+        author: "Refrán",
+      });
+    });
+
     it("skip-on-failure: a rejecting source resolves the block to null, never throws", async () => {
       const cache = createDailyBlockCache(DATE);
       const source: QuoteSource = async () => {

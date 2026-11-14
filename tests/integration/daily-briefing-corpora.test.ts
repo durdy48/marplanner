@@ -12,6 +12,7 @@ import {
   isCorpusLanguageAvailable,
   isKnownBlockType,
   numberFactsCorpus,
+  quotesEsCorpus,
   riddlesCorpus,
   triviaCorpus,
   vocabularyCorpus,
@@ -313,6 +314,50 @@ describe("daily-briefing corpora", () => {
         expect(english.has(normalized(text)), text).toBe(false);
         expect(text).not.toMatch(/\b(what|why|who|the|you)\b/i);
       }
+    });
+  });
+
+  /** The quote of the day reads this corpus only in a Spanish household (FR-036): one entry per
+   * day of the year, a proverb or a quote whose author is on record. */
+  describe("Spanish quotes (FR-036)", () => {
+    const WORD = "[\\x21-\\x7EáéíóúüñÁÉÍÓÚÜÑ¿¡«»]+";
+    const PRINTABLE = new RegExp(`^${WORD}( ${WORD})*$`);
+    const key = (text: string) =>
+      text
+        .toLocaleLowerCase("es")
+        .normalize("NFD")
+        .replace(/[\u0301\u0308]/g, "")
+        .normalize("NFC")
+        .replace(/[^\p{L}\p{N} ]/gu, "")
+        .replace(/\s+/g, " ")
+        .trim();
+
+    it("holds one entry per day of a leap year, each exactly a text and an author", () => {
+      expect(quotesEsCorpus).toHaveLength(366);
+      quotesEsCorpus.forEach((entry, index) => {
+        expect(Object.keys(entry).sort(), `entry ${index}`).toEqual(["author", "text"]);
+      });
+    });
+
+    it("uses only the reviewed character set, pairs its marks and ends each text as a sentence", () => {
+      for (const { text, author } of quotesEsCorpus) {
+        expect(text).toMatch(PRINTABLE);
+        expect(author).toMatch(PRINTABLE);
+        const unpaired = text.replace(/¿[^¿?]*\?/g, "").replace(/¡[^¡!]*!/g, "");
+        expect(unpaired, text).not.toMatch(/[¿?¡!]/);
+        expect(text).not.toMatch(/ [?!.,;:»]|[¿¡«] /);
+        expect(text).toMatch(/[.?!]$/);
+        expect(text.length, text).toBeLessThanOrEqual(200);
+        expect(author.length, author).toBeLessThanOrEqual(60);
+      }
+    });
+
+    it("repeats no text and mixes proverbs with attributed quotes", () => {
+      const keys = quotesEsCorpus.map((entry) => key(entry.text));
+      expect(new Set(keys).size).toBe(keys.length);
+      const proverbs = quotesEsCorpus.filter((entry) => entry.author === "Refrán").length;
+      expect(proverbs).toBeGreaterThan(0);
+      expect(proverbs).toBeLessThan(quotesEsCorpus.length);
     });
   });
 

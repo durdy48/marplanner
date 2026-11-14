@@ -49,3 +49,7 @@ tradition, which has no author and is in the public domain.
 jokes.es.json is another: its jokes were written for Marplanner, and some are traditional
 Spanish jokes ("chistes", "colmos") from the oral tradition, which has no author and is in
 the public domain. They are not translations of jokes.json.
+
+quotes.es.json is another: its proverbs ("refranes") come from the oral tradition, which has
+no author and is in the public domain; its quotes are short quotations of their authors, each
+credited, and the ones from works in another language are given in Spanish translation.

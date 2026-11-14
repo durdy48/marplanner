@@ -13,6 +13,11 @@ export interface TextEntry {
   text: string;
 }
 
+export interface QuoteEntry {
+  text: string;
+  author: string;
+}
+
 export interface RiddleEntry {
   question: string;
   answer: string;

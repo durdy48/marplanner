@@ -7,7 +7,7 @@ records what was observed, what is known about the cause, and the options seen s
 | #   | Item                                                                      | Kind    | Status                             |
 | --- | ------------------------------------------------------------------------- | ------- | ---------------------------------- |
 | 1   | [Weather and streak print twice by default](#1-weather-and-streak-twice)  | Bug/UX  | Open                               |
-| 2   | [English content on a Spanish household's slip](#2-english-content)       | Feature | In progress: 3 of 7 blocks done    |
+| 2   | [English content on a Spanish household's slip](#2-english-content)       | Feature | In progress: 4 of 7 blocks done    |
 | 3   | [Emoji typed in a reminder prints as an empty box](#3-emoji-in-reminders) | Bug     | Open                               |
 | 4   | [Print the briefing on an ordinary A4 printer](#4-a4-printing)            | Feature | Manual print done; unattended open |
 | 5   | [Household chores beyond children's routines](#5-household-chores)        | Feature | Open                               |
@@ -146,6 +146,20 @@ English.
 
 A briefing generated before the change keeps its English joke; **Regenerate** replaces it. A
 joke language set explicitly to English in Admin → Daily briefing → Blocks stays English.
+
+**Done: `quoteOfDay`.** ZenQuotes has no Spanish, so a Spanish household reads
+`corpora/quotes.es.json` instead and makes no call (FR-036); any other language keeps ZenQuotes.
+The corpus holds 366 entries picked by day of year, as `numberFact` does, so no quote repeats
+within a year: 262 Spanish proverbs and 104 quotes spread evenly through the year. The quotes
+are limited to authors on record: Spanish and Latin American literature (Cervantes, Machado,
+Calderón, Bécquer, Lorca, Borges...), classics (Séneca, Confucio, Horacio), children's books
+(El principito, Alicia, Tolkien) and a few documented sayings (Newton, Edison, Armstrong,
+Mandela, Malala). Famous lines with a doubtful attribution were left out, as were proverbs that
+mock someone or read badly to a child. A test checks the count, character set, marks, length
+and duplicates.
+
+A briefing generated before the change keeps its English quote; **Regenerate** replaces it.
+The block stays external: it has no per-block language, it follows the household language.
 
 ## 3. Emoji in reminders
 

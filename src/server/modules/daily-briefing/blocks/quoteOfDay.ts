@@ -3,9 +3,13 @@
  * `source` call per date per household, reused across every member's briefing. A
  * failed/timed-out `source` call skips the block (resolves `null`) WITHOUT caching the
  * failure, so the next generation pass retries (FR-019 allowFailure + "no negative caching").
+ * A Spanish household reads the local corpus instead (`spanishQuoteOfDay`, FR-036): no call, no
+ * cache row.
  */
 import { getOrFetchOnceDaily, type DailyBlockCache } from "../external/shared-cache";
 import type { QuoteOfDayData, QuoteSource } from "../external/ports";
+import { quotesEsCorpus } from "../corpora";
+import { dayOfYear } from "./number-fact";
 
 export type { QuoteOfDayData };
 
@@ -16,4 +20,10 @@ export async function generateQuoteOfDayBlock(
   source: QuoteSource
 ): Promise<QuoteOfDayData | null> {
   return getOrFetchOnceDaily(cache, BLOCK_TYPE, source);
+}
+
+/** FR-036: keyed by day of year like `numberFact`, so no entry repeats within a year. */
+export function spanishQuoteOfDay(date: string): QuoteOfDayData {
+  const entry = quotesEsCorpus[dayOfYear(date) - 1];
+  return { text: entry.text, author: entry.author };
 }

@@ -5366,6 +5366,7 @@
             "daily-briefing domain blocks (FR-013) reminders carries an images reminder's emojis next to text reminders in one group (#96)"
           ],
           "tests/integration/daily-briefing-blocks-external.test.ts": [
+            "daily-briefing EXTERNAL blocks + shared cache quoteOfDay Spanish: the local corpus is keyed by day of year, the leap day included (FR-036)",
             "daily-briefing EXTERNAL blocks + shared cache quoteOfDay skip-on-failure: a rejecting source resolves the block to null, never throws",
             "daily-briefing EXTERNAL blocks + shared cache quoteOfDay one call per source per date across two members (cache hit proven by call count)",
             "daily-briefing EXTERNAL blocks + shared cache quoteOfDay cache survives a fresh cache-instance construction (persisted row reused — restart simulation)",
@@ -5442,6 +5443,9 @@
             "daily-briefing corpora Spanish jokes (FR-035) pairs every question mark, exclamation mark and quote, with no space inside",
             "daily-briefing corpora Spanish jokes (FR-035) ends each joke as a sentence and keeps it short enough for the slip",
             "daily-briefing corpora Spanish jokes (FR-035) repeats no joke and leaves no English one",
+            "daily-briefing corpora Spanish quotes (FR-036) holds one entry per day of a leap year, each exactly a text and an author",
+            "daily-briefing corpora Spanish quotes (FR-036) uses only the reviewed character set, pairs its marks and ends each text as a sentence",
+            "daily-briefing corpora Spanish quotes (FR-036) repeats no text and mixes proverbs with attributed quotes",
             "daily-briefing corpora corpus-availability map (FR-008/FR-009) jokes ship in English and Spanish (FR-035)",
             "daily-briefing corpora corpus-availability map (FR-008/FR-009) riddles ship in English and Spanish (FR-034)",
             "daily-briefing corpora corpus-availability map (FR-008/FR-009) trivia and wordOfDay (vocabulary) are EN-only",
@@ -5493,6 +5497,7 @@
             "daily-briefing full generation late-eligibility abort (FOLD-2, Codex #707 review) a member archived while the render is in-flight, with a PRIOR frozen snapshot, returns that snapshot untouched (no emit, no mutation)",
             "daily-briefing full generation FR-019: a shared-scope external block is fetched ONCE per date and reused across members",
             "daily-briefing full generation FR-019/INV-07: a genuine quoteOfDay port failure is RECORDED failed (never silently omitted like weather)",
+            "daily-briefing full generation FR-036: a Spanish household prints the local quote and never calls the quote source",
             "daily-briefing full generation a legitimately-empty quoteOfDay resolve is OMITTED, never recorded as failed",
             "daily-briefing full generation contains malformed persisted external cache entries as block failures",
             "daily-briefing full generation generates an enabled onThisDay block and contains its external failure",

@@ -64,6 +64,7 @@ import { generateWouldYouRather } from "../../src/server/modules/daily-briefing/
 import { generateDrawingPrompt } from "../../src/server/modules/daily-briefing/blocks/drawing-prompt";
 import { generateRiddle } from "../../src/server/modules/daily-briefing/blocks/riddle";
 import { generateDadJoke } from "../../src/server/modules/daily-briefing/blocks/dad-joke";
+import { spanishQuoteOfDay } from "../../src/server/modules/daily-briefing/blocks/quoteOfDay";
 import { ALL_BLOCK_TYPES } from "../../src/server/modules/daily-briefing/corpora/index";
 import { getLabels } from "../../src/server/modules/daily-briefing/render/labels";
 import { useIsolatedDb } from "../helpers/db";
@@ -909,6 +910,20 @@ describe("daily-briefing full generation", () => {
       status: "failed",
       error: "gather_failed",
     });
+  });
+
+  it("FR-036: a Spanish household prints the local quote and never calls the quote source", async () => {
+    seedHouseholdLanguage("es");
+    seedMember("m1", { optedIn: true });
+    const source = vi.fn(async () => ({ text: "Test quote", author: "Test Author" }));
+    __setQuoteSourceForTests(source);
+
+    const briefing = await generateBriefing("m1", DATE_FRI);
+    expect(briefing.payload.blocks.find((b) => b.type === "quoteOfDay")).toMatchObject({
+      status: "ok",
+      data: spanishQuoteOfDay(DATE_FRI),
+    });
+    expect(source).not.toHaveBeenCalled();
   });
 
   it("a legitimately-empty quoteOfDay resolve is OMITTED, never recorded as failed", async () => {

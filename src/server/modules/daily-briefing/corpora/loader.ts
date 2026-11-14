@@ -20,6 +20,7 @@ import type {
   AnimalFactEntry,
   PhonicsWordEntry,
   NumberFactEntry,
+  QuoteEntry,
   RiddleEntry,
   TextEntry,
   TriviaEntry,
@@ -32,6 +33,7 @@ import type { CorpusLanguage } from "./block-types";
 
 import jokesEnJson from "./jokes.json";
 import jokesEsJson from "./jokes.es.json";
+import quotesEsJson from "./quotes.es.json";
 import riddlesEnJson from "./riddles.json";
 import riddlesEsJson from "./riddles.es.json";
 import triviaQuestionsJson from "./trivia-questions.json";
@@ -69,6 +71,9 @@ export const wouldYouRathersCorpus: Record<CorpusLanguage, WouldYouRatherEntry[]
   en: wouldYouRathersEnJson as WouldYouRatherEntry[],
   es: wouldYouRathersEsJson as WouldYouRatherEntry[],
 };
+/** Spanish only: the English quote of the day comes from ZenQuotes, which has no Spanish
+ * (FR-036). One entry per day of the year, a proverb or a well-attributed quote. */
+export const quotesEsCorpus = quotesEsJson as QuoteEntry[];
 /** The Spanish jokes are new jokes, not translations: English puns do not survive translation,
  * so a slot holds an unrelated Spanish joke and only the count matches. */
 export const dadJokesCorpus: Record<CorpusLanguage, TextEntry[]> = {

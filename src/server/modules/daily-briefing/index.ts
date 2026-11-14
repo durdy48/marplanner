@@ -54,6 +54,7 @@ import type { DailyBlockCache } from "./external/shared-cache";
 import { zenQuotesSource, wikipediaOnThisDaySource, onThisDayEdition } from "./external/ports";
 import type { QuoteSource, OnThisDaySource } from "./external/ports";
 import { onThisDayCacheKey } from "./blocks/onThisDay";
+import { spanishQuoteOfDay } from "./blocks/quoteOfDay";
 import { shotgunBlock } from "./blocks/shotgun";
 import type { ShotgunActiveMember } from "./blocks/shotgun";
 import { messageBlock } from "./blocks/message";
@@ -858,7 +859,11 @@ async function finishBlocks(
             break;
           }
           case "quoteOfDay":
-            outcome = await generateExternalBlock(cache, "quoteOfDay", resolveQuoteSource());
+            // FR-036: ZenQuotes has no Spanish; a Spanish household reads the local corpus.
+            outcome =
+              language === "es"
+                ? { data: spanishQuoteOfDay(date) }
+                : await generateExternalBlock(cache, "quoteOfDay", resolveQuoteSource());
             break;
           case "onThisDay": {
             const source = resolveOnThisDaySource();

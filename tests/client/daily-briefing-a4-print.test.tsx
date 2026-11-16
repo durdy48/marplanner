@@ -76,20 +76,21 @@ describe("BriefingA4Print", () => {
     );
     const sheet = screen.getByTestId("daily-briefing-a4-sheet");
     expect(sheet.parentElement).toBe(document.body);
-    // 6000 rows at 2640 per column: three columns, cut mid-gap above the bands at 2500 and 4500.
+    // 6000 rows at 1760 per column: each column ends mid-gap above the next band that fits, so
+    // six columns of 1000 rows, two to a page.
+    expect(sheet.querySelectorAll(".briefing-a4-page")).toHaveLength(3);
     const columns = [...sheet.querySelectorAll<HTMLElement>(".briefing-a4-column")];
-    expect(columns).toHaveLength(3);
+    expect(columns).toHaveLength(6);
     expect(columns.map((column) => column.style.getPropertyValue("--a4-column-width"))).toEqual(
-      Array(3).fill("60mm")
+      Array(6).fill("90mm")
     );
     const tops = columns.map((column) =>
       parseFloat(column.style.getPropertyValue("--a4-segment-top"))
     );
     expect(tops[0]).toBe(0);
-    expect(tops[1]).toBeCloseTo((2000 * 60) / 576);
-    expect(tops[2]).toBeCloseTo((4000 * 60) / 576);
+    tops.slice(1).forEach((top, i) => expect(top).toBeCloseTo(((i + 1) * 1000 * 90) / 576));
     const images = [...sheet.querySelectorAll("img")];
-    expect(images.map((image) => image.getAttribute("src"))).toEqual(Array(3).fill("blob:slip"));
+    expect(images.map((image) => image.getAttribute("src"))).toEqual(Array(6).fill("blob:slip"));
   });
 
   it("removes the sheet and frees the image once the dialog closes", async () => {

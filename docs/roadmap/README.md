@@ -226,9 +226,11 @@ split into columns.
 
 **Done: A. Browser print.** Admin → Daily briefing → Briefings has a **Print on A4** button
 (`src/client/daily-briefing/admin/BriefingA4Print.tsx`). It does not re-render anything: it
-takes the stored slip image, cuts it between blocks and places it in three 60 mm columns on an
-A4 page (83% of thermal size), then opens the browser's print dialog. The all-blocks slip above
-fits on one page. Limits:
+takes the stored slip image, cuts it between blocks and places it in two 90 mm columns on an
+A4 page (125% of thermal size), then opens the browser's print dialog. It first used three 60 mm
+columns (83%); on paper the type was too small to read at the table, so it now takes about one
+more page for the larger text: the all-blocks slip above takes two pages instead of one.
+Limits:
 
 - It needs the stored image, which only exists when the briefing was generated with the Printing
   plugin active.

@@ -3,10 +3,12 @@
 // is re-rendered: the sheet shows the stored raster, so paper and thermal slip carry the same
 // content.
 
-/** Columns of slip per A4 page. */
-export const A4_COLUMNS = 3;
-/** Printed width of one column: (210 − 2 × 10 margin − 2 × 5 gap) / 3. */
-export const A4_COLUMN_WIDTH_MM = 60;
+/** Columns of slip per A4 page. Two, not three: three 60 mm columns printed the text at 83% of
+ * the thermal slip, too small to read at the table; 90 mm prints it at 125%, at the cost of
+ * about one more page for a long slip. */
+export const A4_COLUMNS = 2;
+/** Printed width of one column: (210 − 2 × 10 margin − 10 gap) / 2. */
+export const A4_COLUMN_WIDTH_MM = 90;
 /** Usable column height. Two millimetres short of 297 − 2 × 10, so rounding in the browser's
  * print layout never pushes a column onto an extra page. */
 const A4_COLUMN_HEIGHT_MM = 275;

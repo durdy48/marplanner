@@ -70,12 +70,13 @@ describe("layoutSlip", () => {
     // Blocks start at rows 0, 6 and 12; the gaps sit at rows 5 and 11.
     const rows = "#tttt.#tttt.#tttt";
     const pages = layoutSlip(classifyRows(raster(rows), WIDTH, rows.length), 8);
+    // Two columns to a page, so the third starts the next page.
     expect(pages).toEqual([
       [
         { top: 0, height: 5 },
         { top: 5, height: 6 },
-        { top: 11, height: 6 },
       ],
+      [{ top: 11, height: 6 }],
     ]);
   });
 
@@ -105,9 +106,9 @@ describe("layoutSlip", () => {
 });
 
 describe("A4 scale", () => {
-  it("fits the 576-dot slip three columns to a page", () => {
-    expect(mmPerRow(576) * 576).toBeCloseTo(60);
-    // 275 mm of column at 60 mm per 576 rows.
-    expect(columnCapacityRows(576)).toBe(2640);
+  it("fits the 576-dot slip two columns to a page, larger than on the thermal paper", () => {
+    expect(mmPerRow(576) * 576).toBeCloseTo(90);
+    // 275 mm of column at 90 mm per 576 rows.
+    expect(columnCapacityRows(576)).toBe(1760);
   });
 });

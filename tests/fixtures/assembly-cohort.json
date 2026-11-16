@@ -6133,7 +6133,7 @@
             "layoutSlip ends each column at the last block gap that fits",
             "layoutSlip cuts a block taller than a column at its last empty row, else mid-content",
             "layoutSlip starts a new page after the last column of a page",
-            "A4 scale fits the 576-dot slip three columns to a page"
+            "A4 scale fits the 576-dot slip two columns to a page, larger than on the thermal paper"
           ],
           "tests/client/daily-briefing-a4-print.test.tsx": [
             "BriefingA4Print lays the stored slip out in columns and opens the print dialog",

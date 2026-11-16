@@ -53,6 +53,10 @@ describe("GET /lite", () => {
     expect(res.body).toContain('<form id="setup">');
     expect(res.body).toContain('xhr.open("POST", "/api/auth/provision")');
     expect(res.body).not.toContain("no longer valid");
+    // The access token and the bootstrap key look alike; the page tells them apart.
+    expect(res.body).toContain('key.indexOf("mpg-") === 0');
+    expect(res.body).toContain("That is the access token (mpg-)");
+    expect(res.body).toContain('.value.replace(/\\s+/g, "")');
   });
 
   it("asks to connect again when the device key was revoked", async () => {

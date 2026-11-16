@@ -63,12 +63,16 @@ const STRINGS = {
     period: { morning: "Morning", afternoon: "Afternoon", evening: "Evening", night: "Night" },
     setupTitle: "Connect this device",
     setupText:
-      "Enter the device bootstrap key (MP_BOOTSTRAP_KEY) once. This device can then show today's view, and nothing on it can change the household's data.",
+      "Enter the device bootstrap key (MP_BOOTSTRAP_KEY, it starts with mpk-) once. This device can then show today's view, and nothing on it can change the household's data.",
     setupLost: "This device's key is no longer valid. Connect it again.",
     setupLabel: "Bootstrap key",
     setupButton: "Connect",
     setupWorking: "Connecting…",
     setupFailed: "That key was not accepted. Check it and try again.",
+    setupGateToken:
+      "That is the access token (mpg-), already entered on the previous screen. Here goes the bootstrap key, which starts with mpk-.",
+    setupThrottled: "Too many failed attempts. Wait {seconds} seconds and try again.",
+    setupOffline: "Could not reach the server. Check the Wi-Fi and try again.",
   },
   es: {
     title: "Hoy",
@@ -87,12 +91,18 @@ const STRINGS = {
     period: { morning: "Mañana", afternoon: "Mediodía", evening: "Tarde", night: "Noche" },
     setupTitle: "Conectar este dispositivo",
     setupText:
-      "Introduce una vez la clave de alta de dispositivos (MP_BOOTSTRAP_KEY). Después este dispositivo mostrará el día de hoy, y desde él no se puede cambiar nada.",
+      "Introduce una vez la clave de alta de dispositivos (MP_BOOTSTRAP_KEY, empieza por mpk-). Después este dispositivo mostrará el día de hoy, y desde él no se puede cambiar nada.",
     setupLost: "La clave de este dispositivo ya no es válida. Vuelve a conectarlo.",
     setupLabel: "Clave de alta",
     setupButton: "Conectar",
     setupWorking: "Conectando…",
     setupFailed: "Esa clave no se ha aceptado. Revísala y vuelve a intentarlo.",
+    setupGateToken:
+      "Ese es el token de acceso (mpg-), que ya se puso en la pantalla anterior. Aquí va la clave de alta, que empieza por mpk-.",
+    setupThrottled:
+      "Demasiados intentos fallidos. Espera {seconds} segundos y vuelve a intentarlo.",
+    setupOffline:
+      "No se ha podido contactar con el servidor. Revisa el wifi y vuelve a intentarlo.",
   },
 } as const;
 
@@ -283,10 +293,19 @@ export function renderLiteSetup(
 (function () {
   var form = document.getElementById("setup");
   var status = document.getElementById("status");
+  function fail(message) {
+    status.className = "error";
+    status.textContent = message;
+  }
   form.onsubmit = function (event) {
     event.preventDefault();
-    var key = document.getElementById("key").value;
+    // A pasted key often brings a space or line break along.
+    var key = document.getElementById("key").value.replace(/\\s+/g, "");
     if (!key) return;
+    if (key.indexOf("mpg-") === 0) {
+      fail(${JSON.stringify(t.setupGateToken)});
+      return;
+    }
     status.className = "muted";
     status.textContent = ${JSON.stringify(t.setupWorking)};
     var xhr = new XMLHttpRequest();
@@ -297,10 +316,16 @@ export function renderLiteSetup(
         window.location.reload();
         return;
       }
-      status.className = "error";
-      status.textContent = ${JSON.stringify(t.setupFailed)};
+      if (xhr.status === 429) {
+        var seconds = xhr.getResponseHeader("Retry-After") || "60";
+        fail(${JSON.stringify(t.setupThrottled)}.replace("{seconds}", seconds));
+        return;
+      }
+      fail(${JSON.stringify(t.setupFailed)});
     };
-    xhr.onerror = xhr.onload;
+    xhr.onerror = function () {
+      fail(${JSON.stringify(t.setupOffline)});
+    };
     xhr.send();
   };
 })();

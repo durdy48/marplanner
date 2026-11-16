@@ -5705,12 +5705,14 @@
             "GET /lite is behind the access gate",
             "GET /lite offers the one-time setup to a browser without a device key",
             "GET /lite asks to connect again when the device key was revoked",
-            "GET /lite shows today's agenda, chores and stored briefing slips to a provisioned device",
+            "GET /lite shows today's agenda, chores and a button to each stored briefing slip",
+            "GET /lite falls back to the day for a member without a briefing",
             "GET /lite speaks Spanish, puts all-day events first and lists today's meals",
             "GET /lite leaves out meals and briefings while their plugins are inactive",
             "GET /lite backs off after repeated unknown device keys",
             "renderLiteToday speaks the household's language and skips empty day periods",
-            "renderLiteToday leaves out the sections of inactive plugins and says when a day is empty"
+            "renderLiteToday leaves out the sections of inactive plugins and says when a day is empty",
+            "renderLiteBriefing says a slip is being generated"
           ],
           "tests/integration/member-color-migration-0019.test.ts": [
             "member colour current baseline enforces the curated colour set, supplies the default, and exposes it through public reads"
@@ -9018,16 +9020,16 @@
       "src/server/lite/page.ts": {
         "layer": "server",
         "minimumTotals": {
-          "lines": 42,
-          "statements": 45,
+          "lines": 50,
+          "statements": 53,
           "functions": 16,
-          "branches": 31
+          "branches": 35
         },
         "minimumRates": {
           "lines": 100,
           "statements": 100,
           "functions": 100,
-          "branches": 96.77
+          "branches": 97.14
         }
       },
       "src/server/modules/calendar/external-sources.ts": {
@@ -11074,16 +11076,16 @@
       "src/server/routes/lite.ts": {
         "layer": "server",
         "minimumTotals": {
-          "lines": 47,
-          "statements": 54,
-          "functions": 20,
-          "branches": 26
+          "lines": 54,
+          "statements": 66,
+          "functions": 23,
+          "branches": 34
         },
         "minimumRates": {
-          "lines": 97.87,
-          "statements": 98.14,
-          "functions": 95,
-          "branches": 84.61
+          "lines": 98.14,
+          "statements": 98.48,
+          "functions": 95.65,
+          "branches": 88.23
         }
       },
       "src/server/routes/meals.ts": {

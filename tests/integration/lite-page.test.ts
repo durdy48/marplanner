@@ -8,7 +8,7 @@ import { todayInHouseholdTz } from "../../src/server/lib/household-date";
 import { createEvent } from "../../src/server/modules/calendar";
 import { createEntry } from "../../src/server/modules/meals";
 import { createChore, createRoutine, upsertAssignment } from "../../src/server/modules/routines";
-import { renderLiteToday } from "../../src/server/lite/page";
+import { renderLiteBriefing, renderLiteToday } from "../../src/server/lite/page";
 import { seedMember } from "../helpers/daily-briefing-seed";
 import { useIsolatedDb } from "../helpers/db";
 
@@ -70,7 +70,7 @@ describe("GET /lite", () => {
     expect(res.body).toContain("This device's key is no longer valid.");
   });
 
-  it("shows today's agenda, chores and stored briefing slips to a provisioned device", async () => {
+  it("shows today's agenda, chores and a button to each stored briefing slip", async () => {
     const date = todayInHouseholdTz(Date.now());
     seedMember("ana");
     getDb()
@@ -98,9 +98,30 @@ describe("GET /lite", () => {
     expect(res.statusCode).toBe(200);
     expect(res.body).toContain('<meta http-equiv="refresh" content="300">');
     expect(res.body).toMatch(/<span class="time">\d\d:\d\d<\/span> Dentist &lt;3/);
-    expect(res.body).toContain("🛏️ Make the bed");
-    expect(res.body).toContain(`src="data:image/png;base64,${PNG.toString("base64")}"`);
+    expect(res.body).toContain('🛏️ <span class="name">Make the bed</span>');
+    expect(res.body).toContain('<a class="open" href="?briefing=ana">ana ›</a>');
+    expect(res.body).not.toContain("data:image/png");
     expect(res.body).not.toContain('<form id="setup">');
+
+    const slip = await app.inject({
+      method: "GET",
+      url: "/lite?briefing=ana",
+      headers: { cookie: `${GATE}; mp_device_key=${seedDeviceKey()}` },
+    });
+    expect(slip.body).toContain("<h1>ana&#39;s briefing</h1>");
+    expect(slip.body).toContain(`src="data:image/png;base64,${PNG.toString("base64")}"`);
+    expect(slip.body).toContain('<a class="open" href="lite">‹ Back</a>');
+  });
+
+  it("falls back to the day for a member without a briefing", async () => {
+    seedMember("leo", { optedIn: false });
+    const res = await app.inject({
+      method: "GET",
+      url: "/lite?briefing=leo",
+      headers: { cookie: `${GATE}; mp_device_key=${seedDeviceKey()}` },
+    });
+    expect(res.body).toContain("<h2>Agenda</h2>");
+    expect(res.body).not.toContain("briefing</h1>");
   });
   it("speaks Spanish, puts all-day events first and lists today's meals", async () => {
     const date = todayInHouseholdTz(Date.now());
@@ -147,6 +168,14 @@ describe("GET /lite", () => {
     expect(order).toEqual([...order].sort((a, b) => a - b));
     expect(res.body).toContain('<span class="time">Comida</span> Lentejas');
     expect(res.body).toContain("Aún no se ha generado.");
+
+    const slip = await app.inject({
+      method: "GET",
+      url: "/lite?briefing=leo",
+      headers: { cookie: `${GATE}; mp_device_key=${seedDeviceKey()}` },
+    });
+    expect(slip.body).toContain("<h1>Resumen de leo</h1>");
+    expect(slip.body).toContain("Aún no se ha generado.");
   });
 
   it("leaves out meals and briefings while their plugins are inactive", async () => {
@@ -208,8 +237,9 @@ describe("renderLiteToday", () => {
       },
     ],
     briefings: [
-      { memberId: "ana", name: "Ana", png: null, generating: false },
-      { memberId: "leo", name: "Leo", png: null, generating: true },
+      { memberId: "ana", name: "Ana", ready: true, generating: false },
+      { memberId: "leo", name: "Leo", ready: false, generating: true },
+      { memberId: "eva", name: "Eva", ready: false, generating: false },
     ],
   };
 
@@ -222,9 +252,9 @@ describe("renderLiteToday", () => {
     expect(html).toContain('Ana <span class="muted">1/2</span>');
     expect(html).toContain('<li class="done">');
     expect(html).not.toContain(">Noche<");
-    expect(html).toContain('<a href="#briefing-leo">Leo</a>');
-    expect(html).toContain("Aún no se ha generado.");
-    expect(html).toContain("Generándose…");
+    expect(html).toContain('<a class="open" href="?briefing=ana">Ana ›</a>');
+    expect(html).toContain('Leo <span class="muted">Generándose…</span>');
+    expect(html).toContain('Eva <span class="muted">Aún no se ha generado.</span>');
   });
 
   it("leaves out the sections of inactive plugins and says when a day is empty", () => {
@@ -239,5 +269,14 @@ describe("renderLiteToday", () => {
     expect(html).toContain("Hoy no hay tareas.");
     expect(html).not.toContain("<h2>Comidas</h2>");
     expect(html).not.toContain("Resumen del día");
+  });
+});
+
+describe("renderLiteBriefing", () => {
+  it("says a slip is being generated", () => {
+    const html = renderLiteBriefing({ language: "es", name: "Leo", png: null, generating: true });
+    expect(html).toContain("<h1>Resumen de Leo</h1>");
+    expect(html).toContain("Generándose…");
+    expect(html).toContain('<a class="open" href="lite">‹ Volver</a>');
   });
 });

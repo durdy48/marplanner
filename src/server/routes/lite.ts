@@ -1,5 +1,5 @@
 import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
-import type { Slot } from "../../shared";
+import type { MemberDTO, Slot } from "../../shared";
 import { lookupApiKey, readDeviceCookie } from "../auth/boundary";
 import { authenticationBackoff, sendAuthenticationBackoff } from "../auth/throttle";
 import { readHouseholdTimezone, todayInHouseholdTz } from "../lib/household-date";
@@ -11,9 +11,11 @@ import { getBoard } from "../modules/routines";
 import { readEffectiveSettings } from "../modules/settings";
 import type { PluginLifecycle } from "../plugins/lifecycle";
 import {
+  renderLiteBriefing,
   renderLiteSetup,
   renderLiteToday,
   type LiteBriefing,
+  type LiteBriefingView,
   type LiteLanguage,
   type LiteToday,
 } from "../lite/page";
@@ -24,6 +26,34 @@ const SLOTS: Slot[] = ["breakfast", "lunch", "snack", "dinner"];
 
 function householdLanguage(): LiteLanguage {
   return readEffectiveSettings().locale.language === "es" ? "es" : "en";
+}
+
+/** The active members opted into the daily briefing, or null while its plugin is inactive. */
+function briefingMembers(lifecycle: PluginLifecycle): MemberDTO[] | null {
+  if (!lifecycle.isActive("daily-briefing")) return null;
+  const optedIn = new Set(
+    listOptIns()
+      .filter((optIn) => optIn.enabled)
+      .map((optIn) => optIn.memberId)
+  );
+  return listMembers().filter((member) => optedIn.has(member.id));
+}
+
+/** One member's stored slip for today, or null when they have no briefing to show. */
+export function gatherLiteBriefing(
+  lifecycle: PluginLifecycle,
+  memberId: string,
+  now: number
+): LiteBriefingView | null {
+  const member = briefingMembers(lifecycle)?.find((candidate) => candidate.id === memberId);
+  if (!member) return null;
+  const stored = readBriefingPng(member.id, todayInHouseholdTz(now));
+  return {
+    language: householdLanguage(),
+    name: member.displayName,
+    png: stored.png ? stored.png.toString("base64") : null,
+    generating: stored.generating,
+  };
 }
 
 /** Gathers today's household view. Read-only: it never generates a briefing or writes a row. */
@@ -81,25 +111,16 @@ export function gatherLiteToday(lifecycle: PluginLifecycle, now: number): LiteTo
     })),
   }));
 
-  let briefings: LiteBriefing[] | null = null;
-  if (lifecycle.isActive("daily-briefing")) {
-    const optedIn = new Set(
-      listOptIns()
-        .filter((optIn) => optIn.enabled)
-        .map((optIn) => optIn.memberId)
-    );
-    briefings = members
-      .filter((member) => optedIn.has(member.id))
-      .map((member) => {
-        const stored = readBriefingPng(member.id, date);
-        return {
-          memberId: member.id,
-          name: member.displayName,
-          png: stored.png ? stored.png.toString("base64") : null,
-          generating: stored.generating,
-        };
-      });
-  }
+  const briefings: LiteBriefing[] | null =
+    briefingMembers(lifecycle)?.map((member) => {
+      const stored = readBriefingPng(member.id, date);
+      return {
+        memberId: member.id,
+        name: member.displayName,
+        ready: stored.png !== null,
+        generating: stored.generating,
+      };
+    }) ?? null;
 
   return {
     language,
@@ -114,7 +135,8 @@ export function gatherLiteToday(lifecycle: PluginLifecycle, now: number): LiteTo
 
 /** `GET /lite`: today's view for an old browser. Outside `/api`, so the access gate guards it;
  * the data needs a device key too, checked here against the same records as the API boundary.
- * Without a valid one the page offers the one-time setup instead. */
+ * Without a valid one the page offers the one-time setup instead. `?briefing=<memberId>` shows
+ * that member's slip on its own; an unknown member falls back to the day. */
 export async function liteRoutes(
   app: FastifyInstance,
   basePath: string,
@@ -134,6 +156,11 @@ export async function liteRoutes(
       const seconds = backoff.failure("api", request.ip);
       if (seconds) return sendAuthenticationBackoff(reply, seconds);
       return sendHtml(reply, renderLiteSetup(householdLanguage(), basePath, { lost: true }));
+    }
+    const { briefing } = request.query as { briefing?: unknown };
+    if (typeof briefing === "string") {
+      const view = gatherLiteBriefing(lifecycle, briefing, Date.now());
+      if (view) return sendHtml(reply, renderLiteBriefing(view));
     }
     return sendHtml(reply, renderLiteToday(gatherLiteToday(lifecycle, Date.now())));
   });

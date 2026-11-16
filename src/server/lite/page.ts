@@ -1,7 +1,8 @@
 // The lite page: today's household view as plain server-rendered HTML for browsers too old for
 // the SPA (an iPad stuck on iOS 12 has Safari 12; the SPA's styles need Safari 16.4). No
-// framework and no external assets: one HTML document that refreshes itself. Its only script is
-// the ES5 provisioning call on the setup page. Pure: the route gathers the data.
+// framework and no external assets: one screen that refreshes itself, laid out to fit an iPad
+// without scrolling, with each child's briefing slip one tap away on a screen of its own. Its only
+// script is the ES5 provisioning call on the setup page. Pure: the route gathers the data.
 
 import type { PeriodId, Slot } from "../../shared";
 
@@ -22,6 +23,15 @@ export interface LiteChoreColumn {
 
 export interface LiteBriefing {
   memberId: string;
+  name: string;
+  /** A stored slip exists for today. */
+  ready: boolean;
+  generating: boolean;
+}
+
+/** One child's briefing on a screen of its own. */
+export interface LiteBriefingView {
+  language: LiteLanguage;
   name: string;
   /** The stored slip as base64 PNG; null when there is none to show. */
   png: string | null;
@@ -57,8 +67,10 @@ const STRINGS = {
     chores: "Chores",
     noChores: "No chores today.",
     briefings: "Daily briefing",
+    briefingOf: "{name}'s briefing",
     noBriefing: "Not generated yet.",
     generating: "Being generated…",
+    back: "‹ Back",
     slot: { breakfast: "Breakfast", lunch: "Lunch", snack: "Snack", dinner: "Dinner" },
     period: { morning: "Morning", afternoon: "Afternoon", evening: "Evening", night: "Night" },
     setupTitle: "Connect this device",
@@ -85,8 +97,10 @@ const STRINGS = {
     chores: "Tareas",
     noChores: "Hoy no hay tareas.",
     briefings: "Resumen del día",
+    briefingOf: "Resumen de {name}",
     noBriefing: "Aún no se ha generado.",
     generating: "Generándose…",
+    back: "‹ Volver",
     slot: { breakfast: "Desayuno", lunch: "Comida", snack: "Merienda", dinner: "Cena" },
     period: { morning: "Mañana", afternoon: "Mediodía", evening: "Tarde", night: "Noche" },
     setupTitle: "Conectar este dispositivo",
@@ -106,46 +120,63 @@ const STRINGS = {
   },
 } as const;
 
+// Safari 12: no flex `gap`, no custom properties; floats and margins do the layout.
 const CSS = `
   * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
   body {
     margin: 0;
-    padding: 16px;
+    padding: 12px;
     background: #f5f2ed;
     color: #2b2926;
     font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
     font-size: 18px;
-    line-height: 1.35;
+    line-height: 1.3;
   }
-  header { margin-bottom: 12px; }
-  h1 { margin: 0; font-size: 30px; }
-  h2 { margin: 0 0 8px; font-size: 22px; }
-  h3 { margin: 10px 0 4px; font-size: 18px; }
+  header { margin: 0 4px 10px; }
+  header:after, .row:after { content: ""; display: table; clear: both; }
+  h1 { float: left; margin: 0; font-size: 28px; }
+  header .muted { float: right; margin: 8px 0 0; }
+  h2 { margin: 0 0 6px; font-size: 20px; }
+  h3 { margin: 0 0 4px; font-size: 19px; }
+  p { margin: 0; }
   .muted { color: #77726b; font-size: 15px; }
   .card {
-    margin-bottom: 14px;
-    padding: 12px 14px;
+    margin: 0 4px 8px;
+    padding: 10px 12px;
     border: 1px solid #e4dfd8;
     border-radius: 14px;
     background: #fdfbf8;
   }
+  .side { float: left; width: 38%; }
+  .main { float: left; width: 62%; }
+  .child { float: left; padding-right: 10px; }
   ul { margin: 0; padding: 0; list-style: none; }
-  li { padding: 3px 0; }
-  .time { display: inline-block; min-width: 4.2em; font-weight: 600; }
+  li { padding: 2px 0; }
+  .time { display: inline-block; min-width: 4.4em; font-weight: 600; }
   .who { color: #77726b; }
-  .done { color: #77726b; text-decoration: line-through; }
-  .mark { display: inline-block; width: 1.4em; }
-  .row:after { content: ""; display: table; clear: both; }
-  .half { float: left; width: 50%; padding-right: 14px; }
-  nav a {
-    display: inline-block;
-    margin: 0 8px 8px 0;
-    padding: 8px 14px;
-    border-radius: 999px;
+  .period { margin: 6px 0 1px; color: #77726b; font-size: 14px; text-transform: uppercase; }
+  .done { color: #9a948c; }
+  .done .name { text-decoration: line-through; }
+  .mark { display: inline-block; width: 1.3em; color: #5a5a40; font-weight: 700; }
+  .open {
+    display: block;
+    margin-top: 8px;
+    padding: 12px 14px;
+    border-radius: 12px;
     background: #5a5a40;
     color: #fff;
+    font-size: 18px;
+    font-weight: 600;
     text-decoration: none;
   }
+  .open .muted { color: #e8e6dc; }
+  .closed { background: #e4dfd8; color: #77726b; }
+  .closed .muted { color: #77726b; }
+  .bar { margin: 0 4px 10px; }
+  .bar:after { content: ""; display: table; clear: both; }
+  .bar .open { float: left; margin: 0 14px 0 0; padding: 10px 18px; }
+  .bar h1 { margin-top: 6px; }
   .slip { display: block; width: 100%; max-width: 576px; margin: 0 auto; background: #fff; }
   label { display: block; margin: 12px 0 6px; font-weight: 600; }
   input {
@@ -218,6 +249,7 @@ function mealsHtml(today: LiteToday, meals: NonNullable<LiteToday["meals"]>): st
 function choresHtml(today: LiteToday): string {
   const t = STRINGS[today.language];
   if (today.chores.length === 0) return `<p class="muted">${t.noChores}</p>`;
+  const width = `${Math.floor(10000 / today.chores.length) / 100}%`;
   return today.chores
     .map((column) => {
       const progress = column.progress
@@ -228,52 +260,70 @@ function choresHtml(today: LiteToday): string {
         .map((period) => {
           const chores = period.chores.map(
             (chore) =>
-              `<li${chore.completed ? ' class="done"' : ""}><span class="mark">${chore.completed ? "✅" : "⬜️"}</span>${escapeHtml(`${chore.icon ?? ""} ${chore.name}`.trim())}</li>`
+              `<li${chore.completed ? ' class="done"' : ""}><span class="mark">${chore.completed ? "✓" : "○"}</span>${chore.icon ? `${escapeHtml(chore.icon)} ` : ""}<span class="name">${escapeHtml(chore.name)}</span></li>`
           );
-          return `<p class="muted">${t.period[period.id]}</p><ul>${chores.join("")}</ul>`;
+          return `<p class="period">${t.period[period.id]}</p><ul>${chores.join("")}</ul>`;
         });
-      return `<h3>${escapeHtml(column.name)}${progress}</h3>${periods.join("")}`;
+      return `<div class="child" style="width:${width}"><h3>${escapeHtml(column.name)}${progress}</h3>${periods.join("")}</div>`;
     })
     .join("");
 }
 
 function briefingsHtml(today: LiteToday, briefings: LiteBriefing[]): string {
   const t = STRINGS[today.language];
-  const nav =
-    briefings.length > 1
-      ? `<nav>${briefings
-          .map((b) => `<a href="#briefing-${escapeHtml(b.memberId)}">${escapeHtml(b.name)}</a>`)
-          .join("")}</nav>`
-      : "";
-  const cards = briefings.map((briefing) => {
-    const content = briefing.png
-      ? `<img class="slip" alt="" src="data:image/png;base64,${briefing.png}">`
-      : `<p class="muted">${briefing.generating ? t.generating : t.noBriefing}</p>`;
-    return `<section class="card" id="briefing-${escapeHtml(briefing.memberId)}"><h2>${t.briefings} · ${escapeHtml(briefing.name)}</h2>${content}</section>`;
+  const buttons = briefings.map((briefing) => {
+    const name = escapeHtml(briefing.name);
+    if (briefing.ready) {
+      return `<a class="open" href="?briefing=${encodeURIComponent(briefing.memberId)}">${name} ›</a>`;
+    }
+    const state = briefing.generating ? t.generating : t.noBriefing;
+    return `<div class="open closed">${name} <span class="muted">${state}</span></div>`;
   });
-  return nav + cards.join("");
+  return `<section class="card"><h2>${t.briefings}</h2>${buttons.join("")}</section>`;
 }
 
-/** The household's day: agenda, meals, chores, then each child's stored briefing slip. */
+/** The household's day on one screen: agenda, meals and the briefing buttons beside every
+ * child's chores. */
 export function renderLiteToday(today: LiteToday): string {
   const t = STRINGS[today.language];
   const meals = today.meals
     ? `<section class="card"><h2>${t.meals}</h2>${mealsHtml(today, today.meals)}</section>`
     : "";
+  const briefings =
+    today.briefings && today.briefings.length > 0 ? briefingsHtml(today, today.briefings) : "";
   const body = `<header><h1>${escapeHtml(today.dateLabel)}</h1><p class="muted">${t.updated} ${today.updatedAt}</p></header>
 <div class="row">
-<div class="half">
+<div class="side">
 <section class="card"><h2>${t.agenda}</h2>${agendaHtml(today)}</section>
 ${meals}
+${briefings}
 </div>
-<div class="half">
-<section class="card"><h2>${t.chores}</h2>${choresHtml(today)}</section>
+<div class="main">
+<section class="card"><h2>${t.chores}</h2><div class="row">${choresHtml(today)}</div></section>
 </div>
-</div>
-${today.briefings ? briefingsHtml(today, today.briefings) : ""}`;
+</div>`;
   return documentHtml(
     today.language,
     t.title,
+    `<meta http-equiv="refresh" content="${LITE_REFRESH_SECONDS}">\n`,
+    body
+  );
+}
+
+/** One child's stored slip, with a way back to the day. It refreshes too, so a slip generated
+ * while it is open appears on its own. */
+export function renderLiteBriefing(view: LiteBriefingView): string {
+  const t = STRINGS[view.language];
+  const title = t.briefingOf.replace("{name}", view.name);
+  const content = view.png
+    ? `<img class="slip" alt="" src="data:image/png;base64,${view.png}">`
+    : `<p class="muted">${view.generating ? t.generating : t.noBriefing}</p>`;
+  const body = `<div class="bar"><a class="open" href="lite">${t.back}</a><h1>${escapeHtml(title)}</h1></div>
+<section class="card">${content}</section>
+<div class="bar"><a class="open" href="lite">${t.back}</a></div>`;
+  return documentHtml(
+    view.language,
+    title,
     `<meta http-equiv="refresh" content="${LITE_REFRESH_SECONDS}">\n`,
     body
   );

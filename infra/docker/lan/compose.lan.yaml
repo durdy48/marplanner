@@ -5,6 +5,9 @@
 #   docker compose --env-file infra/docker/.env.local \
 #     -f infra/docker/compose.yaml -f infra/docker/lan/compose.lan.yaml -p marplanner-home up --build -d
 services:
+  marplanner:
+    # Home deploy shares Docker's memory with other containers; come back after an OOM kill.
+    restart: unless-stopped
   caddy:
     image: caddy:2-alpine
     restart: unless-stopped

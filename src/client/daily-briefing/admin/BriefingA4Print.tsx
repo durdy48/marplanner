@@ -4,21 +4,11 @@ import { createPortal } from "react-dom";
 import { useT } from "@/i18n";
 import { authFetch } from "@/lib/credential";
 import { Button } from "@/components/ui/button";
-import {
-  A4_COLUMN_WIDTH_MM,
-  classifyRows,
-  columnCapacityRows,
-  layoutSlip,
-  mmPerRow,
-  type SlipSegment,
-} from "./a4Layout";
+import { A4_GAP_MM, classifyRows, fitSlip, type SlipSheet } from "./a4Layout";
 import { readSlipPixels } from "./slipPixels";
 
-interface Sheet {
+interface Sheet extends SlipSheet {
   url: string;
-  /** Millimetres of paper per raster row. */
-  scale: number;
-  pages: SlipSegment[][];
 }
 
 interface BriefingA4PrintProps {
@@ -30,7 +20,7 @@ interface BriefingA4PrintProps {
 }
 
 /** Prints the stored slip on an ordinary A4 printer through the browser's print dialog: the
- * raster is laid out in columns on a sheet that only exists on paper (globals.css hides it on
+ * raster is laid out in columns, as few as keep it on one page, on a sheet that only exists on paper (globals.css hides it on
  * screen and hides everything else in print). It bypasses the Printing queue, so it records no
  * `printedAt`. */
 export function BriefingA4Print({ memberId, date, disabled, onError }: BriefingA4PrintProps) {
@@ -61,8 +51,7 @@ export function BriefingA4Print({ memberId, date, disabled, onError }: BriefingA
       const { width, height, data } = await readSlipPixels(png);
       setSheet({
         url: URL.createObjectURL(png),
-        scale: mmPerRow(width),
-        pages: layoutSlip(classifyRows(data, width, height), columnCapacityRows(width)),
+        ...fitSlip(classifyRows(data, width, height), width),
       });
     } catch {
       onError(t("dailyBriefing.admin.printA4Error"));
@@ -104,7 +93,12 @@ export function BriefingA4Print({ memberId, date, disabled, onError }: BriefingA
         createPortal(
           <div ref={sheetRef} className="briefing-a4-sheet" data-testid="daily-briefing-a4-sheet">
             {sheet.pages.map((page, pageIndex) => (
-              <div key={pageIndex} className="briefing-a4-page">
+              <div
+                key={pageIndex}
+                className="briefing-a4-page"
+                // eslint-disable-next-line ui-policy/debt -- The column gap is shared with a4Layout's width arithmetic.
+                style={{ "--a4-gap": `${A4_GAP_MM}mm` } as CSSProperties}
+              >
                 {page.map((segment) => (
                   <div
                     key={segment.top}
@@ -112,9 +106,9 @@ export function BriefingA4Print({ memberId, date, disabled, onError }: BriefingA
                     // eslint-disable-next-line ui-policy/debt -- Each column's slice of the slip is passed as CSS custom properties to the print rules.
                     style={
                       {
-                        "--a4-column-width": `${A4_COLUMN_WIDTH_MM}mm`,
-                        "--a4-segment-top": `${segment.top * sheet.scale}mm`,
-                        "--a4-segment-height": `${segment.height * sheet.scale}mm`,
+                        "--a4-column-width": `${sheet.columnWidthMm}mm`,
+                        "--a4-segment-top": `${segment.top * sheet.mmPerRow}mm`,
+                        "--a4-segment-height": `${segment.height * sheet.mmPerRow}mm`,
                       } as CSSProperties
                     }
                   >

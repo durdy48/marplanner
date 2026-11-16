@@ -301,7 +301,7 @@
   .briefing-a4-page {
     display: flex;
     align-items: flex-start;
-    gap: 10mm;
+    gap: var(--a4-gap);
     padding: 10mm;
     break-after: page;
   }

@@ -226,10 +226,12 @@ split into columns.
 
 **Done: A. Browser print.** Admin → Daily briefing → Briefings has a **Print on A4** button
 (`src/client/daily-briefing/admin/BriefingA4Print.tsx`). It does not re-render anything: it
-takes the stored slip image, cuts it between blocks and places it in two 90 mm columns on an
-A4 page (125% of thermal size), then opens the browser's print dialog. It first used three 60 mm
-columns (83%); on paper the type was too small to read at the table, so it now takes about one
-more page for the larger text: the all-blocks slip above takes two pages instead of one.
+takes the stored slip image, cuts it between blocks and places it in columns on one side of an
+A4 page, then opens the browser's print dialog. The household wants the day on a single side of
+paper, so the column count follows the slip's length: two 91 mm columns (126% of thermal size)
+for a short slip, three 58 mm (81%) or four 41.5 mm (58%) for longer ones. Only a slip too long
+for four columns goes on to a second page. A fixed count failed both ways: three columns printed
+short slips smaller than needed, and two pushed long ones onto a second page.
 Limits:
 
 - It needs the stored image, which only exists when the briefing was generated with the Printing

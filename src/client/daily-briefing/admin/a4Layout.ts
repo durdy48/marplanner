@@ -3,12 +3,16 @@
 // is re-rendered: the sheet shows the stored raster, so paper and thermal slip carry the same
 // content.
 
-/** Columns of slip per A4 page. Two, not three: three 60 mm columns printed the text at 83% of
- * the thermal slip, too small to read at the table; 90 mm prints it at 125%, at the cost of
- * about one more page for a long slip. */
-export const A4_COLUMNS = 2;
-/** Printed width of one column: (210 − 2 × 10 margin − 10 gap) / 2. */
-export const A4_COLUMN_WIDTH_MM = 90;
+/** Fewest and most columns of slip on one A4 page. The sheet uses the fewest columns, so the
+ * largest text, with which the whole slip still fits on one side of the paper: two 91 mm
+ * columns print the text at 126% of the thermal slip, four 41.5 mm columns at 58%. Only a slip
+ * too long even for four columns goes on to a second page. */
+export const A4_MIN_COLUMNS = 2;
+export const A4_MAX_COLUMNS = 4;
+/** Gap between two columns; the page padding (10 mm) is in globals.css. */
+export const A4_GAP_MM = 8;
+/** Usable page width: 210 − 2 × 10 margin. */
+const A4_CONTENT_WIDTH_MM = 190;
 /** Usable column height. Two millimetres short of 297 − 2 × 10, so rounding in the browser's
  * print layout never pushes a column onto an extra page. */
 const A4_COLUMN_HEIGHT_MM = 275;
@@ -58,19 +62,23 @@ export function classifyRows(pixels: Uint8ClampedArray, width: number, height: n
   return kinds;
 }
 
-/** Rows of slip that fit in one A4 column at the printed scale. */
-export function columnCapacityRows(slipWidth: number): number {
-  return Math.floor((A4_COLUMN_HEIGHT_MM * slipWidth) / A4_COLUMN_WIDTH_MM);
+/** Printed width of one column when `columns` share the page. */
+export function columnWidthMm(columns: number): number {
+  return (A4_CONTENT_WIDTH_MM - (columns - 1) * A4_GAP_MM) / columns;
 }
 
-/** Millimetres of paper per raster row (and per raster column: the scale is uniform). */
-export function mmPerRow(slipWidth: number): number {
-  return A4_COLUMN_WIDTH_MM / slipWidth;
+/** Rows of slip that fit in one A4 column of the given width. */
+export function columnCapacityRows(slipWidth: number, widthMm: number): number {
+  return Math.floor((A4_COLUMN_HEIGHT_MM * slipWidth) / widthMm);
 }
 
 /** Fills columns top to bottom, page after page. A column ends at the last block gap that fits;
  * a block taller than a column is cut at its last empty row, or mid-content when it has none. */
-export function layoutSlip(kinds: Uint8Array, capacity: number): SlipSegment[][] {
+export function layoutSlip(
+  kinds: Uint8Array,
+  capacity: number,
+  columnsPerPage: number
+): SlipSegment[][] {
   const height = kinds.length;
   const columns: SlipSegment[] = [];
   let top = 0;
@@ -93,8 +101,32 @@ export function layoutSlip(kinds: Uint8Array, capacity: number): SlipSegment[][]
     top = end;
   }
   const pages: SlipSegment[][] = [];
-  for (let i = 0; i < columns.length; i += A4_COLUMNS) {
-    pages.push(columns.slice(i, i + A4_COLUMNS));
+  for (let i = 0; i < columns.length; i += columnsPerPage) {
+    pages.push(columns.slice(i, i + columnsPerPage));
   }
   return pages;
+}
+
+/** The slip placed on A4 at one scale. */
+export interface SlipSheet {
+  columnWidthMm: number;
+  /** Millimetres of paper per raster row (and per raster column: the scale is uniform). */
+  mmPerRow: number;
+  pages: SlipSegment[][];
+}
+
+/** Lays the slip out in the fewest columns that keep it on one page, or in the most columns
+ * when no count does. */
+export function fitSlip(kinds: Uint8Array, slipWidth: number): SlipSheet {
+  let sheet: SlipSheet | null = null;
+  for (let columns = A4_MIN_COLUMNS; columns <= A4_MAX_COLUMNS; columns += 1) {
+    const widthMm = columnWidthMm(columns);
+    sheet = {
+      columnWidthMm: widthMm,
+      mmPerRow: widthMm / slipWidth,
+      pages: layoutSlip(kinds, columnCapacityRows(slipWidth, widthMm), columns),
+    };
+    if (sheet.pages.length === 1) break;
+  }
+  return sheet as SlipSheet;
 }

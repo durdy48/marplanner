@@ -2,7 +2,7 @@ import { cleanup, fireEvent, render, screen, within } from "@testing-library/rea
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { Shell } from "@/shell/Shell";
-import { resolveHouseholdRoute } from "@/shell/routes";
+import { PHONE_QUERY, resolveHouseholdRoute } from "@/shell/routes";
 import type { PluginCatalogEntry, PluginId } from "../../src/shared/plugins";
 
 const PLUGIN_IDS: readonly PluginId[] = [
@@ -217,6 +217,21 @@ describe("household shell routes", () => {
     expect(await screen.findByRole("heading", { name: "Calendar" })).toBeInTheDocument();
     expect(screen.queryByTestId("home-surface")).not.toBeInTheDocument();
     expect(screen.getByRole("navigation", { name: "Household navigation" })).toBe(nav);
+  });
+
+  it("opens a phone on the quick-changes page, once, and leaves Home reachable", async () => {
+    vi.stubGlobal(
+      "matchMedia",
+      vi.fn((query: string) => ({ matches: query === PHONE_QUERY }))
+    );
+    render(<Shell />);
+    await waitForPluginCatalog();
+    expect(window.location.pathname).toBe("/admin/quick");
+    expect(await screen.findByTestId("admin-pin-keypad")).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("link", { name: "Home" }));
+    expect(window.location.pathname).toBe("/");
+    expect(await screen.findByTestId("home-surface")).toBeInTheDocument();
   });
 
   it.each(["/daily-briefing", "/missing", "/administrator", "/calendar/extra"])(

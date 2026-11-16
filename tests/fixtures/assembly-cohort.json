@@ -4682,6 +4682,7 @@
             "household shell routes keeps all four named family links at /meals",
             "household shell routes keeps nested runtime mount links and navigation on the requested family route",
             "household shell routes navigates from Home to the real Calendar surface without reloading the chrome",
+            "household shell routes opens a phone on the quick-changes page, once, and leaves Home reachable",
             "household shell routes renders a recoverable not-found outcome at /daily-briefing",
             "household shell routes renders a recoverable not-found outcome at /missing",
             "household shell routes renders a recoverable not-found outcome at /administrator",

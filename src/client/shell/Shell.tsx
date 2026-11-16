@@ -15,7 +15,7 @@ import { PrinterSessionProvider } from "@/printing/PrinterSession";
 import { PluginCatalogProvider } from "@/plugins/PluginCatalogProvider";
 import { PluginContribution } from "@/plugins/contributions";
 import { HouseholdChrome, UnknownFamilyRoute } from "./HouseholdChrome";
-import { resolveHouseholdRoute } from "./routes";
+import { landingPathname, resolveHouseholdRoute } from "./routes";
 import { ScreenAwake } from "./ScreenAwake";
 import { log } from "@/lib/logger";
 import { readPublicDefaultCredentials } from "@/lib/default-credentials";
@@ -125,7 +125,7 @@ export function Shell() {
   const [retryAfter, setRetryAfter] = useState<number | null>();
   const [provisioning, setProvisioning] = useState(false);
   // Determine current path for SPA routing (no router - parse appPathname())
-  const [currentPath, setCurrentPath] = useState<string>(appPathname());
+  const [currentPath, setCurrentPath] = useState<string>(landingPathname);
 
   useEffect(() => {
     // FR-031 / ADR-059: provisioned state comes from the device-credential

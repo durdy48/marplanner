@@ -60,6 +60,19 @@ export function resolveHouseholdRoute(path: string): HouseholdRoute {
   return { kind: path.startsWith("/admin/") ? "unknown-admin" : "unknown-family", path };
 }
 
+/** Narrower than any household tablet: a phone, where Home's kiosk layout does not fit. */
+export const PHONE_QUERY = "(max-width: 639px)";
+
+/** The path the shell opens on. A phone loading Home lands on the quick-changes page instead;
+ * only on load, so Home stays reachable from the household navigation afterwards. */
+export function landingPathname(): string {
+  const path = appPathname();
+  if (path !== "/" || !window.matchMedia?.(PHONE_QUERY).matches) return path;
+  const quick: KnownHouseholdPath = "/admin/quick";
+  window.history.replaceState(null, "", appUrl(quick));
+  return quick;
+}
+
 /** Keep the shell's existing popstate seam for same-document navigation and history. */
 export function navigateHousehold(path: KnownHouseholdPath): void {
   if (appPathname() === path) return;

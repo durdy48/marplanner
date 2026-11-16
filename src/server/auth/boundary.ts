@@ -12,7 +12,7 @@ import { authenticationBackoff, sendAuthenticationBackoff } from "./throttle";
 
 const PROVISION_PATH = "/api/auth/provision";
 
-function readDeviceCookie(cookieHeader: string | undefined): string | undefined {
+export function readDeviceCookie(cookieHeader: string | undefined): string | undefined {
   if (!cookieHeader) return undefined;
   for (const part of cookieHeader.split(";")) {
     const trimmed = part.trim();
@@ -32,6 +32,27 @@ function readBearerKey(authorization: string | undefined): string | undefined {
   if (!authorization?.startsWith("Bearer ")) return undefined;
   const rawKey = authorization.slice("Bearer ".length);
   return rawKey.length > 0 ? rawKey : undefined;
+}
+
+export type ApiKeyLookup =
+  { status: "active"; id: string } | { status: "unknown" | "revoked" | "expired" };
+
+/** FR-004: hash the raw key and look up its record (no cache): it must exist, have
+ * revoked_at NULL and expires_at NULL or in the future. */
+export async function lookupApiKey(rawKey: string): Promise<ApiKeyLookup> {
+  const orm = drizzle(getDb());
+  const rows = await orm
+    .select()
+    .from(apiKeys)
+    .where(eq(apiKeys.keyHash, hashKey(rawKey)))
+    .limit(1);
+  if (rows.length === 0) return { status: "unknown" };
+  const keyRecord = rows[0];
+  if (keyRecord.revokedAt !== null) return { status: "revoked" };
+  if (keyRecord.expiresAt !== null && keyRecord.expiresAt <= Date.now()) {
+    return { status: "expired" };
+  }
+  return { status: "active", id: keyRecord.id };
 }
 
 /** Classify a request for the `/api/*` boundary; `null` means it is not an API request.
@@ -118,30 +139,14 @@ export async function authBoundary(app: FastifyInstance, basePath = ""): Promise
       return rejectCredential(401, "API key is required");
     }
 
-    // FR-004: Per-request active-record lookup — hash the key, then query the
-    // database for a matching row that is active (not revoked, not expired).
-    const keyHash = hashKey(rawKey);
-    const db = getDb();
-    const orm = drizzle(db);
-
-    const rows = await orm.select().from(apiKeys).where(eq(apiKeys.keyHash, keyHash)).limit(1);
-
-    // No matching record → unknown/invalid key.
-    if (rows.length === 0) {
-      return rejectCredential(401, "Invalid API key");
-    }
-
-    const keyRecord = rows[0];
-
-    // Check revoked: revoked_at must be NULL.
-    if (keyRecord.revokedAt !== null) {
-      return rejectCredential(403, "API key has been revoked");
-    }
-
-    // Check expired: expires_at must be NULL or in the future.
-    const now = Date.now();
-    if (keyRecord.expiresAt !== null && keyRecord.expiresAt <= now) {
-      return rejectCredential(403, "API key has expired");
+    // FR-004: Per-request active-record lookup.
+    const key = await lookupApiKey(rawKey);
+    if (key.status !== "active") {
+      if (key.status === "unknown") return rejectCredential(401, "Invalid API key");
+      return rejectCredential(
+        403,
+        `API key has ${key.status === "revoked" ? "been revoked" : "expired"}`
+      );
     }
 
     // FR-005: At this point the key is valid — attach it to the request so
@@ -151,7 +156,7 @@ export async function authBoundary(app: FastifyInstance, basePath = ""): Promise
       apiKeyId: string;
       apiKeyTransport: "cookie" | "bearer";
     };
-    authenticatedRequest.apiKeyId = keyRecord.id;
+    authenticatedRequest.apiKeyId = key.id;
     authenticatedRequest.apiKeyTransport = bearerKey ? "bearer" : "cookie";
   });
 }

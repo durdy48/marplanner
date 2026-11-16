@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import { createHash } from "node:crypto";
 import path from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { configurePluginJobLifecycleGate, createScheduler } from "../../src/server/scheduler/index";
@@ -192,6 +193,7 @@ const GET_ROUTE_TEMPLATES = [
   "/api/time-announcements",
   "/api/weather",
   "/health",
+  "/lite",
 ].sort();
 
 // Computed once at module load ("now" whenever the suite actually runs —
@@ -339,6 +341,11 @@ describe("reads stay pure across every GET surface (US3 — BACKGROUND-JOBS-SCHE
       "INSERT INTO api_keys (id, key_hash, scope, kind, created_at) VALUES (?, ?, '*', 'device', ?)"
     ).run(`${Date.now()}-device`, hashKey(deviceKey), now);
 
+    // `/lite` sits behind the access gate as well as the device key.
+    const gateToken = "mpg-scheduler-sweep";
+    process.env.MP_ACCESS_TOKEN = gateToken;
+    const gateCookie = createHash("sha256").update(gateToken).digest("hex");
+
     const app = await buildApp();
     try {
       const before = snapshotAllTables(db);
@@ -350,8 +357,9 @@ describe("reads stay pure across every GET surface (US3 — BACKGROUND-JOBS-SCHE
           url: toRequestUrl(template),
           ...(isPluginCatalog
             ? { headers: { authorization: `Bearer ${sweepKey}` } }
-            : { cookies: { mp_device_key: deviceKey } }),
+            : { cookies: { mp_device_key: deviceKey, mp_gate: gateCookie } }),
         });
+        if (template === "/lite") expect(res.body).toContain('http-equiv="refresh"');
         // Not a contract test — a fake id 404ing or an unfilled optional
         // filter 400ing is expected and fine (REQUIRED_QUERY supplies
         // valid-shaped values for the routes that actually need one, so
@@ -370,6 +378,7 @@ describe("reads stay pure across every GET surface (US3 — BACKGROUND-JOBS-SCHE
 
       expect(after).toEqual(before);
     } finally {
+      delete process.env.MP_ACCESS_TOKEN;
       await app.close();
     }
   });

@@ -5701,6 +5701,17 @@
             "built foundation entrypoint keeps scheduler registrations but arms no smoke timer when disabled",
             "built foundation entrypoint SIGTERM closes a never-requested TCP connection without reaching the shutdown watchdog"
           ],
+          "tests/integration/lite-page.test.ts": [
+            "GET /lite is behind the access gate",
+            "GET /lite offers the one-time setup to a browser without a device key",
+            "GET /lite asks to connect again when the device key was revoked",
+            "GET /lite shows today's agenda, chores and stored briefing slips to a provisioned device",
+            "GET /lite speaks Spanish, puts all-day events first and lists today's meals",
+            "GET /lite leaves out meals and briefings while their plugins are inactive",
+            "GET /lite backs off after repeated unknown device keys",
+            "renderLiteToday speaks the household's language and skips empty day periods",
+            "renderLiteToday leaves out the sections of inactive plugins and says when a day is empty"
+          ],
           "tests/integration/member-color-migration-0019.test.ts": [
             "member colour current baseline enforces the curated colour set, supplies the default, and exposes it through public reads"
           ],
@@ -9004,6 +9015,21 @@
           "branches": 100
         }
       },
+      "src/server/lite/page.ts": {
+        "layer": "server",
+        "minimumTotals": {
+          "lines": 42,
+          "statements": 45,
+          "functions": 16,
+          "branches": 31
+        },
+        "minimumRates": {
+          "lines": 100,
+          "statements": 100,
+          "functions": 100,
+          "branches": 96.77
+        }
+      },
       "src/server/modules/calendar/external-sources.ts": {
         "layer": "server",
         "minimumTotals": {
@@ -11043,6 +11069,21 @@
           "statements": 100,
           "functions": 100,
           "branches": 100
+        }
+      },
+      "src/server/routes/lite.ts": {
+        "layer": "server",
+        "minimumTotals": {
+          "lines": 47,
+          "statements": 54,
+          "functions": 20,
+          "branches": 26
+        },
+        "minimumRates": {
+          "lines": 97.87,
+          "statements": 98.14,
+          "functions": 95,
+          "branches": 84.61
         }
       },
       "src/server/routes/meals.ts": {

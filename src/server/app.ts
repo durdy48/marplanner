@@ -25,6 +25,7 @@ import { timeAnnouncementsRoutes } from "./routes/time-announcements";
 import { weatherRoutes } from "./routes/weather";
 import { networkDevicesRoutes } from "./routes/network-devices";
 import { printingRoutes } from "./routes/printing";
+import { liteRoutes } from "./routes/lite";
 import { accessGate, hasValidGateCookie, sendGateForm } from "./auth/gate";
 import { pluginRoutes } from "./plugins/routes";
 import type { PluginLifecycle } from "./plugins/lifecycle";
@@ -211,6 +212,7 @@ export async function buildApp(opts?: BuildAppOptions): Promise<FastifyInstance>
       }
       await pluginRoutes(app, pluginLifecycle);
       await openApiDocsRoutes(app);
+      await liteRoutes(app, basePath, pluginLifecycle);
 
       // FR-028 / ADR-059 §5: serve the built SPA same-origin from the CLIENT build dir
       // ONLY (dist/client/). The server bundle lives OUTSIDE this root (dist/server/) so

@@ -36,6 +36,7 @@ export const ALL_SCHEMA_TABLES: readonly string[] = [
   "drizzle_universe_migrations",
   "installation_lineage",
   "meal_entries",
+  "meal_entry_skips",
   "meal_plans",
   "members",
   "network_devices",

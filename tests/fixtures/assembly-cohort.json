@@ -259,6 +259,10 @@
     },
     {
       "method": "DELETE",
+      "path": "/api/meal-entries/{id}/skips/{date}"
+    },
+    {
+      "method": "DELETE",
       "path": "/api/network-devices/{id}"
     },
     {
@@ -328,6 +332,10 @@
     {
       "method": "GET",
       "path": "/api/menu"
+    },
+    {
+      "method": "GET",
+      "path": "/api/menu/skipped"
     },
     {
       "method": "GET",
@@ -516,6 +524,10 @@
     {
       "method": "PUT",
       "path": "/api/daily-messages"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/meal-entries/{id}/skips/{date}"
     },
     {
       "method": "PUT",
@@ -1581,7 +1593,7 @@
             "daily-messages-window (US2 window list + delete + missing-vs-empty) delete removes an existing message (204), leaving it absent on subsequent reads"
           ],
           "tests/boundary/data-ownership.test.ts": [
-            "data-ownership — table inventory (guards the forbidden-set derivation itself) schema.ts declares exactly 37 sqliteTable definitions",
+            "data-ownership — table inventory (guards the forbidden-set derivation itself) schema.ts declares exactly 38 sqliteTable definitions",
             "data-ownership — table inventory (guards the forbidden-set derivation itself) per-plugin forbidden-table counts (all tables minus the plugin's own)",
             "data-ownership — schema.ts member-FK counts (source-level, INV-02) plugin tables (reminder_assignment, daily_messages) have 0 member FKs",
             "data-ownership — schema.ts member-FK counts (source-level, INV-02) the 3 core tables keep their member FK (calendar_assignments, routine_assignments, chore_completions)",
@@ -1942,7 +1954,9 @@
             "meals-menu boundary tests deactivating one of two active plans drops only its contribution; reactivating restores it (AC-05)",
             "meals-menu boundary tests editing a recurring entry's content changes EVERY matching weekday — no per-date skip (AC-04)",
             "meals-menu boundary tests GET /api/menu/week?date= returns 7 local dates starting at weekStartDay, each grouped by slot",
-            "meals-menu boundary tests tags every menu item with its origin plan: the plan id for recurring, null for one-off (FR-025)"
+            "meals-menu boundary tests tags every menu item with its origin plan: the plan id for recurring, null for one-off (FR-025)",
+            "meals-menu boundary tests skips a recurring entry on one date only, lists it as skipped and puts it back",
+            "meals-menu boundary tests refuses to skip a one-off entry, another weekday, an unknown entry or an invalid date"
           ],
           "tests/boundary/meals-plans.test.ts": [
             "meals-plans boundary tests POST /api/meal-plans creates an active plan",
@@ -4465,7 +4479,8 @@
             "QuickChanges starts on tomorrow and adds a one-off meal to it",
             "QuickChanges adds a one-hour appointment for the chosen people, or an all-day one without a time",
             "QuickChanges writes a note on a child's briefing and says when it replaces one",
-            "QuickChanges lists the day and removes one-off meals and notes, never planned meals",
+            "QuickChanges lists the day, removes one-off meals and notes, and takes a planned meal out of that day only",
+            "QuickChanges adds a meal instead of the planned one by default, or as well as it",
             "QuickChanges keeps the form and reports a failed save, and a plan that cannot load",
             "QuickChanges moves to another day from the date field"
           ],

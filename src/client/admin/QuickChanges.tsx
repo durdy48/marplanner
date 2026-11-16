@@ -1,4 +1,4 @@
-import { Trash2 } from "lucide-react";
+import { RotateCcw, Trash2 } from "lucide-react";
 import { useCallback, useEffect, useState, type FormEvent } from "react";
 
 import {
@@ -43,6 +43,8 @@ const KIND_LABEL: Record<Kind, MessageKey> = {
 
 interface DayPlan {
   menu: MenuItem[];
+  /** Weekly-plan meals left out of this day only. */
+  skipped: MenuItem[];
   events: FeedItem[];
   notes: DailyMessage[];
 }
@@ -65,9 +67,10 @@ async function send(path: string, method: string, body?: unknown): Promise<Respo
   return response;
 }
 
-/** Small changes for one day, from a phone: a one-off meal, an appointment, or a note on a
- * child's briefing, with what that day already holds underneath. Everything goes through the
- * same endpoints as the full admin pages. */
+/** Small changes for one day, from a phone: a one-off meal (instead of, or as well as, what the
+ * weekly plan has in that slot), an appointment, or a note on a child's briefing, with what that
+ * day already holds underneath. Weekly-plan meals can be left out of that day only and put back.
+ * Everything goes through the same endpoints as the full admin pages. */
 export function QuickChanges() {
   const { language, t } = useTranslation();
   const { timezone } = useHouseholdSettings();
@@ -87,6 +90,7 @@ export function QuickChanges() {
 
   const [slot, setSlot] = useState<Slot>("lunch");
   const [mealText, setMealText] = useState("");
+  const [replacePlanned, setReplacePlanned] = useState(true);
   const [title, setTitle] = useState("");
   const [time, setTime] = useState("");
   const [eventMembers, setEventMembers] = useState<string[]>([]);
@@ -131,8 +135,9 @@ export function QuickChanges() {
     });
     void (async () => {
       try {
-        const [menu, events, notes] = await Promise.all([
+        const [menu, skipped, events, notes] = await Promise.all([
           mealsActive ? readJson<MenuItem[]>(`/api/menu?date=${date}`) : [],
+          mealsActive ? readJson<MenuItem[]>(`/api/menu/skipped?date=${date}`) : [],
           readJson<FeedItem[]>(`/api/calendar/events?${range.toString()}`),
           notesActive
             ? Promise.all(
@@ -153,6 +158,7 @@ export function QuickChanges() {
               Date.parse(a.occurrenceStart) - Date.parse(b.occurrenceStart)
           ),
           menu: [...menu].sort((a, b) => SLOTS.indexOf(a.slot) - SLOTS.indexOf(b.slot)),
+          skipped,
           notes,
         });
       } catch {
@@ -197,8 +203,14 @@ export function QuickChanges() {
     if (kind === "meal") {
       const note = mealText.trim();
       if (!note) return;
+      const replaced = replacePlanned ? plannedInSlot : [];
       void run(
-        () => send("/api/meal-entries", "POST", { kind: "oneoff", date, slot, note }),
+        async () => {
+          await send("/api/meal-entries", "POST", { kind: "oneoff", date, slot, note });
+          for (const item of replaced) {
+            await send(`/api/meal-entries/${item.entryId}/skips/${date}`, "PUT");
+          }
+        },
         () => setMealText("")
       );
     } else if (kind === "event") {
@@ -250,6 +262,15 @@ export function QuickChanges() {
       ? t("quickChanges.allDay")
       : formatInstantAsDateTimeLocal(event.occurrenceStart, timezone).slice(11);
   const existingNote = plan?.notes.find((note) => note.memberId === noteMember);
+  // Weekly-plan meals in the chosen slot, which a new meal can stand in for that day.
+  const plannedInSlot =
+    plan?.menu.filter((item) => item.slot === slot && item.source === "recurring") ?? [];
+  const meals = plan
+    ? [
+        ...plan.menu.map((item) => ({ item, skipped: false })),
+        ...plan.skipped.map((item) => ({ item, skipped: true })),
+      ].sort((a, b) => SLOTS.indexOf(a.item.slot) - SLOTS.indexOf(b.item.slot))
+    : [];
 
   return (
     <div className="mx-auto flex w-full max-w-xl flex-col gap-5" data-testid="quick-changes">
@@ -327,6 +348,28 @@ export function QuickChanges() {
                 data-testid="quick-meal-text"
               />
             </Field>
+            {plannedInSlot.length > 0 && (
+              <ChoicePills
+                groupLabel={t("quickChanges.meal.planned")}
+                value={replacePlanned ? "replace" : "alongside"}
+                onChange={(value) => setReplacePlanned(value === "replace")}
+                options={[
+                  {
+                    value: "replace",
+                    label: t("quickChanges.meal.replace").replace(
+                      "{labels}",
+                      plannedInSlot.map((item) => item.label).join(", ")
+                    ),
+                    "data-testid": "quick-meal-replace",
+                  },
+                  {
+                    value: "alongside",
+                    label: t("quickChanges.meal.alongside"),
+                    "data-testid": "quick-meal-alongside",
+                  },
+                ]}
+              />
+            )}
           </>
         )}
 
@@ -403,7 +446,7 @@ export function QuickChanges() {
           </h2>
           {!plan ? (
             <p className="text-muted-foreground">…</p>
-          ) : plan.menu.length + plan.events.length + plan.notes.length === 0 ? (
+          ) : meals.length + plan.events.length + plan.notes.length === 0 ? (
             <p className="text-muted-foreground">{t("quickChanges.nothing")}</p>
           ) : (
             <ul className="bg-card divide-border m-0 list-none divide-y rounded-2xl border p-0 shadow-sm">
@@ -418,13 +461,14 @@ export function QuickChanges() {
                   )}
                 </li>
               ))}
-              {plan.menu.map((item) => (
+              {meals.map(({ item, skipped }) => (
                 <li key={item.entryId} className="flex items-center gap-2 px-4 py-3">
-                  <span className="flex-1">
+                  <span className={skipped ? "text-muted-foreground flex-1" : "flex-1"}>
                     <span className="font-semibold">{t(`meals.slot.${item.slot}`)}</span>{" "}
-                    {item.label}
+                    <span className={skipped ? "line-through" : undefined}>{item.label}</span>
+                    {skipped && <> · {t("quickChanges.skipped")}</>}
                   </span>
-                  {item.source === "oneoff" && (
+                  {item.source === "oneoff" ? (
                     <Button
                       type="button"
                       variant="ghost"
@@ -440,6 +484,27 @@ export function QuickChanges() {
                       }
                     >
                       <Trash2 aria-hidden="true" />
+                    </Button>
+                  ) : (
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="icon"
+                      aria-label={t(skipped ? "quickChanges.restore" : "quickChanges.skip")}
+                      disabled={saving}
+                      data-testid={`quick-${skipped ? "restore" : "skip"}-meal-${item.entryId}`}
+                      onClick={() =>
+                        void run(
+                          () =>
+                            send(
+                              `/api/meal-entries/${item.entryId}/skips/${date}`,
+                              skipped ? "DELETE" : "PUT"
+                            ),
+                          () => undefined
+                        )
+                      }
+                    >
+                      {skipped ? <RotateCcw aria-hidden="true" /> : <Trash2 aria-hidden="true" />}
                     </Button>
                   )}
                 </li>

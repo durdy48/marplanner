@@ -60,7 +60,7 @@ not-found, and any racing read renders a tombstone rather than erroring.
 
 - **FR-004**: Given a derived menu, when its entries are ordered, then they MUST follow the canonical order — recurring entries before one-off, then `meal_plan` name ASC, `mealPlanId` ASC (tie-breaking equal names), `createdAt` ASC, then entry ID ASC — so the same logical menu always renders identically and briefing snapshots are reproducible. Contract: MEALS-RECIPES-INV-04.
 
-- **FR-005**: Given a recurring entry, when a single matching date should be skipped, then no per-occurrence skip MUST exist — editing or deactivating the entry or plan MUST change every matching weekday — and a non-always-recurring meal MUST instead be entered as a one-off entry. Contract: MEALS-RECIPES-INV-05.
+- **FR-005**: Given a recurring entry, when a single matching date should differ, then editing or deactivating the entry or plan MUST still change every matching weekday, the entry MAY be left out of that one date by a skip (FR-027), and a non-always-recurring meal MUST be entered as a one-off entry. Contract: MEALS-RECIPES-INV-05.
 
 - **FR-006**: Given any recipe, plan, or entry, when it is created or targeted, then it MUST be household-wide only with no per-member targeting field accepted (the per-member seam is deferred). Contract: MEALS-RECIPES-INV-06.
 
@@ -86,7 +86,7 @@ not-found, and any racing read renders a tombstone rather than erroring.
 
 - **FR-017**: Given a `(date, slot)`, when its menu is read, then it MUST equal the on-read union of active-plan recurring entries matching the weekday plus one-off entries for the date in canonical order, no occurrence rows MUST persist, and two reads of an unchanged menu MUST match exactly. Contract: MEALS-RECIPES-AC-03.
 
-- **FR-018**: Given a recurring entry or its plan, when it is edited or deactivated, then every matching weekday MUST change and there MUST be no single-date skip. Contract: MEALS-RECIPES-AC-04.
+- **FR-018**: Given a recurring entry or its plan, when it is edited or deactivated, then every matching weekday MUST change; only a skip (FR-027) affects a single date. Contract: MEALS-RECIPES-AC-04.
 
 - **FR-019**: Given more than one active `meal_plan`, when a menu is derived, then the active plans MUST union additively. Contract: MEALS-RECIPES-AC-05.
 
@@ -101,6 +101,7 @@ not-found, and any racing read renders a tombstone rather than erroring.
 - **FR-024**: Given a consumer (Daily Briefing or dashboard), when it requests a slot's resolved labels, then it MUST receive a per-slot resolved-label list and the briefing MUST freeze that list verbatim at generation time. Contract: MEALS-RECIPES-AC-10.
 - **FR-025**: Given a derived menu item (day, slot-filtered or week read), then it MUST carry `planId`: the id of the meal plan whose recurring entry produced it, or `null` for a one-off, derived on read with no stored column and no backfill. Contract: none (admin parity).
 - **FR-026**: Given the week grid on `/meals` or the admin Preview, then each meal MUST be tinted with its origin colour (one-off warm grey; each plan an automatic colour by plan creation order), free-text meals MUST render in italics, and origin pills ("One-off" plus every active plan) MUST highlight the selected origins' meals and grey the rest in place without hiding, reordering or disabling any meal. Contract: none (admin parity).
+- **FR-027**: Given a recurring entry and a date on its weekday, when it is skipped (`PUT /api/meal-entries/{id}/skips/{date}`), then that date's derived menu (day, slot and week reads, and every consumer of them) MUST leave it out while other dates keep it; `GET /api/menu/skipped?date=` MUST list it, and `DELETE` on the same path MUST put it back. Both writes MUST be idempotent; a one-off entry or a date on another weekday MUST be refused with 400, and deleting the entry MUST delete its skips (`ADR-068`). Contract: MEALS-RECIPES-INV-05.
 
 ### Key Entities
 
@@ -136,5 +137,5 @@ not-found, and any racing read renders a tombstone rather than erroring.
   sanitization is handled at the interface layer (the domain stores text verbatim).
 - The shared parent/admin write model and household/kiosk read visibility are provided
   per ADR-013/ADR-030; no meals-specific permission model is introduced.
-- Per-member meal targeting (ADR-002) and per-date recurring-entry skip (Option B) are
-  deferred future seams, not realized here.
+- Per-member meal targeting (ADR-002) is a deferred future seam, not realized here. The
+  per-date recurring-entry skip (Option B) was added later by `ADR-068`.

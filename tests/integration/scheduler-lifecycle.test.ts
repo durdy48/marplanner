@@ -169,6 +169,7 @@ const GET_ROUTE_TEMPLATES = [
   "/api/meal-plans/:id/entries",
   "/api/members",
   "/api/menu",
+  "/api/menu/skipped",
   "/api/menu/week",
   "/api/network-devices",
   "/api/network-devices/live-clients",
@@ -220,6 +221,7 @@ const REQUIRED_QUERY: Record<string, string> = {
   // getMenu/getWeekMenu only validate the date's SHAPE (isStrictCalendarDate),
   // never its recency — a fixed date is fine here, unlike calendar/events.
   "/api/menu": "date=2026-01-01",
+  "/api/menu/skipped": "date=2026-01-01",
   "/api/menu/week": "date=2026-01-01",
   // getReminders returns [] (200) for a memberId that isn't an active
   // member — it never 404s/400s on an unknown-but-well-shaped id.

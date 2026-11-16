@@ -1010,6 +1010,10 @@ type MenuRow = {
 // result set" rather than sorting correctly. Only entries of an ACTIVE plan
 // matching the date's weekday contribute to the recurring branch
 // (deactivation drops the contribution without deleting the row).
+// A recurring entry skipped for the date (`meal_entry_skips`) stays out of that date's menu.
+const NOT_SKIPPED =
+  "NOT EXISTS (SELECT 1 FROM meal_entry_skips s WHERE s.entry_id = me.id AND s.skip_date = ?)";
+
 const MENU_UNION_SQL = `
   SELECT me.id AS entry_id, me.slot, me.recipe_id, me.note, r.name AS recipe_name,
          me.meal_plan_id AS meal_plan_id, mp.name AS plan_name, me.created_at AS created_at,
@@ -1017,7 +1021,7 @@ const MENU_UNION_SQL = `
   FROM meal_entries me
   JOIN meal_plans mp ON mp.id = me.meal_plan_id AND mp.active = 1
   LEFT JOIN recipes r ON r.id = me.recipe_id
-  WHERE me.weekday = ?
+  WHERE me.weekday = ? AND ${NOT_SKIPPED}
   UNION ALL
   SELECT me.id AS entry_id, me.slot, me.recipe_id, me.note, r.name AS recipe_name,
          NULL AS meal_plan_id, NULL AS plan_name, me.created_at AS created_at,
@@ -1040,7 +1044,7 @@ const MENU_UNION_SLOT_SQL = `
   FROM meal_entries me
   JOIN meal_plans mp ON mp.id = me.meal_plan_id AND mp.active = 1
   LEFT JOIN recipes r ON r.id = me.recipe_id
-  WHERE me.weekday = ? AND me.slot = ?
+  WHERE me.weekday = ? AND me.slot = ? AND ${NOT_SKIPPED}
   UNION ALL
   SELECT me.id AS entry_id, me.slot, me.recipe_id, me.note, r.name AS recipe_name,
          NULL AS meal_plan_id, NULL AS plan_name, me.created_at AS created_at,
@@ -1094,10 +1098,68 @@ export function getMenu(date: unknown, slot: unknown): MenuItem[] {
   const db = getDb();
   const rows = (
     slot
-      ? db.prepare(MENU_UNION_SLOT_SQL).all(weekday, slot, date, slot)
-      : db.prepare(MENU_UNION_SQL).all(weekday, date)
+      ? db.prepare(MENU_UNION_SLOT_SQL).all(weekday, slot, date, date, slot)
+      : db.prepare(MENU_UNION_SQL).all(weekday, date, date)
   ) as MenuRow[];
 
+  return rows.map(rowToMenuItem);
+}
+
+const SKIPPED_MENU_SQL = `
+  SELECT me.id AS entry_id, me.slot, me.recipe_id, me.note, r.name AS recipe_name,
+         me.meal_plan_id AS meal_plan_id, mp.name AS plan_name, me.created_at AS created_at,
+         0 AS kind_rank
+  FROM meal_entry_skips s
+  JOIN meal_entries me ON me.id = s.entry_id
+  JOIN meal_plans mp ON mp.id = me.meal_plan_id AND mp.active = 1
+  LEFT JOIN recipes r ON r.id = me.recipe_id
+  WHERE s.skip_date = ? AND me.weekday = ?
+  ORDER BY plan_name ASC, meal_plan_id ASC, created_at ASC, entry_id ASC
+`;
+
+/** The recurring entry `id`, checked to exist and to fall on `date`'s weekday. */
+function recurringEntryOn(id: string, date: unknown): string {
+  if (typeof date !== "string" || !isStrictCalendarDate(date)) {
+    throw new MealValidationError(`Invalid date "${String(date)}"`);
+  }
+  const row = getDb().prepare("SELECT weekday FROM meal_entries WHERE id = ?").get(id) as
+    { weekday: string | null } | undefined;
+  if (!row) throw new MealNotFoundError(`Meal entry not found: ${id}`);
+  if (row.weekday === null) {
+    throw new MealValidationError(`Meal entry ${id} is a one-off; delete it instead`);
+  }
+  if (row.weekday !== weekdayOf(date, readHouseholdTimezone())) {
+    throw new MealValidationError(`Meal entry ${id} does not fall on ${date}`);
+  }
+  return date;
+}
+
+/** Leaves recurring entry `id` out of `date`'s menu only; the weekly plan is untouched.
+ * Idempotent. A one-off entry, or a date on another weekday -> `MealValidationError`.
+ */
+export function skipEntryOnDate(id: string, date: unknown): void {
+  const day = recurringEntryOn(id, date);
+  getDb()
+    .prepare(
+      "INSERT OR IGNORE INTO meal_entry_skips (entry_id, skip_date, created_at) VALUES (?, ?, ?)"
+    )
+    .run(id, day, Date.now());
+}
+
+/** Puts a skipped recurring entry back on `date`'s menu. Idempotent. */
+export function restoreEntryOnDate(id: string, date: unknown): void {
+  const day = recurringEntryOn(id, date);
+  getDb().prepare("DELETE FROM meal_entry_skips WHERE entry_id = ? AND skip_date = ?").run(id, day);
+}
+
+/** The recurring entries skipped on `date`, in menu order, so they can be restored. */
+export function getSkippedMenu(date: unknown): MenuItem[] {
+  if (typeof date !== "string" || !isStrictCalendarDate(date)) {
+    throw new MealValidationError(`Invalid date "${String(date)}"`);
+  }
+  const rows = getDb()
+    .prepare(SKIPPED_MENU_SQL)
+    .all(date, weekdayOf(date, readHouseholdTimezone())) as MenuRow[];
   return rows.map(rowToMenuItem);
 }
 

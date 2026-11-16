@@ -224,6 +224,7 @@ describe("database lifecycle fresh current baseline", () => {
       "chores.routine_id->routines.id NO ACTION",
       "meal_entries.meal_plan_id->meal_plans.id NO ACTION",
       "meal_entries.recipe_id->recipes.id CASCADE",
+      "meal_entry_skips.entry_id->meal_entries.id CASCADE",
       "plugin_lifecycle_operations.plugin_id->plugin_activation_registry.plugin_id RESTRICT",
       "plugin_migration_journal.plugin_id->plugin_activation_registry.plugin_id RESTRICT",
       "print_jobs.record_id->print_records.id CASCADE",

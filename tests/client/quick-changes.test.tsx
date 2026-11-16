@@ -41,6 +41,7 @@ const MEMBERS: Member[] = [
 
 interface Backend {
   menu?: MenuItem[];
+  skipped?: MenuItem[];
   events?: FeedItem[];
   notes?: DailyMessage[];
   fail?: (url: string, method: string) => boolean;
@@ -62,6 +63,7 @@ function mockBackend(backend: Backend = {}) {
     if (backend.fail?.(url, method)) return json({ error: "x" }, 500);
     if (url === "/api/settings") return json({ locale: { timezone: "UTC", language: "en" } });
     if (url === "/api/members") return json(MEMBERS);
+    if (url.startsWith("/api/menu/skipped")) return json(backend.skipped ?? []);
     if (url.startsWith("/api/menu")) return json(backend.menu ?? []);
     if (url.startsWith("/api/calendar/events?")) return json(backend.events ?? []);
     if (url.startsWith("/api/daily-messages?") && method === "GET") {
@@ -192,7 +194,7 @@ describe("QuickChanges", () => {
     ]);
   });
 
-  it("lists the day and removes one-off meals and notes, never planned meals", async () => {
+  it("lists the day, removes one-off meals and notes, and takes a planned meal out of that day only", async () => {
     const calls = mockBackend({
       events: [
         {
@@ -234,6 +236,18 @@ describe("QuickChanges", () => {
           note: "Pizza",
         },
       ],
+      skipped: [
+        {
+          entryId: "m3",
+          slot: "breakfast",
+          label: "Porridge",
+          isTombstone: false,
+          source: "recurring",
+          planId: "p1",
+          recipeId: null,
+          note: "Porridge",
+        },
+      ],
       notes: [
         {
           id: "n1",
@@ -256,6 +270,10 @@ describe("QuickChanges", () => {
     expect(plan.textContent!.indexOf("Holiday")).toBeLessThan(
       plan.textContent!.indexOf("Swimming")
     );
+    expect(plan).toHaveTextContent("Breakfast Porridge · not this day");
+    expect(plan.textContent!.indexOf("Porridge")).toBeLessThan(
+      plan.textContent!.indexOf("Lentils")
+    );
     expect(plan.textContent!.indexOf("Lentils")).toBeLessThan(plan.textContent!.indexOf("Pizza"));
     expect(screen.queryByTestId("quick-remove-meal-m1")).toBeNull();
 
@@ -263,10 +281,55 @@ describe("QuickChanges", () => {
     await screen.findByTestId("quick-saved");
     fireEvent.click(screen.getByTestId("quick-remove-note-ana"));
     await waitFor(() => expect(writes(calls)).toHaveLength(2));
+    fireEvent.click(await screen.findByRole("button", { name: "Remove for this day only" }));
+    await waitFor(() => expect(writes(calls)).toHaveLength(3));
+    fireEvent.click(await screen.findByTestId("quick-restore-meal-m3"));
+    await waitFor(() => expect(writes(calls)).toHaveLength(4));
 
     expect(writes(calls).map(({ url, method }) => `${method} ${url}`)).toEqual([
       "DELETE /api/meal-entries/m2",
       "DELETE /api/daily-messages?memberId=ana&date=2026-01-16",
+      "PUT /api/meal-entries/m1/skips/2026-01-16",
+      "DELETE /api/meal-entries/m3/skips/2026-01-16",
+    ]);
+  });
+
+  it("adds a meal instead of the planned one by default, or as well as it", async () => {
+    const calls = mockBackend({
+      menu: [
+        {
+          entryId: "m1",
+          slot: "lunch",
+          label: "Chickpeas",
+          isTombstone: false,
+          source: "recurring",
+          planId: "p1",
+          recipeId: null,
+          note: "Chickpeas",
+        },
+      ],
+    });
+    renderPage();
+    await within(await screen.findByTestId("quick-plan")).findByText("Chickpeas");
+
+    fireEvent.click(screen.getByTestId("quick-kind-meal"));
+    fireEvent.click(screen.getByTestId("quick-slot-dinner"));
+    expect(screen.queryByTestId("quick-meal-replace")).toBeNull();
+    fireEvent.click(screen.getByTestId("quick-slot-lunch"));
+    expect(screen.getByRole("radio", { name: "Instead of Chickpeas" })).toBeChecked();
+    fireEvent.change(screen.getByTestId("quick-meal-text"), { target: { value: "Ratatouille" } });
+    fireEvent.click(screen.getByTestId("quick-save"));
+    await screen.findByTestId("quick-saved");
+
+    fireEvent.click(screen.getByTestId("quick-meal-alongside"));
+    fireEvent.change(screen.getByTestId("quick-meal-text"), { target: { value: "Salad" } });
+    fireEvent.click(screen.getByTestId("quick-save"));
+    await waitFor(() => expect(writes(calls)).toHaveLength(3));
+
+    expect(writes(calls).map(({ url, method }) => `${method} ${url}`)).toEqual([
+      "POST /api/meal-entries",
+      "PUT /api/meal-entries/m1/skips/2026-01-16",
+      "POST /api/meal-entries",
     ]);
   });
 

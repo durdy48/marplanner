@@ -15,7 +15,10 @@ import {
   createEntry,
   editEntry,
   deleteEntry,
+  skipEntryOnDate,
+  restoreEntryOnDate,
   getMenu,
+  getSkippedMenu,
   getWeekMenu,
   MealValidationError,
   MealNotFoundError,
@@ -29,7 +32,8 @@ import { documented } from "../openapi/zod";
  * POST/GET /api/recipes, GET/PATCH/DELETE /api/recipes/:id,
  * GET /api/recipes/:id/dependents, POST/GET /api/meal-plans,
  * GET/PATCH /api/meal-plans/:id, GET /api/meal-plans/:id/entries,
- * POST/PATCH/DELETE /api/meal-entries(id), GET /api/menu, GET /api/menu/week.
+ * POST/PATCH/DELETE /api/meal-entries(id), PUT/DELETE /api/meal-entries/:id/skips/:date,
+ * GET /api/menu, GET /api/menu/skipped, GET /api/menu/week.
  * Meal plans are deactivate-only — there is NO delete route (Clarifications).
  */
 export async function mealsRoutes(app: FastifyInstance): Promise<void> {
@@ -242,6 +246,36 @@ export async function mealsRoutes(app: FastifyInstance): Promise<void> {
     }
   );
 
+  // PUT /api/meal-entries/:id/skips/:date — leave a recurring entry out of that date's menu only
+  app.put(
+    "/api/meal-entries/:id/skips/:date",
+    documented(mealsSchemas.skipMealEntry),
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      try {
+        const { id, date } = request.params as { id: string; date: string };
+        skipEntryOnDate(id, date);
+        return reply.code(204).send();
+      } catch (err) {
+        return handleMealError(err, reply);
+      }
+    }
+  );
+
+  // DELETE /api/meal-entries/:id/skips/:date — put a skipped recurring entry back
+  app.delete(
+    "/api/meal-entries/:id/skips/:date",
+    documented(mealsSchemas.restoreMealEntry),
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      try {
+        const { id, date } = request.params as { id: string; date: string };
+        restoreEntryOnDate(id, date);
+        return reply.code(204).send();
+      } catch (err) {
+        return handleMealError(err, reply);
+      }
+    }
+  );
+
   // GET /api/menu?date=&slot= — derived day menu (recurring+one-off union; tombstone for a missing recipe, INV-09)
   app.get(
     "/api/menu",
@@ -251,6 +285,20 @@ export async function mealsRoutes(app: FastifyInstance): Promise<void> {
         const { date, slot } = request.query as { date?: unknown; slot?: unknown };
         const menu = getMenu(date, slot);
         return reply.code(200).send(menu);
+      } catch (err) {
+        return handleMealError(err, reply);
+      }
+    }
+  );
+
+  // GET /api/menu/skipped?date= — the recurring entries skipped on that date
+  app.get(
+    "/api/menu/skipped",
+    documented(mealsSchemas.getSkippedMenu),
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      try {
+        const { date } = request.query as { date?: unknown };
+        return reply.code(200).send(getSkippedMenu(date));
       } catch (err) {
         return handleMealError(err, reply);
       }

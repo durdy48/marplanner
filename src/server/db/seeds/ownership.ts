@@ -50,6 +50,7 @@ export const DEMO_OWNED_TABLES = [
   "recipes",
   "meal_plans",
   "meal_entries",
+  "meal_entry_skips",
   "daily_messages",
   "daily_briefing_optin",
   "daily_briefing_member_block_settings",

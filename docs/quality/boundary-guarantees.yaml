@@ -710,7 +710,7 @@ guarantees:
     disposition: active
     owner: meals-recipes
     spec: meals-recipes
-    note: "No per-occurrence skip (Option A); edits change every matching weekday."
+    note: "Edits change every matching weekday; one date is skipped only by a skip row (ADR-068)."
   - id: MEALS-RECIPES-INV-06
     disposition: active
     owner: meals-recipes
@@ -775,7 +775,7 @@ guarantees:
     disposition: active
     owner: meals-recipes
     spec: meals-recipes
-    note: "Editing/deactivating recurring entry/plan changes all weekdays; no skip."
+    note: "Editing/deactivating recurring entry/plan changes all weekdays; a skip is one date."
   - id: MEALS-RECIPES-AC-05
     disposition: active
     owner: meals-recipes

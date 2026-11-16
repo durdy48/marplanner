@@ -101,3 +101,4 @@ historical record is fabricated to fill the numbering gap.
 - [ADR-065 Browser-Local Announcement Placement](ADR-065-announcement-firing-placement-reconciliation.md)
 - [ADR-066 — ESC/POS conversion placement: server-side (candidate B full)](ADR-066-escpos-conversion-placement.md)
 - [ADR-067 — Daily briefing block catalogue](ADR-067-briefing-block-catalogue.md)
+- [ADR-068 — Meals: skip a recurring entry on one date](ADR-068-meals-per-date-skip.md)

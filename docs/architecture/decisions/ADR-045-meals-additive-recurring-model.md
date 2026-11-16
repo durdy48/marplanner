@@ -64,7 +64,8 @@ single date. To change it, edit or deactivate the rule/plan (affects all matchin
 weekdays — same accepted retroactive reinterpretation as Routines streaks). **Product
 guidance:** if something is not _always_ recurring, do not put it in a `meal_plan` —
 add it as a **one-off entry** on its date. A per-date tombstone (option B) is a cheap
-later addition if it ever proves necessary; not built now.
+later addition if it ever proves necessary; not built now. _Superseded by `ADR-068`, which
+adds it._
 
 **The weekly grid is a view, not stored state.** The v1 `meal_plan` weekly window
 (`weekStart`/`weekEnd` as instants — the documented timezone bug seed) is **dropped**.

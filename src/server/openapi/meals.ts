@@ -250,6 +250,57 @@ export const mealsSchemas = defineRouteSchemas({
       429: authenticationBackoffResponse,
     },
   },
+  /** PUT /api/meal-entries/{id}/skips/{date} */
+  skipMealEntry: {
+    operationId: "skipMealEntry",
+    tags: ["meals"],
+    summary:
+      "Leave a recurring entry out of one date's menu; the weekly plan is untouched. Idempotent.\n",
+    security: [{ deviceKeyCookie: [] }],
+    params: z.object({ id: z.string(), date: z.string().meta({ description: "YYYY-MM-DD" }) }),
+    response: {
+      204: noContent("The entry is left out of that date's menu."),
+      400: {
+        description:
+          "Invalid date, a one-off entry (delete it instead), or a date on another weekday than the entry's.\n",
+        content: { "application/json": { schema: ErrorSchema } },
+      },
+      401: {
+        description: "Missing/invalid device key.",
+        content: { "application/json": { schema: ErrorSchema } },
+      },
+      404: {
+        description: "No entry with that id.",
+        content: { "application/json": { schema: ErrorSchema } },
+      },
+      429: authenticationBackoffResponse,
+    },
+  },
+  /** DELETE /api/meal-entries/{id}/skips/{date} */
+  restoreMealEntry: {
+    operationId: "restoreMealEntry",
+    tags: ["meals"],
+    summary: "Put a skipped recurring entry back on that date's menu. Idempotent.",
+    security: [{ deviceKeyCookie: [] }],
+    params: z.object({ id: z.string(), date: z.string().meta({ description: "YYYY-MM-DD" }) }),
+    response: {
+      204: noContent("The entry is back on that date's menu."),
+      400: {
+        description:
+          "Invalid date, a one-off entry (delete it instead), or a date on another weekday than the entry's.\n",
+        content: { "application/json": { schema: ErrorSchema } },
+      },
+      401: {
+        description: "Missing/invalid device key.",
+        content: { "application/json": { schema: ErrorSchema } },
+      },
+      404: {
+        description: "No entry with that id.",
+        content: { "application/json": { schema: ErrorSchema } },
+      },
+      429: authenticationBackoffResponse,
+    },
+  },
   /** GET /api/meal-plans */
   listMealPlans: {
     operationId: "listMealPlans",
@@ -369,7 +420,7 @@ export const mealsSchemas = defineRouteSchemas({
     operationId: "getMenu",
     tags: ["meals"],
     summary:
-      "Derived day menu for ?date=YYYY-MM-DD[&slot=] — the union of recurring entries of every ACTIVE meal_plan whose weekday matches weekdayOf(date, householdTz) and one-off entries for that date, in the full D2 total order; no materialized rows (INV-03); empty list = absence (FR-012); a stale recipe reference renders as a tombstone item (isTombstone:true, INV-09).\n",
+      "Derived day menu for ?date=YYYY-MM-DD[&slot=] — the union of recurring entries of every ACTIVE meal_plan whose weekday matches weekdayOf(date, householdTz) (less the ones skipped on that date) and one-off entries for that date, in the full D2 total order; no materialized rows (INV-03); empty list = absence (FR-012); a stale recipe reference renders as a tombstone item (isTombstone:true, INV-09).\n",
     security: [{ deviceKeyCookie: [] }],
     querystring: z.object({
       date: z.string().meta({ description: "YYYY-MM-DD" }),
@@ -382,6 +433,30 @@ export const mealsSchemas = defineRouteSchemas({
       },
       400: {
         description: "Invalid date/slot.",
+        content: { "application/json": { schema: ErrorSchema } },
+      },
+      401: {
+        description: "Missing/invalid device key.",
+        content: { "application/json": { schema: ErrorSchema } },
+      },
+      429: authenticationBackoffResponse,
+    },
+  },
+  /** GET /api/menu/skipped */
+  getSkippedMenu: {
+    operationId: "getSkippedMenu",
+    tags: ["meals"],
+    summary:
+      "The recurring entries skipped on ?date=YYYY-MM-DD (left out of that date's menu only), in menu order, so they can be restored.\n",
+    security: [{ deviceKeyCookie: [] }],
+    querystring: z.object({ date: z.string().meta({ description: "YYYY-MM-DD" }) }),
+    response: {
+      200: {
+        description: "The skipped recurring entries (MenuItem[]), possibly empty.",
+        content: { "application/json": { schema: z.array(MenuItem) } },
+      },
+      400: {
+        description: "Invalid date.",
         content: { "application/json": { schema: ErrorSchema } },
       },
       401: {

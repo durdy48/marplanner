@@ -16,8 +16,9 @@ import { useIsolatedDb } from "../helpers/db";
  * plan-name ASC -> meal_plan_id ASC (duplicate-plan-name tiebreak) ->
  * created_at ASC -> id ASC); deactivate-drops + reactivate-restores without
  * deleting rows (AC-05); editing/deactivating changes EVERY matching
- * weekday, no per-date skip (AC-04); and the week view over 7 local dates
- * from `weekStartDay` + tz (FR-019).
+ * weekday (AC-04); and the week view over 7 local dates
+ * from `weekStartDay` + tz (FR-019). A recurring entry can still be left out of one date only
+ * (`/api/meal-entries/:id/skips/:date`) and put back.
  */
 describe("meals-menu boundary tests", () => {
   useIsolatedDb();
@@ -628,6 +629,106 @@ describe("meals-menu boundary tests", () => {
       expect(JSON.parse((await getWeekMenu(app, deviceKey, date)).body)[date].lunch).toEqual(
         expected
       );
+    } finally {
+      await app.close();
+    }
+  });
+
+  function skip(app: FastifyInstance, deviceKey: string, method: "PUT" | "DELETE", url: string) {
+    return app.inject({ method, url, cookies: { mp_device_key: deviceKey } });
+  }
+
+  it("skips a recurring entry on one date only, lists it as skipped and puts it back", async () => {
+    const { deviceKey } = seedKeys();
+    const { buildApp } = await import("../../src/server/app.ts");
+    const app = await buildApp();
+    try {
+      const plan = await createMealPlan(app, deviceKey, "Semana normal");
+      const date = "2026-08-17";
+      const nextWeek = "2026-08-24";
+      const weekly = JSON.parse(
+        (
+          await createEntry(app, deviceKey, {
+            kind: "recurring",
+            mealPlanId: plan.id,
+            weekday: weekdayOf(date, "Europe/Madrid"),
+            slot: "lunch",
+            note: "Garbanzos",
+          })
+        ).body
+      );
+      await createEntry(app, deviceKey, { kind: "oneoff", date, slot: "lunch", note: "Pisto" });
+      const url = `/api/meal-entries/${weekly.id}/skips/${date}`;
+
+      expect((await skip(app, deviceKey, "PUT", url)).statusCode).toBe(204);
+      expect((await skip(app, deviceKey, "PUT", url)).statusCode).toBe(204);
+
+      const labels = (body: string) =>
+        (JSON.parse(body) as { label: string }[]).map((i) => i.label);
+      expect(labels((await getMenu(app, deviceKey, date)).body)).toEqual(["Pisto"]);
+      expect(labels((await getMenu(app, deviceKey, date, "lunch")).body)).toEqual(["Pisto"]);
+      expect(JSON.parse((await getWeekMenu(app, deviceKey, date)).body)[date].lunch).toEqual([
+        expect.objectContaining({ label: "Pisto" }),
+      ]);
+      expect(labels((await getMenu(app, deviceKey, nextWeek)).body)).toEqual(["Garbanzos"]);
+      const skipped = await app.inject({
+        method: "GET",
+        url: `/api/menu/skipped?date=${date}`,
+        cookies: { mp_device_key: deviceKey },
+      });
+      expect(JSON.parse(skipped.body)).toEqual([
+        expect.objectContaining({ entryId: weekly.id, label: "Garbanzos", source: "recurring" }),
+      ]);
+
+      expect((await skip(app, deviceKey, "DELETE", url)).statusCode).toBe(204);
+      expect((await skip(app, deviceKey, "DELETE", url)).statusCode).toBe(204);
+      expect(labels((await getMenu(app, deviceKey, date)).body)).toEqual(["Garbanzos", "Pisto"]);
+
+      await skip(app, deviceKey, "PUT", url);
+      await deleteEntry(app, deviceKey, weekly.id);
+      expect(getDb().prepare("SELECT COUNT(*) AS n FROM meal_entry_skips").get()).toEqual({ n: 0 });
+    } finally {
+      await app.close();
+    }
+  });
+
+  it("refuses to skip a one-off entry, another weekday, an unknown entry or an invalid date", async () => {
+    const { deviceKey } = seedKeys();
+    const { buildApp } = await import("../../src/server/app.ts");
+    const app = await buildApp();
+    try {
+      const plan = await createMealPlan(app, deviceKey, "Semana normal");
+      const date = "2026-08-17";
+      const weekly = JSON.parse(
+        (
+          await createEntry(app, deviceKey, {
+            kind: "recurring",
+            mealPlanId: plan.id,
+            weekday: weekdayOf(date, "Europe/Madrid"),
+            slot: "lunch",
+            note: "Garbanzos",
+          })
+        ).body
+      );
+      const once = JSON.parse(
+        (await createEntry(app, deviceKey, { kind: "oneoff", date, slot: "lunch", note: "Pisto" }))
+          .body
+      );
+
+      const status = async (method: "PUT" | "DELETE", url: string) =>
+        (await skip(app, deviceKey, method, url)).statusCode;
+      expect(await status("PUT", `/api/meal-entries/${once.id}/skips/${date}`)).toBe(400);
+      expect(await status("PUT", `/api/meal-entries/${weekly.id}/skips/2026-08-18`)).toBe(400);
+      expect(await status("PUT", `/api/meal-entries/${weekly.id}/skips/2026-8-17`)).toBe(400);
+      expect(await status("PUT", `/api/meal-entries/missing/skips/${date}`)).toBe(404);
+      expect(await status("DELETE", `/api/meal-entries/missing/skips/${date}`)).toBe(404);
+      const badRead = await app.inject({
+        method: "GET",
+        url: "/api/menu/skipped?date=tomorrow",
+        cookies: { mp_device_key: deviceKey },
+      });
+      expect(badRead.statusCode).toBe(400);
+      expect(getDb().prepare("SELECT COUNT(*) AS n FROM meal_entry_skips").get()).toEqual({ n: 0 });
     } finally {
       await app.close();
     }

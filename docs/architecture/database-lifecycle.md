@@ -122,3 +122,5 @@ Restore reports such a backup as `unsupported_lineage`. `installation_lineage.ki
   default; one of `confetti`, `stars`, `videogames`, `soccer`, `fairytale`, `custom`) and
   `celebration_emojis` (a JSON array of 1–6 items when the preset is `custom`, NULL otherwise),
   each with a CHECK. Existing members read as `confetti`.
+- `0003_meal_entry_skips.sql` (`ADR-068`): adds `meal_entry_skips` (`entry_id`, `skip_date`), a
+  recurring meal entry left out of one date's menu; deleting the entry deletes its skips.

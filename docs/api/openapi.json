@@ -6891,6 +6891,136 @@
         }
       }
     },
+    "/api/meal-entries/{id}/skips/{date}": {
+      "put": {
+        "operationId": "skipMealEntry",
+        "summary": "Leave a recurring entry out of one date's menu; the weekly plan is untouched. Idempotent.\n",
+        "tags": ["meals"],
+        "parameters": [
+          { "schema": { "type": "string" }, "in": "path", "name": "id", "required": true },
+          {
+            "schema": { "type": "string" },
+            "in": "path",
+            "name": "date",
+            "required": true,
+            "description": "YYYY-MM-DD"
+          }
+        ],
+        "security": [{ "deviceKeyCookie": [] }],
+        "responses": {
+          "204": { "description": "The entry is left out of that date's menu." },
+          "400": {
+            "description": "Invalid date, a one-off entry (delete it instead), or a date on another weekday than the entry's.\n",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Error" } }
+            }
+          },
+          "401": {
+            "description": "Missing/invalid device key.",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Error" } }
+            }
+          },
+          "404": {
+            "description": "No entry with that id.",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Error" } }
+            }
+          },
+          "429": {
+            "description": "Repeated credential failures from this transport source. Valid active credentials remain usable; this is failure-only retry backpressure, not a hard guess or request-volume limit.\n",
+            "headers": {
+              "Retry-After": {
+                "schema": { "type": "integer", "minimum": 1 },
+                "description": "Remaining cooldown in seconds, rounded up. Retry manually.",
+                "required": true
+              },
+              "Cache-Control": {
+                "schema": { "type": "string", "const": "no-store" },
+                "required": true
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": { "type": "string", "enum": ["too_many_requests"] },
+                    "message": { "type": "string", "enum": ["Authentication retry required"] }
+                  },
+                  "required": ["error", "message"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "restoreMealEntry",
+        "summary": "Put a skipped recurring entry back on that date's menu. Idempotent.",
+        "tags": ["meals"],
+        "parameters": [
+          { "schema": { "type": "string" }, "in": "path", "name": "id", "required": true },
+          {
+            "schema": { "type": "string" },
+            "in": "path",
+            "name": "date",
+            "required": true,
+            "description": "YYYY-MM-DD"
+          }
+        ],
+        "security": [{ "deviceKeyCookie": [] }],
+        "responses": {
+          "204": { "description": "The entry is back on that date's menu." },
+          "400": {
+            "description": "Invalid date, a one-off entry (delete it instead), or a date on another weekday than the entry's.\n",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Error" } }
+            }
+          },
+          "401": {
+            "description": "Missing/invalid device key.",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Error" } }
+            }
+          },
+          "404": {
+            "description": "No entry with that id.",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Error" } }
+            }
+          },
+          "429": {
+            "description": "Repeated credential failures from this transport source. Valid active credentials remain usable; this is failure-only retry backpressure, not a hard guess or request-volume limit.\n",
+            "headers": {
+              "Retry-After": {
+                "schema": { "type": "integer", "minimum": 1 },
+                "description": "Remaining cooldown in seconds, rounded up. Retry manually.",
+                "required": true
+              },
+              "Cache-Control": {
+                "schema": { "type": "string", "const": "no-store" },
+                "required": true
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": { "type": "string", "enum": ["too_many_requests"] },
+                    "message": { "type": "string", "enum": ["Authentication retry required"] }
+                  },
+                  "required": ["error", "message"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/meal-plans": {
       "post": {
         "operationId": "createMealPlan",
@@ -7531,7 +7661,7 @@
     "/api/menu": {
       "get": {
         "operationId": "getMenu",
-        "summary": "Derived day menu for ?date=YYYY-MM-DD[&slot=] — the union of recurring entries of every ACTIVE meal_plan whose weekday matches weekdayOf(date, householdTz) and one-off entries for that date, in the full D2 total order; no materialized rows (INV-03); empty list = absence (FR-012); a stale recipe reference renders as a tombstone item (isTombstone:true, INV-09).\n",
+        "summary": "Derived day menu for ?date=YYYY-MM-DD[&slot=] — the union of recurring entries of every ACTIVE meal_plan whose weekday matches weekdayOf(date, householdTz) (less the ones skipped on that date) and one-off entries for that date, in the full D2 total order; no materialized rows (INV-03); empty list = absence (FR-012); a stale recipe reference renders as a tombstone item (isTombstone:true, INV-09).\n",
         "tags": ["meals"],
         "parameters": [
           {
@@ -7560,6 +7690,72 @@
           },
           "400": {
             "description": "Invalid date/slot.",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Error" } }
+            }
+          },
+          "401": {
+            "description": "Missing/invalid device key.",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Error" } }
+            }
+          },
+          "429": {
+            "description": "Repeated credential failures from this transport source. Valid active credentials remain usable; this is failure-only retry backpressure, not a hard guess or request-volume limit.\n",
+            "headers": {
+              "Retry-After": {
+                "schema": { "type": "integer", "minimum": 1 },
+                "description": "Remaining cooldown in seconds, rounded up. Retry manually.",
+                "required": true
+              },
+              "Cache-Control": {
+                "schema": { "type": "string", "const": "no-store" },
+                "required": true
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": { "type": "string", "enum": ["too_many_requests"] },
+                    "message": { "type": "string", "enum": ["Authentication retry required"] }
+                  },
+                  "required": ["error", "message"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/menu/skipped": {
+      "get": {
+        "operationId": "getSkippedMenu",
+        "summary": "The recurring entries skipped on ?date=YYYY-MM-DD (left out of that date's menu only), in menu order, so they can be restored.\n",
+        "tags": ["meals"],
+        "parameters": [
+          {
+            "schema": { "type": "string" },
+            "in": "query",
+            "name": "date",
+            "required": true,
+            "description": "YYYY-MM-DD"
+          }
+        ],
+        "security": [{ "deviceKeyCookie": [] }],
+        "responses": {
+          "200": {
+            "description": "The skipped recurring entries (MenuItem[]), possibly empty.",
+            "content": {
+              "application/json": {
+                "schema": { "type": "array", "items": { "$ref": "#/components/schemas/MenuItem" } }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid date.",
             "content": {
               "application/json": { "schema": { "$ref": "#/components/schemas/Error" } }
             }

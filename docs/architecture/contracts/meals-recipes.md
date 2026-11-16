@@ -40,10 +40,11 @@ on the kiosk dashboard and the Daily Briefing. Replaces the v1 weekly-window pla
 4. **MEALS-RECIPES-INV-04** **Canonical order** (`ADR-045`): recurring entries before one-off, then `meal_plan`
    name ASC, `mealPlanId` ASC (tie-breaking equal names), `createdAt` ASC, then entry ID ASC. The same logical menu always renders identically;
    briefing snapshots are reproducible.
-5. **MEALS-RECIPES-INV-05** **No per-occurrence skip (Option A, `ADR-045`):** a recurring entry never skips a
-   single date; editing/deactivating the entry or plan changes every matching weekday
-   (retroactive reinterpretation accepted, as with Routines streaks). Non-always-recurring
-   things go in as **one-off entries**, not into a plan.
+5. **MEALS-RECIPES-INV-05** **Per-date skip only by an explicit skip row (`ADR-068`, superseding option A of
+   `ADR-045`):** editing/deactivating the entry or plan changes every matching weekday
+   (retroactive reinterpretation accepted, as with Routines streaks). A recurring entry is left
+   out of one date only through a `meal_entry_skips` row, and put back by deleting it.
+   Non-always-recurring things still go in as **one-off entries**, not into a plan.
 6. **MEALS-RECIPES-INV-06** **Household-wide only** (`ADR-045`): no per-member targeting (`ADR-002` not applied;
    deferred seam).
 7. **MEALS-RECIPES-INV-07** **Dates are strict `YYYY-MM-DD`** (`ADR-006`); "today", week boundaries, weekday
@@ -128,8 +129,8 @@ occurrences, no `weekStart`/`weekEnd` columns. The 7 `meal_plans` / 33 `meals` /
 - **MEALS-RECIPES-AC-03** The menu equals the on-read union (active-plan recurring matching the weekday +
   one-off for the date) in canonical order; no occurrence rows persist; two reads of an
   unchanged menu match exactly.
-- **MEALS-RECIPES-AC-04** Editing/deactivating a recurring entry/plan changes all matching weekdays; there is no
-  single-date skip.
+- **MEALS-RECIPES-AC-04** Editing/deactivating a recurring entry/plan changes all matching weekdays; a skip
+  (`ADR-068`) leaves the entry out of that one date only and never edits it.
 - **MEALS-RECIPES-AC-05** Multiple active plans union additively.
 - **MEALS-RECIPES-AC-06** Recipe delete removes the recipe + all referencing entries atomically; the dependent
   count is exposed split recurring/one-off; emptied `meal_plan` rows survive; a write

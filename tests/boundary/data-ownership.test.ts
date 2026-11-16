@@ -49,7 +49,7 @@ type PluginModule = (typeof PLUGIN_MODULES)[number];
 const OWN_TABLES: Record<PluginModule, string[]> = {
   reminders: ["reminder", "reminder_assignment"],
   "daily-messages": ["daily_messages"],
-  meals: ["meal_plans", "meal_entries", "recipes"],
+  meals: ["meal_plans", "meal_entries", "meal_entry_skips", "recipes"],
   "time-announcements": ["time_announcements"],
   "network-devices": ["network_devices"],
   // added 4 own tables: daily_briefing_block_cache,
@@ -132,7 +132,7 @@ function importSpecifiers(fileSource: string): string[] {
 }
 
 describe("data-ownership — table inventory (guards the forbidden-set derivation itself)", () => {
-  it("schema.ts declares exactly 37 sqliteTable definitions", () => {
+  it("schema.ts declares exactly 38 sqliteTable definitions", () => {
     // added `client_log` (core Tier-0, not plugin-namespaced) — 19 -> 20.
     // added `time_announcements` (PLUGIN-owned — the fifth eslint import-boundary
     // zone, src/server/modules/time-announcements — NOT core Tier-0 like client_log) — 20 -> 21.
@@ -151,17 +151,18 @@ describe("data-ownership — table inventory (guards the forbidden-set derivatio
     // table — 30 -> 31; adds calendar_external_event_meta and
     // calendar_highlight_rules — 31 -> 33; adds four core-owned lifecycle
     // tables — 33 -> 37.
-    expect(ALL_TABLE_NAMES).toHaveLength(37);
+    // added `meal_entry_skips` (meals-owned, one recurring entry left out of one date) — 37 -> 38.
+    expect(ALL_TABLE_NAMES).toHaveLength(38);
   });
 
   it("per-plugin forbidden-table counts (all tables minus the plugin's own)", () => {
-    expect(forbiddenTablesFor("printing")).toHaveLength(34);
-    expect(forbiddenTablesFor("reminders")).toHaveLength(35);
-    expect(forbiddenTablesFor("daily-messages")).toHaveLength(36);
+    expect(forbiddenTablesFor("printing")).toHaveLength(35);
+    expect(forbiddenTablesFor("reminders")).toHaveLength(36);
+    expect(forbiddenTablesFor("daily-messages")).toHaveLength(37);
     expect(forbiddenTablesFor("meals")).toHaveLength(34);
-    expect(forbiddenTablesFor("time-announcements")).toHaveLength(36);
-    expect(forbiddenTablesFor("network-devices")).toHaveLength(36);
-    expect(forbiddenTablesFor("daily-briefing")).toHaveLength(31);
+    expect(forbiddenTablesFor("time-announcements")).toHaveLength(37);
+    expect(forbiddenTablesFor("network-devices")).toHaveLength(37);
+    expect(forbiddenTablesFor("daily-briefing")).toHaveLength(32);
   });
 });
 

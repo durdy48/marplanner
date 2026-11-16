@@ -636,6 +636,23 @@ export const mealEntries = sqliteTable(
   })
 );
 
+/** Meal entry skips — a recurring entry left out of one date's menu; added by 0003_meal_entry_skips.
+ * Deleting the entry deletes its skips.
+ */
+export const mealEntrySkips = sqliteTable(
+  "meal_entry_skips",
+  {
+    entryId: text("entry_id")
+      .notNull()
+      .references(() => mealEntries.id, { onDelete: "cascade" }),
+    skipDate: text("skip_date").notNull(),
+    createdAt: integer("created_at").notNull(),
+  },
+  (table) => ({
+    pk: primaryKey({ columns: [table.entryId, table.skipDate] }),
+  })
+);
+
 /** Daily messages — one message per (member, date); upsert via ON CONFLICT(member_id, date).
  * No ON DELETE on member_id (members archive-only, ADR-054); reads gate on member existence,
  * not active status, so an archived member's historical rows stay readable.

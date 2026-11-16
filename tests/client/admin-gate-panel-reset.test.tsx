@@ -58,6 +58,7 @@ interface PanelSpec {
 
 /** Every protected destination, in the same order the AdminRoutes table renders it. */
 const PANELS: PanelSpec[] = [
+  { nav: "admin-nav-quick-changes", path: "/admin/quick", testId: "quick-changes" },
   {
     nav: "admin-nav-calendar",
     path: "/admin/calendar",

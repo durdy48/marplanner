@@ -115,8 +115,8 @@ describe("AdminGate — kiosk density across reachable states", () => {
       enterPin(CORRECT_PIN);
       fireEvent.click(screen.getByTestId("admin-pin-unlock"));
       await screen.findByTestId("admin-nav-calendar");
-      // Overview: sixteen sidebar links + Lock, Check now, Open telemetry.
-      expect(countInteractiveControls(document.body)).toBe(19);
+      // Overview: seventeen sidebar links + Lock, Check now, Open telemetry.
+      expect(countInteractiveControls(document.body)).toBe(20);
       expect(() => assertKioskDensityCompliant(document.body)).not.toThrow();
 
       fireEvent.click(screen.getByTestId("admin-lock-button"));

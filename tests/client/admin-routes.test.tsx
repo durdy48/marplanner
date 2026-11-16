@@ -13,8 +13,9 @@ describe("AdminRoutes", () => {
     expect(screen.queryByText("Create Member")).not.toBeInTheDocument();
   });
 
-  it("keeps the complete ordered fifteen-destination inventory", () => {
+  it("keeps the complete ordered sixteen-destination inventory", () => {
     expect(adminRoutes.map((route) => route.path)).toEqual([
+      "/admin/quick",
       "/admin/calendar",
       "/admin/members",
       "/admin/routines",

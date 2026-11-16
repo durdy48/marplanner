@@ -25,6 +25,7 @@ export const familyRoutes = [
 const adminDestinations = [
   { id: "calendar", path: "/admin/calendar" },
   { id: "overview", path: "/admin" },
+  { id: "quick", path: "/admin/quick" },
   { id: "members", path: "/admin/members" },
   { id: "routines", path: "/admin/routines" },
   { id: "reminders", path: "/admin/reminders" },

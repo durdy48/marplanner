@@ -3,6 +3,7 @@ import type { ComponentType } from "react";
 import {
   Bell,
   CalendarDays,
+  ChevronLeft,
   Clock,
   Database,
   KeyRound,
@@ -18,6 +19,7 @@ import {
   Users,
   Utensils,
   Wifi,
+  Zap,
   type LucideIcon,
 } from "lucide-react";
 
@@ -34,6 +36,7 @@ import { MealsManagement } from "./MealsManagement";
 import { MembersManagement } from "./MembersManagement";
 import { NetworkDevicesManagement } from "./NetworkDevicesManagement";
 import { PrintingManagement } from "./PrintingManagement";
+import { QuickChanges } from "./QuickChanges";
 import { RemindersManagement } from "./RemindersManagement";
 import { RoutinesManagement } from "./RoutinesManagement";
 import { SettingsManagement } from "./SettingsManagement";
@@ -43,6 +46,9 @@ import { PluginCatalogNotice } from "@/plugins/PluginCatalogNotice";
 import { PluginManagement } from "@/plugins/PluginManagement";
 import { PluginContribution, usePluginContributionActive } from "@/plugins/contributions";
 import type { PluginId } from "../../shared/plugins";
+
+/** Quick changes: made for a phone, so it is drawn without the sidebar. */
+const QUICK_PATH = "/admin/quick";
 
 type AdminRoute = {
   path: string;
@@ -55,6 +61,12 @@ type AdminRoute = {
 
 /** The complete, ordered protected-capability inventory for the admin subtree. */
 export const adminRoutes: readonly AdminRoute[] = [
+  {
+    path: QUICK_PATH,
+    label: "admin.nav.quickChanges",
+    testId: "admin-nav-quick-changes",
+    Component: QuickChanges,
+  },
   {
     path: "/admin/calendar",
     label: "admin.nav.calendar",
@@ -185,7 +197,10 @@ type SidebarSection = { id: string; label?: AdminRoute["label"]; items: readonly
 export const adminSidebar: readonly SidebarSection[] = [
   {
     id: "general",
-    items: [{ path: OVERVIEW_PATH, label: "admin.nav.overview", Icon: Monitor }],
+    items: [
+      { path: OVERVIEW_PATH, label: "admin.nav.overview", Icon: Monitor },
+      { path: QUICK_PATH, label: "admin.nav.quickChanges", Icon: Zap },
+    ],
   },
   {
     id: "household",
@@ -354,6 +369,26 @@ export function AdminRoutes({ pathname, onLock }: { pathname: string; onLock: ()
   const t = useT();
   const route = adminRoutes.find((candidate) => candidate.path === pathname);
   const Panel = route?.Component;
+
+  if (pathname === QUICK_PATH) {
+    return (
+      <div className="flex flex-col gap-2 p-4">
+        <Button asChild variant="ghost" size="sm" className="self-start">
+          <a
+            href={appUrl(OVERVIEW_PATH)}
+            onClick={(event) => {
+              event.preventDefault();
+              navigateAdmin(OVERVIEW_PATH);
+            }}
+          >
+            <ChevronLeft aria-hidden="true" />
+            {t("admin.nav.overview")}
+          </a>
+        </Button>
+        <QuickChanges />
+      </div>
+    );
+  }
 
   return (
     <div className="flex w-full flex-col lg:min-h-[calc(100dvh-3.5rem)] lg:flex-row">

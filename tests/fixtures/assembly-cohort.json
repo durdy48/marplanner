@@ -3305,7 +3305,8 @@
             "AdminGate — hideAllPanels resets every panel on switch (review P1-1, table-driven) navigating from /admin/access-keys to /admin/plugins removes the first panel entirely",
             "AdminGate — hideAllPanels resets every panel on switch (review P1-1, table-driven) navigating from /admin/plugins to /admin/printing removes the first panel entirely",
             "AdminGate — hideAllPanels resets every panel on switch (review P1-1, table-driven) navigating from /admin/printing to /admin/settings removes the first panel entirely",
-            "AdminGate — hideAllPanels resets every panel on switch (review P1-1, table-driven) navigating from /admin/settings to /admin/calendar removes the first panel entirely"
+            "AdminGate — hideAllPanels resets every panel on switch (review P1-1, table-driven) navigating from /admin/quick to /admin/calendar removes the first panel entirely",
+            "AdminGate — hideAllPanels resets every panel on switch (review P1-1, table-driven) navigating from /admin/settings to /admin/quick removes the first panel entirely"
           ],
           "tests/client/admin-gate-printing-nav.test.tsx": [
             "AdminGate — admin-nav-printing stays visible regardless of plugin state (FR-013) renders admin-nav-printing immediately — no async gate, no /api/printing/status read at all",
@@ -3373,7 +3374,7 @@
           ],
           "tests/client/admin-routes.test.tsx": [
             "AdminRoutes renders the directly requested printing destination instead of the member-create default",
-            "AdminRoutes keeps the complete ordered fifteen-destination inventory",
+            "AdminRoutes keeps the complete ordered sixteen-destination inventory",
             "AdminRoutes shows the localized unknown-admin outcome without mounting a management panel"
           ],
           "tests/client/announcements-briefing-admin.test.tsx": [
@@ -4459,6 +4460,14 @@
             "ProvisioningScreen — structural copy follows the BROWSER language, both household languages (FR-019, Traces: I18N-LOCALIZATION-INV-12) resolves an unsupported browser language (e.g. French) to the English default, never an empty/undefined render",
             "provisioning.gate i18n parity — every key exists in both catalogues with a non-empty value every provisioning.gate key in en exists in es, and vice versa",
             "provisioning.gate i18n parity — every key exists in both catalogues with a non-empty value every provisioning.gate key resolves to a non-empty string in both languages"
+          ],
+          "tests/client/quick-changes.test.tsx": [
+            "QuickChanges starts on tomorrow and adds a one-off meal to it",
+            "QuickChanges adds a one-hour appointment for the chosen people, or an all-day one without a time",
+            "QuickChanges writes a note on a child's briefing and says when it replaces one",
+            "QuickChanges lists the day and removes one-off meals and notes, never planned meals",
+            "QuickChanges keeps the form and reports a failed save, and a plan that cannot load",
+            "QuickChanges moves to another day from the date field"
           ],
           "tests/client/radio-field.test.tsx": [
             "RadioField associates the label with the radio by wrapping it, and shares the group name",
@@ -6480,6 +6489,21 @@
           "statements": 100,
           "functions": 100,
           "branches": 100
+        }
+      },
+      "src/client/admin/QuickChanges.tsx": {
+        "layer": "client",
+        "minimumTotals": {
+          "lines": 128,
+          "statements": 147,
+          "functions": 49,
+          "branches": 93
+        },
+        "minimumRates": {
+          "lines": 99.21,
+          "statements": 95.91,
+          "functions": 97.95,
+          "branches": 83.87
         }
       },
       "src/client/admin/ReminderEmojiSequence.tsx": {

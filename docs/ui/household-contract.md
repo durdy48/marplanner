@@ -91,6 +91,12 @@ another day period ask for confirmation, because each changes the live streak.
 The ordered capability table is:
 
 1. `/admin` — overview
+   - `/admin/quick` — Quick changes, linked from the overview's sidebar group and drawn without the
+     sidebar because it is meant for a phone: a day (Today, Tomorrow or a date; Tomorrow by
+     default), then one of a one-off meal, an appointment (an hour long, or all day without a
+     time) or a note on a member's briefing, and what that day already holds. One-off meals and
+     notes can be removed there; planned meals and events cannot. Spec:
+     [quick-changes](../features/quick-changes.md).
 2. `/admin/members` — members
 3. `/admin/routines` — routines and chores
 4. `/admin/reminders` — reminders
